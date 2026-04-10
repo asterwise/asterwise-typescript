@@ -20,9 +20,9 @@ export type ApiResponseAshtakavargaResponse = {
 };
 
 /**
- * ApiResponse[AshtottariResponse]
+ * ApiResponse[AshtottariEndpointResponse]
  */
-export type ApiResponseAshtottariResponse = {
+export type ApiResponseAshtottariEndpointResponse = {
     /**
      * Success
      */
@@ -31,7 +31,7 @@ export type ApiResponseAshtottariResponse = {
      * Message
      */
     message?: string;
-    data: AshtottariResponse;
+    data: AshtottariEndpointResponse;
 };
 
 /**
@@ -80,6 +80,21 @@ export type ApiResponseCompatibilityResponse = {
 };
 
 /**
+ * ApiResponse[DashaEndpointResponse]
+ */
+export type ApiResponseDashaEndpointResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: DashaEndpointResponse;
+};
+
+/**
  * ApiResponse[DivisionalResponse]
  */
 export type ApiResponseDivisionalResponse = {
@@ -95,9 +110,9 @@ export type ApiResponseDivisionalResponse = {
 };
 
 /**
- * ApiResponse[DoshaResponse]
+ * ApiResponse[DoshaEndpointResponse]
  */
-export type ApiResponseDoshaResponse = {
+export type ApiResponseDoshaEndpointResponse = {
     /**
      * Success
      */
@@ -106,7 +121,7 @@ export type ApiResponseDoshaResponse = {
      * Message
      */
     message?: string;
-    data: DoshaResponse;
+    data: DoshaEndpointResponse;
 };
 
 /**
@@ -350,9 +365,9 @@ export type ApiResponseTransitsResponse = {
 };
 
 /**
- * ApiResponse[YogaResponse]
+ * ApiResponse[YogaEndpointResponse]
  */
-export type ApiResponseYogaResponse = {
+export type ApiResponseYogaEndpointResponse = {
     /**
      * Success
      */
@@ -361,13 +376,13 @@ export type ApiResponseYogaResponse = {
      * Message
      */
     message?: string;
-    data: YogaResponse;
+    data: YogaEndpointResponse;
 };
 
 /**
- * ApiResponse[YoginiResponse]
+ * ApiResponse[YoginiEndpointResponse]
  */
-export type ApiResponseYoginiResponse = {
+export type ApiResponseYoginiEndpointResponse = {
     /**
      * Success
      */
@@ -376,25 +391,7 @@ export type ApiResponseYoginiResponse = {
      * Message
      */
     message?: string;
-    data: YoginiResponse;
-};
-
-/**
- * ApiResponse[list[DashaPeriod]]
- */
-export type ApiResponseListDashaPeriod = {
-    /**
-     * Success
-     */
-    success?: boolean;
-    /**
-     * Message
-     */
-    message?: string;
-    /**
-     * Data
-     */
-    data: Array<DashaPeriod>;
+    data: YoginiEndpointResponse;
 };
 
 /**
@@ -527,6 +524,21 @@ export type AshtakavargaResponse = {
      * Fallback Method
      *
      * Fallback method used for unknown birth time
+     */
+    fallback_method?: string | null;
+};
+
+/**
+ * AshtottariEndpointResponse
+ */
+export type AshtottariEndpointResponse = {
+    periods: AshtottariResponse;
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+    /**
+     * Fallback Method
      */
     fallback_method?: string | null;
 };
@@ -1452,6 +1464,34 @@ export type CoreNumber = {
 };
 
 /**
+ * DashaEndpointResponse
+ */
+export type DashaEndpointResponse = {
+    /**
+     * Periods
+     *
+     * Calculated Vimshottari dasha hierarchy
+     */
+    periods: Array<DashaPeriod>;
+    /**
+     * Interpretation
+     *
+     * Structured dasha interpretation summary
+     */
+    interpretation?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+    /**
+     * Fallback Method
+     */
+    fallback_method?: string | null;
+};
+
+/**
  * DashaPeriod
  */
 export type DashaPeriod = {
@@ -1916,6 +1956,26 @@ export type DivisionalResponse = {
 };
 
 /**
+ * DoshaEndpointResponse
+ */
+export type DoshaEndpointResponse = {
+    /**
+     * Doshas
+     */
+    doshas: {
+        [key: string]: DoshaResult;
+    };
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+    /**
+     * Fallback Method
+     */
+    fallback_method?: string | null;
+};
+
+/**
  * DoshaRequest
  */
 export type DoshaRequest = {
@@ -1970,13 +2030,6 @@ export type DoshaRequest = {
 };
 
 /**
- * DoshaResponse
- */
-export type DoshaResponse = {
-    [key: string]: DoshaResult;
-};
-
-/**
  * DoshaResult
  */
 export type DoshaResult = {
@@ -1985,7 +2038,7 @@ export type DoshaResult = {
      *
      * Whether this dosha is present in the chart
      */
-    present: boolean;
+    present?: boolean | null;
     /**
      * Types
      *
@@ -4184,9 +4237,9 @@ export type SadeSatiResponse = {
     /**
      * Sade Sati Signs
      */
-    sade_sati_signs: Array<{
+    sade_sati_signs: {
         [key: string]: unknown;
-    }>;
+    };
     /**
      * Classical Note
      */
@@ -4199,6 +4252,38 @@ export type SadeSatiResponse = {
      * Current Phase
      */
     current_phase?: string | null;
+    /**
+     * Current Phase Description
+     */
+    current_phase_description?: string | null;
+    /**
+     * Intensity Score
+     */
+    intensity_score?: number | null;
+    /**
+     * Intensity Label
+     */
+    intensity_label?: string | null;
+    /**
+     * Next Sade Sati
+     */
+    next_sade_sati?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * All Periods
+     */
+    all_periods?: Array<{
+        [key: string]: unknown;
+    }> | null;
+    /**
+     * Mitigated By Own Sign
+     */
+    mitigated_by_own_sign?: boolean | null;
+    /**
+     * Mitigated By Exaltation
+     */
+    mitigated_by_exaltation?: boolean | null;
 };
 
 /**
@@ -4489,16 +4574,6 @@ export type ValidationError = {
      * Error Type
      */
     type: string;
-    /**
-     * Input
-     */
-    input?: unknown;
-    /**
-     * Context
-     */
-    ctx?: {
-        [key: string]: unknown;
-    };
 };
 
 /**
@@ -4691,6 +4766,24 @@ export type YogaData = {
 };
 
 /**
+ * YogaEndpointResponse
+ */
+export type YogaEndpointResponse = {
+    /**
+     * Yogas
+     */
+    yogas: Array<YogaResult>;
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+    /**
+     * Fallback Method
+     */
+    fallback_method?: string | null;
+};
+
+/**
  * YogaRequest
  */
 export type YogaRequest = {
@@ -4745,11 +4838,6 @@ export type YogaRequest = {
 };
 
 /**
- * YogaResponse
- */
-export type YogaResponse = Array<YogaResult>;
-
-/**
  * YogaResult
  */
 export type YogaResult = {
@@ -4789,6 +4877,21 @@ export type YogaResult = {
      * Interpretation keywords
      */
     keywords?: Array<string>;
+};
+
+/**
+ * YoginiEndpointResponse
+ */
+export type YoginiEndpointResponse = {
+    periods: YoginiResponse;
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+    /**
+     * Fallback Method
+     */
+    fallback_method?: string | null;
 };
 
 /**
@@ -4977,7 +5080,7 @@ export type AshtottariDashaResponses = {
     /**
      * Successful Response
      */
-    200: ApiResponseAshtottariResponse;
+    200: ApiResponseAshtottariEndpointResponse;
 };
 
 export type AshtottariDashaResponse = AshtottariDashaResponses[keyof AshtottariDashaResponses];
@@ -5399,7 +5502,7 @@ export type DashaResponses = {
     /**
      * Vimshottari dasha periods with start and end ranges
      */
-    200: ApiResponseListDashaPeriod;
+    200: ApiResponseDashaEndpointResponse;
 };
 
 export type DashaResponse = DashaResponses[keyof DashaResponses];
@@ -5562,7 +5665,7 @@ export type DoshasResponses = {
     /**
      * Detected doshas with flags, types, and details
      */
-    200: ApiResponseDoshaResponse;
+    200: ApiResponseDoshaEndpointResponse;
 };
 
 export type DoshasResponse = DoshasResponses[keyof DoshasResponses];
@@ -5610,7 +5713,7 @@ export type YogasResponses = {
     /**
      * List of detected yoga combinations
      */
-    200: ApiResponseYogaResponse;
+    200: ApiResponseYogaEndpointResponse;
 };
 
 export type YogasResponse = YogasResponses[keyof YogasResponses];
@@ -6592,7 +6695,7 @@ export type YoginiDashaResponses = {
     /**
      * Successful Response
      */
-    200: ApiResponseYoginiResponse;
+    200: ApiResponseYoginiEndpointResponse;
 };
 
 export type YoginiDashaResponse = YoginiDashaResponses[keyof YoginiDashaResponses];
