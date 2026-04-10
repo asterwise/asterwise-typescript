@@ -35,7 +35,7 @@
   "homepage": "https://asterwise.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/asterwise/asterwise-typescript.git"
+    "url": "git+https://github.com/asterwise/asterwise-typescript.git"
   },
   "bugs": {
     "url": "https://github.com/asterwise/asterwise-typescript/issues"
