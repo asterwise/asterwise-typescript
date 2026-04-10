@@ -1,0 +1,49 @@
+{
+  "name": "asterwise",
+  "version": "0.1.0",
+  "description": "Official TypeScript SDK for the Asterwise Vedic Astrology API",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "vedic astrology",
+    "jyotish",
+    "astrology api",
+    "kundli",
+    "horoscope",
+    "numerology",
+    "dasha",
+    "panchanga",
+    "matchmaking"
+  ],
+  "author": "Asterwise <support@asterwise.com>",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://asterwise.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asterwise/asterwise-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asterwise/asterwise-typescript/issues"
+  },
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
