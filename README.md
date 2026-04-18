@@ -58,9 +58,6 @@ Chaldean, Lo Shu, Mobile Number, Vehicle Number — 14 endpoints
 **Utilities** — Geocode (city → coordinates), Timezone lookup
 — 2 endpoints
 
-**PDF Reports** — Kundli, Dasha, Matchmaking, Varshaphal,
-Download — 5 endpoints
-
 ## Documentation
 
 Full API reference: [docs.asterwise.com](https://docs.asterwise.com)
