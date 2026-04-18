@@ -813,54 +813,6 @@ export type BirthInput = {
 };
 
 /**
- * BrandingParams
- */
-export type BrandingParams = {
-    /**
-     * Brand Name
-     *
-     * Developer's brand/company name shown on cover and header.
-     */
-    brand_name?: string;
-    /**
-     * Brand Logo Url
-     *
-     * URL to brand logo image (PNG/SVG). Rendered in PDF header.
-     */
-    brand_logo_url?: string;
-    /**
-     * Brand Primary Color
-     *
-     * Hex color for headings and accents. Default: #1a1a2e (dark navy).
-     */
-    brand_primary_color?: string;
-    /**
-     * Brand Tagline
-     *
-     * Optional one-liner shown under brand name on cover.
-     */
-    brand_tagline?: string;
-    /**
-     * Prepared By
-     *
-     * Astrologer or consultant name shown on cover page.
-     */
-    prepared_by?: string;
-    /**
-     * Footer Text
-     *
-     * Custom footer text. Example: 'yoursite.com | contact@yoursite.com'
-     */
-    footer_text?: string;
-    /**
-     * Cover Background Color
-     *
-     * Hex color for cover page background. Default: #1a1a2e.
-     */
-    cover_background_color?: string;
-};
-
-/**
  * BusinessNamePostRequest
  */
 export type BusinessNamePostRequest = {
@@ -1537,64 +1489,6 @@ export type DashaPeriod = {
      * Optional modern interpretation summary for this period
      */
     modern_summary?: string | null;
-};
-
-/**
- * DashaReportRequest
- */
-export type DashaReportRequest = {
-    /**
-     * Location
-     *
-     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
-     */
-    location?: string | null;
-    /**
-     * Name
-     *
-     * Person name associated with the birth record
-     */
-    name?: string;
-    /**
-     * Date
-     *
-     * Birth date in YYYY-MM-DD format
-     */
-    date: string;
-    /**
-     * Time
-     *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
-     */
-    time?: string | null;
-    /**
-     * Latitude
-     *
-     * Latitude. Required if location not provided.
-     */
-    latitude?: number | null;
-    /**
-     * Longitude
-     *
-     * Longitude. Required if location not provided.
-     */
-    longitude?: number | null;
-    /**
-     * Timezone
-     *
-     * IANA timezone. Required if location not provided.
-     */
-    timezone?: string | null;
-    /**
-     * Ayanamsa
-     *
-     * Sidereal ayanamsa mode used in calculations
-     */
-    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
-    /**
-     * Optional white-label branding for the PDF.
-     */
-    branding?: BrandingParams;
 };
 
 /**
@@ -2694,64 +2588,6 @@ export type KaranaData = {
 };
 
 /**
- * KundliReportRequest
- */
-export type KundliReportRequest = {
-    /**
-     * Location
-     *
-     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
-     */
-    location?: string | null;
-    /**
-     * Name
-     *
-     * Person name associated with the birth record
-     */
-    name?: string;
-    /**
-     * Date
-     *
-     * Birth date in YYYY-MM-DD format
-     */
-    date: string;
-    /**
-     * Time
-     *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
-     */
-    time?: string | null;
-    /**
-     * Latitude
-     *
-     * Latitude. Required if location not provided.
-     */
-    latitude?: number | null;
-    /**
-     * Longitude
-     *
-     * Longitude. Required if location not provided.
-     */
-    longitude?: number | null;
-    /**
-     * Timezone
-     *
-     * IANA timezone. Required if location not provided.
-     */
-    timezone?: string | null;
-    /**
-     * Ayanamsa
-     *
-     * Sidereal ayanamsa mode used in calculations
-     */
-    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
-    /**
-     * Optional white-label branding for the PDF.
-     */
-    branding?: BrandingParams;
-};
-
-/**
  * LalKitabRequest
  *
  * Lal Kitab uses standard BirthInput.
@@ -2903,18 +2739,6 @@ export type LuckyNumbersApiResponse = {
      * How to use these numbers
      */
     interpretation: string;
-};
-
-/**
- * MatchmakingPdfRequest
- */
-export type MatchmakingPdfRequest = {
-    person1: BirthInput;
-    person2: BirthInput;
-    /**
-     * Optional white-label branding for the PDF.
-     */
-    branding?: BrandingParams;
 };
 
 /**
@@ -4605,68 +4429,6 @@ export type VaraData = {
 };
 
 /**
- * VarshaphalReportRequest
- */
-export type VarshaphalReportRequest = {
-    /**
-     * Location
-     *
-     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
-     */
-    location?: string | null;
-    /**
-     * Name
-     *
-     * Person name associated with the birth record
-     */
-    name?: string;
-    /**
-     * Date
-     *
-     * Birth date in YYYY-MM-DD format
-     */
-    date: string;
-    /**
-     * Time
-     *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
-     */
-    time?: string | null;
-    /**
-     * Latitude
-     *
-     * Latitude. Required if location not provided.
-     */
-    latitude?: number | null;
-    /**
-     * Longitude
-     *
-     * Longitude. Required if location not provided.
-     */
-    longitude?: number | null;
-    /**
-     * Timezone
-     *
-     * IANA timezone. Required if location not provided.
-     */
-    timezone?: string | null;
-    /**
-     * Ayanamsa
-     *
-     * Sidereal ayanamsa mode used in calculations
-     */
-    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
-    /**
-     * Year
-     */
-    year: number;
-    /**
-     * Optional white-label branding for the PDF.
-     */
-    branding?: BrandingParams;
-};
-
-/**
  * VarshaphalRequest
  *
  * Varshaphal — extends :class:`BirthInput` with ``target_year``.
@@ -6139,132 +5901,6 @@ export type VehicleNumberErrors = {
 export type VehicleNumberError = VehicleNumberErrors[keyof VehicleNumberErrors];
 
 export type VehicleNumberResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type ReportDownloadData = {
-    body?: never;
-    path: {
-        /**
-         * Token
-         */
-        token: string;
-    };
-    query?: never;
-    url: '/v1/report/download/{token}';
-};
-
-export type ReportDownloadErrors = {
-    /**
-     * Report token not found or expired.
-     */
-    404: unknown;
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReportDownloadError = ReportDownloadErrors[keyof ReportDownloadErrors];
-
-export type ReportDownloadResponses = {
-    /**
-     * PDF file download.
-     */
-    200: Blob | File;
-};
-
-export type ReportDownloadResponse = ReportDownloadResponses[keyof ReportDownloadResponses];
-
-export type ReportKundliData = {
-    body: KundliReportRequest;
-    path?: never;
-    query?: never;
-    url: '/v1/report/kundli';
-};
-
-export type ReportKundliErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReportKundliError = ReportKundliErrors[keyof ReportKundliErrors];
-
-export type ReportKundliResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type ReportMatchmakingData = {
-    body: MatchmakingPdfRequest;
-    path?: never;
-    query?: never;
-    url: '/v1/report/matchmaking';
-};
-
-export type ReportMatchmakingErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReportMatchmakingError = ReportMatchmakingErrors[keyof ReportMatchmakingErrors];
-
-export type ReportMatchmakingResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type ReportDashaData = {
-    body: DashaReportRequest;
-    path?: never;
-    query?: never;
-    url: '/v1/report/dasha';
-};
-
-export type ReportDashaErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReportDashaError = ReportDashaErrors[keyof ReportDashaErrors];
-
-export type ReportDashaResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type ReportVarshaphalData = {
-    body: VarshaphalReportRequest;
-    path?: never;
-    query?: never;
-    url: '/v1/report/varshaphal';
-};
-
-export type ReportVarshaphalErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type ReportVarshaphalError = ReportVarshaphalErrors[keyof ReportVarshaphalErrors];
-
-export type ReportVarshaphalResponses = {
     /**
      * Successful Response
      */

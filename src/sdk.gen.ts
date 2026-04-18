@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MobileNumberData, MobileNumberErrors, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PrashnaData, PrashnaErrors, PrashnaResponses, RemediesData, RemediesErrors, RemediesResponses, ReportDashaData, ReportDashaErrors, ReportDashaResponses, ReportDownloadData, ReportDownloadErrors, ReportDownloadResponses, ReportKundliData, ReportKundliErrors, ReportKundliResponses, ReportMatchmakingData, ReportMatchmakingErrors, ReportMatchmakingResponses, ReportVarshaphalData, ReportVarshaphalErrors, ReportVarshaphalResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, StrengthData, StrengthErrors, StrengthResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen';
+import type { AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MobileNumberData, MobileNumberErrors, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PrashnaData, PrashnaErrors, PrashnaResponses, RemediesData, RemediesErrors, RemediesResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, StrengthData, StrengthErrors, StrengthResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -721,67 +721,6 @@ export const vehicleNumber = <ThrowOnError extends boolean = false>(options: Opt
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/numerology/vehicle-number',
     ...options
-});
-
-/**
- * Download a generated report PDF
- */
-export const reportDownload = <ThrowOnError extends boolean = false>(options: Options<ReportDownloadData, ThrowOnError>) => (options.client ?? client).get<ReportDownloadResponses, ReportDownloadErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/report/download/{token}',
-    ...options
-});
-
-/**
- * Kundli PDF Report
- */
-export const reportKundli = <ThrowOnError extends boolean = false>(options: Options<ReportKundliData, ThrowOnError>) => (options.client ?? client).post<ReportKundliResponses, ReportKundliErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/report/kundli',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Matchmaking PDF Report
- */
-export const reportMatchmaking = <ThrowOnError extends boolean = false>(options: Options<ReportMatchmakingData, ThrowOnError>) => (options.client ?? client).post<ReportMatchmakingResponses, ReportMatchmakingErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/report/matchmaking',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Dasha PDF Report
- */
-export const reportDasha = <ThrowOnError extends boolean = false>(options: Options<ReportDashaData, ThrowOnError>) => (options.client ?? client).post<ReportDashaResponses, ReportDashaErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/report/dasha',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Varshaphal PDF Report
- */
-export const reportVarshaphal = <ThrowOnError extends boolean = false>(options: Options<ReportVarshaphalData, ThrowOnError>) => (options.client ?? client).post<ReportVarshaphalResponses, ReportVarshaphalErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/report/varshaphal',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
 });
 
 /**
