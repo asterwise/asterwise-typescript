@@ -1,6 +1,6 @@
 {
   "name": "asterwise",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Official TypeScript SDK for the Asterwise Vedic Astrology API",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
