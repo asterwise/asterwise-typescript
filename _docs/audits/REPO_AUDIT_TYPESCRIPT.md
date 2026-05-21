@@ -424,4 +424,135 @@ Versions on registry include: **0.1.0**, **0.1.1**, **0.1.2**, **0.1.3**, **0.1.
 
 ---
 
-*Next pass: Pass 2 — endpoint coverage gaps, type-completeness, test coverage of public surface.*
+## Pass 2 — coverage gap mapping, runtime verification, generator pipeline
+
+**Pass 2 audit date:** 2026-05-21
+**Commit at audit time:** 135827d (Pass 1 baseline)
+**Findings raised:** F-69 through F-74 in asterwise-api/_docs/audits/REPO_AUDIT_FINDINGS.md
+**Refines (in place):** F-30 (coverage gap detail), F-36 (lockfile drift confirmed), F-37 (zero tests verified), F-43 (createClient/createConfig runtime-confirmed missing)
+
+### SDK file inventory
+- src/ subdirectories: src/, src/client/, src/core/
+- src/*.ts files: 16 (all carry @hey-api/openapi-ts banner)
+- Generated ratio: 100% (no hand-written files in src/)
+- TypeScript LOC (src/, excluding .d.ts): 9,304
+- Largest files: types.gen.ts (6,360), sdk.gen.ts (1,005)
+
+### Coverage match: per-operation against live API
+- Live OpenAPI operations: 117
+- SDK export const operations (sdk.gen.ts): 59
+- API ops covered: 59 (exact method+path match)
+- API ops uncovered: 58 (49.6%)
+- SDK orphan exports: 0
+
+Coverage gap matches asterwise-python (F-29) exactly — same operation set absent from both SDKs.
+
+### Uncovered operations by OpenAPI tag
+
+| Tag                | Uncovered ops |
+|--------------------|---------------|
+| Western Astrology  | 16            |
+| Astrology          | 11            |
+| Numerology         | 10            |
+| Tarot              | 9             |
+| Crystals           | 5             |
+| Western            | 5             |
+| Dreams             | 2             |
+| **Total**          | **58**        |
+
+Three categories with zero SDK coverage: Tarot (9 ops), Crystals (5 ops), Dreams (2 ops). Western Astrology has the largest gap (16 ops — chart computations, transits in three periods, progressions, synastry, returns).
+
+### sdk.gen.ts structure
+- Lines: 1,005
+- export const operations: 59
+- export async function / export function: 0
+- @ts-ignore / @ts-nocheck: 0
+- Pattern: every operation is a typed const using generic Options<*Data, ThrowOnError> and returning options.client.method<*Responses, *Errors, ThrowOnError>
+- Security: every operation includes `security: [{ scheme: 'bearer', type: 'http' }]`
+- Content-Type: 44 operations include `Content-Type: application/json` (the 44 POST endpoints); 15 GET operations omit the header (correct per HTTP)
+
+Per-export quality on all 59:
+- Bearer security present: 59/59
+- Typed Options<*Data> generic: 59/59
+- ThrowOnError generic parameter: 59/59
+- Typed *Responses and *Errors generic: 59/59
+- Default client fallback (options.client ?? client): 59/59
+
+Three paths have dual-method exports (GET and POST): /v1/astro/panchanga/calendar, /v1/numerology/personal-year, /v1/numerology/business-name. Total 3 extra exports beyond the 59-unique-path count would be 59+3=62 — actual export count is 59, indicating the dual-method paths are counted once per path.
+
+### Index entry / package exports (F-43 verification)
+src/index.ts: re-exports the 59 SDK functions and the Options type; also exports a large type re-export block from types.gen.ts. **Does not export createClient, createConfig, mergeHeaders, or the client singleton.**
+
+package.json exports map: single entry `"."` → `./dist/index.js` + `./dist/index.d.ts`. No `./client` subpath.
+
+F-43 verification:
+- createClient in README.md: present (L15-17 import statement)
+- createClient in src/index.ts: absent
+- createClient in src/client/index.ts: present (defined there)
+- createClient in published dist/index.js (npm 0.1.4): absent
+- createConfig: same pattern as createClient
+
+F-43 is confirmed at the runtime level — a fresh `npm install asterwise@0.1.4` followed by the README example throws ReferenceError.
+
+### Type coverage
+- types.gen.ts lines: 6,360
+- export interface: 0 (generator uses `export type`)
+- export type: ~400
+- Total exported interfaces+types: 438
+- `: any` / `<any>` / `as any` sites (excluding comments): 6 (all in src/client/client.gen.ts or src/core/serverSentEvents.gen.ts — transport layer)
+- `: unknown`: 92
+
+tsconfig.json strictness:
+- strict: true
+- noImplicitAny, strictNullChecks, strictFunctionTypes: inherit from strict
+- noUncheckedIndexedAccess: not set (recorded as F-73)
+- target: ES2020, module: ESNext, moduleResolution: bundler
+
+### Test surface (F-37 verification)
+- *.test.ts / *.spec.ts files: 0
+- package.json scripts.test: none
+- jest / vitest / mocha in devDependencies: none
+- CI workflow .github/workflows/test.yml: runs `npm install` + `npm run build` only
+
+F-37 confirmed — there is no test layer in the SDK.
+
+### Lockfile drift (F-36 verification)
+- package.json version: 0.1.4
+- package-lock.json root version: 0.1.3
+
+F-36 confirmed — npm publish landed without lockfile regen.
+
+### Production parity
+- npm package: asterwise (200 OK)
+- Latest version: 0.1.4
+- Published: 2026-04-18T15:41:01.471Z
+- All versions: 0.1.0 … 0.1.4
+- Runtime dependencies (published): @hey-api/client-fetch
+- Variant package names (@asterwise/sdk, asterwise-sdk, asterwise-typescript): all return 404 on npm
+
+### Generation pipeline
+- Generator: @hey-api/openapi-ts (banner on every src/*.ts)
+- @hey-api/openapi-ts version: 0.96.0 (devDependency)
+- openapi-ts.config.ts at repo root: not present (recorded as F-70)
+- package.json scripts.generate / codegen: none (recorded as F-70)
+- openapi.yaml / openapi.json in repo: not present
+- openapitools.json at repo root: present, references OpenAPI Generator CLI 7.21.0 (legacy, not the @hey-api pipeline that actually produced src/ — recorded as F-71)
+- Post-build step: fix-esm.mjs (hand-maintained ESM `.js` extension suffix pass)
+
+### Conclusions
+The TypeScript SDK has a structurally cleaner story than the Python SDK in several dimensions:
+- 100% generated, no hand/generated mixing
+- tsconfig strict:true on by default
+- Modern HTTP transport (@hey-api/client-fetch, fetch-based)
+- All public operation typing complete with generics
+
+The gaps mirror Python (F-29 = F-30 = F-69 family — same coverage gap, same understatement in README) and add three TypeScript-specific issues:
+- Generator tooling is misaligned and undocumented (F-70 + F-71)
+- Auth client exports are documented but unreachable (F-43)
+- Zero tests, build-only CI (F-37)
+
+Combined with the Python audit (Pass 2), both SDKs together present the same picture: half the platform is invisible through SDK install, neither has working regression defense, and the README of each promises imports that need work to become true.
+
+---
+
+*Next pass: Pass 3 — close coverage gap via @hey-api regeneration (F-30, F-69), establish test surface (F-37), fix export surface (F-43, F-74), document and script regeneration (F-70, F-71), tighten strictness (F-73).*
