@@ -17,14 +17,11 @@ export default defineConfig({
   input: "https://api.asterwise.com/openapi-sdk.json",
   output: {
     path: "src",
-    format: "prettier",
-    lint: "eslint",
+    // @hey-api 0.96+ deprecated format/lint in favor of postProcess.
+    postProcess: ["prettier", "eslint"],
   },
   plugins: [
-    {
-      name: "@hey-api/client-fetch",
-      runtimeConfigPath: "./src/client-config.ts",
-    },
+    "@hey-api/client-fetch",
     "@hey-api/sdk",
     "@hey-api/typescript",
   ],
