@@ -82,6 +82,11 @@ The SDK is generated from the asterwise SDK OpenAPI spec at
 governs which operations are exposed and what their method names
 are lives in `asterwise-api/_docs/SDK_CONTRACT.md`.
 
+`npm run generate` runs the OpenAPI generator AND a post-generate
+hook (`scripts/post-generate.mjs`) that re-applies hand-edits the
+generator would otherwise overwrite (currently: F-43 client re-exports).
+The hook is idempotent — safe to run repeatedly.
+
 To regenerate locally:
 
 ```bash
