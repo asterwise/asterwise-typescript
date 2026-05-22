@@ -16,6 +16,8 @@
     "src"
   ],
   "scripts": {
+    "generate": "openapi-ts",
+    "generate:verify": "git diff --stat src/ && echo '--- src/ regeneration diff above ---'",
     "build": "tsc && node fix-esm.mjs",
     "prepublishOnly": "npm run build"
   },
