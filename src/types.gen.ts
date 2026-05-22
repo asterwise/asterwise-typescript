@@ -5,6 +5,57 @@ export type ClientOptions = {
 };
 
 /**
+ * AngelNumberResponse
+ */
+export type AngelNumberResponse = {
+    /**
+     * Number
+     *
+     * Angel number sequence, e.g. '111', '1111'.
+     */
+    number: string;
+    /**
+     * Theme
+     *
+     * Core theme of this angel number.
+     */
+    theme: string;
+    /**
+     * Message
+     *
+     * Primary message of this angel number.
+     */
+    message: string;
+    /**
+     * Guidance
+     *
+     * Actionable guidance for this number.
+     */
+    guidance: string;
+    /**
+     * Areas
+     *
+     * Life areas associated with this number.
+     */
+    areas: Array<string>;
+};
+
+/**
+ * ApiResponse[AngelNumberResponse]
+ */
+export type ApiResponseAngelNumberResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: AngelNumberResponse;
+};
+
+/**
  * ApiResponse[AshtakavargaResponse]
  */
 export type ApiResponseAshtakavargaResponse = {
@@ -32,6 +83,21 @@ export type ApiResponseAshtottariEndpointResponse = {
      */
     message?: string;
     data: AshtottariEndpointResponse;
+};
+
+/**
+ * ApiResponse[CardOfDayResponse]
+ */
+export type ApiResponseCardOfDayResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: CardOfDayResponse;
 };
 
 /**
@@ -65,9 +131,9 @@ export type ApiResponseChoghadiyaResponse = {
 };
 
 /**
- * ApiResponse[CompatibilityResponse]
+ * ApiResponse[CompositeResponse]
  */
-export type ApiResponseCompatibilityResponse = {
+export type ApiResponseCompositeResponse = {
     /**
      * Success
      */
@@ -76,7 +142,67 @@ export type ApiResponseCompatibilityResponse = {
      * Message
      */
     message?: string;
-    data: CompatibilityResponse;
+    data: CompositeResponse;
+};
+
+/**
+ * ApiResponse[CrystalEntry]
+ */
+export type ApiResponseCrystalEntry = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: CrystalEntry;
+};
+
+/**
+ * ApiResponse[CrystalListResponse]
+ */
+export type ApiResponseCrystalListResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: CrystalListResponse;
+};
+
+/**
+ * ApiResponse[CrystalRecommendResponse]
+ */
+export type ApiResponseCrystalRecommendResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: CrystalRecommendResponse;
+};
+
+/**
+ * ApiResponse[DailyTransitResponse]
+ */
+export type ApiResponseDailyTransitResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: DailyTransitResponse;
 };
 
 /**
@@ -125,6 +251,66 @@ export type ApiResponseDoshaEndpointResponse = {
 };
 
 /**
+ * ApiResponse[DrawResponse]
+ */
+export type ApiResponseDrawResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: DrawResponse;
+};
+
+/**
+ * ApiResponse[DreamSymbolListResponse]
+ */
+export type ApiResponseDreamSymbolListResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: DreamSymbolListResponse;
+};
+
+/**
+ * ApiResponse[DreamSymbol]
+ */
+export type ApiResponseDreamSymbol = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: DreamSymbol;
+};
+
+/**
+ * ApiResponse[FestivalCalendarResponse]
+ */
+export type ApiResponseFestivalCalendarResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: FestivalCalendarResponse;
+};
+
+/**
  * ApiResponse[GeocodeResponse]
  */
 export type ApiResponseGeocodeResponse = {
@@ -152,6 +338,21 @@ export type ApiResponseHoraResponse = {
      */
     message?: string;
     data: HoraResponse;
+};
+
+/**
+ * ApiResponse[KarmicLessonsResponse]
+ */
+export type ApiResponseKarmicLessonsResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: KarmicLessonsResponse;
 };
 
 /**
@@ -197,6 +398,81 @@ export type ApiResponseMatchmakingResponse = {
      */
     message?: string;
     data: MatchmakingResponse;
+};
+
+/**
+ * ApiResponse[MaturityNumberResponse]
+ */
+export type ApiResponseMaturityNumberResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: MaturityNumberResponse;
+};
+
+/**
+ * ApiResponse[MonthlyTransitResponse]
+ */
+export type ApiResponseMonthlyTransitResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: MonthlyTransitResponse;
+};
+
+/**
+ * ApiResponse[MoonPhaseResponse]
+ */
+export type ApiResponseMoonPhaseResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: MoonPhaseResponse;
+};
+
+/**
+ * ApiResponse[NameNumberResponse]
+ */
+export type ApiResponseNameNumberResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: NameNumberResponse;
+};
+
+/**
+ * ApiResponse[NatalCrystalResponse]
+ */
+export type ApiResponseNatalCrystalResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: NatalCrystalResponse;
 };
 
 /**
@@ -275,6 +551,36 @@ export type ApiResponsePanchangaResponse = {
 };
 
 /**
+ * ApiResponse[PersonalAngelNumberResponse]
+ */
+export type ApiResponsePersonalAngelNumberResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: PersonalAngelNumberResponse;
+};
+
+/**
+ * ApiResponse[PersonalCycleResponse]
+ */
+export type ApiResponsePersonalCycleResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: PersonalCycleResponse;
+};
+
+/**
  * ApiResponse[PersonalYearResponse]
  */
 export type ApiResponsePersonalYearResponse = {
@@ -305,6 +611,21 @@ export type ApiResponseRahuKaalResponse = {
 };
 
 /**
+ * ApiResponse[ReturnChartResponse]
+ */
+export type ApiResponseReturnChartResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: ReturnChartResponse;
+};
+
+/**
  * ApiResponse[SadeSatiResponse]
  */
 export type ApiResponseSadeSatiResponse = {
@@ -317,6 +638,51 @@ export type ApiResponseSadeSatiResponse = {
      */
     message?: string;
     data: SadeSatiResponse;
+};
+
+/**
+ * ApiResponse[SecondaryProgressionResponse]
+ */
+export type ApiResponseSecondaryProgressionResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: SecondaryProgressionResponse;
+};
+
+/**
+ * ApiResponse[SolarArcResponse]
+ */
+export type ApiResponseSolarArcResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: SolarArcResponse;
+};
+
+/**
+ * ApiResponse[SpreadResponse]
+ */
+export type ApiResponseSpreadResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: SpreadResponse;
 };
 
 /**
@@ -335,6 +701,51 @@ export type ApiResponseStrengthResponse = {
 };
 
 /**
+ * ApiResponse[SynastryResponse]
+ */
+export type ApiResponseSynastryResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: SynastryResponse;
+};
+
+/**
+ * ApiResponse[TamilPanchangaResponse]
+ */
+export type ApiResponseTamilPanchangaResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: TamilPanchangaResponse;
+};
+
+/**
+ * ApiResponse[TarotCardSchema]
+ */
+export type ApiResponseTarotCardSchema = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: TarotCardSchema;
+};
+
+/**
  * ApiResponse[TimezoneResponse]
  */
 export type ApiResponseTimezoneResponse = {
@@ -350,6 +761,21 @@ export type ApiResponseTimezoneResponse = {
 };
 
 /**
+ * ApiResponse[TodayAngelNumberResponse]
+ */
+export type ApiResponseTodayAngelNumberResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: TodayAngelNumberResponse;
+};
+
+/**
  * ApiResponse[TransitsResponse]
  */
 export type ApiResponseTransitsResponse = {
@@ -362,6 +788,66 @@ export type ApiResponseTransitsResponse = {
      */
     message?: string;
     data: TransitsResponse;
+};
+
+/**
+ * ApiResponse[WeeklyTransitResponse]
+ */
+export type ApiResponseWeeklyTransitResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: WeeklyTransitResponse;
+};
+
+/**
+ * ApiResponse[WesternAspectsResponse]
+ */
+export type ApiResponseWesternAspectsResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: WesternAspectsResponse;
+};
+
+/**
+ * ApiResponse[WesternNatalResponse]
+ */
+export type ApiResponseWesternNatalResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: WesternNatalResponse;
+};
+
+/**
+ * ApiResponse[YesNoResponse]
+ */
+export type ApiResponseYesNoResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: YesNoResponse;
 };
 
 /**
@@ -392,6 +878,57 @@ export type ApiResponseYoginiEndpointResponse = {
      */
     message?: string;
     data: YoginiEndpointResponse;
+};
+
+/**
+ * ApiResponse[ZodiacCompatibilityResponse]
+ */
+export type ApiResponseZodiacCompatibilityResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: ZodiacCompatibilityResponse;
+};
+
+/**
+ * ApiResponse[list[MoonPhaseResponse]]
+ */
+export type ApiResponseListMoonPhaseResponse = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    /**
+     * Data
+     */
+    data: Array<MoonPhaseResponse>;
+};
+
+/**
+ * ApiResponse[list[TarotCardSchema]]
+ */
+export type ApiResponseListTarotCardSchema = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    /**
+     * Data
+     */
+    data: Array<TarotCardSchema>;
 };
 
 /**
@@ -715,20 +1252,6 @@ export type AtmakarakaRequest = {
 };
 
 /**
- * AuthorizeConsentBody
- */
-export type AuthorizeConsentBody = {
-    /**
-     * State
-     */
-    state: string;
-    /**
-     * Approved
-     */
-    approved: boolean;
-};
-
-/**
  * BhavaMadhyaEntry
  */
 export type BhavaMadhyaEntry = {
@@ -756,6 +1279,30 @@ export type BhavaMadhyaEntry = {
      * Ecliptic longitude in degrees
      */
     degree: number;
+};
+
+/**
+ * BiorhythmRequest
+ */
+export type BiorhythmRequest = {
+    /**
+     * Birth Date
+     *
+     * Date of birth in YYYY-MM-DD format.
+     */
+    birth_date: string;
+    /**
+     * Target Date
+     *
+     * Date to compute cycles for. Defaults to today.
+     */
+    target_date?: string | null;
+    /**
+     * Days
+     *
+     * Number of consecutive days to compute (1-90). Use 1 for a single day snapshot. Use >1 for a date range (e.g. 30 for a month view).
+     */
+    days?: number;
 };
 
 /**
@@ -1014,6 +1561,31 @@ export type CalendarYoga = {
      * Yoga end time if available.
      */
     end_time?: string | null;
+};
+
+/**
+ * CardOfDayResponse
+ */
+export type CardOfDayResponse = {
+    /**
+     * Date
+     *
+     * Date for this card in YYYY-MM-DD format
+     */
+    date: string;
+    card: TarotCardSchema;
+    /**
+     * Is Reversed
+     */
+    is_reversed: boolean;
+    /**
+     * Active Meaning
+     */
+    active_meaning: string;
+    /**
+     * Active Keywords
+     */
+    active_keywords: Array<string>;
 };
 
 /**
@@ -1312,57 +1884,81 @@ export type CompatibilityRequest = {
 };
 
 /**
- * CompatibilityResponse
+ * CompositePlanetSchema
  */
-export type CompatibilityResponse = {
+export type CompositePlanetSchema = {
     /**
-     * Life Path 1
-     *
-     * First person's life path number
+     * Name
      */
-    life_path_1: number;
+    name: string;
     /**
-     * Life Path 2
-     *
-     * Second person's life path number
+     * Longitude
      */
-    life_path_2: number;
+    longitude: number;
     /**
-     * Compatibility Score
-     *
-     * Compatibility score (1-10)
+     * Sign
      */
-    compatibility_score: number;
+    sign: string;
     /**
-     * Compatibility Level
-     *
-     * Compatibility level (Excellent, Good, Fair, Challenging)
+     * Sign Index
      */
-    compatibility_level: string;
+    sign_index: number;
     /**
-     * Interpretation
-     *
-     * Detailed compatibility interpretation
+     * Degree In Sign
      */
-    interpretation: string;
+    degree_in_sign: number;
     /**
-     * Strengths
-     *
-     * Relationship strengths
+     * Dignity
      */
-    strengths?: Array<string>;
+    dignity: string;
     /**
-     * Challenges
-     *
-     * Potential challenges
+     * Dignity Score
      */
-    challenges?: Array<string>;
+    dignity_score: number;
+};
+
+/**
+ * CompositeResponse
+ */
+export type CompositeResponse = {
     /**
-     * Advice
-     *
-     * Relationship advice
+     * Planets
      */
-    advice: string;
+    planets: Array<CompositePlanetSchema>;
+    /**
+     * Ascendant Longitude
+     */
+    ascendant_longitude: number;
+    /**
+     * Ascendant Sign
+     */
+    ascendant_sign: string;
+    /**
+     * Ascendant Sign Index
+     */
+    ascendant_sign_index: number;
+    /**
+     * Aspects
+     */
+    aspects: Array<SynastryAspectSchema>;
+};
+
+/**
+ * ContextVariant
+ */
+export type ContextVariant = {
+    /**
+     * Context
+     *
+     * The specific dream context or variant.
+     */
+    context: string;
+    /**
+     * Meaning
+     *
+     * The interpretation for this specific context.
+     */
+    meaning: string;
 };
 
 /**
@@ -1413,6 +2009,216 @@ export type CoreNumber = {
      * Key traits and characteristics
      */
     keywords?: Array<string>;
+};
+
+/**
+ * CrystalEntry
+ */
+export type CrystalEntry = {
+    /**
+     * Slug
+     *
+     * URL-safe identifier, e.g. 'amethyst', 'blue-sapphire'.
+     */
+    slug: string;
+    /**
+     * Name
+     *
+     * Display name of the crystal.
+     */
+    name: string;
+    /**
+     * Colors
+     *
+     * Primary colours of this crystal.
+     */
+    colors: Array<string>;
+    /**
+     * Hardness Mohs
+     *
+     * Hardness on the Mohs scale (1-10).
+     */
+    hardness_mohs: number;
+    /**
+     * Chakras
+     *
+     * Associated chakras.
+     */
+    chakras: Array<string>;
+    /**
+     * Element
+     *
+     * Classical element: Earth, Water, Fire, Air, or All.
+     */
+    element: string;
+    /**
+     * Zodiac Signs
+     *
+     * Associated Western zodiac signs.
+     */
+    zodiac_signs: Array<string>;
+    /**
+     * Vedic Planet
+     *
+     * Vedic planetary correspondence. Null if no classical Vedic text assigns this stone.
+     */
+    vedic_planet?: string | null;
+    /**
+     * Vedic Correspondence
+     *
+     * 'navaratna' (primary classical gem), 'uparatna' (substitute gem), or 'none_classical' (no Vedic text assigns this stone).
+     */
+    vedic_correspondence: string;
+    /**
+     * Western Planet
+     *
+     * Western metaphysical planetary correspondence.
+     */
+    western_planet?: string | null;
+    /**
+     * Keywords
+     *
+     * Primary energy keywords.
+     */
+    keywords: Array<string>;
+    /**
+     * Healing Physical
+     *
+     * Physical healing properties.
+     */
+    healing_physical: string;
+    /**
+     * Healing Emotional
+     *
+     * Emotional healing properties.
+     */
+    healing_emotional: string;
+    /**
+     * Healing Spiritual
+     *
+     * Spiritual healing properties.
+     */
+    healing_spiritual: string;
+    /**
+     * Description
+     *
+     * Overview description.
+     */
+    description: string;
+    /**
+     * Origins
+     *
+     * Primary geographic origins.
+     */
+    origins: Array<string>;
+    /**
+     * Affirmation
+     *
+     * Affirmation for working with this crystal.
+     */
+    affirmation: string;
+    /**
+     * Caution
+     *
+     * Important safety or usage cautions. Null if none.
+     */
+    caution?: string | null;
+};
+
+/**
+ * CrystalListResponse
+ */
+export type CrystalListResponse = {
+    /**
+     * Total
+     *
+     * Total number of crystals in the database.
+     */
+    total: number;
+    /**
+     * Crystals
+     *
+     * All crystals sorted alphabetically.
+     */
+    crystals: Array<CrystalEntry>;
+};
+
+/**
+ * CrystalRecommendRequest
+ */
+export type CrystalRecommendRequest = {
+    /**
+     * Zodiac Sign
+     *
+     * Western zodiac sign to filter by. Example: 'Taurus', 'Scorpio'.
+     */
+    zodiac_sign?: string | null;
+    /**
+     * Chakra
+     *
+     * Chakra to filter by. One of: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown.
+     */
+    chakra?: string | null;
+    /**
+     * Intention
+     *
+     * Intention keyword to match. Example: 'protection', 'love', 'abundance'.
+     */
+    intention?: string | null;
+    /**
+     * Limit
+     *
+     * Maximum number of recommendations to return.
+     */
+    limit?: number;
+};
+
+/**
+ * CrystalRecommendResponse
+ */
+export type CrystalRecommendResponse = {
+    /**
+     * Total
+     *
+     * Number of crystals returned.
+     */
+    total: number;
+    /**
+     * Filters Applied
+     *
+     * The filters used for this recommendation.
+     */
+    filters_applied: {
+        [key: string]: unknown;
+    };
+    /**
+     * Crystals
+     *
+     * Recommended crystals sorted by match strength.
+     */
+    crystals: Array<CrystalEntry>;
+};
+
+/**
+ * DailyTransitResponse
+ */
+export type DailyTransitResponse = {
+    /**
+     * Date
+     */
+    date: string;
+    /**
+     * Transit Planets
+     */
+    transit_planets: Array<TransitPlanetRowSchema>;
+    /**
+     * Aspects
+     */
+    aspects: Array<TransitAspectSchema>;
+    /**
+     * Total Aspects
+     */
+    total_aspects: number;
 };
 
 /**
@@ -1968,13 +2774,250 @@ export type DoshaResult = {
 };
 
 /**
- * ForgotPasswordRequest
+ * DrawRequest
  */
-export type ForgotPasswordRequest = {
+export type DrawRequest = {
     /**
-     * Email
+     * Count
+     *
+     * Number of cards to draw (1-78). Default: 1.
      */
-    email: string;
+    count?: number;
+    /**
+     * Allow Reversed
+     *
+     * If true, each card has a 50% chance of appearing reversed.
+     */
+    allow_reversed?: boolean;
+};
+
+/**
+ * DrawResponse
+ */
+export type DrawResponse = {
+    /**
+     * Cards
+     */
+    cards: Array<DrawnCardSchema>;
+    /**
+     * Count
+     */
+    count: number;
+    /**
+     * Allow Reversed
+     */
+    allow_reversed: boolean;
+};
+
+/**
+ * DrawnCardSchema
+ */
+export type DrawnCardSchema = {
+    card: TarotCardSchema;
+    /**
+     * Is Reversed
+     *
+     * True if the card was drawn in reversed orientation
+     */
+    is_reversed: boolean;
+    /**
+     * Position
+     *
+     * Spread position name e.g. 'past', 'present', 'outcome'
+     */
+    position?: string | null;
+    /**
+     * Position Meaning
+     *
+     * What this spread position represents
+     */
+    position_meaning?: string | null;
+    /**
+     * Active Meaning
+     *
+     * The meaning to apply — upright_meaning when is_reversed=False, reversed_meaning when True
+     */
+    active_meaning: string;
+    /**
+     * Active Keywords
+     *
+     * Active keywords for this orientation
+     */
+    active_keywords: Array<string>;
+};
+
+/**
+ * DreamSymbol
+ */
+export type DreamSymbol = {
+    /**
+     * Slug
+     *
+     * URL-safe identifier.
+     */
+    slug: string;
+    /**
+     * Name
+     *
+     * Display name of the symbol.
+     */
+    name: string;
+    /**
+     * Category
+     *
+     * Symbol category: animals, nature, people, places, objects, actions, body, or abstract.
+     */
+    category: string;
+    /**
+     * Jungian Meaning
+     *
+     * Jungian/Western psychological interpretation.
+     */
+    jungian_meaning: string;
+    /**
+     * Jungian Archetype
+     *
+     * Primary Jungian archetype activated by this symbol.
+     */
+    jungian_archetype: string;
+    /**
+     * Vedic Meaning
+     *
+     * Classical Swapna Shastra interpretation.
+     */
+    vedic_meaning: string;
+    /**
+     * Vedic Auspicious
+     *
+     * True if auspicious (Shubha), False if inauspicious (Ashubha), null if mixed/context-dependent.
+     */
+    vedic_auspicious?: boolean | null;
+    /**
+     * Vedic Source
+     *
+     * Classical text source for the Vedic interpretation.
+     */
+    vedic_source: string;
+    /**
+     * Traditions Agree
+     *
+     * Whether Jungian and Vedic traditions agree: 'agree', 'conflict', or 'partial'.
+     */
+    traditions_agree: string;
+    /**
+     * Emotional Tone
+     *
+     * Primary emotional register: anxiety, transformation, auspicious, warning, grief, power, healing, clarity, confusion, or neutral.
+     */
+    emotional_tone: string;
+    /**
+     * Themes
+     *
+     * Thematic keywords used for AI synthesis and search.
+     */
+    themes: Array<string>;
+    /**
+     * Context Variants
+     *
+     * Alternative readings depending on dream context.
+     */
+    context_variants: Array<ContextVariant>;
+    /**
+     * Related Symbols
+     *
+     * Slugs of related dream symbols.
+     */
+    related_symbols: Array<string>;
+};
+
+/**
+ * DreamSymbolListResponse
+ */
+export type DreamSymbolListResponse = {
+    /**
+     * Total
+     *
+     * Total number of symbols returned.
+     */
+    total: number;
+    /**
+     * Category Filter
+     *
+     * Category filter applied, if any.
+     */
+    category_filter?: string | null;
+    /**
+     * Symbols
+     *
+     * Dream symbols sorted alphabetically.
+     */
+    symbols: Array<DreamSymbol>;
+};
+
+/**
+ * FestivalCalendarResponse
+ */
+export type FestivalCalendarResponse = {
+    /**
+     * Year
+     *
+     * Calendar year for which festivals are computed.
+     */
+    year: number;
+    /**
+     * Timezone
+     *
+     * IANA timezone used for sunrise-based tithi calculations.
+     */
+    timezone: string;
+    /**
+     * Total
+     *
+     * Total number of festivals found.
+     */
+    total: number;
+    /**
+     * Festivals
+     *
+     * Festivals sorted chronologically by date.
+     */
+    festivals: Array<FestivalEntry>;
+};
+
+/**
+ * FestivalEntry
+ */
+export type FestivalEntry = {
+    /**
+     * Name
+     *
+     * Festival name.
+     */
+    name: string;
+    /**
+     * Date
+     *
+     * Festival date in YYYY-MM-DD format.
+     */
+    date: string;
+    /**
+     * Type
+     *
+     * Festival type: 'solar' (sankranti-based) or 'tithi' (lunar day-based).
+     */
+    type: string;
+    /**
+     * Description
+     *
+     * Classical basis for the festival date (tithi or sankranti).
+     */
+    description: string;
+    /**
+     * Significance
+     *
+     * Cultural and religious significance.
+     */
+    significance: string;
 };
 
 /**
@@ -2198,16 +3241,6 @@ export type GocharRequest = {
      * Timezone for target_date/time.
      */
     target_timezone?: string | null;
-};
-
-/**
- * GoogleAuthRequest
- */
-export type GoogleAuthRequest = {
-    /**
-     * Id Token
-     */
-    id_token: string;
 };
 
 /**
@@ -2494,13 +3527,13 @@ export type KpRulingPlanetsRequest = {
     /**
      * Latitude
      *
-     * Location latitude
+     * Location latitude in decimal degrees. North positive, south negative.
      */
     latitude: number;
     /**
      * Longitude
      *
-     * Location longitude
+     * Location longitude in decimal degrees. East positive, west negative.
      */
     longitude: number;
     /**
@@ -2585,6 +3618,22 @@ export type KaranaData = {
      * End Time
      */
     end_time?: string | null;
+};
+
+/**
+ * KarmicLessonsResponse
+ */
+export type KarmicLessonsResponse = {
+    /**
+     * Karmic Lessons
+     *
+     * Digit values 1-9 missing from the name. Empty list means no karmic lessons.
+     */
+    karmic_lessons: Array<number>;
+    /**
+     * Has Karmic Lessons
+     */
+    has_karmic_lessons: boolean;
 };
 
 /**
@@ -2694,24 +3743,6 @@ export type LoShuRequest = {
 };
 
 /**
- * LoginRequest
- */
-export type LoginRequest = {
-    /**
-     * Email
-     */
-    email: string;
-    /**
-     * Password
-     */
-    password: string;
-    /**
-     * Remember Me
-     */
-    remember_me?: boolean;
-};
-
-/**
  * LuckyNumbersApiResponse
  */
 export type LuckyNumbersApiResponse = {
@@ -2739,6 +3770,66 @@ export type LuckyNumbersApiResponse = {
      * How to use these numbers
      */
     interpretation: string;
+};
+
+/**
+ * LunarReturnRequest
+ */
+export type LunarReturnRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * After Date
+     *
+     * Find the next lunar return after this date (YYYY-MM-DD). Defaults to today.
+     */
+    after_date?: string | null;
 };
 
 /**
@@ -2850,6 +3941,132 @@ export type MatchmakingResponse = {
 };
 
 /**
+ * MaturityNumberRequest
+ */
+export type MaturityNumberRequest = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Date
+     *
+     * Birth date
+     */
+    date: string;
+};
+
+/**
+ * MaturityNumberResponse
+ */
+export type MaturityNumberResponse = {
+    /**
+     * Maturity Number
+     */
+    maturity_number: number;
+    /**
+     * Life Path Number
+     */
+    life_path_number: number;
+    /**
+     * Expression Number
+     */
+    expression_number: number;
+    /**
+     * Is Master Number
+     */
+    is_master_number: boolean;
+};
+
+/**
+ * MonthlyTransitResponse
+ */
+export type MonthlyTransitResponse = {
+    /**
+     * Start Date
+     */
+    start_date: string;
+    /**
+     * End Date
+     */
+    end_date: string;
+    /**
+     * Days
+     */
+    days: Array<DailyTransitResponse>;
+    /**
+     * Peak Aspects
+     */
+    peak_aspects: Array<TransitAspectSchema>;
+};
+
+/**
+ * MoonPhaseResponse
+ */
+export type MoonPhaseResponse = {
+    /**
+     * Date
+     *
+     * Date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Phase Name
+     *
+     * Current phase name
+     */
+    phase_name: string;
+    /**
+     * Phase Angle
+     *
+     * Phase angle in degrees (0-360). 0=New Moon, 180=Full Moon
+     */
+    phase_angle: number;
+    /**
+     * Illumination Pct
+     *
+     * Percentage of Moon disk illuminated (0-100)
+     */
+    illumination_pct: number;
+    /**
+     * Moon Age Days
+     *
+     * Days elapsed since last New Moon (0 to 29.53)
+     */
+    moon_age_days: number;
+    /**
+     * Moon Longitude
+     *
+     * Tropical ecliptic longitude of Moon (0-360)
+     */
+    moon_longitude: number;
+    /**
+     * Sun Longitude
+     *
+     * Tropical ecliptic longitude of Sun (0-360)
+     */
+    sun_longitude: number;
+    /**
+     * Is Waxing
+     *
+     * True if Moon is waxing (phase_angle < 180)
+     */
+    is_waxing: boolean;
+    /**
+     * Next Phase Name
+     *
+     * Name of the next major phase
+     */
+    next_phase_name: string;
+    /**
+     * Next Phase Date
+     *
+     * Estimated date of next major phase (YYYY-MM-DD)
+     */
+    next_phase_date?: string | null;
+};
+
+/**
  * MuhurtaRequest
  */
 export type MuhurtaRequest = {
@@ -2944,6 +4161,64 @@ export type NakshatraData = {
 };
 
 /**
+ * NakshatraPredictionRequest
+ */
+export type NakshatraPredictionRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Target Date
+     */
+    target_date?: string | null;
+};
+
+/**
  * NameCorrectionRequest
  */
 export type NameCorrectionRequest = {
@@ -2959,6 +4234,209 @@ export type NameCorrectionRequest = {
      * Birth date YYYY-MM-DD (BirthInput `date`)
      */
     date: string;
+};
+
+/**
+ * NameNumberResponse
+ */
+export type NameNumberResponse = {
+    /**
+     * Number
+     */
+    number: number;
+    /**
+     * Is Master Number
+     */
+    is_master_number: boolean;
+    /**
+     * Karmic Debt Number
+     */
+    karmic_debt_number?: number | null;
+};
+
+/**
+ * NameOnlyRequest
+ */
+export type NameOnlyRequest = {
+    /**
+     * Name
+     *
+     * Full name (first and last)
+     */
+    name: string;
+};
+
+/**
+ * NatalCrystalContext
+ */
+export type NatalCrystalContext = {
+    /**
+     * Lagna Sign
+     *
+     * Ascendant sign (English).
+     */
+    lagna_sign: string;
+    /**
+     * Lagna Lord
+     *
+     * Lord of the 1st house per BPHS.
+     */
+    lagna_lord: string;
+    /**
+     * Fifth Sign
+     *
+     * 5th house sign (English).
+     */
+    fifth_sign: string;
+    /**
+     * Fifth Lord
+     *
+     * Lord of the 5th house (Panchamesh — Lucky Stone).
+     */
+    fifth_lord: string;
+    /**
+     * Ninth Sign
+     *
+     * 9th house sign (English).
+     */
+    ninth_sign: string;
+    /**
+     * Ninth Lord
+     *
+     * Lord of the 9th house (Bhagyesh — Fortune Stone).
+     */
+    ninth_lord: string;
+    /**
+     * Yogakaraka
+     *
+     * Yogakaraka planet — lords both a non-1st Kendra and a non-1st Trikona. Null if none for this Lagna.
+     */
+    yogakaraka?: string | null;
+    /**
+     * Contraindicated Lords
+     *
+     * Planets that do not lord any Trikona house — their gems are contraindicated.
+     */
+    contraindicated_lords: Array<string>;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa?: string;
+};
+
+/**
+ * NatalCrystalEntry
+ */
+export type NatalCrystalEntry = {
+    /**
+     * Slug
+     */
+    slug: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Colors
+     */
+    colors: Array<string>;
+    /**
+     * Hardness Mohs
+     */
+    hardness_mohs: number;
+    /**
+     * Chakras
+     */
+    chakras: Array<string>;
+    /**
+     * Element
+     */
+    element: string;
+    /**
+     * Zodiac Signs
+     */
+    zodiac_signs: Array<string>;
+    /**
+     * Vedic Planet
+     */
+    vedic_planet: string | null;
+    /**
+     * Vedic Correspondence
+     */
+    vedic_correspondence: string;
+    /**
+     * Western Planet
+     */
+    western_planet: string | null;
+    /**
+     * Keywords
+     */
+    keywords: Array<string>;
+    /**
+     * Healing Physical
+     */
+    healing_physical: string;
+    /**
+     * Healing Emotional
+     */
+    healing_emotional: string;
+    /**
+     * Healing Spiritual
+     */
+    healing_spiritual: string;
+    /**
+     * Description
+     */
+    description: string;
+    /**
+     * Origins
+     */
+    origins: Array<string>;
+    /**
+     * Affirmation
+     */
+    affirmation: string;
+    /**
+     * Caution
+     */
+    caution: string | null;
+    /**
+     * Match Score
+     *
+     * Classical Ratna Shastra match score.
+     */
+    match_score: number;
+    /**
+     * Match Reasons
+     *
+     * Classical factors — which house lordship triggered this recommendation.
+     */
+    match_reasons: Array<string>;
+    /**
+     * Warnings
+     *
+     * Classical cautions for this specific chart context.
+     */
+    warnings?: Array<string>;
+};
+
+/**
+ * NatalCrystalResponse
+ */
+export type NatalCrystalResponse = {
+    natal_context: NatalCrystalContext;
+    /**
+     * Total
+     */
+    total: number;
+    /**
+     * Crystals
+     */
+    crystals: Array<NatalCrystalEntry>;
+    /**
+     * Classical Note
+     */
+    classical_note: string;
 };
 
 /**
@@ -3516,6 +4994,144 @@ export type PapasamyamRequest = {
 };
 
 /**
+ * PersonalAngelNumberRequest
+ */
+export type PersonalAngelNumberRequest = {
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format.
+     */
+    date: string;
+    /**
+     * Name
+     *
+     * Optional name for personalisation.
+     */
+    name?: string | null;
+};
+
+/**
+ * PersonalAngelNumberResponse
+ */
+export type PersonalAngelNumberResponse = {
+    /**
+     * Number
+     *
+     * Angel number sequence, e.g. '111', '1111'.
+     */
+    number: string;
+    /**
+     * Theme
+     *
+     * Core theme of this angel number.
+     */
+    theme: string;
+    /**
+     * Message
+     *
+     * Primary message of this angel number.
+     */
+    message: string;
+    /**
+     * Guidance
+     *
+     * Actionable guidance for this number.
+     */
+    guidance: string;
+    /**
+     * Areas
+     *
+     * Life areas associated with this number.
+     */
+    areas: Array<string>;
+    /**
+     * Birth Date
+     *
+     * Birth date used for calculation (YYYY-MM-DD).
+     */
+    birth_date: string;
+    /**
+     * Life Path
+     *
+     * Pythagorean Life Path number (1-9, or 11/22/33).
+     */
+    life_path: number;
+    /**
+     * Angel Number
+     *
+     * Angel number sequence derived from Life Path.
+     */
+    angel_number: string;
+    /**
+     * Name
+     *
+     * Name if provided.
+     */
+    name?: string | null;
+};
+
+/**
+ * PersonalCycleRequest
+ */
+export type PersonalCycleRequest = {
+    /**
+     * Date
+     *
+     * Birth date
+     */
+    date: string;
+    /**
+     * Year
+     *
+     * Target year. Defaults to current year.
+     */
+    year?: number | null;
+    /**
+     * Month
+     *
+     * Target month 1-12. Defaults to current month.
+     */
+    month?: number | null;
+    /**
+     * Day
+     *
+     * Target day 1-31. Required for personal day.
+     */
+    day?: number | null;
+};
+
+/**
+ * PersonalCycleResponse
+ */
+export type PersonalCycleResponse = {
+    /**
+     * Personal Year
+     */
+    personal_year: number;
+    /**
+     * Personal Month
+     */
+    personal_month: number;
+    /**
+     * Personal Day
+     */
+    personal_day?: number | null;
+    /**
+     * Target Year
+     */
+    target_year: number;
+    /**
+     * Target Month
+     */
+    target_month: number;
+    /**
+     * Target Day
+     */
+    target_day?: number | null;
+};
+
+/**
  * PersonalYear
  *
  * Model for personal year calculation.
@@ -3580,7 +5196,7 @@ export type PersonalYearPostRequest = {
     /**
      * Date
      *
-     * Birth date (YYYY-MM-DD)
+     * Birth date (YYYY-MM-DD or ISO datetime string from clients)
      */
     date: string;
     /**
@@ -3762,6 +5378,72 @@ export type PlanetPosition = {
 };
 
 /**
+ * PlanetaryReturnRequest
+ */
+export type PlanetaryReturnRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Planet
+     *
+     * Planet name for the return chart
+     */
+    planet: string;
+    /**
+     * After Date
+     *
+     * Find the next return after this date (YYYY-MM-DD). Defaults to today.
+     */
+    after_date?: string | null;
+};
+
+/**
  * PortuthamRequest
  */
 export type PortuthamRequest = {
@@ -3821,6 +5503,104 @@ export type PrashnaRequest = {
      * Ayanamsa system
      */
     ayanamsa?: 'lahiri' | 'kp';
+};
+
+/**
+ * ProgressedPlanetSchema
+ */
+export type ProgressedPlanetSchema = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Dignity
+     */
+    dignity: string;
+    /**
+     * Dignity Score
+     */
+    dignity_score: number;
+};
+
+/**
+ * ProgressionRequest
+ */
+export type ProgressionRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Target Date
+     *
+     * Target date for progressions YYYY-MM-DD. Defaults to today.
+     */
+    target_date?: string | null;
 };
 
 /**
@@ -3890,24 +5670,6 @@ export type RashiDrishtiEntry = {
 };
 
 /**
- * RegisterRequest
- */
-export type RegisterRequest = {
-    /**
-     * Email
-     */
-    email: string;
-    /**
-     * Password
-     */
-    password: string;
-    /**
-     * Full Name
-     */
-    full_name?: string | null;
-};
-
-/**
  * RemediesRequest
  *
  * Personalised remedies — extends :class:`BirthInput` with ``top_n``.
@@ -3973,17 +5735,35 @@ export type RemediesRequest = {
 };
 
 /**
- * ResetPasswordRequest
+ * ReturnChartResponse
  */
-export type ResetPasswordRequest = {
+export type ReturnChartResponse = {
     /**
-     * Token
+     * Planet
      */
-    token: string;
+    planet: string;
     /**
-     * New Password
+     * Natal Longitude
+     *
+     * Natal longitude of the return planet (tropical)
      */
-    new_password: string;
+    natal_longitude: number;
+    /**
+     * Return Utc
+     *
+     * Exact UTC moment of return (ISO 8601)
+     */
+    return_utc: string;
+    /**
+     * Return Jd
+     *
+     * Julian Day of return moment
+     */
+    return_jd: number;
+    /**
+     * Full Western natal chart calculated for the return moment
+     */
+    chart: WesternNatalResponse;
 };
 
 /**
@@ -4101,6 +5881,20 @@ export type SadeSatiResponse = {
         [key: string]: unknown;
     }> | null;
     /**
+     * Small Panoti
+     */
+    small_panoti?: Array<SmallPanotiPeriod>;
+    /**
+     * Is Small Panoti Active
+     */
+    is_small_panoti_active?: boolean | null;
+    /**
+     * Current Small Panoti Position
+     *
+     * 4 or 8 when Small Panoti is active (natal Moon reference)
+     */
+    current_small_panoti_position?: number | null;
+    /**
      * Mitigated By Own Sign
      */
     mitigated_by_own_sign?: boolean | null;
@@ -4108,6 +5902,286 @@ export type SadeSatiResponse = {
      * Mitigated By Exaltation
      */
     mitigated_by_exaltation?: boolean | null;
+};
+
+/**
+ * SecondaryProgressionResponse
+ */
+export type SecondaryProgressionResponse = {
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Progressed Jd
+     */
+    progressed_jd: number;
+    /**
+     * Age Years
+     *
+     * Age in tropical years at target date
+     */
+    age_years: number;
+    /**
+     * Solar Arc
+     *
+     * Solar arc in degrees (~1° per year)
+     */
+    solar_arc: number;
+    /**
+     * Natal Sun Longitude
+     */
+    natal_sun_longitude: number;
+    /**
+     * Progressed Sun Longitude
+     */
+    progressed_sun_longitude: number;
+    /**
+     * Progressed Planets
+     */
+    progressed_planets: Array<ProgressedPlanetSchema>;
+    /**
+     * Progressed Ascendant
+     */
+    progressed_ascendant: number;
+    /**
+     * Progressed Ascendant Sign
+     */
+    progressed_ascendant_sign: string;
+    /**
+     * Progressed Mc
+     */
+    progressed_mc: number;
+    /**
+     * Progressed Mc Sign
+     */
+    progressed_mc_sign: string;
+};
+
+/**
+ * SmallPanotiPeriod
+ *
+ * Saturn transit through 4th or 8th sign from natal Moon (Dhaiya / Small Panoti).
+ */
+export type SmallPanotiPeriod = {
+    /**
+     * Panoti Number
+     */
+    panoti_number: number;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Position From Moon
+     */
+    position_from_moon: number;
+    /**
+     * Start
+     */
+    start: string;
+    /**
+     * End
+     */
+    end: string;
+    /**
+     * Is Currently Active
+     */
+    is_currently_active: boolean;
+    /**
+     * Duration Years
+     */
+    duration_years: number;
+};
+
+/**
+ * SolarArcPlanetSchema
+ */
+export type SolarArcPlanetSchema = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Natal Longitude
+     */
+    natal_longitude: number;
+    /**
+     * Directed Longitude
+     */
+    directed_longitude: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Dignity
+     */
+    dignity: string;
+    /**
+     * Dignity Score
+     */
+    dignity_score: number;
+};
+
+/**
+ * SolarArcResponse
+ */
+export type SolarArcResponse = {
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Solar Arc
+     *
+     * Solar arc in degrees applied to all planets
+     */
+    solar_arc: number;
+    /**
+     * Age Years
+     */
+    age_years: number;
+    /**
+     * Natal Sun Longitude
+     */
+    natal_sun_longitude: number;
+    /**
+     * Progressed Sun Longitude
+     */
+    progressed_sun_longitude: number;
+    /**
+     * Directed Planets
+     */
+    directed_planets: Array<SolarArcPlanetSchema>;
+    /**
+     * Directed Ascendant
+     */
+    directed_ascendant: number;
+    /**
+     * Directed Ascendant Sign
+     */
+    directed_ascendant_sign: string;
+    /**
+     * Directed Mc
+     */
+    directed_mc: number;
+    /**
+     * Directed Mc Sign
+     */
+    directed_mc_sign: string;
+};
+
+/**
+ * SolarReturnRequest
+ */
+export type SolarReturnRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Year
+     *
+     * Year for the solar return (e.g. 2026)
+     */
+    year: number;
+};
+
+/**
+ * SpreadRequest
+ */
+export type SpreadRequest = {
+    /**
+     * Allow Reversed
+     *
+     * If true, each card has a 50% chance of appearing reversed.
+     */
+    allow_reversed?: boolean;
+    /**
+     * Question
+     *
+     * Optional question or intention for the reading.
+     */
+    question?: string | null;
+};
+
+/**
+ * SpreadResponse
+ */
+export type SpreadResponse = {
+    /**
+     * Spread Type
+     *
+     * Spread type: 'three_card' or 'celtic_cross'
+     */
+    spread_type: string;
+    /**
+     * Positions
+     */
+    positions: Array<DrawnCardSchema>;
+    /**
+     * Question
+     *
+     * The question posed, if provided
+     */
+    question?: string | null;
 };
 
 /**
@@ -4213,6 +6287,230 @@ export type StrengthResponse = {
 };
 
 /**
+ * SynastryAspectSchema
+ */
+export type SynastryAspectSchema = {
+    /**
+     * Person1 Planet
+     */
+    person1_planet: string;
+    /**
+     * Person2 Planet
+     */
+    person2_planet: string;
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Exact Angle
+     */
+    exact_angle: number;
+    /**
+     * Orb
+     */
+    orb: number;
+};
+
+/**
+ * SynastryResponse
+ */
+export type SynastryResponse = {
+    /**
+     * Aspects
+     */
+    aspects: Array<SynastryAspectSchema>;
+    /**
+     * Total Aspects
+     */
+    total_aspects: number;
+};
+
+/**
+ * TamilKaalPeriod
+ */
+export type TamilKaalPeriod = {
+    /**
+     * Start
+     *
+     * Period start time in HH:MM local time.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * Period end time in HH:MM local time.
+     */
+    end: string;
+    /**
+     * Duration Minutes
+     *
+     * Duration in minutes.
+     */
+    duration_minutes: number;
+    /**
+     * Is Active
+     *
+     * True if this period is currently active.
+     */
+    is_active: boolean;
+};
+
+/**
+ * TamilNallaNeramWindow
+ */
+export type TamilNallaNeramWindow = {
+    /**
+     * Start
+     *
+     * Auspicious window start in HH:MM local time.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * Auspicious window end in HH:MM local time.
+     */
+    end: string;
+};
+
+/**
+ * TamilPanchangaResponse
+ */
+export type TamilPanchangaResponse = {
+    /**
+     * Date
+     *
+     * Date for which Tamil Panchanga is calculated (YYYY-MM-DD).
+     */
+    date: string;
+    /**
+     * Sunrise
+     *
+     * Sunrise time in HH:MM local time.
+     */
+    sunrise: string;
+    /**
+     * Sunset
+     *
+     * Sunset time in HH:MM local time.
+     */
+    sunset: string;
+    /**
+     * Tamil Month
+     *
+     * Tamil solar month name based on Sun's sidereal sign at sunrise.
+     */
+    tamil_month: string;
+    /**
+     * Rahu Kalam — inauspicious period, avoid new beginnings.
+     */
+    rahu_kalam: TamilKaalPeriod;
+    /**
+     * Yamagandam — inauspicious period associated with Yama.
+     */
+    yamagandam: TamilKaalPeriod;
+    /**
+     * Kuligai (Gulika) — inauspicious period associated with Mandi.
+     */
+    kuligai: TamilKaalPeriod;
+    /**
+     * Emagandam — 4th Tamil inauspicious period.
+     */
+    emagandam: TamilKaalPeriod;
+    /**
+     * Nalla Neram
+     *
+     * Auspicious daytime windows between the four inauspicious periods.
+     */
+    nalla_neram: Array<TamilNallaNeramWindow>;
+};
+
+/**
+ * TarotCardSchema
+ */
+export type TarotCardSchema = {
+    /**
+     * Id
+     *
+     * Unique slug identifier e.g. 'the-fool'
+     */
+    id: string;
+    /**
+     * Name
+     *
+     * Full card name e.g. 'The Fool'
+     */
+    name: string;
+    /**
+     * Arcana Type
+     *
+     * 'major' or 'minor'
+     */
+    arcana_type: string;
+    /**
+     * Suit
+     *
+     * Suit for minor arcana: wands, cups, swords, pentacles. Null for major arcana.
+     */
+    suit?: string | null;
+    /**
+     * Number
+     *
+     * Card number. Major arcana: 0-21. Minor arcana: 1=Ace, 11=Page, 12=Knight, 13=Queen, 14=King.
+     */
+    number: number;
+    /**
+     * Element
+     *
+     * Elemental correspondence: fire, water, air, earth, spirit
+     */
+    element: string;
+    /**
+     * Astrology Correspondence
+     *
+     * Astrological planet or sign correspondence
+     */
+    astrology_correspondence: string;
+    /**
+     * Keywords Upright
+     *
+     * Upright keywords
+     */
+    keywords_upright: Array<string>;
+    /**
+     * Keywords Reversed
+     *
+     * Reversed keywords
+     */
+    keywords_reversed: Array<string>;
+    /**
+     * Upright Meaning
+     *
+     * Full upright interpretation
+     */
+    upright_meaning: string;
+    /**
+     * Reversed Meaning
+     *
+     * Full reversed interpretation
+     */
+    reversed_meaning: string;
+    /**
+     * Yes No
+     *
+     * Yes/No polarity: 'yes', 'no', or 'maybe'
+     */
+    yes_no: string;
+    /**
+     * Description
+     *
+     * Visual description of the card imagery
+     */
+    description: string;
+};
+
+/**
  * ThirumanaPoruthamRequest
  */
 export type ThirumanaPoruthamRequest = {
@@ -4291,6 +6589,124 @@ export type TithiData = {
 };
 
 /**
+ * TodayAngelNumberResponse
+ */
+export type TodayAngelNumberResponse = {
+    /**
+     * Number
+     *
+     * Angel number sequence, e.g. '111', '1111'.
+     */
+    number: string;
+    /**
+     * Theme
+     *
+     * Core theme of this angel number.
+     */
+    theme: string;
+    /**
+     * Message
+     *
+     * Primary message of this angel number.
+     */
+    message: string;
+    /**
+     * Guidance
+     *
+     * Actionable guidance for this number.
+     */
+    guidance: string;
+    /**
+     * Areas
+     *
+     * Life areas associated with this number.
+     */
+    areas: Array<string>;
+    /**
+     * Date
+     *
+     * Date for which this number was computed (YYYY-MM-DD).
+     */
+    date: string;
+    /**
+     * Daily Digit
+     *
+     * Reduced single digit from today's date (1-9).
+     */
+    daily_digit: number;
+    /**
+     * Angel Number
+     *
+     * The angel number sequence derived from today's date.
+     */
+    angel_number: string;
+};
+
+/**
+ * TransitAspectSchema
+ */
+export type TransitAspectSchema = {
+    /**
+     * Transit Planet
+     */
+    transit_planet: string;
+    /**
+     * Natal Planet
+     */
+    natal_planet: string;
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Exact Angle
+     */
+    exact_angle: number;
+    /**
+     * Orb
+     */
+    orb: number;
+    /**
+     * Is Applying
+     */
+    is_applying: boolean;
+};
+
+/**
+ * TransitPlanetRowSchema
+ */
+export type TransitPlanetRowSchema = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Aspects To Natal
+     */
+    aspects_to_natal: Array<TransitAspectSchema>;
+};
+
+/**
  * TransitsRequest
  */
 export type TransitsRequest = {
@@ -4324,6 +6740,14 @@ export type TransitsResponse = {
      * All retrograde and direct station events in the requested date range. Only the 7 classical planets (Sun through Saturn) have stations. Rahu and Ketu are always excluded from this list.
      */
     stations: Array<StationEvent>;
+};
+
+/**
+ * TwoPersonRequest
+ */
+export type TwoPersonRequest = {
+    person1: BirthInput;
+    person2: BirthInput;
 };
 
 /**
@@ -4491,6 +6915,547 @@ export type VarshaphalRequest = {
      * Year for solar return e.g. 2026
      */
     target_year: number;
+};
+
+/**
+ * WeeklyTransitResponse
+ */
+export type WeeklyTransitResponse = {
+    /**
+     * Start Date
+     */
+    start_date: string;
+    /**
+     * End Date
+     */
+    end_date: string;
+    /**
+     * Days
+     */
+    days: Array<DailyTransitResponse>;
+    /**
+     * Peak Aspects
+     */
+    peak_aspects: Array<TransitAspectSchema>;
+};
+
+/**
+ * WesternAngle
+ */
+export type WesternAngle = {
+    /**
+     * Longitude
+     *
+     * Tropical ecliptic longitude 0–360°
+     */
+    longitude: number;
+    /**
+     * Sign
+     *
+     * Zodiac sign name
+     */
+    sign: string;
+    /**
+     * Sign Index
+     *
+     * Sign index 0=Aries … 11=Pisces
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     *
+     * Degrees within sign 0–29.999
+     */
+    degree_in_sign: number;
+};
+
+/**
+ * WesternAspect
+ */
+export type WesternAspect = {
+    /**
+     * Planet A
+     */
+    planet_a: string;
+    /**
+     * Planet B
+     */
+    planet_b: string;
+    /**
+     * Type
+     *
+     * Aspect type: conjunction | opposition | trine | square | sextile | semisextile | semisquare | sesquiquadrate | quincunx
+     */
+    type: string;
+    /**
+     * Exact Angle
+     *
+     * Actual angular distance between planets
+     */
+    exact_angle: number;
+    /**
+     * Orb
+     *
+     * Difference from exact aspect angle (always positive)
+     */
+    orb: number;
+    /**
+     * Is Applying
+     *
+     * True if the faster planet is moving toward exact aspect (orb decreasing).
+     */
+    is_applying: boolean;
+};
+
+/**
+ * WesternAspectsRequest
+ */
+export type WesternAspectsRequest = {
+    /**
+     * Positions
+     *
+     * Dictionary of body name to tropical ecliptic longitude (0-360). Example: {"Sun": 229.6, "Moon": 221.8, "Mars": 189.6}
+     */
+    positions: {
+        [key: string]: number;
+    };
+    /**
+     * Orbs
+     *
+     * Custom orbs per aspect type. If omitted, uses Robert Hand Table 2 orbs: major=5°, sextile=3°, minor=1.5°
+     */
+    orbs?: {
+        [key: string]: number;
+    } | null;
+};
+
+/**
+ * WesternAspectsResponse
+ */
+export type WesternAspectsResponse = {
+    /**
+     * Aspects
+     *
+     * All active aspects between the provided bodies
+     */
+    aspects: Array<WesternAspect>;
+    /**
+     * Orbs Used
+     *
+     * Orb values used for this calculation
+     */
+    orbs_used: {
+        [key: string]: number;
+    };
+    /**
+     * Body Count
+     *
+     * Number of bodies provided
+     */
+    body_count: number;
+    /**
+     * Aspect Count
+     *
+     * Number of aspects found
+     */
+    aspect_count: number;
+};
+
+/**
+ * WesternElements
+ */
+export type WesternElements = {
+    /**
+     * Fire
+     */
+    fire: number;
+    /**
+     * Earth
+     */
+    earth: number;
+    /**
+     * Air
+     */
+    air: number;
+    /**
+     * Water
+     */
+    water: number;
+    /**
+     * Dominant
+     *
+     * Most common element, or null if tied
+     */
+    dominant?: string | null;
+};
+
+/**
+ * WesternHemisphere
+ */
+export type WesternHemisphere = {
+    /**
+     * Eastern
+     *
+     * Planet count in houses 7–12
+     */
+    eastern: number;
+    /**
+     * Western
+     *
+     * Planet count in houses 1–6
+     */
+    western: number;
+    /**
+     * Northern
+     *
+     * Planet count in houses 1–6 (below horizon)
+     */
+    northern: number;
+    /**
+     * Southern
+     *
+     * Planet count in houses 7–12 (above horizon)
+     */
+    southern: number;
+};
+
+/**
+ * WesternHouseCusp
+ */
+export type WesternHouseCusp = {
+    /**
+     * House
+     */
+    house: number;
+    /**
+     * Cusp Longitude
+     *
+     * Tropical ecliptic longitude of house cusp
+     */
+    cusp_longitude: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+};
+
+/**
+ * WesternModalities
+ */
+export type WesternModalities = {
+    /**
+     * Cardinal
+     */
+    cardinal: number;
+    /**
+     * Fixed
+     */
+    fixed: number;
+    /**
+     * Mutable
+     */
+    mutable: number;
+    /**
+     * Dominant
+     */
+    dominant?: string | null;
+};
+
+/**
+ * WesternNatalRequest
+ */
+export type WesternNatalRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * House System
+     *
+     * House system for Western natal chart. Placidus is the modern default. Koch is the second most popular. Equal and Whole Sign are sign-based systems.
+     */
+    house_system?: 'placidus' | 'koch' | 'equal' | 'whole_sign';
+};
+
+/**
+ * WesternNatalResponse
+ */
+export type WesternNatalResponse = {
+    /**
+     * Zodiac
+     *
+     * Always 'tropical' for Western natal
+     */
+    zodiac?: string;
+    /**
+     * House System
+     *
+     * House system used
+     */
+    house_system: string;
+    ascendant: WesternAngle;
+    /**
+     * Midheaven (Medium Coeli)
+     */
+    mc: WesternAngle;
+    /**
+     * Planets
+     */
+    planets: Array<WesternPlanetPosition>;
+    /**
+     * Houses
+     */
+    houses: Array<WesternHouseCusp>;
+    /**
+     * Aspects
+     */
+    aspects: Array<WesternAspect>;
+    elements: WesternElements;
+    modalities: WesternModalities;
+    hemisphere: WesternHemisphere;
+    /**
+     * Ayanamsa Value
+     *
+     * Always 0.0 — tropical zodiac
+     */
+    ayanamsa_value?: number;
+    /**
+     * Ayanamsa Used
+     */
+    ayanamsa_used?: string;
+    /**
+     * Birth Time Unknown
+     */
+    birth_time_unknown?: boolean;
+};
+
+/**
+ * WesternPlanetPosition
+ */
+export type WesternPlanetPosition = {
+    /**
+     * Name
+     *
+     * Planet name
+     */
+    name: string;
+    /**
+     * Longitude
+     *
+     * Tropical ecliptic longitude 0–360°
+     */
+    longitude: number;
+    /**
+     * Sign
+     *
+     * Zodiac sign name
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     *
+     * Degrees within sign 0–29.999
+     */
+    degree_in_sign: number;
+    /**
+     * House
+     *
+     * House number (Placidus or chosen system)
+     */
+    house: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Dignity
+     *
+     * Essential dignity: domicile | exaltation | detriment | fall | peregrine
+     */
+    dignity: string;
+    /**
+     * Dignity Score
+     *
+     * Lilly dignity weight: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0
+     */
+    dignity_score: number;
+    /**
+     * Is Exaltation Degree
+     *
+     * True if planet is in the exact classical exaltation degree (Nth degree = N-1°00' to N-1°59'59"). Always false for outer planets (no exact degree defined).
+     */
+    is_exaltation_degree: boolean;
+    /**
+     * Dignity Disputed
+     *
+     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no classical consensus.
+     */
+    dignity_disputed: boolean;
+};
+
+/**
+ * WesternTransitRequest
+ */
+export type WesternTransitRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided.
+     */
+    timezone?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Start Date
+     *
+     * Transit reference date (YYYY-MM-DD): snapshot day for daily transits; window start for weekly (7 days) and monthly (30 days). Defaults to today.
+     */
+    start_date?: string | null;
+};
+
+/**
+ * YesNoRequest
+ */
+export type YesNoRequest = {
+    /**
+     * Allow Reversed
+     *
+     * If true, reversed cards return 'maybe' instead of their base yes/no answer.
+     */
+    allow_reversed?: boolean;
+    /**
+     * Question
+     *
+     * The yes/no question being asked.
+     */
+    question?: string | null;
+};
+
+/**
+ * YesNoResponse
+ */
+export type YesNoResponse = {
+    card: TarotCardSchema;
+    /**
+     * Is Reversed
+     */
+    is_reversed: boolean;
+    /**
+     * Answer
+     *
+     * 'yes', 'no', or 'maybe'
+     */
+    answer: string;
+    /**
+     * Confidence
+     *
+     * 'strong' = card directly says yes/no. 'leaning' = reversed card. 'unclear' = maybe card.
+     */
+    confidence: string;
+    /**
+     * Question
+     */
+    question?: string | null;
+    /**
+     * Active Meaning
+     */
+    active_meaning: string;
 };
 
 /**
@@ -4774,6 +7739,248 @@ export type YoginiResponse = {
     root: Array<YoginiPeriod>;
 };
 
+/**
+ * ZodiacCompatibilityResponse
+ */
+export type ZodiacCompatibilityResponse = {
+    /**
+     * Sign1
+     */
+    sign1: string;
+    /**
+     * Sign2
+     */
+    sign2: string;
+    /**
+     * Element1
+     */
+    element1: string;
+    /**
+     * Element2
+     */
+    element2: string;
+    /**
+     * Modality1
+     */
+    modality1: string;
+    /**
+     * Modality2
+     */
+    modality2: string;
+    /**
+     * Element Affinity
+     */
+    element_affinity: string;
+    /**
+     * Modality Affinity
+     */
+    modality_affinity: string;
+    /**
+     * Overall Score
+     */
+    overall_score: number;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * ApiResponse[CompatibilityResponse]
+ */
+export type AppApiResponseApiResponseCompatibilityResponse1 = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: AppApiSchemasWesternCompatibilityResponse;
+};
+
+/**
+ * ApiResponse[CompatibilityResponse]
+ */
+export type AppApiResponseApiResponseCompatibilityResponse2 = {
+    /**
+     * Success
+     */
+    success?: boolean;
+    /**
+     * Message
+     */
+    message?: string;
+    data: AppApiSchemasNumerologyCompatibilityResponse;
+};
+
+/**
+ * CompatibilityResponse
+ */
+export type AppApiSchemasNumerologyCompatibilityResponse = {
+    /**
+     * Life Path 1
+     *
+     * First person's life path number
+     */
+    life_path_1: number;
+    /**
+     * Life Path 2
+     *
+     * Second person's life path number
+     */
+    life_path_2: number;
+    /**
+     * Compatibility Score
+     *
+     * Compatibility score (1-10)
+     */
+    compatibility_score: number;
+    /**
+     * Compatibility Level
+     *
+     * Compatibility level (Excellent, Good, Fair, Challenging)
+     */
+    compatibility_level: string;
+    /**
+     * Interpretation
+     *
+     * Detailed compatibility interpretation
+     */
+    interpretation: string;
+    /**
+     * Strengths
+     *
+     * Relationship strengths
+     */
+    strengths?: Array<string>;
+    /**
+     * Challenges
+     *
+     * Potential challenges
+     */
+    challenges?: Array<string>;
+    /**
+     * Advice
+     *
+     * Relationship advice
+     */
+    advice: string;
+};
+
+/**
+ * CompatibilityResponse
+ */
+export type AppApiSchemasWesternCompatibilityResponse = {
+    /**
+     * Overall Score
+     */
+    overall_score: number;
+    /**
+     * Element Score
+     */
+    element_score: number;
+    /**
+     * Aspect Score
+     */
+    aspect_score: number;
+    /**
+     * Sun Sign Affinity
+     */
+    sun_sign_affinity: string;
+    /**
+     * Moon Sign Affinity
+     */
+    moon_sign_affinity: string;
+    /**
+     * Rising Sign Affinity
+     */
+    rising_sign_affinity: string;
+    /**
+     * Person1 Sun
+     */
+    person1_sun: string;
+    /**
+     * Person2 Sun
+     */
+    person2_sun: string;
+    /**
+     * Person1 Moon
+     */
+    person1_moon: string;
+    /**
+     * Person2 Moon
+     */
+    person2_moon: string;
+    /**
+     * Key Aspects
+     */
+    key_aspects: Array<SynastryAspectSchema>;
+};
+
+/**
+ * ErrorResponse
+ *
+ * Standard error envelope returned by all Asterwise API endpoints.
+ *
+ * Every error response follows this 8-field shape. The 'error' field
+ * is the machine-readable identifier (use it for programmatic handling).
+ * The 'message' field is the human-readable explanation. The 'doc_url'
+ * field links to the canonical documentation for the error code.
+ * Include 'request_id' when contacting support.
+ */
+export type ErrorResponse = {
+    /**
+     * Success
+     *
+     * Always false for error responses.
+     */
+    success?: boolean;
+    /**
+     * Error
+     *
+     * Machine-readable error code. Use this for programmatic error handling. See doc_url for the canonical docs page.
+     */
+    error: string;
+    /**
+     * Message
+     *
+     * Human-readable explanation of what went wrong and how to fix it. Safe to surface in customer-facing UIs.
+     */
+    message: string;
+    /**
+     * Details
+     *
+     * Optional structured details. For validation errors, contains per-field error objects. Empty list when there are no structured details.
+     */
+    details?: Array<unknown>;
+    /**
+     * Retry After
+     *
+     * Seconds to wait before retrying. Present on 429 (rate limit) and 503 (temporary outage) responses. Null when retry is not advised or applicable.
+     */
+    retry_after?: number | null;
+    /**
+     * Doc Url
+     *
+     * Canonical documentation URL for this error code. Contains causes, examples, and resolution steps.
+     */
+    doc_url: string;
+    /**
+     * Request Id
+     *
+     * Unique identifier for this request. Include when contacting support to enable rapid investigation.
+     */
+    request_id?: string | null;
+    /**
+     * Timestamp
+     *
+     * ISO 8601 timestamp of when the error occurred. UTC.
+     */
+    timestamp?: string | null;
+};
+
 export type AtmakarakaData = {
     body: AtmakarakaRequest;
     path?: never;
@@ -4783,9 +7990,17 @@ export type AtmakarakaData = {
 
 export type AtmakarakaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type AtmakarakaError = AtmakarakaErrors[keyof AtmakarakaErrors];
@@ -4806,9 +8021,17 @@ export type AshtakavargaData = {
 
 export type AshtakavargaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type AshtakavargaError = AshtakavargaErrors[keyof AshtakavargaErrors];
@@ -4831,9 +8054,17 @@ export type AshtottariDashaData = {
 
 export type AshtottariDashaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type AshtottariDashaError = AshtottariDashaErrors[keyof AshtottariDashaErrors];
@@ -4856,9 +8087,17 @@ export type ChartSvgData = {
 
 export type ChartSvgErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type ChartSvgError = ChartSvgErrors[keyof ChartSvgErrors];
@@ -4881,9 +8120,17 @@ export type NatalChartData = {
 
 export type NatalChartErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NatalChartError = NatalChartErrors[keyof NatalChartErrors];
@@ -4897,6 +8144,563 @@ export type NatalChartResponses = {
 
 export type NatalChartResponse = NatalChartResponses[keyof NatalChartResponses];
 
+export type WesternNatalChartData = {
+    body: WesternNatalRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/natal';
+};
+
+export type WesternNatalChartErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternNatalChartError = WesternNatalChartErrors[keyof WesternNatalChartErrors];
+
+export type WesternNatalChartResponses = {
+    /**
+     * Western natal chart with tropical positions and dignities
+     */
+    200: ApiResponseWesternNatalResponse;
+};
+
+export type WesternNatalChartResponse = WesternNatalChartResponses[keyof WesternNatalChartResponses];
+
+export type WesternMoonPhaseData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Date
+         *
+         * Date in YYYY-MM-DD format. Defaults to today.
+         */
+        date?: string | null;
+    };
+    url: '/v1/western/moon/phase';
+};
+
+export type WesternMoonPhaseErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternMoonPhaseError = WesternMoonPhaseErrors[keyof WesternMoonPhaseErrors];
+
+export type WesternMoonPhaseResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseMoonPhaseResponse;
+};
+
+export type WesternMoonPhaseResponse = WesternMoonPhaseResponses[keyof WesternMoonPhaseResponses];
+
+export type WesternMoonCalendarData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Year
+         *
+         * Year (e.g. 2026). Defaults to current year.
+         */
+        year?: number | null;
+        /**
+         * Month
+         *
+         * Month number 1-12. Defaults to current month.
+         */
+        month?: number | null;
+    };
+    url: '/v1/western/moon/calendar';
+};
+
+export type WesternMoonCalendarErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternMoonCalendarError = WesternMoonCalendarErrors[keyof WesternMoonCalendarErrors];
+
+export type WesternMoonCalendarResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseListMoonPhaseResponse;
+};
+
+export type WesternMoonCalendarResponse = WesternMoonCalendarResponses[keyof WesternMoonCalendarResponses];
+
+export type WesternAspectsData = {
+    body: WesternAspectsRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/aspects';
+};
+
+export type WesternAspectsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternAspectsError = WesternAspectsErrors[keyof WesternAspectsErrors];
+
+export type WesternAspectsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseWesternAspectsResponse;
+};
+
+export type WesternAspectsResponse2 = WesternAspectsResponses[keyof WesternAspectsResponses];
+
+export type WesternTransitsDailyData = {
+    body: WesternTransitRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/transits/daily';
+};
+
+export type WesternTransitsDailyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternTransitsDailyError = WesternTransitsDailyErrors[keyof WesternTransitsDailyErrors];
+
+export type WesternTransitsDailyResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDailyTransitResponse;
+};
+
+export type WesternTransitsDailyResponse = WesternTransitsDailyResponses[keyof WesternTransitsDailyResponses];
+
+export type WesternTransitsWeeklyData = {
+    body: WesternTransitRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/transits/weekly';
+};
+
+export type WesternTransitsWeeklyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternTransitsWeeklyError = WesternTransitsWeeklyErrors[keyof WesternTransitsWeeklyErrors];
+
+export type WesternTransitsWeeklyResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseWeeklyTransitResponse;
+};
+
+export type WesternTransitsWeeklyResponse = WesternTransitsWeeklyResponses[keyof WesternTransitsWeeklyResponses];
+
+export type WesternTransitsMonthlyData = {
+    body: WesternTransitRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/transits/monthly';
+};
+
+export type WesternTransitsMonthlyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternTransitsMonthlyError = WesternTransitsMonthlyErrors[keyof WesternTransitsMonthlyErrors];
+
+export type WesternTransitsMonthlyResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseMonthlyTransitResponse;
+};
+
+export type WesternTransitsMonthlyResponse = WesternTransitsMonthlyResponses[keyof WesternTransitsMonthlyResponses];
+
+export type WesternSynastryData = {
+    body: TwoPersonRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/synastry';
+};
+
+export type WesternSynastryErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternSynastryError = WesternSynastryErrors[keyof WesternSynastryErrors];
+
+export type WesternSynastryResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseSynastryResponse;
+};
+
+export type WesternSynastryResponse = WesternSynastryResponses[keyof WesternSynastryResponses];
+
+export type WesternCompositeData = {
+    body: TwoPersonRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/composite';
+};
+
+export type WesternCompositeErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternCompositeError = WesternCompositeErrors[keyof WesternCompositeErrors];
+
+export type WesternCompositeResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCompositeResponse;
+};
+
+export type WesternCompositeResponse = WesternCompositeResponses[keyof WesternCompositeResponses];
+
+export type WesternCompatibilityData = {
+    body: TwoPersonRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/compatibility';
+};
+
+export type WesternCompatibilityErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternCompatibilityError = WesternCompatibilityErrors[keyof WesternCompatibilityErrors];
+
+export type WesternCompatibilityResponses = {
+    /**
+     * Successful Response
+     */
+    200: AppApiResponseApiResponseCompatibilityResponse1;
+};
+
+export type WesternCompatibilityResponse = WesternCompatibilityResponses[keyof WesternCompatibilityResponses];
+
+export type WesternCompatibilityZodiacData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Sign1
+         */
+        sign1: string;
+        /**
+         * Sign2
+         */
+        sign2: string;
+    };
+    url: '/v1/western/compatibility/zodiac';
+};
+
+export type WesternCompatibilityZodiacErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternCompatibilityZodiacError = WesternCompatibilityZodiacErrors[keyof WesternCompatibilityZodiacErrors];
+
+export type WesternCompatibilityZodiacResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseZodiacCompatibilityResponse;
+};
+
+export type WesternCompatibilityZodiacResponse = WesternCompatibilityZodiacResponses[keyof WesternCompatibilityZodiacResponses];
+
+export type WesternSolarReturnData = {
+    body: SolarReturnRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/solar-return';
+};
+
+export type WesternSolarReturnErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternSolarReturnError = WesternSolarReturnErrors[keyof WesternSolarReturnErrors];
+
+export type WesternSolarReturnResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseReturnChartResponse;
+};
+
+export type WesternSolarReturnResponse = WesternSolarReturnResponses[keyof WesternSolarReturnResponses];
+
+export type WesternLunarReturnData = {
+    body: LunarReturnRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/lunar-return';
+};
+
+export type WesternLunarReturnErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternLunarReturnError = WesternLunarReturnErrors[keyof WesternLunarReturnErrors];
+
+export type WesternLunarReturnResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseReturnChartResponse;
+};
+
+export type WesternLunarReturnResponse = WesternLunarReturnResponses[keyof WesternLunarReturnResponses];
+
+export type WesternPlanetaryReturnData = {
+    body: PlanetaryReturnRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/planetary-return';
+};
+
+export type WesternPlanetaryReturnErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternPlanetaryReturnError = WesternPlanetaryReturnErrors[keyof WesternPlanetaryReturnErrors];
+
+export type WesternPlanetaryReturnResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseReturnChartResponse;
+};
+
+export type WesternPlanetaryReturnResponse = WesternPlanetaryReturnResponses[keyof WesternPlanetaryReturnResponses];
+
+export type WesternProgressionsSecondaryData = {
+    body: ProgressionRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/progressions/secondary';
+};
+
+export type WesternProgressionsSecondaryErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternProgressionsSecondaryError = WesternProgressionsSecondaryErrors[keyof WesternProgressionsSecondaryErrors];
+
+export type WesternProgressionsSecondaryResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseSecondaryProgressionResponse;
+};
+
+export type WesternProgressionsSecondaryResponse = WesternProgressionsSecondaryResponses[keyof WesternProgressionsSecondaryResponses];
+
+export type WesternProgressionsSolarArcData = {
+    body: ProgressionRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/progressions/solar-arc';
+};
+
+export type WesternProgressionsSolarArcErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternProgressionsSolarArcError = WesternProgressionsSolarArcErrors[keyof WesternProgressionsSolarArcErrors];
+
+export type WesternProgressionsSolarArcResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseSolarArcResponse;
+};
+
+export type WesternProgressionsSolarArcResponse = WesternProgressionsSolarArcResponses[keyof WesternProgressionsSolarArcResponses];
+
 export type PanchangaData = {
     body: PanchangaRequest;
     path?: never;
@@ -4906,9 +8710,17 @@ export type PanchangaData = {
 
 export type PanchangaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaError = PanchangaErrors[keyof PanchangaErrors];
@@ -4931,9 +8743,17 @@ export type PanchangaChoghadiyaData = {
 
 export type PanchangaChoghadiyaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaChoghadiyaError = PanchangaChoghadiyaErrors[keyof PanchangaChoghadiyaErrors];
@@ -4956,9 +8776,17 @@ export type PanchangaHoraData = {
 
 export type PanchangaHoraErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaHoraError = PanchangaHoraErrors[keyof PanchangaHoraErrors];
@@ -4981,9 +8809,17 @@ export type PanchangaRahuKaalData = {
 
 export type PanchangaRahuKaalErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaRahuKaalError = PanchangaRahuKaalErrors[keyof PanchangaRahuKaalErrors];
@@ -5043,9 +8879,17 @@ export type PanchangaCalendarData = {
 
 export type PanchangaCalendarErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaCalendarError = PanchangaCalendarErrors[keyof PanchangaCalendarErrors];
@@ -5068,9 +8912,17 @@ export type PanchangaCalendarPostData = {
 
 export type PanchangaCalendarPostErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PanchangaCalendarPostError = PanchangaCalendarPostErrors[keyof PanchangaCalendarPostErrors];
@@ -5084,6 +8936,126 @@ export type PanchangaCalendarPostResponses = {
 
 export type PanchangaCalendarPostResponse = PanchangaCalendarPostResponses[keyof PanchangaCalendarPostResponses];
 
+export type PanchangaTamilData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Date
+         *
+         * Date in YYYY-MM-DD format
+         */
+        date: string;
+        /**
+         * Location
+         *
+         * City name
+         */
+        location?: string | null;
+        /**
+         * Latitude
+         */
+        latitude?: number | null;
+        /**
+         * Longitude
+         */
+        longitude?: number | null;
+        /**
+         * Timezone
+         *
+         * IANA timezone
+         */
+        timezone?: string | null;
+    };
+    url: '/v1/astro/panchanga/tamil';
+};
+
+export type PanchangaTamilErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PanchangaTamilError = PanchangaTamilErrors[keyof PanchangaTamilErrors];
+
+export type PanchangaTamilResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseTamilPanchangaResponse;
+};
+
+export type PanchangaTamilResponse = PanchangaTamilResponses[keyof PanchangaTamilResponses];
+
+export type PanchangaFestivalsData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Year
+         *
+         * Calendar year
+         */
+        year: number;
+        /**
+         * Location
+         *
+         * City name
+         */
+        location?: string | null;
+        /**
+         * Latitude
+         */
+        latitude?: number | null;
+        /**
+         * Longitude
+         */
+        longitude?: number | null;
+        /**
+         * Timezone
+         *
+         * IANA timezone
+         */
+        timezone?: string | null;
+    };
+    url: '/v1/astro/panchanga/festivals';
+};
+
+export type PanchangaFestivalsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PanchangaFestivalsError = PanchangaFestivalsErrors[keyof PanchangaFestivalsErrors];
+
+export type PanchangaFestivalsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseFestivalCalendarResponse;
+};
+
+export type PanchangaFestivalsResponse = PanchangaFestivalsResponses[keyof PanchangaFestivalsResponses];
+
 export type DivisionalChartsData = {
     body: DivisionalRequest;
     path?: never;
@@ -5093,9 +9065,17 @@ export type DivisionalChartsData = {
 
 export type DivisionalChartsErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type DivisionalChartsError = DivisionalChartsErrors[keyof DivisionalChartsErrors];
@@ -5123,9 +9103,17 @@ export type HoroscopeDailyData = {
 
 export type HoroscopeDailyErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type HoroscopeDailyError = HoroscopeDailyErrors[keyof HoroscopeDailyErrors];
@@ -5151,9 +9139,17 @@ export type HoroscopeWeeklyData = {
 
 export type HoroscopeWeeklyErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type HoroscopeWeeklyError = HoroscopeWeeklyErrors[keyof HoroscopeWeeklyErrors];
@@ -5179,9 +9175,17 @@ export type HoroscopeMonthlyData = {
 
 export type HoroscopeMonthlyErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type HoroscopeMonthlyError = HoroscopeMonthlyErrors[keyof HoroscopeMonthlyErrors];
@@ -5207,14 +9211,166 @@ export type HoroscopeYearlyData = {
 
 export type HoroscopeYearlyErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type HoroscopeYearlyError = HoroscopeYearlyErrors[keyof HoroscopeYearlyErrors];
 
 export type HoroscopeYearlyResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type WesternHoroscopeDailyData = {
+    body?: never;
+    path: {
+        /**
+         * Sun Sign
+         */
+        sun_sign: string;
+    };
+    query?: never;
+    url: '/v1/western/horoscope/daily/{sun_sign}';
+};
+
+export type WesternHoroscopeDailyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternHoroscopeDailyError = WesternHoroscopeDailyErrors[keyof WesternHoroscopeDailyErrors];
+
+export type WesternHoroscopeDailyResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type WesternHoroscopeWeeklyData = {
+    body?: never;
+    path: {
+        /**
+         * Sun Sign
+         */
+        sun_sign: string;
+    };
+    query?: never;
+    url: '/v1/western/horoscope/weekly/{sun_sign}';
+};
+
+export type WesternHoroscopeWeeklyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternHoroscopeWeeklyError = WesternHoroscopeWeeklyErrors[keyof WesternHoroscopeWeeklyErrors];
+
+export type WesternHoroscopeWeeklyResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type WesternHoroscopeMonthlyData = {
+    body?: never;
+    path: {
+        /**
+         * Sun Sign
+         */
+        sun_sign: string;
+    };
+    query?: never;
+    url: '/v1/western/horoscope/monthly/{sun_sign}';
+};
+
+export type WesternHoroscopeMonthlyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternHoroscopeMonthlyError = WesternHoroscopeMonthlyErrors[keyof WesternHoroscopeMonthlyErrors];
+
+export type WesternHoroscopeMonthlyResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type WesternHoroscopeYearlyData = {
+    body?: never;
+    path: {
+        /**
+         * Sun Sign
+         */
+        sun_sign: string;
+    };
+    query?: never;
+    url: '/v1/western/horoscope/yearly/{sun_sign}';
+};
+
+export type WesternHoroscopeYearlyErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternHoroscopeYearlyError = WesternHoroscopeYearlyErrors[keyof WesternHoroscopeYearlyErrors];
+
+export type WesternHoroscopeYearlyResponses = {
     /**
      * Successful Response
      */
@@ -5230,9 +9386,17 @@ export type MuhurtaData = {
 
 export type MuhurtaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MuhurtaError = MuhurtaErrors[keyof MuhurtaErrors];
@@ -5253,9 +9417,17 @@ export type DashaData = {
 
 export type DashaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type DashaError = DashaErrors[keyof DashaErrors];
@@ -5278,9 +9450,17 @@ export type DashaTransitsData = {
 
 export type DashaTransitsErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type DashaTransitsError = DashaTransitsErrors[keyof DashaTransitsErrors];
@@ -5301,9 +9481,17 @@ export type CharDashaData = {
 
 export type CharDashaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type CharDashaError = CharDashaErrors[keyof CharDashaErrors];
@@ -5324,9 +9512,17 @@ export type MatchmakingDashakootData = {
 
 export type MatchmakingDashakootErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MatchmakingDashakootError = MatchmakingDashakootErrors[keyof MatchmakingDashakootErrors];
@@ -5347,9 +9543,17 @@ export type MatchmakingPapasamyamData = {
 
 export type MatchmakingPapasamyamErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MatchmakingPapasamyamError = MatchmakingPapasamyamErrors[keyof MatchmakingPapasamyamErrors];
@@ -5370,9 +9574,17 @@ export type MatchmakingPoruthamData = {
 
 export type MatchmakingPoruthamErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MatchmakingPoruthamError = MatchmakingPoruthamErrors[keyof MatchmakingPoruthamErrors];
@@ -5393,9 +9605,17 @@ export type MatchmakingThirumanaPoruthamData = {
 
 export type MatchmakingThirumanaPoruthamErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MatchmakingThirumanaPoruthamError = MatchmakingThirumanaPoruthamErrors[keyof MatchmakingThirumanaPoruthamErrors];
@@ -5416,9 +9636,17 @@ export type DoshasData = {
 
 export type DoshasErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type DoshasError = DoshasErrors[keyof DoshasErrors];
@@ -5441,9 +9669,17 @@ export type GocharData = {
 
 export type GocharErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type GocharError = GocharErrors[keyof GocharErrors];
@@ -5464,9 +9700,17 @@ export type YogasData = {
 
 export type YogasErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type YogasError = YogasErrors[keyof YogasErrors];
@@ -5489,9 +9733,17 @@ export type MatchmakingData = {
 
 export type MatchmakingErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MatchmakingError = MatchmakingErrors[keyof MatchmakingErrors];
@@ -5514,9 +9766,17 @@ export type NumerologyProfileData = {
 
 export type NumerologyProfileErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NumerologyProfileError = NumerologyProfileErrors[keyof NumerologyProfileErrors];
@@ -5539,9 +9799,17 @@ export type NumerologyCompatibilityData = {
 
 export type NumerologyCompatibilityErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NumerologyCompatibilityError = NumerologyCompatibilityErrors[keyof NumerologyCompatibilityErrors];
@@ -5550,7 +9818,7 @@ export type NumerologyCompatibilityResponses = {
     /**
      * Numerology compatibility score and interpretation
      */
-    200: ApiResponseCompatibilityResponse;
+    200: AppApiResponseApiResponseCompatibilityResponse2;
 };
 
 export type NumerologyCompatibilityResponse = NumerologyCompatibilityResponses[keyof NumerologyCompatibilityResponses];
@@ -5571,9 +9839,17 @@ export type LifePathData = {
 
 export type LifePathErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type LifePathError = LifePathErrors[keyof LifePathErrors];
@@ -5607,9 +9883,17 @@ export type PersonalYearData = {
 
 export type PersonalYearErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PersonalYearError = PersonalYearErrors[keyof PersonalYearErrors];
@@ -5632,9 +9916,17 @@ export type PersonalYearPostData = {
 
 export type PersonalYearPostErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PersonalYearPostError = PersonalYearPostErrors[keyof PersonalYearPostErrors];
@@ -5647,6 +9939,75 @@ export type PersonalYearPostResponses = {
 };
 
 export type PersonalYearPostResponse = PersonalYearPostResponses[keyof PersonalYearPostResponses];
+
+export type BusinessNameData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Name
+         *
+         * Business name
+         */
+        name: string;
+    };
+    url: '/v1/numerology/business-name';
+};
+
+export type BusinessNameErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type BusinessNameError = BusinessNameErrors[keyof BusinessNameErrors];
+
+export type BusinessNameResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type BusinessNamePostData = {
+    body: BusinessNamePostRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/business-name';
+};
+
+export type BusinessNamePostErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type BusinessNamePostError = BusinessNamePostErrors[keyof BusinessNamePostErrors];
+
+export type BusinessNamePostResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
 
 export type LuckyNumbersData = {
     body?: never;
@@ -5672,9 +10033,17 @@ export type LuckyNumbersData = {
 
 export type LuckyNumbersErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type LuckyNumbersError = LuckyNumbersErrors[keyof LuckyNumbersErrors];
@@ -5709,9 +10078,17 @@ export type NumberMeaningData = {
 
 export type NumberMeaningErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NumberMeaningError = NumberMeaningErrors[keyof NumberMeaningErrors];
@@ -5734,67 +10111,22 @@ export type NameCorrectionData = {
 
 export type NameCorrectionErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NameCorrectionError = NameCorrectionErrors[keyof NameCorrectionErrors];
 
 export type NameCorrectionResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type BusinessNameData = {
-    body?: never;
-    path?: never;
-    query: {
-        /**
-         * Name
-         *
-         * Business name
-         */
-        name: string;
-    };
-    url: '/v1/numerology/business-name';
-};
-
-export type BusinessNameErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type BusinessNameError = BusinessNameErrors[keyof BusinessNameErrors];
-
-export type BusinessNameResponses = {
-    /**
-     * Successful Response
-     */
-    200: unknown;
-};
-
-export type BusinessNamePostData = {
-    body: BusinessNamePostRequest;
-    path?: never;
-    query?: never;
-    url: '/v1/numerology/business-name';
-};
-
-export type BusinessNamePostErrors = {
-    /**
-     * Validation Error
-     */
-    422: HttpValidationError;
-};
-
-export type BusinessNamePostError = BusinessNamePostErrors[keyof BusinessNamePostErrors];
-
-export type BusinessNamePostResponses = {
     /**
      * Successful Response
      */
@@ -5810,9 +10142,17 @@ export type ChaldeanData = {
 
 export type ChaldeanErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type ChaldeanError = ChaldeanErrors[keyof ChaldeanErrors];
@@ -5833,9 +10173,17 @@ export type LoShuData = {
 
 export type LoShuErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type LoShuError = LoShuErrors[keyof LoShuErrors];
@@ -5863,9 +10211,17 @@ export type MobileNumberData = {
 
 export type MobileNumberErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type MobileNumberError = MobileNumberErrors[keyof MobileNumberErrors];
@@ -5893,9 +10249,17 @@ export type VehicleNumberData = {
 
 export type VehicleNumberErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type VehicleNumberError = VehicleNumberErrors[keyof VehicleNumberErrors];
@@ -5907,6 +10271,914 @@ export type VehicleNumberResponses = {
     200: unknown;
 };
 
+export type ExpressionNumberData = {
+    body: NameOnlyRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/expression';
+};
+
+export type ExpressionNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type ExpressionNumberError = ExpressionNumberErrors[keyof ExpressionNumberErrors];
+
+export type ExpressionNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseNameNumberResponse;
+};
+
+export type ExpressionNumberResponse = ExpressionNumberResponses[keyof ExpressionNumberResponses];
+
+export type SoulUrgeNumberData = {
+    body: NameOnlyRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/soul-urge';
+};
+
+export type SoulUrgeNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type SoulUrgeNumberError = SoulUrgeNumberErrors[keyof SoulUrgeNumberErrors];
+
+export type SoulUrgeNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseNameNumberResponse;
+};
+
+export type SoulUrgeNumberResponse = SoulUrgeNumberResponses[keyof SoulUrgeNumberResponses];
+
+export type PersonalityNumberData = {
+    body: NameOnlyRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/personality';
+};
+
+export type PersonalityNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PersonalityNumberError = PersonalityNumberErrors[keyof PersonalityNumberErrors];
+
+export type PersonalityNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseNameNumberResponse;
+};
+
+export type PersonalityNumberResponse = PersonalityNumberResponses[keyof PersonalityNumberResponses];
+
+export type MaturityNumberData = {
+    body: MaturityNumberRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/maturity';
+};
+
+export type MaturityNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type MaturityNumberError = MaturityNumberErrors[keyof MaturityNumberErrors];
+
+export type MaturityNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseMaturityNumberResponse;
+};
+
+export type MaturityNumberResponse2 = MaturityNumberResponses[keyof MaturityNumberResponses];
+
+export type BalanceNumberData = {
+    body: NameOnlyRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/balance';
+};
+
+export type BalanceNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type BalanceNumberError = BalanceNumberErrors[keyof BalanceNumberErrors];
+
+export type BalanceNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseNameNumberResponse;
+};
+
+export type BalanceNumberResponse = BalanceNumberResponses[keyof BalanceNumberResponses];
+
+export type KarmicLessonsData = {
+    body: NameOnlyRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/karmic-lessons';
+};
+
+export type KarmicLessonsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type KarmicLessonsError = KarmicLessonsErrors[keyof KarmicLessonsErrors];
+
+export type KarmicLessonsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseKarmicLessonsResponse;
+};
+
+export type KarmicLessonsResponse2 = KarmicLessonsResponses[keyof KarmicLessonsResponses];
+
+export type PersonalCyclesData = {
+    body: PersonalCycleRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/personal-cycles';
+};
+
+export type PersonalCyclesErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PersonalCyclesError = PersonalCyclesErrors[keyof PersonalCyclesErrors];
+
+export type PersonalCyclesResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponsePersonalCycleResponse;
+};
+
+export type PersonalCyclesResponse = PersonalCyclesResponses[keyof PersonalCyclesResponses];
+
+export type AngelTodayData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/angel/today';
+};
+
+export type AngelTodayErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type AngelTodayError = AngelTodayErrors[keyof AngelTodayErrors];
+
+export type AngelTodayResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseTodayAngelNumberResponse;
+};
+
+export type AngelTodayResponse = AngelTodayResponses[keyof AngelTodayResponses];
+
+export type AngelNumberData = {
+    body?: never;
+    path: {
+        /**
+         * Number
+         */
+        number: string;
+    };
+    query?: never;
+    url: '/v1/numerology/angel/{number}';
+};
+
+export type AngelNumberErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type AngelNumberError = AngelNumberErrors[keyof AngelNumberErrors];
+
+export type AngelNumberResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseAngelNumberResponse;
+};
+
+export type AngelNumberResponse2 = AngelNumberResponses[keyof AngelNumberResponses];
+
+export type AngelPersonalData = {
+    body: PersonalAngelNumberRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/angel/personal';
+};
+
+export type AngelPersonalErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type AngelPersonalError = AngelPersonalErrors[keyof AngelPersonalErrors];
+
+export type AngelPersonalResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponsePersonalAngelNumberResponse;
+};
+
+export type AngelPersonalResponse = AngelPersonalResponses[keyof AngelPersonalResponses];
+
+export type CrystalsListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/crystals';
+};
+
+export type CrystalsListErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type CrystalsListError = CrystalsListErrors[keyof CrystalsListErrors];
+
+export type CrystalsListResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCrystalListResponse;
+};
+
+export type CrystalsListResponse = CrystalsListResponses[keyof CrystalsListResponses];
+
+export type CrystalsByPlanetData = {
+    body?: never;
+    path: {
+        /**
+         * Planet
+         */
+        planet: string;
+    };
+    query?: never;
+    url: '/v1/crystals/by-planet/{planet}';
+};
+
+export type CrystalsByPlanetErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type CrystalsByPlanetError = CrystalsByPlanetErrors[keyof CrystalsByPlanetErrors];
+
+export type CrystalsByPlanetResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCrystalListResponse;
+};
+
+export type CrystalsByPlanetResponse = CrystalsByPlanetResponses[keyof CrystalsByPlanetResponses];
+
+export type CrystalsRecommendData = {
+    body: CrystalRecommendRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/crystals/recommend';
+};
+
+export type CrystalsRecommendErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type CrystalsRecommendError = CrystalsRecommendErrors[keyof CrystalsRecommendErrors];
+
+export type CrystalsRecommendResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCrystalRecommendResponse;
+};
+
+export type CrystalsRecommendResponse = CrystalsRecommendResponses[keyof CrystalsRecommendResponses];
+
+export type CrystalsRecommendNatalData = {
+    body: NatalRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/crystals/recommend/natal';
+};
+
+export type CrystalsRecommendNatalErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type CrystalsRecommendNatalError = CrystalsRecommendNatalErrors[keyof CrystalsRecommendNatalErrors];
+
+export type CrystalsRecommendNatalResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseNatalCrystalResponse;
+};
+
+export type CrystalsRecommendNatalResponse = CrystalsRecommendNatalResponses[keyof CrystalsRecommendNatalResponses];
+
+export type CrystalData = {
+    body?: never;
+    path: {
+        /**
+         * Name
+         */
+        name: string;
+    };
+    query?: never;
+    url: '/v1/crystals/{name}';
+};
+
+export type CrystalErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type CrystalError = CrystalErrors[keyof CrystalErrors];
+
+export type CrystalResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCrystalEntry;
+};
+
+export type CrystalResponse = CrystalResponses[keyof CrystalResponses];
+
+export type DreamSymbolsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Category
+         *
+         * Filter by category: animals, nature, people, places, objects, actions, body, abstract.
+         */
+        category?: string | null;
+    };
+    url: '/v1/dreams/symbols';
+};
+
+export type DreamSymbolsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type DreamSymbolsError = DreamSymbolsErrors[keyof DreamSymbolsErrors];
+
+export type DreamSymbolsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDreamSymbolListResponse;
+};
+
+export type DreamSymbolsResponse = DreamSymbolsResponses[keyof DreamSymbolsResponses];
+
+export type DreamSymbolData = {
+    body?: never;
+    path: {
+        /**
+         * Name
+         */
+        name: string;
+    };
+    query?: never;
+    url: '/v1/dreams/symbol/{name}';
+};
+
+export type DreamSymbolErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type DreamSymbolError = DreamSymbolErrors[keyof DreamSymbolErrors];
+
+export type DreamSymbolResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDreamSymbol;
+};
+
+export type DreamSymbolResponse = DreamSymbolResponses[keyof DreamSymbolResponses];
+
+export type TarotCardsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/cards';
+};
+
+export type TarotCardsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotCardsError = TarotCardsErrors[keyof TarotCardsErrors];
+
+export type TarotCardsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseListTarotCardSchema;
+};
+
+export type TarotCardsResponse = TarotCardsResponses[keyof TarotCardsResponses];
+
+export type TarotCardData = {
+    body?: never;
+    path: {
+        /**
+         * Card Id
+         */
+        card_id: string;
+    };
+    query?: never;
+    url: '/v1/tarot/cards/{card_id}';
+};
+
+export type TarotCardErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotCardError = TarotCardErrors[keyof TarotCardErrors];
+
+export type TarotCardResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseTarotCardSchema;
+};
+
+export type TarotCardResponse = TarotCardResponses[keyof TarotCardResponses];
+
+export type TarotMajorArcanaData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/major-arcana';
+};
+
+export type TarotMajorArcanaErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotMajorArcanaError = TarotMajorArcanaErrors[keyof TarotMajorArcanaErrors];
+
+export type TarotMajorArcanaResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseListTarotCardSchema;
+};
+
+export type TarotMajorArcanaResponse = TarotMajorArcanaResponses[keyof TarotMajorArcanaResponses];
+
+export type TarotSuitData = {
+    body?: never;
+    path: {
+        /**
+         * Suit
+         */
+        suit: string;
+    };
+    query?: never;
+    url: '/v1/tarot/suits/{suit}';
+};
+
+export type TarotSuitErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotSuitError = TarotSuitErrors[keyof TarotSuitErrors];
+
+export type TarotSuitResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseListTarotCardSchema;
+};
+
+export type TarotSuitResponse = TarotSuitResponses[keyof TarotSuitResponses];
+
+export type TarotCardOfTheDayData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Date
+         *
+         * Date in YYYY-MM-DD format. Defaults to today.
+         */
+        date?: string | null;
+        /**
+         * Allow Reversed
+         *
+         * If true, the card may appear reversed (also deterministic by date).
+         */
+        allow_reversed?: boolean;
+    };
+    url: '/v1/tarot/card-of-the-day';
+};
+
+export type TarotCardOfTheDayErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotCardOfTheDayError = TarotCardOfTheDayErrors[keyof TarotCardOfTheDayErrors];
+
+export type TarotCardOfTheDayResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseCardOfDayResponse;
+};
+
+export type TarotCardOfTheDayResponse = TarotCardOfTheDayResponses[keyof TarotCardOfTheDayResponses];
+
+export type TarotDrawData = {
+    body: DrawRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/draw';
+};
+
+export type TarotDrawErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotDrawError = TarotDrawErrors[keyof TarotDrawErrors];
+
+export type TarotDrawResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDrawResponse;
+};
+
+export type TarotDrawResponse = TarotDrawResponses[keyof TarotDrawResponses];
+
+export type TarotThreeCardData = {
+    body: SpreadRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/spread/three-card';
+};
+
+export type TarotThreeCardErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotThreeCardError = TarotThreeCardErrors[keyof TarotThreeCardErrors];
+
+export type TarotThreeCardResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseSpreadResponse;
+};
+
+export type TarotThreeCardResponse = TarotThreeCardResponses[keyof TarotThreeCardResponses];
+
+export type TarotCelticCrossData = {
+    body: SpreadRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/spread/celtic-cross';
+};
+
+export type TarotCelticCrossErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotCelticCrossError = TarotCelticCrossErrors[keyof TarotCelticCrossErrors];
+
+export type TarotCelticCrossResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseSpreadResponse;
+};
+
+export type TarotCelticCrossResponse = TarotCelticCrossResponses[keyof TarotCelticCrossResponses];
+
+export type TarotYesNoData = {
+    body: YesNoRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/tarot/spread/yes-no';
+};
+
+export type TarotYesNoErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type TarotYesNoError = TarotYesNoErrors[keyof TarotYesNoErrors];
+
+export type TarotYesNoResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseYesNoResponse;
+};
+
+export type TarotYesNoResponse = TarotYesNoResponses[keyof TarotYesNoResponses];
+
 export type RemediesData = {
     body: RemediesRequest;
     path?: never;
@@ -5916,9 +11188,17 @@ export type RemediesData = {
 
 export type RemediesErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type RemediesError = RemediesErrors[keyof RemediesErrors];
@@ -5939,9 +11219,17 @@ export type GemstonesData = {
 
 export type GemstonesErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type GemstonesError = GemstonesErrors[keyof GemstonesErrors];
@@ -5962,9 +11250,17 @@ export type IshtaDevataData = {
 
 export type IshtaDevataErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type IshtaDevataError = IshtaDevataErrors[keyof IshtaDevataErrors];
@@ -5985,9 +11281,17 @@ export type KpChartData = {
 
 export type KpChartErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type KpChartError = KpChartErrors[keyof KpChartErrors];
@@ -6008,9 +11312,17 @@ export type KpSignificatorsData = {
 
 export type KpSignificatorsErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type KpSignificatorsError = KpSignificatorsErrors[keyof KpSignificatorsErrors];
@@ -6031,9 +11343,17 @@ export type KpRulingPlanetsData = {
 
 export type KpRulingPlanetsErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type KpRulingPlanetsError = KpRulingPlanetsErrors[keyof KpRulingPlanetsErrors];
@@ -6054,9 +11374,17 @@ export type LalKitabChartData = {
 
 export type LalKitabChartErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type LalKitabChartError = LalKitabChartErrors[keyof LalKitabChartErrors];
@@ -6077,9 +11405,17 @@ export type LalKitabRemediesData = {
 
 export type LalKitabRemediesErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type LalKitabRemediesError = LalKitabRemediesErrors[keyof LalKitabRemediesErrors];
@@ -6100,9 +11436,17 @@ export type PrashnaData = {
 
 export type PrashnaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type PrashnaError = PrashnaErrors[keyof PrashnaErrors];
@@ -6128,14 +11472,290 @@ export type NakshatraData2 = {
 
 export type NakshatraErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type NakshatraError = NakshatraErrors[keyof NakshatraErrors];
 
 export type NakshatraResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type PlanetNatureData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Planet
+         */
+        planet?: string | null;
+    };
+    url: '/v1/astro/planet-nature';
+};
+
+export type PlanetNatureErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PlanetNatureError = PlanetNatureErrors[keyof PlanetNatureErrors];
+
+export type PlanetNatureResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type PujaSuggestionsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Planet
+         */
+        planet?: string | null;
+    };
+    url: '/v1/astro/puja-suggestions';
+};
+
+export type PujaSuggestionsErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PujaSuggestionsError = PujaSuggestionsErrors[keyof PujaSuggestionsErrors];
+
+export type PujaSuggestionsResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type RudrakshaData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Planet
+         */
+        planet?: string | null;
+    };
+    url: '/v1/astro/rudraksha';
+};
+
+export type RudrakshaErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type RudrakshaError = RudrakshaErrors[keyof RudrakshaErrors];
+
+export type RudrakshaResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type AyanamshaData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Date
+         */
+        date?: string | null;
+    };
+    url: '/v1/astro/ayanamsha';
+};
+
+export type AyanamshaErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type AyanamshaError = AyanamshaErrors[keyof AyanamshaErrors];
+
+export type AyanamshaResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type WesternBiorhythmData = {
+    body: BiorhythmRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/biorhythm';
+};
+
+export type WesternBiorhythmErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternBiorhythmError = WesternBiorhythmErrors[keyof WesternBiorhythmErrors];
+
+export type WesternBiorhythmResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type NakshatraPredictionData = {
+    body: NakshatraPredictionRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/astro/nakshatra/prediction';
+};
+
+export type NakshatraPredictionErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type NakshatraPredictionError = NakshatraPredictionErrors[keyof NakshatraPredictionErrors];
+
+export type NakshatraPredictionResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type PitraDoshaData = {
+    body: BirthInput;
+    path?: never;
+    query?: never;
+    url: '/v1/astro/pitra-dosha';
+};
+
+export type PitraDoshaErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type PitraDoshaError = PitraDoshaErrors[keyof PitraDoshaErrors];
+
+export type PitraDoshaResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type GhatChakraData = {
+    body: BirthInput;
+    path?: never;
+    query?: never;
+    url: '/v1/astro/ghat-chakra';
+};
+
+export type GhatChakraErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type GhatChakraError = GhatChakraErrors[keyof GhatChakraErrors];
+
+export type GhatChakraResponses = {
     /**
      * Successful Response
      */
@@ -6170,9 +11790,17 @@ export type GeocodeData = {
 
 export type GeocodeErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type GeocodeError = GeocodeErrors[keyof GeocodeErrors];
@@ -6220,9 +11848,17 @@ export type TimezoneData = {
 
 export type TimezoneErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type TimezoneError = TimezoneErrors[keyof TimezoneErrors];
@@ -6245,9 +11881,17 @@ export type SadeSatiData = {
 
 export type SadeSatiErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type SadeSatiError = SadeSatiErrors[keyof SadeSatiErrors];
@@ -6270,9 +11914,17 @@ export type StrengthData = {
 
 export type StrengthErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type StrengthError = StrengthErrors[keyof StrengthErrors];
@@ -6295,9 +11947,17 @@ export type TransitsData = {
 
 export type TransitsErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type TransitsError = TransitsErrors[keyof TransitsErrors];
@@ -6320,9 +11980,17 @@ export type YoginiDashaData = {
 
 export type YoginiDashaErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type YoginiDashaError = YoginiDashaErrors[keyof YoginiDashaErrors];
@@ -6345,14 +12013,84 @@ export type VarshaphalData = {
 
 export type VarshaphalErrors = {
     /**
-     * Validation Error
+     * Validation error or invalid input
      */
-    422: HttpValidationError;
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
 };
 
 export type VarshaphalError = VarshaphalErrors[keyof VarshaphalErrors];
 
 export type VarshaphalResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type VarshaphalSahamData = {
+    body: VarshaphalRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/astro/varshaphal/saham';
+};
+
+export type VarshaphalSahamErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type VarshaphalSahamError = VarshaphalSahamErrors[keyof VarshaphalSahamErrors];
+
+export type VarshaphalSahamResponses = {
+    /**
+     * Successful Response
+     */
+    200: unknown;
+};
+
+export type VarshaphalHarshaBalaData = {
+    body: VarshaphalRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/astro/varshaphal/harsha-bala';
+};
+
+export type VarshaphalHarshaBalaErrors = {
+    /**
+     * Validation error or invalid input
+     */
+    422: ErrorResponse;
+    /**
+     * Internal server error
+     */
+    500: ErrorResponse;
+    /**
+     * Service temporarily unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type VarshaphalHarshaBalaError = VarshaphalHarshaBalaErrors[keyof VarshaphalHarshaBalaErrors];
+
+export type VarshaphalHarshaBalaResponses = {
     /**
      * Successful Response
      */

@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MobileNumberData, MobileNumberErrors, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PrashnaData, PrashnaErrors, PrashnaResponses, RemediesData, RemediesErrors, RemediesResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, StrengthData, StrengthErrors, StrengthResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen';
+import type { AngelNumberData, AngelNumberErrors, AngelNumberResponses, AngelPersonalData, AngelPersonalErrors, AngelPersonalResponses, AngelTodayData, AngelTodayErrors, AngelTodayResponses, AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, AyanamshaData, AyanamshaErrors, AyanamshaResponses, BalanceNumberData, BalanceNumberErrors, BalanceNumberResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, CrystalData, CrystalErrors, CrystalResponses, CrystalsByPlanetData, CrystalsByPlanetErrors, CrystalsByPlanetResponses, CrystalsListData, CrystalsListErrors, CrystalsListResponses, CrystalsRecommendData, CrystalsRecommendErrors, CrystalsRecommendNatalData, CrystalsRecommendNatalErrors, CrystalsRecommendNatalResponses, CrystalsRecommendResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, DreamSymbolData, DreamSymbolErrors, DreamSymbolResponses, DreamSymbolsData, DreamSymbolsErrors, DreamSymbolsResponses, ExpressionNumberData, ExpressionNumberErrors, ExpressionNumberResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GhatChakraData, GhatChakraErrors, GhatChakraResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KarmicLessonsData, KarmicLessonsErrors, KarmicLessonsResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MaturityNumberData, MaturityNumberErrors, MaturityNumberResponses, MobileNumberData, MobileNumberErrors, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraPredictionData, NakshatraPredictionErrors, NakshatraPredictionResponses, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaFestivalsData, PanchangaFestivalsErrors, PanchangaFestivalsResponses, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PanchangaTamilData, PanchangaTamilErrors, PanchangaTamilResponses, PersonalCyclesData, PersonalCyclesErrors, PersonalCyclesResponses, PersonalityNumberData, PersonalityNumberErrors, PersonalityNumberResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PitraDoshaData, PitraDoshaErrors, PitraDoshaResponses, PlanetNatureData, PlanetNatureErrors, PlanetNatureResponses, PrashnaData, PrashnaErrors, PrashnaResponses, PujaSuggestionsData, PujaSuggestionsErrors, PujaSuggestionsResponses, RemediesData, RemediesErrors, RemediesResponses, RudrakshaData, RudrakshaErrors, RudrakshaResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, SoulUrgeNumberData, SoulUrgeNumberErrors, SoulUrgeNumberResponses, StrengthData, StrengthErrors, StrengthResponses, TarotCardData, TarotCardErrors, TarotCardOfTheDayData, TarotCardOfTheDayErrors, TarotCardOfTheDayResponses, TarotCardResponses, TarotCardsData, TarotCardsErrors, TarotCardsResponses, TarotCelticCrossData, TarotCelticCrossErrors, TarotCelticCrossResponses, TarotDrawData, TarotDrawErrors, TarotDrawResponses, TarotMajorArcanaData, TarotMajorArcanaErrors, TarotMajorArcanaResponses, TarotSuitData, TarotSuitErrors, TarotSuitResponses, TarotThreeCardData, TarotThreeCardErrors, TarotThreeCardResponses, TarotYesNoData, TarotYesNoErrors, TarotYesNoResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalHarshaBalaData, VarshaphalHarshaBalaErrors, VarshaphalHarshaBalaResponses, VarshaphalResponses, VarshaphalSahamData, VarshaphalSahamErrors, VarshaphalSahamResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberResponses, WesternAspectsData, WesternAspectsErrors, WesternAspectsResponses, WesternBiorhythmData, WesternBiorhythmErrors, WesternBiorhythmResponses, WesternCompatibilityData, WesternCompatibilityErrors, WesternCompatibilityResponses, WesternCompatibilityZodiacData, WesternCompatibilityZodiacErrors, WesternCompatibilityZodiacResponses, WesternCompositeData, WesternCompositeErrors, WesternCompositeResponses, WesternHoroscopeDailyData, WesternHoroscopeDailyErrors, WesternHoroscopeDailyResponses, WesternHoroscopeMonthlyData, WesternHoroscopeMonthlyErrors, WesternHoroscopeMonthlyResponses, WesternHoroscopeWeeklyData, WesternHoroscopeWeeklyErrors, WesternHoroscopeWeeklyResponses, WesternHoroscopeYearlyData, WesternHoroscopeYearlyErrors, WesternHoroscopeYearlyResponses, WesternLunarReturnData, WesternLunarReturnErrors, WesternLunarReturnResponses, WesternMoonCalendarData, WesternMoonCalendarErrors, WesternMoonCalendarResponses, WesternMoonPhaseData, WesternMoonPhaseErrors, WesternMoonPhaseResponses, WesternNatalChartData, WesternNatalChartErrors, WesternNatalChartResponses, WesternPlanetaryReturnData, WesternPlanetaryReturnErrors, WesternPlanetaryReturnResponses, WesternProgressionsSecondaryData, WesternProgressionsSecondaryErrors, WesternProgressionsSecondaryResponses, WesternProgressionsSolarArcData, WesternProgressionsSolarArcErrors, WesternProgressionsSolarArcResponses, WesternSolarReturnData, WesternSolarReturnErrors, WesternSolarReturnResponses, WesternSynastryData, WesternSynastryErrors, WesternSynastryResponses, WesternTransitsDailyData, WesternTransitsDailyErrors, WesternTransitsDailyResponses, WesternTransitsMonthlyData, WesternTransitsMonthlyErrors, WesternTransitsMonthlyResponses, WesternTransitsWeeklyData, WesternTransitsWeeklyErrors, WesternTransitsWeeklyResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -184,6 +184,234 @@ export const natalChart = <ThrowOnError extends boolean = false>(options: Option
 });
 
 /**
+ * Western Natal Chart — Tropical
+ *
+ * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, essential dignities per Ptolemy/Lilly/Hand, all active aspects using Robert Hand's Table 2 orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
+ */
+export const westernNatalChart = <ThrowOnError extends boolean = false>(options: Options<WesternNatalChartData, ThrowOnError>) => (options.client ?? client).post<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/natal',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Moon Phase
+ *
+ * Calculate the lunar phase for any date using the tropical zodiac. Returns phase name (New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter, Waning Crescent), phase angle, illumination percentage, moon age in days, and next major phase estimate. Defaults to today if no date given.
+ */
+export const westernMoonPhase = <ThrowOnError extends boolean = false>(options?: Options<WesternMoonPhaseData, ThrowOnError>) => (options?.client ?? client).get<WesternMoonPhaseResponses, WesternMoonPhaseErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/moon/phase',
+    ...options
+});
+
+/**
+ * Western Moon Phase Calendar
+ *
+ * Returns lunar phase data for every day in a given month. Useful for building moon phase calendars, identifying full/new moons, and auspicious timing tools. Defaults to current month if no year/month given.
+ */
+export const westernMoonCalendar = <ThrowOnError extends boolean = false>(options?: Options<WesternMoonCalendarData, ThrowOnError>) => (options?.client ?? client).get<WesternMoonCalendarResponses, WesternMoonCalendarErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/moon/calendar',
+    ...options
+});
+
+/**
+ * Western Aspect Grid
+ *
+ * Calculate all active aspects between any set of planetary positions. Provide a dictionary of body names to tropical ecliptic longitudes. Uses Robert Hand Table 2 orbs by default: major aspects 5°, sextile 3°, minor aspects 1.5°. Custom orbs can be provided per aspect type.
+ */
+export const westernAspects = <ThrowOnError extends boolean = false>(options: Options<WesternAspectsData, ThrowOnError>) => (options.client ?? client).post<WesternAspectsResponses, WesternAspectsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/aspects',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Daily Transits
+ *
+ * Current sky positions vs natal chart. Returns all 10 planets with tropical longitudes and active aspects to natal positions using transit orbs (Hand, Planets in Transit): major 3°, sextile 2°, minor 1°. Defaults to today if no date given.
+ */
+export const westernTransitsDaily = <ThrowOnError extends boolean = false>(options: Options<WesternTransitsDailyData, ThrowOnError>) => (options.client ?? client).post<WesternTransitsDailyResponses, WesternTransitsDailyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/transits/daily',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Weekly Transits
+ *
+ * 7-day transit window vs natal chart. Returns day-by-day transit snapshots plus peak aspects (active 4+ days in the window). Use start_date to set the week start. Defaults to today.
+ */
+export const westernTransitsWeekly = <ThrowOnError extends boolean = false>(options: Options<WesternTransitsWeeklyData, ThrowOnError>) => (options.client ?? client).post<WesternTransitsWeeklyResponses, WesternTransitsWeeklyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/transits/weekly',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Monthly Transits
+ *
+ * 30-day transit window vs natal chart. Returns day-by-day transit snapshots plus peak aspects (active 10+ days in the window). Use start_date to set the month start. Defaults to today.
+ */
+export const westernTransitsMonthly = <ThrowOnError extends boolean = false>(options: Options<WesternTransitsMonthlyData, ThrowOnError>) => (options.client ?? client).post<WesternTransitsMonthlyResponses, WesternTransitsMonthlyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/transits/monthly',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Synastry
+ *
+ * Aspect grid between two natal charts using the tropical zodiac. Returns all inter-chart aspects using Robert Hand Table 2 orbs. Useful for relationship compatibility analysis.
+ */
+export const westernSynastry = <ThrowOnError extends boolean = false>(options: Options<WesternSynastryData, ThrowOnError>) => (options.client ?? client).post<WesternSynastryResponses, WesternSynastryErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/synastry',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Composite Chart
+ *
+ * Midpoint composite chart for two people (Robert Hand method). Each composite planet is the midpoint of the two natal positions. Returns composite planets with dignities and internal aspects.
+ */
+export const westernComposite = <ThrowOnError extends boolean = false>(options: Options<WesternCompositeData, ThrowOnError>) => (options.client ?? client).post<WesternCompositeResponses, WesternCompositeErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/composite',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Compatibility Score
+ *
+ * Overall compatibility score (0-100) between two natal charts. Scores element affinity, synastry aspects between personal planets (Sun, Moon, Venus, Mars), and Sun/Moon/rising sign comparisons.
+ */
+export const westernCompatibility = <ThrowOnError extends boolean = false>(options: Options<WesternCompatibilityData, ThrowOnError>) => (options.client ?? client).post<WesternCompatibilityResponses, WesternCompatibilityErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/compatibility',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Zodiac Sign Compatibility
+ *
+ * Sign-to-sign compatibility without birth data. Based on element and modality affinity. Pass sign names as query parameters: ?sign1=Aries&sign2=Leo
+ */
+export const westernCompatibilityZodiac = <ThrowOnError extends boolean = false>(options: Options<WesternCompatibilityZodiacData, ThrowOnError>) => (options.client ?? client).get<WesternCompatibilityZodiacResponses, WesternCompatibilityZodiacErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/compatibility/zodiac',
+    ...options
+});
+
+/**
+ * Western Solar Return
+ *
+ * Solar return chart for a given year. Finds the exact moment the Sun returns to its natal tropical longitude and builds a complete Western natal chart for that moment at the birth location. Provide the year as an integer (e.g. 2026).
+ */
+export const westernSolarReturn = <ThrowOnError extends boolean = false>(options: Options<WesternSolarReturnData, ThrowOnError>) => (options.client ?? client).post<WesternSolarReturnResponses, WesternSolarReturnErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/solar-return',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Lunar Return
+ *
+ * Next lunar return chart after a given date. Finds the next moment the Moon returns to its natal tropical longitude (~every 27.3 days) and builds a complete Western natal chart for that moment at the birth location.
+ */
+export const westernLunarReturn = <ThrowOnError extends boolean = false>(options: Options<WesternLunarReturnData, ThrowOnError>) => (options.client ?? client).post<WesternLunarReturnResponses, WesternLunarReturnErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/lunar-return',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Planetary Return
+ *
+ * Next return chart for any planet after a given date. Finds the exact moment the specified planet returns to its natal tropical longitude and builds a complete Western natal chart for that moment at the birth location. Supported planets: Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto.
+ */
+export const westernPlanetaryReturn = <ThrowOnError extends boolean = false>(options: Options<WesternPlanetaryReturnData, ThrowOnError>) => (options.client ?? client).post<WesternPlanetaryReturnResponses, WesternPlanetaryReturnErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/planetary-return',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Secondary Progressions
+ *
+ * Secondary progressed chart using the day-for-a-year method. Each day after birth symbolises one year of life (1 ephemeris day = 1 tropical year = 365.2421904 days). Returns all 10 progressed planet positions, progressed Ascendant and MC (Solar Arc MC method), and the solar arc. Defaults to today if no target_date provided.
+ */
+export const westernProgressionsSecondary = <ThrowOnError extends boolean = false>(options: Options<WesternProgressionsSecondaryData, ThrowOnError>) => (options.client ?? client).post<WesternProgressionsSecondaryResponses, WesternProgressionsSecondaryErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/progressions/secondary',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Western Solar Arc Directions
+ *
+ * Solar Arc Directions for a target date. The solar arc (progressed Sun - natal Sun) is applied uniformly to every natal planet and angle. Unlike secondary progressions, all planets advance at the same rate (~1° per year). Returns directed positions for all 10 planets plus directed MC and ASC.
+ */
+export const westernProgressionsSolarArc = <ThrowOnError extends boolean = false>(options: Options<WesternProgressionsSolarArcData, ThrowOnError>) => (options.client ?? client).post<WesternProgressionsSolarArcResponses, WesternProgressionsSolarArcErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/progressions/solar-arc',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
  * Daily Panchanga
  *
  * Calculate Vedic Panchanga for a given date and location. Returns Tithi, Nakshatra, Yoga, Karana, Vara (weekday), and auspicious and inauspicious periods for the day. Returns Tithi, Vara (weekday), Nakshatra, Yoga, and Karana for the birth date and location.
@@ -270,6 +498,28 @@ export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(opti
 });
 
 /**
+ * Tamil Panchanga
+ *
+ * Tamil-specific Panchanga for a date and location. Returns all four Tamil inauspicious periods (Rahu Kalam, Yamagandam, Kuligai, Emagandam), Nalla Neram (auspicious daytime windows between inauspicious periods), and the Tamil solar month name derived from the Sun's sidereal position at sunrise.
+ */
+export const panchangaTamil = <ThrowOnError extends boolean = false>(options: Options<PanchangaTamilData, ThrowOnError>) => (options.client ?? client).get<PanchangaTamilResponses, PanchangaTamilErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/panchanga/tamil',
+    ...options
+});
+
+/**
+ * Hindu festival calendar
+ *
+ * Compute all major Hindu festival dates for a given year and location. Returns 20 pan-Hindu festivals including solar sankrantis (Makar Sankranti, Vaisakhi) and tithi-based festivals (Diwali, Holi, Dussehra, Janmashtami, Ganesh Chaturthi, Ram Navami, and 12 others). All dates are astronomically computed — no hardcoded dates. Tithi festivals use the Sun-Moon elongation at local sunrise with Lahiri sidereal ayanamsa. Location is required for accurate sunrise-based tithi determination.
+ */
+export const panchangaFestivals = <ThrowOnError extends boolean = false>(options: Options<PanchangaFestivalsData, ThrowOnError>) => (options.client ?? client).get<PanchangaFestivalsResponses, PanchangaFestivalsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/panchanga/festivals',
+    ...options
+});
+
+/**
  * Divisional charts — Varga
  *
  * Computes all 16 Vedic divisional charts (Varga charts) for a given
@@ -305,7 +555,7 @@ export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(opti
  *
  * **Ayanamsa:** All positions are sidereal. Default is Lahiri.
  *
- * Also known as Varga charts or Amsha charts. Returns D1 through D60 divisional charts.
+ * Also known as Varga charts or Amsha charts. Only the requested chart_type is returned. To get all sixteen charts, omit the chart_type parameter.
  */
 export const divisionalCharts = <ThrowOnError extends boolean = false>(options: Options<DivisionalChartsData, ThrowOnError>) => (options.client ?? client).post<DivisionalChartsResponses, DivisionalChartsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -362,6 +612,50 @@ export const horoscopeYearly = <ThrowOnError extends boolean = false>(options: O
 });
 
 /**
+ * Western daily horoscope
+ *
+ * Returns today's pre-generated Western daily horoscope for the given Sun sign (tropical).
+ */
+export const westernHoroscopeDaily = <ThrowOnError extends boolean = false>(options: Options<WesternHoroscopeDailyData, ThrowOnError>) => (options.client ?? client).get<WesternHoroscopeDailyResponses, WesternHoroscopeDailyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/horoscope/daily/{sun_sign}',
+    ...options
+});
+
+/**
+ * Western weekly horoscope
+ *
+ * Returns this week's pre-generated Western weekly horoscope for the given Sun sign.
+ */
+export const westernHoroscopeWeekly = <ThrowOnError extends boolean = false>(options: Options<WesternHoroscopeWeeklyData, ThrowOnError>) => (options.client ?? client).get<WesternHoroscopeWeeklyResponses, WesternHoroscopeWeeklyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/horoscope/weekly/{sun_sign}',
+    ...options
+});
+
+/**
+ * Western monthly horoscope
+ *
+ * Returns this month's pre-generated Western monthly horoscope for the given Sun sign.
+ */
+export const westernHoroscopeMonthly = <ThrowOnError extends boolean = false>(options: Options<WesternHoroscopeMonthlyData, ThrowOnError>) => (options.client ?? client).get<WesternHoroscopeMonthlyResponses, WesternHoroscopeMonthlyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/horoscope/monthly/{sun_sign}',
+    ...options
+});
+
+/**
+ * Western yearly horoscope
+ *
+ * Returns this year's pre-generated Western yearly horoscope for the given Sun sign.
+ */
+export const westernHoroscopeYearly = <ThrowOnError extends boolean = false>(options: Options<WesternHoroscopeYearlyData, ThrowOnError>) => (options.client ?? client).get<WesternHoroscopeYearlyResponses, WesternHoroscopeYearlyErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/horoscope/yearly/{sun_sign}',
+    ...options
+});
+
+/**
  * Muhurta — Auspicious Timing
  *
  * Finds and ranks auspicious time windows for a specific event type. Scores each Choghadiya period using Choghadiya quality, Yoga, Vara (weekday), and Tithi. Returns top N ranked windows. Supported events: marriage, travel, business, griha_pravesh, naming_ceremony.
@@ -409,7 +703,7 @@ export const dashaTransits = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Jaimini Char Dasha
  *
- * Computes Jaimini Char Dasha — a sign-based dasha system from Jaimini Sutras. Returns mahadasha and antardasha periods starting from the Atmakaraka's sign, with the current active mahadasha and antardasha highlighted. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Computes Jaimini Char Dasha — a sign-based dasha system from Jaimini Sutras. Returns mahadasha and antardasha periods starting from the ascendant (Lagna), with the current active mahadasha and antardasha highlighted. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const charDasha = <ThrowOnError extends boolean = false>(options: Options<CharDashaData, ThrowOnError>) => (options.client ?? client).post<CharDashaResponses, CharDashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -609,6 +903,32 @@ export const personalYearPost = <ThrowOnError extends boolean = false>(options: 
 });
 
 /**
+ * Business Name Numerology
+ *
+ * Scores a business name using Pythagorean expression number. Returns single digit, theme, harmony score (1-10), and recommended uses.
+ */
+export const businessName = <ThrowOnError extends boolean = false>(options: Options<BusinessNameData, ThrowOnError>) => (options.client ?? client).get<BusinessNameResponses, BusinessNameErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/business-name',
+    ...options
+});
+
+/**
+ * Business Name Numerology (JSON body)
+ *
+ * Same analysis as GET /v1/numerology/business-name for clients that send a JSON body (e.g. MCP): `{ "name": "..." }`.
+ */
+export const businessNamePost = <ThrowOnError extends boolean = false>(options: Options<BusinessNamePostData, ThrowOnError>) => (options.client ?? client).post<BusinessNamePostResponses, BusinessNamePostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/business-name',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
  * Generate lucky numbers
  *
  * Generates a deterministic lucky number set from `name` and `date` query params (BirthInput-aligned). Requires authenticated API key access (Core tier or above in product terms). Returns lucky numbers with supporting numerology context.
@@ -638,32 +958,6 @@ export const numberMeaning = <ThrowOnError extends boolean = false>(options: Opt
 export const nameCorrection = <ThrowOnError extends boolean = false>(options: Options<NameCorrectionData, ThrowOnError>) => (options.client ?? client).post<NameCorrectionResponses, NameCorrectionErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/numerology/name-correction',
-    ...options,
-    headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
-    }
-});
-
-/**
- * Business Name Numerology
- *
- * Scores a business name using Pythagorean expression number. Returns single digit, theme, harmony score (1-10), and recommended uses.
- */
-export const businessName = <ThrowOnError extends boolean = false>(options: Options<BusinessNameData, ThrowOnError>) => (options.client ?? client).get<BusinessNameResponses, BusinessNameErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/numerology/business-name',
-    ...options
-});
-
-/**
- * Business Name Numerology (JSON body)
- *
- * Same analysis as GET /v1/numerology/business-name for clients that send a JSON body (e.g. MCP): `{ "name": "..." }`.
- */
-export const businessNamePost = <ThrowOnError extends boolean = false>(options: Options<BusinessNamePostData, ThrowOnError>) => (options.client ?? client).post<BusinessNamePostResponses, BusinessNamePostErrors, ThrowOnError>({
-    security: [{ scheme: 'bearer', type: 'http' }],
-    url: '/v1/numerology/business-name',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -721,6 +1015,348 @@ export const vehicleNumber = <ThrowOnError extends boolean = false>(options: Opt
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/numerology/vehicle-number',
     ...options
+});
+
+/**
+ * Expression (Destiny) Number
+ *
+ * Calculates the Expression (Destiny) number from the full name. Uses all letters with Pythagorean values, reducing each name part separately before summing (Goodwin method). Preserves master numbers 11, 22, 33.
+ */
+export const expressionNumber = <ThrowOnError extends boolean = false>(options: Options<ExpressionNumberData, ThrowOnError>) => (options.client ?? client).post<ExpressionNumberResponses, ExpressionNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/expression',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Soul Urge (Heart's Desire) Number
+ *
+ * Calculates the Soul Urge number from vowels (A, E, I, O, U) in the full name. Reduces each name part separately. Y is treated as a consonant in this implementation.
+ */
+export const soulUrgeNumber = <ThrowOnError extends boolean = false>(options: Options<SoulUrgeNumberData, ThrowOnError>) => (options.client ?? client).post<SoulUrgeNumberResponses, SoulUrgeNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/soul-urge',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Personality Number
+ *
+ * Calculates the Personality number from consonants in the full name. Reduces each name part separately. Represents the outer personality visible to others.
+ */
+export const personalityNumber = <ThrowOnError extends boolean = false>(options: Options<PersonalityNumberData, ThrowOnError>) => (options.client ?? client).post<PersonalityNumberResponses, PersonalityNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/personality',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Maturity (Realization) Number
+ *
+ * Calculates the Maturity number from Life Path + Expression. Represents the underlying wish or desire that surfaces around age 30-35. Requires both name and birth date.
+ */
+export const maturityNumber = <ThrowOnError extends boolean = false>(options: Options<MaturityNumberData, ThrowOnError>) => (options.client ?? client).post<MaturityNumberResponses, MaturityNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/maturity',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Balance Number
+ *
+ * Calculates the Balance number from the first letter of each name part. Indicates how a person handles stress and unresolved issues.
+ */
+export const balanceNumber = <ThrowOnError extends boolean = false>(options: Options<BalanceNumberData, ThrowOnError>) => (options.client ?? client).post<BalanceNumberResponses, BalanceNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/balance',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Karmic Lessons
+ *
+ * Identifies karmic lessons from the name — the digit values 1-9 that are absent from the name's letter values. Missing numbers indicate areas requiring development in this lifetime.
+ */
+export const karmicLessons = <ThrowOnError extends boolean = false>(options: Options<KarmicLessonsData, ThrowOnError>) => (options.client ?? client).post<KarmicLessonsResponses, KarmicLessonsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/karmic-lessons',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Personal Year, Month, and Day
+ *
+ * Returns the Personal Year, Personal Month, and Personal Day numbers for a birth date and target date. Defaults to today if year/month/day not provided. Personal Day is only included when target day is provided.
+ */
+export const personalCycles = <ThrowOnError extends boolean = false>(options: Options<PersonalCyclesData, ThrowOnError>) => (options.client ?? client).post<PersonalCyclesResponses, PersonalCyclesErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/personal-cycles',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Today's angel number
+ *
+ * Compute today's angel number from the current date. The date's digits are summed and reduced to a single digit (1-9), then the triple sequence of that digit is returned (e.g. digit 3 → angel number 333). The same number is returned for all callers on the same date.
+ */
+export const angelToday = <ThrowOnError extends boolean = false>(options?: Options<AngelTodayData, ThrowOnError>) => (options?.client ?? client).get<AngelTodayResponses, AngelTodayErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/angel/today',
+    ...options
+});
+
+/**
+ * Angel number meaning
+ *
+ * Look up the meaning of a specific angel number. Supported numbers: 000, 111–999 (single repeating digit), 1010, 1111, 1122, 1212, 1234, 2222–9999 (double repeating digit), 911. Pass the number as a string path parameter, e.g. /v1/numerology/angel/444.
+ */
+export const angelNumber = <ThrowOnError extends boolean = false>(options: Options<AngelNumberData, ThrowOnError>) => (options.client ?? client).get<AngelNumberResponses, AngelNumberErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/angel/{number}',
+    ...options
+});
+
+/**
+ * Personal angel number
+ *
+ * Compute your personal angel number from your birth date. Uses the Pythagorean Life Path number (digit-fusing method) as the base. Life Path 1-9 maps to the triple sequence (e.g. LP 4 → 444). Master numbers 11, 22, 33 map to 1111, 2222, 3333 respectively.
+ */
+export const angelPersonal = <ThrowOnError extends boolean = false>(options: Options<AngelPersonalData, ThrowOnError>) => (options.client ?? client).post<AngelPersonalResponses, AngelPersonalErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/angel/personal',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Complete crystal database
+ *
+ * Returns all 50 crystals in the database sorted alphabetically. Each entry includes chakra associations, elemental correspondences, Vedic and Western planetary assignments, healing properties, origins, affirmations, and safety cautions. Vedic correspondences are strictly separated: 'navaratna' (classical primary gem), 'uparatna' (classical substitute), or 'none_classical' (no Vedic text assigns this stone).
+ */
+export const crystalsList = <ThrowOnError extends boolean = false>(options?: Options<CrystalsListData, ThrowOnError>) => (options?.client ?? client).get<CrystalsListResponses, CrystalsListErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/crystals',
+    ...options
+});
+
+/**
+ * Crystals by Vedic planet
+ *
+ * Returns all crystals associated with a specific Vedic planet. Planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu. Results are sorted with primary Navaratna gems first, then Uparatna substitutes. Only classically verified Vedic assignments are included — crystals without classical Vedic text support are not returned here.
+ */
+export const crystalsByPlanet = <ThrowOnError extends boolean = false>(options: Options<CrystalsByPlanetData, ThrowOnError>) => (options.client ?? client).get<CrystalsByPlanetResponses, CrystalsByPlanetErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/crystals/by-planet/{planet}',
+    ...options
+});
+
+/**
+ * Crystal recommendations
+ *
+ * Recommend crystals based on zodiac sign, chakra, or intention keyword. At least one filter must be provided. Providing multiple filters returns crystals that match the most criteria first. Valid chakras: Root, Sacral, Solar Plexus, Heart, Throat, Third Eye, Crown. Returns up to `limit` crystals (default 5, max 20).
+ */
+export const crystalsRecommend = <ThrowOnError extends boolean = false>(options: Options<CrystalsRecommendData, ThrowOnError>) => (options.client ?? client).post<CrystalsRecommendResponses, CrystalsRecommendErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/crystals/recommend',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Crystal recommendations from Vedic natal chart
+ *
+ * Recommend crystals based on classical Ratna Shastra (BPHS + Mani Mala) house lordship rules. Computes the natal chart and identifies the planets that lord Trikona houses (1, 5, 9). Lagna lord = Life Stone (+5), Yogakaraka = supreme benefic (+5), 9th lord = Fortune Stone (+4), 5th lord = Lucky Stone (+3). Where a planet lords both a Trikona and a Dusthana (6, 8, 12), the Trikona lordship prevails per BPHS — it is still recommended. Planets not lordsing any Trikona house are contraindicated. Only crystals with verified classical Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
+ */
+export const crystalsRecommendNatal = <ThrowOnError extends boolean = false>(options: Options<CrystalsRecommendNatalData, ThrowOnError>) => (options.client ?? client).post<CrystalsRecommendNatalResponses, CrystalsRecommendNatalErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/crystals/recommend/natal',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Single crystal lookup
+ *
+ * Lookup a specific crystal by slug or name (case-insensitive). Examples: 'amethyst', 'blue-sapphire', 'rose-quartz', 'Tiger's Eye'.
+ */
+export const crystal = <ThrowOnError extends boolean = false>(options: Options<CrystalData, ThrowOnError>) => (options.client ?? client).get<CrystalResponses, CrystalErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/crystals/{name}',
+    ...options
+});
+
+/**
+ * Dream symbol database
+ *
+ * Returns all dream symbols from the database, optionally filtered by category. Each symbol includes dual-tradition interpretation: Jungian/Western psychological analysis and classical Vedic Swapna Shastra meaning with auspiciousness rating. The traditions_agree field flags where Western and Vedic interpretations conflict — these cross-tradition conflicts are unique to this API. Categories: animals, nature, people, places, objects, actions, body, abstract.
+ */
+export const dreamSymbols = <ThrowOnError extends boolean = false>(options?: Options<DreamSymbolsData, ThrowOnError>) => (options?.client ?? client).get<DreamSymbolsResponses, DreamSymbolsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/dreams/symbols',
+    ...options
+});
+
+/**
+ * Single dream symbol lookup
+ *
+ * Lookup a specific dream symbol by slug or name (case-insensitive). Examples: 'snake', 'eagle', 'childhood-home', 'teeth falling out'. Returns full dual-tradition interpretation including Jungian archetype, Vedic Swapna Shastra meaning, context variants, and related symbols.
+ */
+export const dreamSymbol = <ThrowOnError extends boolean = false>(options: Options<DreamSymbolData, ThrowOnError>) => (options.client ?? client).get<DreamSymbolResponses, DreamSymbolErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/dreams/symbol/{name}',
+    ...options
+});
+
+/**
+ * All Tarot Cards
+ *
+ * Returns the complete 78-card Rider-Waite-Smith deck with full metadata. Each card includes id, name, arcana type, suit, element, astrological correspondence, upright and reversed meanings, keywords, yes/no polarity, and visual description. Use this endpoint to populate card databases, build card browsers, or reference individual card data.
+ */
+export const tarotCards = <ThrowOnError extends boolean = false>(options?: Options<TarotCardsData, ThrowOnError>) => (options?.client ?? client).get<TarotCardsResponses, TarotCardsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/cards',
+    ...options
+});
+
+/**
+ * Single Tarot Card
+ *
+ * Returns full data for a single card by its slug ID. Example IDs: 'the-fool', 'ace-of-wands', 'king-of-cups', 'the-world', 'ten-of-swords'.
+ */
+export const tarotCard = <ThrowOnError extends boolean = false>(options: Options<TarotCardData, ThrowOnError>) => (options.client ?? client).get<TarotCardResponses, TarotCardErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/cards/{card_id}',
+    ...options
+});
+
+/**
+ * Major Arcana Cards
+ *
+ * Returns all 22 Major Arcana cards (The Fool through The World). Major Arcana represent archetypal life themes and major life events.
+ */
+export const tarotMajorArcana = <ThrowOnError extends boolean = false>(options?: Options<TarotMajorArcanaData, ThrowOnError>) => (options?.client ?? client).get<TarotMajorArcanaResponses, TarotMajorArcanaErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/major-arcana',
+    ...options
+});
+
+/**
+ * Tarot Cards by Suit
+ *
+ * Returns all 14 cards in a given suit: wands, cups, swords, or pentacles. Wands=fire/career, Cups=water/emotions, Swords=air/intellect, Pentacles=earth/material.
+ */
+export const tarotSuit = <ThrowOnError extends boolean = false>(options: Options<TarotSuitData, ThrowOnError>) => (options.client ?? client).get<TarotSuitResponses, TarotSuitErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/suits/{suit}',
+    ...options
+});
+
+/**
+ * Card of the Day
+ *
+ * Returns a deterministic daily tarot card. The same card is returned for all requests on the same date — seeded by SHA-256 hash of the date string. Optionally provide a date (YYYY-MM-DD) to get the card for any day. Defaults to today.
+ */
+export const tarotCardOfTheDay = <ThrowOnError extends boolean = false>(options?: Options<TarotCardOfTheDayData, ThrowOnError>) => (options?.client ?? client).get<TarotCardOfTheDayResponses, TarotCardOfTheDayErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/card-of-the-day',
+    ...options
+});
+
+/**
+ * Draw Tarot Cards
+ *
+ * Draw N random unique cards from the 78-card deck using cryptographic randomness. Each API call produces a fresh independent draw. Count must be between 1 and 78. Default: 1. Set allow_reversed=true to enable reversed card orientation (each card independently has a 50% chance of reversal).
+ */
+export const tarotDraw = <ThrowOnError extends boolean = false>(options: Options<TarotDrawData, ThrowOnError>) => (options.client ?? client).post<TarotDrawResponses, TarotDrawErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/draw',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Three-Card Spread
+ *
+ * Past / Present / Future spread. Draws 3 unique cards and assigns them to positions: past (what led here), present (current situation), future (where this leads). Each position includes the card data, its orientation, the position meaning, and the active interpretation for that orientation.
+ */
+export const tarotThreeCard = <ThrowOnError extends boolean = false>(options: Options<TarotThreeCardData, ThrowOnError>) => (options.client ?? client).post<TarotThreeCardResponses, TarotThreeCardErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/spread/three-card',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Celtic Cross Spread
+ *
+ * Full 10-card Celtic Cross spread — the most comprehensive tarot spread. Positions: present, challenge, root, past, possible outcome, near future, self, external influences, hopes and fears, final outcome. Returns each card with its spread position, position meaning, and active interpretation for the drawn orientation.
+ */
+export const tarotCelticCross = <ThrowOnError extends boolean = false>(options: Options<TarotCelticCrossData, ThrowOnError>) => (options.client ?? client).post<TarotCelticCrossResponses, TarotCelticCrossErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/spread/celtic-cross',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Yes/No Tarot Reading
+ *
+ * Draw one card for a yes/no answer. Answer logic: yes-polarity card upright = 'yes' (strong). Yes-polarity card reversed = 'maybe' (leaning). No-polarity card upright = 'no' (strong). No-polarity card reversed = 'maybe' (leaning). Maybe-polarity card = 'maybe' (unclear). Reversed cards are enabled by default for this spread.
+ */
+export const tarotYesNo = <ThrowOnError extends boolean = false>(options: Options<TarotYesNoData, ThrowOnError>) => (options.client ?? client).post<TarotYesNoResponses, TarotYesNoErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/tarot/spread/yes-no',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
 });
 
 /**
@@ -870,6 +1506,110 @@ export const nakshatra = <ThrowOnError extends boolean = false>(options: Options
 });
 
 /**
+ * Graha Nature (BPHS)
+ *
+ * Returns classical graha properties for all nine planets or a single planet as described in Brihat Parashara Hora Shastra Chapter 3. Includes tattva, guna, gender, caste, direction, color, deity, ruling day, metal, body part governed, and naisargika maitri (natural friends, enemies, neutrals). Pass ?planet=Sun (or Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) for a single planet. Omit ?planet to get all nine planets.
+ */
+export const planetNature = <ThrowOnError extends boolean = false>(options?: Options<PlanetNatureData, ThrowOnError>) => (options?.client ?? client).get<PlanetNatureResponses, PlanetNatureErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/planet-nature',
+    ...options
+});
+
+/**
+ * Puja Suggestions
+ *
+ * Returns classical puja recommendations for planetary propitiation. Each planet has a specific puja, presiding deity, day of the week, offerings, grain, and mantra grounded in Agni Purana, Matsya Purana, Skanda Purana, and BPHS Chapter 84. Pass ?planet=Saturn for a single planet. Omit ?planet to get all nine planets.
+ */
+export const pujaSuggestions = <ThrowOnError extends boolean = false>(options?: Options<PujaSuggestionsData, ThrowOnError>) => (options?.client ?? client).get<PujaSuggestionsResponses, PujaSuggestionsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/puja-suggestions',
+    ...options
+});
+
+/**
+ * Rudraksha Recommendations
+ *
+ * Returns Rudraksha bead recommendations per planet as per Shiva Purana Vidyeshvara Samhita Chapter 25. Each planet maps to a specific mukhi (face count) with presiding deity, exact beej mantra, recommended metal, wearing day, and classical notes including the important distinction that the Shiva Purana assigns Mukhis to deities — planetary correspondence is traditional astrological synthesis. Pass ?planet=Jupiter for a single planet. Omit ?planet to get all nine planets.
+ */
+export const rudraksha = <ThrowOnError extends boolean = false>(options?: Options<RudrakshaData, ThrowOnError>) => (options?.client ?? client).get<RudrakshaResponses, RudrakshaErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/rudraksha',
+    ...options
+});
+
+/**
+ * Ayanamsha Values
+ *
+ * Returns ayanamsha values for all four supported systems (Lahiri, Raman, KP, Tropical) for a given date. Each system returns the value in decimal degrees and DMS (degrees/minutes/seconds) format. Pass ?date=YYYY-MM-DD for a specific date. Omit ?date to get today's values. Lahiri is the Indian government standard and default for Jyotish.
+ */
+export const ayanamsha = <ThrowOnError extends boolean = false>(options?: Options<AyanamshaData, ThrowOnError>) => (options?.client ?? client).get<AyanamshaResponses, AyanamshaErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/ayanamsha',
+    ...options
+});
+
+/**
+ * Biorhythm Cycles
+ *
+ * Computes physical (23-day), emotional (28-day), and intellectual (33-day) biorhythm cycles for a birth date. Returns cycle values (-1.0 to +1.0), percentage, phase label (High/Rising/Falling/Low), and critical day flags. Critical days occur when a cycle crosses zero — these represent instability and vulnerability to poor judgment. Supports single-day and multi-day (up to 90 days) range requests. Formula: sin(2π × t / cycle_length) where t = days since birth. Source: Wilhelm Fliess (1897) physical cycle; Hermann Swoboda (1900) emotional cycle; Alfred Teltscher (1926) intellectual cycle.
+ */
+export const westernBiorhythm = <ThrowOnError extends boolean = false>(options: Options<WesternBiorhythmData, ThrowOnError>) => (options.client ?? client).post<WesternBiorhythmResponses, WesternBiorhythmErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/biorhythm',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Personal Nakshatra Prediction (Tarabala)
+ *
+ * Returns a personalised daily prediction using Tarabala and Chandrabala from the Muhurta Chintamani tradition. Tarabala measures the auspiciousness of the current day for an individual by assessing the relationship between their natal Moon nakshatra and the daily transit Moon nakshatra. Nine Taras from Janma (birth) to Ati-Mitra (great friend). Chandrabala measures the transit Moon's house from natal Moon. Also returns the transit nakshatra's quality type (Dhruva/Chara/ Ugra/Tikshna/Kshipra/Mridu/Mishra) with auspicious and inauspicious activities for today. Source: Muhurta Chintamani; Brihat Samhita Ch.98 (Varahamihira).
+ */
+export const nakshatraPrediction = <ThrowOnError extends boolean = false>(options: Options<NakshatraPredictionData, ThrowOnError>) => (options.client ?? client).post<NakshatraPredictionResponses, NakshatraPredictionErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/nakshatra/prediction',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Pitru Dosha (Pitru Shapa)
+ *
+ * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations from Brihat Parashara Hora Shastra Chapter 83 (Purvajanma Shapa Adhyaya — Effects of Curses in the Previous Birth). Returns presence flag, severity (mild/moderate/severe), which of the 5 BPHS combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
+ */
+export const pitraDosha = <ThrowOnError extends boolean = false>(options: Options<PitraDoshaData, ThrowOnError>) => (options.client ?? client).post<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/pitra-dosha',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Ghat Chakra
+ *
+ * Returns the four Ghatak (inauspicious) timing parameters for a native based on their Janma Rasi (natal Moon sign). Ghat Chakra identifies the lunar month (Masa), lunar day group (Tithi), weekday (Vara), and transit nakshatra that are persistently inauspicious for that individual. When transit periods align with these Ghatak parameters, starting new ventures, surgery, travel, or auspicious ceremonies should be avoided. Source: Muhurta Chintamani Ch.1 (Shubhashubha Prakarana); Phaladeepika Ch.26 (Gocharaphala).
+ */
+export const ghatChakra = <ThrowOnError extends boolean = false>(options: Options<GhatChakraData, ThrowOnError>) => (options.client ?? client).post<GhatChakraResponses, GhatChakraErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/ghat-chakra',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
  * Geocode
  *
  * Resolve a city or place name to coordinates and timezone.
@@ -907,7 +1647,7 @@ export const timezone = <ThrowOnError extends boolean = false>(options?: Options
 /**
  * Sade Sati periods
  *
- * Calculate all Sade Sati periods for a natal chart. Returns rising, peak, and setting phases for each period, current active status, intensity score (0-100), intensity label, and next upcoming period. Optionally check status for a specific date using check_date. Sade Sati is Saturn's 7.5-year transit over natal Moon sign and adjacent signs. Returns all past, current, and future Sade Sati cycles with phase descriptions.
+ * Calculate all Sade Sati periods for a natal chart. Returns rising, peak, and setting phases for each period, current active status, intensity score (0-100), intensity label, and next upcoming period. Optionally check status for a specific date using check_date. Sade Sati is Saturn's 7.5-year transit over natal Moon sign and adjacent signs. Small Panoti (Dhaiya) covers Saturn in the 4th or 8th sign from natal Moon (~2.5 years each). Returns all past, current, and future Sade Sati cycles with phase descriptions.
  */
 export const sadeSati = <ThrowOnError extends boolean = false>(options: Options<SadeSatiData, ThrowOnError>) => (options.client ?? client).post<SadeSatiResponses, SadeSatiErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -997,6 +1737,36 @@ export const yoginiDasha = <ThrowOnError extends boolean = false>(options: Optio
 export const varshaphal = <ThrowOnError extends boolean = false>(options: Options<VarshaphalData, ThrowOnError>) => (options.client ?? client).post<VarshaphalResponses, VarshaphalErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/astro/varshaphal',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Varshaphal — Tajika Saham Points
+ *
+ * Computes all 10 Tajika Saham (sensitive points) for a Varshaphal chart. Sahams are the Tajika equivalent of Arabic Parts — mathematically derived points that focus on specific life themes for the year. Formula: A - B + Ascendant (conditional +30° per Tajika Neelakanthi). Day and night formulas differ — the operands swap based on whether the solar return occurs during daytime or nighttime. 10 Sahams returned: Punya (Fortune), Vidya (Education), Yashas (Fame), Mitra (Friends), Mahatmya (Status), Asha (Desires), Karmakarya (Career), Vyapara (Business), Vivaha (Marriage), Santapa (Sorrow/Stress). Yashas and Mahatmya use Punya Saham as an operand — computed first.
+ */
+export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: Options<VarshaphalSahamData, ThrowOnError>) => (options.client ?? client).post<VarshaphalSahamResponses, VarshaphalSahamErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/varshaphal/saham',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Varshaphal — Harsha Bala
+ *
+ * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house placement), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (gender-appropriate house hemisphere), Dina-Ratri (day/night return alignment). Source: Tajika Neelakanthi / Varsha Tantra.
+ */
+export const varshaphalHarshaBala = <ThrowOnError extends boolean = false>(options: Options<VarshaphalHarshaBalaData, ThrowOnError>) => (options.client ?? client).post<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/astro/varshaphal/harsha-bala',
     ...options,
     headers: {
         'Content-Type': 'application/json',
