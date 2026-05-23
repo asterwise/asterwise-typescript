@@ -1,18 +1,26 @@
+<p align="center">
+  <img src="https://asterwise.com/public/logo.svg" alt="Asterwise" width="120" />
+</p>
+
 # asterwise
 
-Official TypeScript SDK for the 
-[Asterwise Vedic Astrology API](https://asterwise.com).
+[![npm version](https://img.shields.io/npm/v/asterwise)](https://www.npmjs.com/package/asterwise)
+[![Node](https://img.shields.io/node/v/asterwise)](https://www.npmjs.com/package/asterwise)
+
+The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 115+ endpoints. Classical accuracy. Ships in days.
+
+[Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pages/pricing.html) · [MCP server](https://mcp.asterwise.com)
+
+## Installation
 
 ```bash
 npm install asterwise
 ```
 
-## Authentication
-
-Get a free API key at [asterwise.com](https://asterwise.com).
+## Quickstart
 
 ```typescript
-import { natalChart, createClient, createConfig } from 'asterwise';
+import { createClient, createConfig, natalChart } from 'asterwise';
 
 const client = createClient(createConfig({
   baseUrl: 'https://api.asterwise.com',
@@ -34,40 +42,70 @@ const result = await natalChart({
 console.log(result.data);
 ```
 
+Get a free API key at [asterwise.com](https://asterwise.com).
+
+## What you can build
+
+| Domain | Operations |
+|--------|------------|
+| Vedic astrology | 38 |
+| Western astrology | 21 |
+| Numerology | 24 |
+| Horoscope | 8 |
+| Matchmaking | 5 |
+| Tarot | 9 |
+| Crystals & dreams | 7 |
+| KP & Lal Kitab | 5 |
+
+*117 typed SDK methods across 13 API classes; marketed as **115+ REST endpoints**.*
+
+## What makes Asterwise different
+
+- **Classical BPHS source citations** on every interpretation
+- **5-level Vimshottari Dasha** (Maha → Antar → Pratyantar → Sookshma → Prana) — most APIs return two
+- **Rajju and Vedha as hard vetoes** in matchmaking — not just point scores
+- **HMAC-signed responses** for auditability
+- **MCP server** with **100+ tools** for Claude and Cursor integration
+
+## Examples
+
+```typescript
+import {
+  createClient,
+  createConfig,
+  westernNatalChart,
+  lifePath,
+  tarotThreeCard,
+} from 'asterwise';
+
+const client = createClient(createConfig({
+  baseUrl: 'https://api.asterwise.com',
+  headers: { Authorization: 'Bearer YOUR_API_KEY' },
+}));
+
+const western = await westernNatalChart({
+  client,
+  body: {
+    date: '1985-11-12',
+    time: '06:45',
+    location: 'Mumbai, India',
+  },
+});
+
+const path = await lifePath({
+  client,
+  query: { date: '1985-11-12' },
+});
+
+const spread = await tarotThreeCard({
+  client,
+  body: { question: 'What should I focus on this month?' },
+});
+```
+
 ## Requirements
 
-Node.js 18+
-
-## What's included in this SDK (v0.1.4)
-
-The TypeScript SDK currently exposes **59 of 117** asterwise
-platform operations organized into four categories:
-
-**Astrology** — Natal chart, Dasha (5 levels), Yogas, Doshas,
-Divisional charts (D1–D60), Ashtakavarga, Shadbala, Gochar,
-Sade Sati, Dasha-Transit correlation, Matchmaking (Ashtakoota,
-Dashakoot, Porutham, Thirumana Porutham, Papasamyam), Panchanga,
-Choghadiya, Hora, Rahu Kaal, Muhurta, Varshaphal, Prashna,
-Remedies, Gemstones, KP System, Lal Kitab, Atmakaraka,
-Ishta Devata, Nakshatra — 38 endpoints
-
-**Numerology** — Profile, Compatibility, Life Path, Personal Year,
-Lucky Numbers, Number Meaning, Name Correction, Business Name,
-Chaldean, Lo Shu, Mobile Number, Vehicle Number — 14 endpoints
-
-**Horoscope** — Daily, Weekly, Monthly, Yearly × 12 Moon signs
-— 4 endpoints
-
-**Utilities** — Geocode (city → coordinates), Timezone lookup
-— 2 endpoints
-
-> **Platform scope**: The asterwise platform exposes 117 REST
-> operations in total (covering Vedic astrology, Western astrology,
-> numerology, horoscope, tarot, crystals, and dreams). The SDK
-> regenerates from the OpenAPI specification to align with platform
-> scope. For the complete API reference see
-> [docs.asterwise.com](https://docs.asterwise.com).
-> Coverage gap will close in the next SDK regeneration.
+Node.js 18+. An API key from [asterwise.com](https://asterwise.com).
 
 ## Documentation
 
@@ -75,46 +113,20 @@ Full API reference: [docs.asterwise.com](https://docs.asterwise.com)
 
 ## Development
 
-### Regenerating the SDK
-
-The SDK is generated from the asterwise SDK OpenAPI spec at
-`https://api.asterwise.com/openapi-sdk.json`. The contract that
-governs which operations are exposed and what their method names
-are lives in `asterwise-api/_docs/SDK_CONTRACT.md`.
-
-`npm run generate` runs the OpenAPI generator AND a post-generate
-hook (`scripts/post-generate.mjs`) that re-applies hand-edits the
-generator would otherwise overwrite (currently: F-43 client re-exports).
-The hook is idempotent — safe to run repeatedly.
-
-To regenerate locally:
+Regenerate from `https://api.asterwise.com/openapi-sdk.json`:
 
 ```bash
-npm install
 npm run generate
 ```
 
-This invokes `@hey-api/openapi-ts` using the configuration in
-`openapi-ts.config.ts`. It overwrites the generated files in
-`src/` (`sdk.gen.ts`, `types.gen.ts`, `client/`).
+The `scripts/post-generate.mjs` hook re-exports `createClient` and `createConfig` from the package root after each generation.
 
-To see what changed:
-
-```bash
-npm run generate:verify
-```
-
-To publish a new version after regeneration:
-
-1. Bump `version` in `package.json` (semver — breaking changes
-   require major bump after 1.0.0).
-2. Update `CHANGELOG.md` with the changes.
-3. `npm run build` to verify a clean build.
-4. `npm publish` (requires npm credentials).
-
-See `asterwise-api/_docs/audits/REFINE_PLAN_2026_05.md` for the
-regeneration roadmap.
+**Versioning:** regenerate → bump `version` in `package.json` → `npm install` (sync lockfile) → update `CHANGELOG.md` → `npm run build` → `npm publish`.
 
 ## Support
 
 support@asterwise.com
+
+## License
+
+Commercial. See [LICENSE](LICENSE).
