@@ -17,7 +17,17 @@ export default defineConfig({
   input: "https://api.asterwise.com/openapi-sdk.json",
   output: {
     path: "src",
-    // @hey-api 0.96+ deprecated format/lint in favor of postProcess.
+    // Emit explicit .js extensions in module specifiers. Required so
+    // generated .d.ts files use specifiers like
+    //   from './sdk.gen.js'
+    // instead of
+    //   from './sdk.gen'
+    // The former resolves correctly under TypeScript's nodenext
+    // module resolution; the latter throws TS2307 / TS2834 for
+    // strict + nodenext consumers (the default for new TS projects).
+    // See https://github.com/hey-api/openapi-ts docs for the
+    // output.module.extension option.
+    module: { extension: ".js" },
     postProcess: ["prettier", "eslint"],
   },
   plugins: [
