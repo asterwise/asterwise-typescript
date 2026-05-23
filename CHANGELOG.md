@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.2.1 — 2026-05-23
+
+### Docs
+
+- World-class README rewrite, peer-SDK pattern
+- Removed stale '59 of 117', 'Coverage gap', 'v0.1.4' language
+- Updated to 'Vedic + Western + numerology + tarot + crystals + dreams' framing
+
+### Metadata
+
+- package.json description rewritten
+- package.json keywords expanded from 8 to 13
+
+### No code changes
+
+- Docs-only patch. All 117 ops preserved. Upgrading from 0.2.0 is a
+  no-op for code; useful for the corrected npm landing page metadata.
+
 ## 0.2.0 — 2026-05-22
 
 ### Added
