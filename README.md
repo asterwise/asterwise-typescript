@@ -48,14 +48,15 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 
 | Domain | Operations |
 |--------|------------|
-| Vedic astrology | 38 |
-| Western astrology | 21 |
-| Numerology | 24 |
-| Horoscope | 8 |
+| Vedic astrology | 40 |
 | Matchmaking | 5 |
+| Western astrology | 17 |
+| Horoscope | 8 |
+| Numerology | 24 |
+| KP + Lal Kitab | 5 |
 | Tarot | 9 |
 | Crystals & dreams | 7 |
-| KP & Lal Kitab | 5 |
+| Utilities | 2 |
 
 *117 typed SDK methods across 13 API classes; marketed as **115+ REST endpoints**.*
 

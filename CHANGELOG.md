@@ -1,5 +1,39 @@
 # CHANGELOG
 
+## 0.2.2 — 2026-05-23
+
+### Fixed
+
+- **TypeScript nodenext compatibility**: published `.d.ts` files
+  now include explicit `.js` extensions on all relative module
+  specifiers. Previously, consumers with `moduleResolution:
+  "nodenext"` + `skipLibCheck: false` (default for new TS
+  projects) saw compile errors `TS2307` and `TS2834` when
+  importing `asterwise`. Fixed at two levels:
+  1. `openapi-ts.config.ts` sets `output.module.extension: ".js"`
+     so the generator emits extension-correct sources.
+  2. `fix-esm.mjs` now rewrites both `.js` and `.d.ts` files as
+     a defense-in-depth safety net.
+- **README domain table arithmetic**: the previous 8-row table
+  double-counted matchmaking methods (5 inside AstrologyApi)
+  and Western horoscope methods (4 inside WesternApi). Replaced
+  with a disjoint 9-row partition that sums correctly to 117:
+  Vedic 40, Matchmaking 5, Western 17, Horoscope 8, Numerology 24,
+  KP+Lal Kitab 5, Tarot 9, Crystals & dreams 7, Utilities 2.
+
+### Added
+
+- `scripts/verify-nodenext.sh` — runs `tsc --strict --module
+  nodenext` against the local `npm pack` output. Use after every
+  regen or before publish to catch `.d.ts` extension regressions.
+- `npm run verify:nodenext` script entry.
+
+### Internal
+
+- SDK regenerated from `https://api.asterwise.com/openapi-sdk.json`
+  with the new module.extension config. No API surface changes —
+  same 117 typed methods, same names, fully backward-compatible.
+
 ## 0.2.1 — 2026-05-23
 
 ### Docs
