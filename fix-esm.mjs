@@ -29,7 +29,7 @@ function walkDir(dir) {
   for (const f of readdirSync(dir)) {
     const full = join(dir, f);
     if (statSync(full).isDirectory()) walkDir(full);
-    else if (extname(f) === '.js') fixFile(full);
+    else if (extname(f) === '.js' || extname(f) === '.ts') fixFile(full);
   }
 }
 
