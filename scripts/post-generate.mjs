@@ -15,7 +15,9 @@
  * - README example
  *     import { createClient, createConfig } from 'asterwise'
  *   starts throwing ReferenceError at runtime
+ * - F-138 (src/types/error_codes.ts) silently deleted on every regen
  */
+import { spawnSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -59,6 +61,71 @@ function applyF43Patch() {
 }
 
 // ============================================================
+// Patch 2 — F-138: regenerate src/types/error_codes.ts
+// ============================================================
+//
+// openapi-ts writes to src/ directly and overwrites any
+// hand-managed types files. F-137 surfaced that
+// src/types/error_codes.ts and src/types/index.ts (produced
+// by asterwise-api/scripts/generate_error_artifacts.py)
+// were deleted on every regen.
+//
+// Run the error_codes generator after openapi-ts to restore
+// both files. Generator requires Python 3.10+ and reads from
+// asterwise-api/app/core/error_codes.py.
+
+const ASTERWISE_API_ROOT = resolve(REPO_ROOT, "../asterwise-api");
+const ERROR_GEN = resolve(
+  ASTERWISE_API_ROOT,
+  "scripts/generate_error_artifacts.py"
+);
+
+function runErrorCodesGenerator() {
+  try {
+    readFileSync(ERROR_GEN, "utf8");
+  } catch {
+    console.warn(
+      `  ⚠ F-138 SKIP: error codes generator not found at ${ERROR_GEN}\n` +
+        "    Manual recovery: cd ../asterwise-api && \n" +
+        "    python3 scripts/generate_error_artifacts.py --write --write-sdks"
+    );
+    return false;
+  }
+
+  console.log("  → F-138: regenerating src/types/error_codes.ts...");
+
+  const result = spawnSync(
+    "python3",
+    [
+      ERROR_GEN,
+      "--write",
+      "--write-sdks",
+      "--api-root",
+      ASTERWISE_API_ROOT,
+      "--typescript-sdk-root",
+      REPO_ROOT,
+    ],
+    {
+      cwd: ASTERWISE_API_ROOT,
+      encoding: "utf8",
+    }
+  );
+
+  if (result.status !== 0) {
+    console.error(
+      `  ✗ F-138 FAILED: error codes generator exited ${result.status}\n` +
+        `    stderr: ${result.stderr}\n` +
+        "    Manual recovery: cd ../asterwise-api && \n" +
+        "    python3 scripts/generate_error_artifacts.py --write --write-sdks"
+    );
+    return false;
+  }
+
+  console.log("  ✓ F-138 patch applied via error codes generator");
+  return true;
+}
+
+// ============================================================
 // Main
 // ============================================================
 
@@ -66,6 +133,7 @@ console.log("Post-generate hook starting...");
 let changes = 0;
 
 if (applyF43Patch()) changes++;
+if (runErrorCodesGenerator()) changes++;
 
 if (changes === 0) {
   console.log("Post-generate hook complete — no changes needed.");
