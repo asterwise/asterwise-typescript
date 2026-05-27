@@ -41,6 +41,39 @@ export type AngelNumberResponse = {
 };
 
 /**
+ * AngelNumbersListData
+ */
+export type AngelNumbersListData = {
+    /**
+     * Count
+     */
+    count: number;
+    /**
+     * Numbers
+     */
+    numbers: Array<string>;
+    /**
+     * Note
+     */
+    note: string;
+};
+
+/**
+ * AngelNumbersListResponse
+ */
+export type AngelNumbersListResponse = {
+    /**
+     * Success
+     */
+    success: boolean;
+    /**
+     * Message
+     */
+    message: string;
+    data: AngelNumbersListData;
+};
+
+/**
  * ApiResponse[AngelNumberResponse]
  */
 export type ApiResponseAngelNumberResponse = {
@@ -1052,17 +1085,11 @@ export type AshtakavargaResponse = {
         [key: string]: number;
     };
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
      *
-     * Whether birth time fallback was used
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     *
-     * Fallback method used for unknown birth time
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -1071,13 +1098,11 @@ export type AshtakavargaResponse = {
 export type AshtottariEndpointResponse = {
     periods: AshtottariResponse;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -2240,13 +2265,11 @@ export type DashaEndpointResponse = {
         [key: string]: unknown;
     } | null;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -2556,7 +2579,7 @@ export type DivisionalResponse = {
     /**
      * D9
      *
-     * Navamsha — spouse, dharma, and deeper soul purpose. The most important divisional chart.
+     * Navamsha — spouse, dharma, and deeper soul purpose. A primary divisional chart.
      */
     D9: {
         [key: string]: unknown;
@@ -2642,17 +2665,11 @@ export type DivisionalResponse = {
         [key: string]: unknown;
     };
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
      *
-     * True if birth time was unknown and sunrise was used.
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     *
-     * Set to 'sunrise_chart' when birth time is unknown.
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -2666,13 +2683,11 @@ export type DoshaEndpointResponse = {
         [key: string]: DoshaResult;
     };
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -2883,7 +2898,7 @@ export type DreamSymbol = {
     /**
      * Vedic Meaning
      *
-     * Classical Swapna Shastra interpretation.
+     * Classical Vedic dream tradition interpretation.
      */
     vedic_meaning: string;
     /**
@@ -2952,6 +2967,68 @@ export type DreamSymbolListResponse = {
      * Dream symbols sorted alphabetically.
      */
     symbols: Array<DreamSymbol>;
+};
+
+/**
+ * ErrorResponse
+ *
+ * Standard error envelope returned by all Asterwise API endpoints.
+ *
+ * Every error response follows this 8-field shape. The 'error' field
+ * is the machine-readable identifier (use it for programmatic handling).
+ * The 'message' field is the human-readable explanation. The 'doc_url'
+ * field links to the canonical documentation for the error code.
+ * Include 'request_id' when contacting support.
+ */
+export type ErrorResponse = {
+    /**
+     * Success
+     *
+     * Always false for error responses.
+     */
+    success?: boolean;
+    /**
+     * Error
+     *
+     * Machine-readable error code. Use this for programmatic error handling. See doc_url for the canonical docs page.
+     */
+    error: string;
+    /**
+     * Message
+     *
+     * Human-readable explanation of what went wrong and how to fix it. Safe to surface in customer-facing UIs.
+     */
+    message: string;
+    /**
+     * Details
+     *
+     * Optional structured details. For validation errors, contains per-field error objects. Empty list when there are no structured details.
+     */
+    details?: Array<unknown>;
+    /**
+     * Retry After
+     *
+     * Seconds to wait before retrying. Present on 429 (rate limit) and 503 (temporary outage) responses. Null when retry is not advised or applicable.
+     */
+    retry_after?: number | null;
+    /**
+     * Doc Url
+     *
+     * Canonical documentation URL for this error code. Contains causes, examples, and resolution steps.
+     */
+    doc_url: string;
+    /**
+     * Request Id
+     *
+     * Unique identifier for this request. Include when contacting support to enable rapid investigation.
+     */
+    request_id?: string | null;
+    /**
+     * Timestamp
+     *
+     * ISO 8601 timestamp of when the error occurred. UTC.
+     */
+    timestamp?: string | null;
 };
 
 /**
@@ -3241,16 +3318,6 @@ export type GocharRequest = {
      * Timezone for target_date/time.
      */
     target_timezone?: string | null;
-};
-
-/**
- * HTTPValidationError
- */
-export type HttpValidationError = {
-    /**
-     * Detail
-     */
-    detail?: Array<ValidationError>;
 };
 
 /**
@@ -3927,17 +3994,11 @@ export type MatchmakingResponse = {
         [key: string]: unknown;
     } | null;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
      *
-     * Whether fallback birth time was used for one or both persons
+     * Whether a precise birth time was provided for both persons. False when either person's birth time was not supplied or treated as unknown.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     *
-     * Fallback method used when birth time is unknown (for example, "sunrise_chart")
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -4279,7 +4340,7 @@ export type NatalCrystalContext = {
     /**
      * Lagna Lord
      *
-     * Lord of the 1st house per BPHS.
+     * Lord of the 1st house per classical Vedic tradition.
      */
     lagna_lord: string;
     /**
@@ -4403,7 +4464,7 @@ export type NatalCrystalEntry = {
     /**
      * Match Score
      *
-     * Classical Ratna Shastra match score.
+     * Classical Vedic gemstone tradition match score.
      */
     match_score: number;
     /**
@@ -4433,10 +4494,6 @@ export type NatalCrystalResponse = {
      * Crystals
      */
     crystals: Array<NatalCrystalEntry>;
-    /**
-     * Classical Note
-     */
-    classical_note: string;
 };
 
 /**
@@ -4540,17 +4597,11 @@ export type NatalResponse = {
      */
     ayanamsa_used: string;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
      *
-     * Whether birth time was unknown and fallback was applied
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     *
-     * Fallback method used when birth time is unknown (for example, "sunrise_chart")
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
     /**
      * Interpretation
      *
@@ -4618,7 +4669,7 @@ export type NatalResponse = {
     /**
      * Graha Drishti
      *
-     * Graha Drishti matrix (#143): each graha → map of aspected whole-sign house (1–12) to strength percent (25–100). Phaladeepika Adhyaya 2 Sloka 23; BPHS Ch.9.
+     * Graha Drishti matrix (#143): each graha → map of aspected whole-sign house (1–12) to strength percent (25–100). Per classical Vedic aspect tradition.
      */
     graha_drishti?: {
         [key: string]: {
@@ -4634,7 +4685,7 @@ export type NatalResponse = {
     /**
      * Arudha Padas
      *
-     * Arudha A1–A12 (#141): each pada → sign_index and sign_name (BPHS Ch.31).
+     * Arudha A1–A12 (#141): each pada → sign_index and sign_name per classical Vedic tradition.
      */
     arudha_padas?: {
         [key: string]: {
@@ -4965,18 +5016,6 @@ export type PanchangaResponse = {
      * Half of a tithi — the smaller unit of lunar time
      */
     karana: KaranaData;
-    /**
-     * Birth Time Unknown
-     *
-     * Whether birth time fallback was used
-     */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     *
-     * Fallback method used for unknown birth time
-     */
-    fallback_method?: string | null;
 };
 
 /**
@@ -5845,10 +5884,6 @@ export type SadeSatiResponse = {
         [key: string]: unknown;
     };
     /**
-     * Classical Note
-     */
-    classical_note: string;
-    /**
      * Is Currently Active
      */
     is_currently_active?: boolean | null;
@@ -6280,7 +6315,7 @@ export type StrengthRequest = {
  * Strength report root. Includes ``shadbala``, ``bhavbala`` (keys ``"1"``…``"12"`` with
  * ``bhavadhipati_bala``, ``bhava_dig_bala``, ``bhava_drik_bala``, ``total``), ``vimshopaka_bala``
  * (per-planet sixteen-varga score and threshold), ``divisional_charts``, ``ashtakavarga``, ``karakas``,
- * ``birth_time_unknown``, optional ``fallback_method``, and optional ``graha_yuddha``.
+ * ``birth_time_provided``, and optional ``graha_yuddha``.
  */
 export type StrengthResponse = {
     [key: string]: unknown;
@@ -6807,24 +6842,6 @@ export type UpapadaLagna = {
 };
 
 /**
- * ValidationError
- */
-export type ValidationError = {
-    /**
-     * Location
-     */
-    loc: Array<string | number>;
-    /**
-     * Message
-     */
-    msg: string;
-    /**
-     * Error Type
-     */
-    type: string;
-};
-
-/**
  * VaraData
  */
 export type VaraData = {
@@ -7022,7 +7039,7 @@ export type WesternAspectsRequest = {
     /**
      * Orbs
      *
-     * Custom orbs per aspect type. If omitted, uses Robert Hand Table 2 orbs: major=5°, sextile=3°, minor=1.5°
+     * Custom orbs per aspect type. If omitted, uses standard modern Western orbs: major=5°, sextile=3°, minor=1.5°
      */
     orbs?: {
         [key: string]: number;
@@ -7276,9 +7293,11 @@ export type WesternNatalResponse = {
      */
     ayanamsa_used?: string;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -7332,7 +7351,7 @@ export type WesternPlanetPosition = {
     /**
      * Dignity Score
      *
-     * Lilly dignity weight: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0
+     * Essential dignity weight: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0
      */
     dignity_score: number;
     /**
@@ -7501,13 +7520,11 @@ export type YogaEndpointResponse = {
      */
     yogas: Array<YogaResult>;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -7587,12 +7604,6 @@ export type YogaResult = {
      */
     formation: string;
     /**
-     * Classical Results
-     *
-     * Classical outcome text
-     */
-    classical_results: string;
-    /**
      * Modern Summary
      *
      * Modern interpretation summary
@@ -7612,13 +7623,11 @@ export type YogaResult = {
 export type YoginiEndpointResponse = {
     periods: YoginiResponse;
     /**
-     * Birth Time Unknown
+     * Birth Time Provided
+     *
+     * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
      */
-    birth_time_unknown?: boolean;
-    /**
-     * Fallback Method
-     */
-    fallback_method?: string | null;
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -7919,68 +7928,6 @@ export type AppApiSchemasWesternCompatibilityResponse = {
     key_aspects: Array<SynastryAspectSchema>;
 };
 
-/**
- * ErrorResponse
- *
- * Standard error envelope returned by all Asterwise API endpoints.
- *
- * Every error response follows this 8-field shape. The 'error' field
- * is the machine-readable identifier (use it for programmatic handling).
- * The 'message' field is the human-readable explanation. The 'doc_url'
- * field links to the canonical documentation for the error code.
- * Include 'request_id' when contacting support.
- */
-export type ErrorResponse = {
-    /**
-     * Success
-     *
-     * Always false for error responses.
-     */
-    success?: boolean;
-    /**
-     * Error
-     *
-     * Machine-readable error code. Use this for programmatic error handling. See doc_url for the canonical docs page.
-     */
-    error: string;
-    /**
-     * Message
-     *
-     * Human-readable explanation of what went wrong and how to fix it. Safe to surface in customer-facing UIs.
-     */
-    message: string;
-    /**
-     * Details
-     *
-     * Optional structured details. For validation errors, contains per-field error objects. Empty list when there are no structured details.
-     */
-    details?: Array<unknown>;
-    /**
-     * Retry After
-     *
-     * Seconds to wait before retrying. Present on 429 (rate limit) and 503 (temporary outage) responses. Null when retry is not advised or applicable.
-     */
-    retry_after?: number | null;
-    /**
-     * Doc Url
-     *
-     * Canonical documentation URL for this error code. Contains causes, examples, and resolution steps.
-     */
-    doc_url: string;
-    /**
-     * Request Id
-     *
-     * Unique identifier for this request. Include when contacting support to enable rapid investigation.
-     */
-    request_id?: string | null;
-    /**
-     * Timestamp
-     *
-     * ISO 8601 timestamp of when the error occurred. UTC.
-     */
-    timestamp?: string | null;
-};
-
 export type AtmakarakaData = {
     body: AtmakarakaRequest;
     path?: never;
@@ -7990,15 +7937,39 @@ export type AtmakarakaData = {
 
 export type AtmakarakaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8021,15 +7992,39 @@ export type AshtakavargaData = {
 
 export type AshtakavargaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8054,15 +8049,39 @@ export type AshtottariDashaData = {
 
 export type AshtottariDashaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8087,15 +8106,39 @@ export type ChartSvgData = {
 
 export type ChartSvgErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8120,15 +8163,39 @@ export type NatalChartData = {
 
 export type NatalChartErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8153,15 +8220,39 @@ export type WesternNatalChartData = {
 
 export type WesternNatalChartErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8193,15 +8284,39 @@ export type WesternMoonPhaseData = {
 
 export type WesternMoonPhaseErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8239,15 +8354,39 @@ export type WesternMoonCalendarData = {
 
 export type WesternMoonCalendarErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8272,15 +8411,39 @@ export type WesternAspectsData = {
 
 export type WesternAspectsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8305,15 +8468,39 @@ export type WesternTransitsDailyData = {
 
 export type WesternTransitsDailyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8338,15 +8525,39 @@ export type WesternTransitsWeeklyData = {
 
 export type WesternTransitsWeeklyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8371,15 +8582,39 @@ export type WesternTransitsMonthlyData = {
 
 export type WesternTransitsMonthlyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8404,15 +8639,39 @@ export type WesternSynastryData = {
 
 export type WesternSynastryErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8437,15 +8696,39 @@ export type WesternCompositeData = {
 
 export type WesternCompositeErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8470,15 +8753,39 @@ export type WesternCompatibilityData = {
 
 export type WesternCompatibilityErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8512,15 +8819,39 @@ export type WesternCompatibilityZodiacData = {
 
 export type WesternCompatibilityZodiacErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8545,15 +8876,39 @@ export type WesternSolarReturnData = {
 
 export type WesternSolarReturnErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8578,15 +8933,39 @@ export type WesternLunarReturnData = {
 
 export type WesternLunarReturnErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8611,15 +8990,39 @@ export type WesternPlanetaryReturnData = {
 
 export type WesternPlanetaryReturnErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8644,15 +9047,39 @@ export type WesternProgressionsSecondaryData = {
 
 export type WesternProgressionsSecondaryErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8677,15 +9104,39 @@ export type WesternProgressionsSolarArcData = {
 
 export type WesternProgressionsSolarArcErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8710,15 +9161,39 @@ export type PanchangaData = {
 
 export type PanchangaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8743,15 +9218,39 @@ export type PanchangaChoghadiyaData = {
 
 export type PanchangaChoghadiyaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8776,15 +9275,39 @@ export type PanchangaHoraData = {
 
 export type PanchangaHoraErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8809,15 +9332,39 @@ export type PanchangaRahuKaalData = {
 
 export type PanchangaRahuKaalErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8879,15 +9426,39 @@ export type PanchangaCalendarData = {
 
 export type PanchangaCalendarErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8912,15 +9483,39 @@ export type PanchangaCalendarPostData = {
 
 export type PanchangaCalendarPostErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -8972,15 +9567,39 @@ export type PanchangaTamilData = {
 
 export type PanchangaTamilErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9032,15 +9651,39 @@ export type PanchangaFestivalsData = {
 
 export type PanchangaFestivalsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9065,15 +9708,39 @@ export type DivisionalChartsData = {
 
 export type DivisionalChartsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9103,15 +9770,39 @@ export type HoroscopeDailyData = {
 
 export type HoroscopeDailyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9139,15 +9830,39 @@ export type HoroscopeWeeklyData = {
 
 export type HoroscopeWeeklyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9175,15 +9890,39 @@ export type HoroscopeMonthlyData = {
 
 export type HoroscopeMonthlyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9211,15 +9950,39 @@ export type HoroscopeYearlyData = {
 
 export type HoroscopeYearlyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9247,15 +10010,39 @@ export type WesternHoroscopeDailyData = {
 
 export type WesternHoroscopeDailyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9283,15 +10070,39 @@ export type WesternHoroscopeWeeklyData = {
 
 export type WesternHoroscopeWeeklyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9319,15 +10130,39 @@ export type WesternHoroscopeMonthlyData = {
 
 export type WesternHoroscopeMonthlyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9355,15 +10190,39 @@ export type WesternHoroscopeYearlyData = {
 
 export type WesternHoroscopeYearlyErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9386,15 +10245,39 @@ export type MuhurtaData = {
 
 export type MuhurtaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9417,15 +10300,39 @@ export type DashaData = {
 
 export type DashaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9450,15 +10357,39 @@ export type DashaTransitsData = {
 
 export type DashaTransitsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9481,15 +10412,39 @@ export type CharDashaData = {
 
 export type CharDashaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9512,15 +10467,39 @@ export type MatchmakingDashakootData = {
 
 export type MatchmakingDashakootErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9543,15 +10522,39 @@ export type MatchmakingPapasamyamData = {
 
 export type MatchmakingPapasamyamErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9574,15 +10577,39 @@ export type MatchmakingPoruthamData = {
 
 export type MatchmakingPoruthamErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9605,15 +10632,39 @@ export type MatchmakingThirumanaPoruthamData = {
 
 export type MatchmakingThirumanaPoruthamErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9636,15 +10687,39 @@ export type DoshasData = {
 
 export type DoshasErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9669,15 +10744,39 @@ export type GocharData = {
 
 export type GocharErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9700,15 +10799,39 @@ export type YogasData = {
 
 export type YogasErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9733,15 +10856,39 @@ export type MatchmakingData = {
 
 export type MatchmakingErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9766,15 +10913,39 @@ export type NumerologyProfileData = {
 
 export type NumerologyProfileErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9799,15 +10970,39 @@ export type NumerologyCompatibilityData = {
 
 export type NumerologyCompatibilityErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9839,15 +11034,39 @@ export type LifePathData = {
 
 export type LifePathErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9883,15 +11102,39 @@ export type PersonalYearData = {
 
 export type PersonalYearErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9916,15 +11159,39 @@ export type PersonalYearPostData = {
 
 export type PersonalYearPostErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9956,15 +11223,39 @@ export type BusinessNameData = {
 
 export type BusinessNameErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -9987,15 +11278,39 @@ export type BusinessNamePostData = {
 
 export type BusinessNamePostErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10033,15 +11348,39 @@ export type LuckyNumbersData = {
 
 export type LuckyNumbersErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10078,15 +11417,39 @@ export type NumberMeaningData = {
 
 export type NumberMeaningErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10111,15 +11474,39 @@ export type NameCorrectionData = {
 
 export type NameCorrectionErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10142,15 +11529,39 @@ export type ChaldeanData = {
 
 export type ChaldeanErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10173,15 +11584,39 @@ export type LoShuData = {
 
 export type LoShuErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10211,15 +11646,39 @@ export type MobileNumberData = {
 
 export type MobileNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10249,15 +11708,39 @@ export type VehicleNumberData = {
 
 export type VehicleNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10280,15 +11763,39 @@ export type ExpressionNumberData = {
 
 export type ExpressionNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10313,15 +11820,39 @@ export type SoulUrgeNumberData = {
 
 export type SoulUrgeNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10346,15 +11877,39 @@ export type PersonalityNumberData = {
 
 export type PersonalityNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10379,15 +11934,39 @@ export type MaturityNumberData = {
 
 export type MaturityNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10412,15 +11991,39 @@ export type BalanceNumberData = {
 
 export type BalanceNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10445,15 +12048,39 @@ export type KarmicLessonsData = {
 
 export type KarmicLessonsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10478,15 +12105,39 @@ export type PersonalCyclesData = {
 
 export type PersonalCyclesErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10511,15 +12162,39 @@ export type AngelTodayData = {
 
 export type AngelTodayErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10535,6 +12210,63 @@ export type AngelTodayResponses = {
 
 export type AngelTodayResponse = AngelTodayResponses[keyof AngelTodayResponses];
 
+export type AngelListData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/angel';
+};
+
+export type AngelListErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type AngelListError = AngelListErrors[keyof AngelListErrors];
+
+export type AngelListResponses = {
+    /**
+     * Successful Response
+     */
+    200: AngelNumbersListResponse;
+};
+
+export type AngelListResponse = AngelListResponses[keyof AngelListResponses];
+
 export type AngelNumberData = {
     body?: never;
     path: {
@@ -10549,15 +12281,39 @@ export type AngelNumberData = {
 
 export type AngelNumberErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10582,15 +12338,39 @@ export type AngelPersonalData = {
 
 export type AngelPersonalErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10615,15 +12395,39 @@ export type CrystalsListData = {
 
 export type CrystalsListErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10653,15 +12457,39 @@ export type CrystalsByPlanetData = {
 
 export type CrystalsByPlanetErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10686,15 +12514,39 @@ export type CrystalsRecommendData = {
 
 export type CrystalsRecommendErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10719,15 +12571,39 @@ export type CrystalsRecommendNatalData = {
 
 export type CrystalsRecommendNatalErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10757,15 +12633,39 @@ export type CrystalData = {
 
 export type CrystalErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10797,15 +12697,39 @@ export type DreamSymbolsData = {
 
 export type DreamSymbolsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10835,15 +12759,39 @@ export type DreamSymbolData = {
 
 export type DreamSymbolErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10868,15 +12816,39 @@ export type TarotCardsData = {
 
 export type TarotCardsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10906,15 +12878,39 @@ export type TarotCardData = {
 
 export type TarotCardErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10939,15 +12935,39 @@ export type TarotMajorArcanaData = {
 
 export type TarotMajorArcanaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -10977,15 +12997,39 @@ export type TarotSuitData = {
 
 export type TarotSuitErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11023,15 +13067,39 @@ export type TarotCardOfTheDayData = {
 
 export type TarotCardOfTheDayErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11056,15 +13124,39 @@ export type TarotDrawData = {
 
 export type TarotDrawErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11089,15 +13181,39 @@ export type TarotThreeCardData = {
 
 export type TarotThreeCardErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11122,15 +13238,39 @@ export type TarotCelticCrossData = {
 
 export type TarotCelticCrossErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11155,15 +13295,39 @@ export type TarotYesNoData = {
 
 export type TarotYesNoErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11188,15 +13352,39 @@ export type RemediesData = {
 
 export type RemediesErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11219,15 +13407,39 @@ export type GemstonesData = {
 
 export type GemstonesErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11250,15 +13462,39 @@ export type IshtaDevataData = {
 
 export type IshtaDevataErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11281,15 +13517,39 @@ export type KpChartData = {
 
 export type KpChartErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11312,15 +13572,39 @@ export type KpSignificatorsData = {
 
 export type KpSignificatorsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11343,15 +13627,39 @@ export type KpRulingPlanetsData = {
 
 export type KpRulingPlanetsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11374,15 +13682,39 @@ export type LalKitabChartData = {
 
 export type LalKitabChartErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11405,15 +13737,39 @@ export type LalKitabRemediesData = {
 
 export type LalKitabRemediesErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11436,15 +13792,39 @@ export type PrashnaData = {
 
 export type PrashnaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11472,15 +13852,39 @@ export type NakshatraData2 = {
 
 export type NakshatraErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11508,15 +13912,39 @@ export type PlanetNatureData = {
 
 export type PlanetNatureErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11544,15 +13972,39 @@ export type PujaSuggestionsData = {
 
 export type PujaSuggestionsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11580,15 +14032,39 @@ export type RudrakshaData = {
 
 export type RudrakshaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11616,15 +14092,39 @@ export type AyanamshaData = {
 
 export type AyanamshaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11647,15 +14147,39 @@ export type WesternBiorhythmData = {
 
 export type WesternBiorhythmErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11678,15 +14202,39 @@ export type NakshatraPredictionData = {
 
 export type NakshatraPredictionErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11709,15 +14257,39 @@ export type PitraDoshaData = {
 
 export type PitraDoshaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11740,15 +14312,39 @@ export type GhatChakraData = {
 
 export type GhatChakraErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11790,15 +14386,39 @@ export type GeocodeData = {
 
 export type GeocodeErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11848,15 +14468,39 @@ export type TimezoneData = {
 
 export type TimezoneErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11881,15 +14525,39 @@ export type SadeSatiData = {
 
 export type SadeSatiErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11914,15 +14582,39 @@ export type StrengthData = {
 
 export type StrengthErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11947,15 +14639,39 @@ export type TransitsData = {
 
 export type TransitsErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -11980,15 +14696,39 @@ export type YoginiDashaData = {
 
 export type YoginiDashaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -12013,15 +14753,39 @@ export type VarshaphalData = {
 
 export type VarshaphalErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -12044,15 +14808,39 @@ export type VarshaphalSahamData = {
 
 export type VarshaphalSahamErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
@@ -12075,15 +14863,39 @@ export type VarshaphalHarshaBalaData = {
 
 export type VarshaphalHarshaBalaErrors = {
     /**
-     * Validation error or invalid input
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
      */
     422: ErrorResponse;
     /**
-     * Internal server error
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
      */
     500: ErrorResponse;
     /**
-     * Service temporarily unavailable
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
      */
     503: ErrorResponse;
 };
