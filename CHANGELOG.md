@@ -1,5 +1,35 @@
 # CHANGELOG
 
+## 0.2.3 — 2026-05-27
+
+### Changed (cleanup — content provenance)
+
+- SDK regenerated from post-F-130 asterwise-api OpenAPI.
+  Generated files (src/sdk.gen.ts, src/types.gen.ts) no
+  longer contain BPHS chapter citations, Phaladeepika /
+  Robert Hand / classical text attributions in route
+  descriptions or schema documentation.
+- **Wire response shape changed (pitra-dosha endpoint):**
+  `bphs_combinations_triggered` renamed to
+  `combinations_triggered`; `bphs_combinations_count`
+  renamed to `combinations_count`. Update any TypeScript
+  code that reads these response fields.
+- **Wire response shape changed:** `classical_source`,
+  `classical_sources`, and `classical_note` fields removed
+  from pitra-dosha, ghat-chakra, prediction, crystal, and
+  sade-sati endpoint responses. Update any TypeScript code
+  that reads these fields.
+
+### Fixed
+
+- README no longer claims "Classical accuracy" or "Classical
+  BPHS source citations" — removed promotional language per
+  asterwise-api/AUTHORING_RULES.md Rule 5 and Rule 2.
+- `src/types/error_codes.ts` now regenerates correctly via
+  `npm run generate` (previously deleted on every regen
+  because openapi-ts overwrote files it didn't author).
+  F-137/F-138 hardening.
+
 ## 0.2.2 — 2026-05-23
 
 ### Fixed
