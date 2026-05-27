@@ -7,7 +7,7 @@
 [![npm version](https://img.shields.io/npm/v/asterwise)](https://www.npmjs.com/package/asterwise)
 [![Node](https://img.shields.io/node/v/asterwise)](https://www.npmjs.com/package/asterwise)
 
-The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 115+ endpoints. Classical accuracy. Ships in days.
+The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 115+ endpoints. Ships in days.
 
 [Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pages/pricing.html) · [MCP server](https://mcp.asterwise.com)
 
@@ -62,7 +62,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 
 ## What makes Asterwise different
 
-- **Classical BPHS source citations** on every interpretation
+- **Structured classical interpretations** on every response
 - **5-level Vimshottari Dasha** (Maha → Antar → Pratyantar → Sookshma → Prana) — most APIs return two
 - **Rajju and Vedha as hard vetoes** in matchmaking — not just point scores
 - **HMAC-signed responses** for auditability
