@@ -1,7 +1,7 @@
 {
   "name": "asterwise",
     "version": "0.2.3",
-  "description": "Official TypeScript SDK for the Asterwise API \u2014 Vedic and Western astrology, numerology, tarot, crystals, dreams. 115+ endpoints.",
+  "description": "Official TypeScript SDK for the Asterwise API \u2014 Vedic and Western astrology, numerology, tarot, crystals, dreams. 118 endpoints.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

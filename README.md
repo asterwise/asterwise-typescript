@@ -7,7 +7,7 @@
 [![npm version](https://img.shields.io/npm/v/asterwise)](https://www.npmjs.com/package/asterwise)
 [![Node](https://img.shields.io/node/v/asterwise)](https://www.npmjs.com/package/asterwise)
 
-The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 115+ endpoints. Ships in days.
+The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 118 endpoints. Ships in days.
 
 [Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pages/pricing.html) · [MCP server](https://mcp.asterwise.com)
 
@@ -58,7 +58,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 | Crystals & dreams | 7 |
 | Utilities | 2 |
 
-*117 typed SDK methods across 13 API classes; marketed as **115+ REST endpoints**.*
+*118 typed SDK methods across 13 API classes covering **118 REST endpoints**.*
 
 ## What makes Asterwise different
 
@@ -66,7 +66,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 - **5-level Vimshottari Dasha** (Maha → Antar → Pratyantar → Sookshma → Prana) — most APIs return two
 - **Rajju and Vedha as hard vetoes** in matchmaking — not just point scores
 - **HMAC-signed responses** for auditability
-- **MCP server** with **100+ tools** for Claude and Cursor integration
+- **MCP server** with **103 tools** for Claude and Cursor integration
 
 ## Examples
 
