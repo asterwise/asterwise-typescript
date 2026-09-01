@@ -45,3 +45,4 @@ gcp-key*.json
 firebase-adminsdk*.json
 auth_token*
 .netrc
+*.tgz
