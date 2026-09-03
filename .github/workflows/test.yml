@@ -19,8 +19,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install dependencies (from lockfile)
+        run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build and run tests
+        run: npm test
+
+      - name: Verify the packed artifact compiles under strict + nodenext
+        if: matrix.node-version == '22'
+        run: npm run verify:nodenext

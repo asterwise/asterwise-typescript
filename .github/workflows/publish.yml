@@ -3,7 +3,8 @@ name: Publish to npm
 on:
   push:
     tags:
-      - "v*"
+      # Release tags are typescript-v<version> (e.g. typescript-v0.2.4).
+      - "typescript-v*"
 
 jobs:
   publish:
