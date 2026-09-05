@@ -7,9 +7,9 @@
 [![npm version](https://img.shields.io/npm/v/asterwise)](https://www.npmjs.com/package/asterwise)
 [![Node](https://img.shields.io/node/v/asterwise)](https://www.npmjs.com/package/asterwise)
 
-The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 118 endpoints. Ships in days.
+The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 118 endpoints, generated from the API's OpenAPI document so the types match what the server sends. Every position is [checked against NASA JPL Horizons](https://asterwise.com/accuracy/), median 0.046 arcseconds over 80 positions from 1950 to 2050.
 
-[Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pages/pricing.html) · [MCP server](https://mcp.asterwise.com)
+[Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pricing/) · [MCP server](https://asterwise.com/mcp/)
 
 ## Installation
 
