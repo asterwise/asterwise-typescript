@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.4 — 2026-09-05
+
+### Changed
+
+- License: the SDK is now MIT licensed (LICENSE file added; package.json
+  previously pointed at a LICENSE file that did not exist). Use of the API
+  itself remains governed by the Asterwise terms.
+- Package description and keywords now state that the SDK is generated
+  from the OpenAPI document, that positions are checked against NASA JPL
+  Horizons (https://asterwise.com/accuracy/), and that an MCP server is
+  available; README lead links the accuracy page; pricing URL fixed.
+- No code changes.
+
 ## 0.2.3 — 2026-05-27
 
 ### Changed (cleanup — content provenance)
