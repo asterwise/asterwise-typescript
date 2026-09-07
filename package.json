@@ -47,7 +47,7 @@
   ],
   "author": "Asterwise <support@asterwise.com>",
   "license": "MIT",
-  "homepage": "https://asterwise.com",
+  "homepage": "https://asterwise.com/?utm_source=npm&utm_medium=package&utm_campaign=asterwise-typescript",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asterwise/asterwise-typescript.git"
