@@ -1,5 +1,45 @@
 # CHANGELOG
 
+## 0.3.0 — 2026-09-28
+
+Regenerated from the API as deployed on 2026-09-28. No function was
+removed; 118 functions, as before.
+
+### Changed
+
+- **45 operations now have typed responses instead of `unknown`**:
+  `atmakaraka`, `ayanamsha`, `charDasha`, `dashaTransits`, `gemstones`,
+  `ghatChakra`, `gochar`, `ishtaDevata`, `matchmakingDashakoot`,
+  `matchmakingPapasamyam`, `matchmakingPorutham`,
+  `matchmakingThirumanaPorutham`, `muhurta`, `nakshatra`,
+  `nakshatraPrediction`, `pitraDosha`, `planetNature`, `pujaSuggestions`,
+  `remedies`, `rudraksha`, `varshaphal`, `varshaphalHarshaBala`,
+  `varshaphalSaham`, the four Vedic and four Western horoscope functions,
+  `kpChart`, `kpRulingPlanets`, `kpSignificators`, `lalKitabChart`,
+  `lalKitabRemedies`, `businessName`, `businessNamePost`, `chaldean`,
+  `loShu`, `mobileNumber`, `nameCorrection`, `vehicleNumber`, `prashna`
+  and `westernBiorhythm`. Runtime behaviour is unchanged; casts you wrote
+  for `unknown` can be removed.
+
+### Added
+
+- Panchanga: the whole panchanga day (every tithi, nakshatra, yoga and
+  karana with start and end times and kshaya/vriddhi flags; sunrise,
+  sunset, moonrise, moonset; masa, samvat, ritu, ayana; the day's timings).
+- Festival calendar: `categories` query parameter and per-entry `masa`,
+  `tithi`, `rule`, `observance_window`,
+  `end_date`, `sankranti` and `eclipse`.
+- Muhurta: six more activities, `location`, `participants`,
+  `max_windows_per_day`, `min_duration_minutes`; windows add `start_at`,
+  `end_at`, `civil_date`, `panchanga_day`, `grade`, `reasons`, `cautions`.
+- Divisional charts: `dignity`, `is_vargottama`, `house`, `houses`;
+  nakshatra prediction: Tarabala cycles and `transit_nakshatras`.
+- 208 more exported types.
+
+### Fixed
+
+- `PlanetNatureEntry.tattva` is `string | null` (null for Rahu and Ketu).
+
 ## 0.2.4 — 2026-09-05
 
 ### Changed

@@ -62,11 +62,13 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 
 ## What makes Asterwise different
 
-- **Structured classical interpretations** on every response
+- **Classical interpretation text** alongside the calculations on chart endpoints (natal chart, dasha, yogas, doshas)
 - **5-level Vimshottari Dasha** (Maha → Antar → Pratyantar → Sookshma → Prana) — most APIs return two
 - **Rajju and Vedha as hard vetoes** in matchmaking — not just point scores
 - **HMAC-signed responses** for auditability
-- **MCP server** with **103 tools** for Claude and Cursor integration
+- **Panchanga as printed panchangs show it**: every tithi, nakshatra, yoga and karana of the day with start and end times, the festival and vrat calendar, and muhurta search with exact ISO times
+- **Typed responses** for every operation, generated from the OpenAPI document
+- **MCP server** with **104 tools** for Claude and Cursor integration
 
 ## Examples
 
@@ -122,7 +124,7 @@ npm run generate
 
 The `scripts/post-generate.mjs` hook re-exports `createClient` and `createConfig` from the package root after each generation.
 
-**Versioning:** regenerate → bump `version` in `package.json` → `npm install` (sync lockfile) → update `CHANGELOG.md` → `npm run build` → `npm publish`.
+**Releasing:** `npm run generate` → bump `version` in `package.json` → `npm install` (syncs the lockfile) → update `CHANGELOG.md` → `npm test` and `npm run verify:nodenext` → commit → push a `typescript-v<version>` tag. The publish workflow checks the tag against `package.json`, runs the tests and the nodenext check, builds and publishes with provenance.
 
 ## Support
 

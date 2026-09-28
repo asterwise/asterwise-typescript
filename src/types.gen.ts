@@ -79,12 +79,19 @@ export type AngelNumbersListResponse = {
 export type ApiResponseAngelNumberResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: AngelNumberResponse;
 };
 
@@ -94,12 +101,19 @@ export type ApiResponseAngelNumberResponse = {
 export type ApiResponseAshtakavargaResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: AshtakavargaResponse;
 };
 
@@ -109,13 +123,86 @@ export type ApiResponseAshtakavargaResponse = {
 export type ApiResponseAshtottariEndpointResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: AshtottariEndpointResponse;
+};
+
+/**
+ * ApiResponse[AtmakarakaResponse]
+ */
+export type ApiResponseAtmakarakaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: AtmakarakaResponse;
+};
+
+/**
+ * ApiResponse[AyanamshaResponse]
+ */
+export type ApiResponseAyanamshaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: AyanamshaResponse;
+};
+
+/**
+ * ApiResponse[BusinessNameAnalysisResponse]
+ */
+export type ApiResponseBusinessNameAnalysisResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: BusinessNameAnalysisResponse;
 };
 
 /**
@@ -124,13 +211,64 @@ export type ApiResponseAshtottariEndpointResponse = {
 export type ApiResponseCardOfDayResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: CardOfDayResponse;
+};
+
+/**
+ * ApiResponse[ChaldeanResponse]
+ */
+export type ApiResponseChaldeanResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: ChaldeanResponse;
+};
+
+/**
+ * ApiResponse[CharDashaResponse]
+ */
+export type ApiResponseCharDashaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: CharDashaResponse;
 };
 
 /**
@@ -139,12 +277,19 @@ export type ApiResponseCardOfDayResponse = {
 export type ApiResponseChartResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: ChartResponse;
 };
 
@@ -154,12 +299,19 @@ export type ApiResponseChartResponse = {
 export type ApiResponseChoghadiyaResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: ChoghadiyaResponse;
 };
 
@@ -169,12 +321,19 @@ export type ApiResponseChoghadiyaResponse = {
 export type ApiResponseCompositeResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: CompositeResponse;
 };
 
@@ -184,12 +343,19 @@ export type ApiResponseCompositeResponse = {
 export type ApiResponseCrystalEntry = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: CrystalEntry;
 };
 
@@ -199,12 +365,19 @@ export type ApiResponseCrystalEntry = {
 export type ApiResponseCrystalListResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: CrystalListResponse;
 };
 
@@ -214,12 +387,19 @@ export type ApiResponseCrystalListResponse = {
 export type ApiResponseCrystalRecommendResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: CrystalRecommendResponse;
 };
 
@@ -229,12 +409,19 @@ export type ApiResponseCrystalRecommendResponse = {
 export type ApiResponseDailyTransitResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DailyTransitResponse;
 };
 
@@ -244,13 +431,86 @@ export type ApiResponseDailyTransitResponse = {
 export type ApiResponseDashaEndpointResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DashaEndpointResponse;
+};
+
+/**
+ * ApiResponse[DashaTransitsResponse]
+ */
+export type ApiResponseDashaTransitsResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: DashaTransitsResponse;
+};
+
+/**
+ * ApiResponse[DashakootResponse]
+ */
+export type ApiResponseDashakootResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: DashakootResponse;
+};
+
+/**
+ * ApiResponse[DigitNumberAnalysisResponse]
+ */
+export type ApiResponseDigitNumberAnalysisResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: DigitNumberAnalysisResponse;
 };
 
 /**
@@ -259,12 +519,19 @@ export type ApiResponseDashaEndpointResponse = {
 export type ApiResponseDivisionalResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DivisionalResponse;
 };
 
@@ -274,12 +541,19 @@ export type ApiResponseDivisionalResponse = {
 export type ApiResponseDoshaEndpointResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DoshaEndpointResponse;
 };
 
@@ -289,12 +563,19 @@ export type ApiResponseDoshaEndpointResponse = {
 export type ApiResponseDrawResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DrawResponse;
 };
 
@@ -304,12 +585,19 @@ export type ApiResponseDrawResponse = {
 export type ApiResponseDreamSymbolListResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DreamSymbolListResponse;
 };
 
@@ -319,12 +607,19 @@ export type ApiResponseDreamSymbolListResponse = {
 export type ApiResponseDreamSymbol = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: DreamSymbol;
 };
 
@@ -334,13 +629,42 @@ export type ApiResponseDreamSymbol = {
 export type ApiResponseFestivalCalendarResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: FestivalCalendarResponse;
+};
+
+/**
+ * ApiResponse[GemstoneResponse]
+ */
+export type ApiResponseGemstoneResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: GemstoneResponse;
 };
 
 /**
@@ -349,13 +673,86 @@ export type ApiResponseFestivalCalendarResponse = {
 export type ApiResponseGeocodeResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: GeocodeResponse;
+};
+
+/**
+ * ApiResponse[GhatChakraResponse]
+ */
+export type ApiResponseGhatChakraResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: GhatChakraResponse;
+};
+
+/**
+ * ApiResponse[GocharResponse]
+ */
+export type ApiResponseGocharResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: GocharResponse;
+};
+
+/**
+ * ApiResponse[HarshaBalaResponse]
+ */
+export type ApiResponseHarshaBalaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: HarshaBalaResponse;
 };
 
 /**
@@ -364,13 +761,130 @@ export type ApiResponseGeocodeResponse = {
 export type ApiResponseHoraResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: HoraResponse;
+};
+
+/**
+ * ApiResponse[HoroscopeData]
+ */
+export type ApiResponseHoroscopeData = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: HoroscopeData;
+};
+
+/**
+ * ApiResponse[IshtaDevtaResponse]
+ */
+export type ApiResponseIshtaDevtaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: IshtaDevtaResponse;
+};
+
+/**
+ * ApiResponse[KPChartResponse]
+ */
+export type ApiResponseKpChartResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: KpChartResponse;
+};
+
+/**
+ * ApiResponse[KPRulingPlanetsResponse]
+ */
+export type ApiResponseKpRulingPlanetsResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: KpRulingPlanetsResponse;
+};
+
+/**
+ * ApiResponse[KPSignificatorsResponse]
+ */
+export type ApiResponseKpSignificatorsResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: KpSignificatorsResponse;
 };
 
 /**
@@ -379,13 +893,64 @@ export type ApiResponseHoraResponse = {
 export type ApiResponseKarmicLessonsResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: KarmicLessonsResponse;
+};
+
+/**
+ * ApiResponse[LalKitabChartResponse]
+ */
+export type ApiResponseLalKitabChartResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: LalKitabChartResponse;
+};
+
+/**
+ * ApiResponse[LalKitabRemediesResponse]
+ */
+export type ApiResponseLalKitabRemediesResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: LalKitabRemediesResponse;
 };
 
 /**
@@ -394,13 +959,42 @@ export type ApiResponseKarmicLessonsResponse = {
 export type ApiResponseLifePathResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: LifePathResponse;
+};
+
+/**
+ * ApiResponse[LoShuResponse]
+ */
+export type ApiResponseLoShuResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: LoShuResponse;
 };
 
 /**
@@ -409,12 +1003,19 @@ export type ApiResponseLifePathResponse = {
 export type ApiResponseLuckyNumbersApiResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: LuckyNumbersApiResponse;
 };
 
@@ -424,12 +1025,19 @@ export type ApiResponseLuckyNumbersApiResponse = {
 export type ApiResponseMatchmakingResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: MatchmakingResponse;
 };
 
@@ -439,12 +1047,19 @@ export type ApiResponseMatchmakingResponse = {
 export type ApiResponseMaturityNumberResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: MaturityNumberResponse;
 };
 
@@ -454,12 +1069,19 @@ export type ApiResponseMaturityNumberResponse = {
 export type ApiResponseMonthlyTransitResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: MonthlyTransitResponse;
 };
 
@@ -469,13 +1091,108 @@ export type ApiResponseMonthlyTransitResponse = {
 export type ApiResponseMoonPhaseResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: MoonPhaseResponse;
+};
+
+/**
+ * ApiResponse[MuhurtaResponse]
+ */
+export type ApiResponseMuhurtaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: MuhurtaResponse;
+};
+
+/**
+ * ApiResponse[NakshatraPredictionResponse]
+ */
+export type ApiResponseNakshatraPredictionResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: NakshatraPredictionResponse;
+};
+
+/**
+ * ApiResponse[NakshatraProfileResponse]
+ */
+export type ApiResponseNakshatraProfileResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: NakshatraProfileResponse;
+};
+
+/**
+ * ApiResponse[NameCorrectionResponse]
+ */
+export type ApiResponseNameCorrectionResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: NameCorrectionResponse;
 };
 
 /**
@@ -484,12 +1201,19 @@ export type ApiResponseMoonPhaseResponse = {
 export type ApiResponseNameNumberResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: NameNumberResponse;
 };
 
@@ -499,12 +1223,19 @@ export type ApiResponseNameNumberResponse = {
 export type ApiResponseNatalCrystalResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: NatalCrystalResponse;
 };
 
@@ -514,12 +1245,19 @@ export type ApiResponseNatalCrystalResponse = {
 export type ApiResponseNatalResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: NatalResponse;
 };
 
@@ -529,12 +1267,19 @@ export type ApiResponseNatalResponse = {
 export type ApiResponseNumberMeaningResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: NumberMeaningResponse;
 };
 
@@ -544,12 +1289,19 @@ export type ApiResponseNumberMeaningResponse = {
 export type ApiResponseNumerologyProfileResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: NumerologyProfileResponse;
 };
 
@@ -559,12 +1311,19 @@ export type ApiResponseNumerologyProfileResponse = {
 export type ApiResponsePanchangaCalendarResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: PanchangaCalendarResponse;
 };
 
@@ -574,13 +1333,42 @@ export type ApiResponsePanchangaCalendarResponse = {
 export type ApiResponsePanchangaResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: PanchangaResponse;
+};
+
+/**
+ * ApiResponse[PapasamyamResponse]
+ */
+export type ApiResponsePapasamyamResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: PapasamyamResponse;
 };
 
 /**
@@ -589,12 +1377,19 @@ export type ApiResponsePanchangaResponse = {
 export type ApiResponsePersonalAngelNumberResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: PersonalAngelNumberResponse;
 };
 
@@ -604,12 +1399,19 @@ export type ApiResponsePersonalAngelNumberResponse = {
 export type ApiResponsePersonalCycleResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: PersonalCycleResponse;
 };
 
@@ -619,13 +1421,86 @@ export type ApiResponsePersonalCycleResponse = {
 export type ApiResponsePersonalYearResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: PersonalYearResponse;
+};
+
+/**
+ * ApiResponse[PitruDoshaResponse]
+ */
+export type ApiResponsePitruDoshaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: PitruDoshaResponse;
+};
+
+/**
+ * ApiResponse[PoruthamResponse]
+ */
+export type ApiResponsePoruthamResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: PoruthamResponse;
+};
+
+/**
+ * ApiResponse[PrashnaResponse]
+ */
+export type ApiResponsePrashnaResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: PrashnaResponse;
 };
 
 /**
@@ -634,13 +1509,42 @@ export type ApiResponsePersonalYearResponse = {
 export type ApiResponseRahuKaalResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: RahuKaalResponse;
+};
+
+/**
+ * ApiResponse[RemediesResponse]
+ */
+export type ApiResponseRemediesResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: RemediesResponse;
 };
 
 /**
@@ -649,12 +1553,19 @@ export type ApiResponseRahuKaalResponse = {
 export type ApiResponseReturnChartResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: ReturnChartResponse;
 };
 
@@ -664,13 +1575,42 @@ export type ApiResponseReturnChartResponse = {
 export type ApiResponseSadeSatiResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: SadeSatiResponse;
+};
+
+/**
+ * ApiResponse[SahamResponse]
+ */
+export type ApiResponseSahamResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: SahamResponse;
 };
 
 /**
@@ -679,12 +1619,19 @@ export type ApiResponseSadeSatiResponse = {
 export type ApiResponseSecondaryProgressionResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: SecondaryProgressionResponse;
 };
 
@@ -694,12 +1641,19 @@ export type ApiResponseSecondaryProgressionResponse = {
 export type ApiResponseSolarArcResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: SolarArcResponse;
 };
 
@@ -709,12 +1663,19 @@ export type ApiResponseSolarArcResponse = {
 export type ApiResponseSpreadResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: SpreadResponse;
 };
 
@@ -724,12 +1685,19 @@ export type ApiResponseSpreadResponse = {
 export type ApiResponseStrengthResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: StrengthResponse;
 };
 
@@ -739,12 +1707,19 @@ export type ApiResponseStrengthResponse = {
 export type ApiResponseSynastryResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: SynastryResponse;
 };
 
@@ -754,12 +1729,19 @@ export type ApiResponseSynastryResponse = {
 export type ApiResponseTamilPanchangaResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: TamilPanchangaResponse;
 };
 
@@ -769,13 +1751,42 @@ export type ApiResponseTamilPanchangaResponse = {
 export type ApiResponseTarotCardSchema = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: TarotCardSchema;
+};
+
+/**
+ * ApiResponse[ThirumanaPoruthamResponse]
+ */
+export type ApiResponseThirumanaPoruthamResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: ThirumanaPoruthamResponse;
 };
 
 /**
@@ -784,12 +1795,19 @@ export type ApiResponseTarotCardSchema = {
 export type ApiResponseTimezoneResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: TimezoneResponse;
 };
 
@@ -799,12 +1817,19 @@ export type ApiResponseTimezoneResponse = {
 export type ApiResponseTodayAngelNumberResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: TodayAngelNumberResponse;
 };
 
@@ -814,13 +1839,138 @@ export type ApiResponseTodayAngelNumberResponse = {
 export type ApiResponseTransitsResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: TransitsResponse;
+};
+
+/**
+ * ApiResponse[Union[BiorhythmSingleDayResponse, BiorhythmRangeResponse]]
+ */
+export type ApiResponseUnionBiorhythmSingleDayResponseBiorhythmRangeResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * Data
+     *
+     * The endpoint response payload
+     */
+    data: BiorhythmSingleDayResponse | BiorhythmRangeResponse;
+};
+
+/**
+ * ApiResponse[Union[PlanetNatureAllResponse, PlanetNatureSingleResponse]]
+ */
+export type ApiResponseUnionPlanetNatureAllResponsePlanetNatureSingleResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * Data
+     *
+     * The endpoint response payload
+     */
+    data: PlanetNatureAllResponse | PlanetNatureSingleResponse;
+};
+
+/**
+ * ApiResponse[Union[PujaSuggestionsAllResponse, PujaSuggestionSingleResponse]]
+ */
+export type ApiResponseUnionPujaSuggestionsAllResponsePujaSuggestionSingleResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * Data
+     *
+     * The endpoint response payload
+     */
+    data: PujaSuggestionsAllResponse | PujaSuggestionSingleResponse;
+};
+
+/**
+ * ApiResponse[Union[RudrakshaAllResponse, RudrakshaSingleResponse]]
+ */
+export type ApiResponseUnionRudrakshaAllResponseRudrakshaSingleResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * Data
+     *
+     * The endpoint response payload
+     */
+    data: RudrakshaAllResponse | RudrakshaSingleResponse;
+};
+
+/**
+ * ApiResponse[VarshaphalResponse]
+ */
+export type ApiResponseVarshaphalResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: VarshaphalResponse;
 };
 
 /**
@@ -829,12 +1979,19 @@ export type ApiResponseTransitsResponse = {
 export type ApiResponseWeeklyTransitResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: WeeklyTransitResponse;
 };
 
@@ -844,13 +2001,42 @@ export type ApiResponseWeeklyTransitResponse = {
 export type ApiResponseWesternAspectsResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: WesternAspectsResponse;
+};
+
+/**
+ * ApiResponse[WesternHoroscopeData]
+ */
+export type ApiResponseWesternHoroscopeData = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: WesternHoroscopeData;
 };
 
 /**
@@ -859,12 +2045,19 @@ export type ApiResponseWesternAspectsResponse = {
 export type ApiResponseWesternNatalResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: WesternNatalResponse;
 };
 
@@ -874,12 +2067,19 @@ export type ApiResponseWesternNatalResponse = {
 export type ApiResponseYesNoResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: YesNoResponse;
 };
 
@@ -889,12 +2089,19 @@ export type ApiResponseYesNoResponse = {
 export type ApiResponseYogaEndpointResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: YogaEndpointResponse;
 };
 
@@ -904,12 +2111,19 @@ export type ApiResponseYogaEndpointResponse = {
 export type ApiResponseYoginiEndpointResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: YoginiEndpointResponse;
 };
 
@@ -919,12 +2133,19 @@ export type ApiResponseYoginiEndpointResponse = {
 export type ApiResponseZodiacCompatibilityResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: ZodiacCompatibilityResponse;
 };
 
@@ -934,14 +2155,20 @@ export type ApiResponseZodiacCompatibilityResponse = {
 export type ApiResponseListMoonPhaseResponse = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
     /**
      * Data
+     *
+     * The endpoint response payload
      */
     data: Array<MoonPhaseResponse>;
 };
@@ -952,14 +2179,20 @@ export type ApiResponseListMoonPhaseResponse = {
 export type ApiResponseListTarotCardSchema = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
     /**
      * Data
+     *
+     * The endpoint response payload
      */
     data: Array<TarotCardSchema>;
 };
@@ -1277,6 +2510,152 @@ export type AtmakarakaRequest = {
 };
 
 /**
+ * AtmakarakaResponse
+ */
+export type AtmakarakaResponse = {
+    /**
+     * Karaka To Planet
+     */
+    karaka_to_planet: {
+        [key: string]: string;
+    };
+    /**
+     * Planet To Karaka
+     */
+    planet_to_karaka: {
+        [key: string]: string;
+    };
+    /**
+     * Atmakaraka
+     */
+    atmakaraka: string;
+    /**
+     * Atmakaraka Sign
+     */
+    atmakaraka_sign: string;
+    /**
+     * Atmakaraka Nakshatra
+     */
+    atmakaraka_nakshatra: string | null;
+    /**
+     * Details
+     */
+    details: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * Ayana
+ */
+export type Ayana = {
+    /**
+     * Vedic
+     *
+     * From the sidereal Sun (Uttarayana from Makara Sankranti).
+     */
+    vedic: string;
+    /**
+     * Drik
+     *
+     * From the tropical Sun (Uttarayana from the winter solstice).
+     */
+    drik: string;
+};
+
+/**
+ * AyanamshaResponse
+ */
+export type AyanamshaResponse = {
+    /**
+     * Date
+     *
+     * Date in ISO YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Ayanamsha
+     *
+     * Ayanamsha values keyed by system name (lahiri, raman, kp, tropical)
+     */
+    ayanamsha: {
+        [key: string]: AyanamshaSystemValue;
+    };
+    /**
+     * Note
+     */
+    note: string;
+};
+
+/**
+ * AyanamshaSystemValue
+ */
+export type AyanamshaSystemValue = {
+    /**
+     * Value Decimal
+     *
+     * Ayanamsha offset in decimal degrees
+     */
+    value_decimal: number;
+    /**
+     * Degrees
+     */
+    degrees: number;
+    /**
+     * Minutes
+     */
+    minutes: number;
+    /**
+     * Seconds
+     */
+    seconds: number;
+    /**
+     * Dms
+     *
+     * Degrees, minutes, seconds formatted string
+     */
+    dms: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * BhadraWindow
+ */
+export type BhadraWindow = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Residence
+     *
+     * Prithvi, Swarga or Patala, from the Moon's sign.
+     */
+    residence: string;
+    /**
+     * Residence English
+     */
+    residence_english: string;
+    /**
+     * Is On Earth
+     *
+     * Bhadra is held harmful when it resides on earth (Moon in Karka, Simha, Kumbha or Meena).
+     */
+    is_on_earth: boolean;
+};
+
+/**
  * BhavaMadhyaEntry
  */
 export type BhavaMadhyaEntry = {
@@ -1307,6 +2686,102 @@ export type BhavaMadhyaEntry = {
 };
 
 /**
+ * BiorhythmCycleDetail
+ */
+export type BiorhythmCycleDetail = {
+    /**
+     * Value
+     *
+     * Cycle value from -1.0 to +1.0
+     */
+    value: number;
+    /**
+     * Percentage
+     *
+     * Cycle value as percentage
+     */
+    percentage: number;
+    /**
+     * Phase
+     *
+     * Phase label: High, Rising, Falling, or Low
+     */
+    phase: string;
+    /**
+     * Is Critical
+     *
+     * True when the cycle crosses zero
+     */
+    is_critical: boolean;
+    /**
+     * Cycle Length Days
+     *
+     * Cycle length in days (present on single-day responses)
+     */
+    cycle_length_days?: number | null;
+    /**
+     * Description
+     *
+     * Cycle description (present on single-day responses)
+     */
+    description?: string | null;
+};
+
+/**
+ * BiorhythmDailyEntry
+ */
+export type BiorhythmDailyEntry = {
+    /**
+     * Date
+     */
+    date: string;
+    /**
+     * Cycles
+     */
+    cycles: {
+        [key: string]: BiorhythmCycleDetail;
+    };
+    /**
+     * Critical
+     */
+    critical: Array<string>;
+    /**
+     * Composite Score
+     */
+    composite_score: number;
+};
+
+/**
+ * BiorhythmRangeResponse
+ */
+export type BiorhythmRangeResponse = {
+    /**
+     * Birth Date
+     */
+    birth_date: string;
+    /**
+     * Start Date
+     */
+    start_date: string;
+    /**
+     * End Date
+     */
+    end_date: string;
+    /**
+     * Days
+     */
+    days: number;
+    /**
+     * Daily
+     */
+    daily: Array<BiorhythmDailyEntry>;
+    /**
+     * Note
+     */
+    note: string;
+};
+
+/**
  * BiorhythmRequest
  */
 export type BiorhythmRequest = {
@@ -1325,9 +2800,49 @@ export type BiorhythmRequest = {
     /**
      * Days
      *
-     * Number of consecutive days to compute (1-90). Use 1 for a single day snapshot. Use >1 for a date range (e.g. 30 for a month view).
+     * Number of consecutive days to compute (1-90). Use 1 for a single day snapshot. Use >1 for a date range.
      */
     days?: number;
+};
+
+/**
+ * BiorhythmSingleDayResponse
+ */
+export type BiorhythmSingleDayResponse = {
+    /**
+     * Birth Date
+     */
+    birth_date: string;
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Days Since Birth
+     */
+    days_since_birth: number;
+    /**
+     * Cycles
+     */
+    cycles: {
+        [key: string]: BiorhythmCycleDetail;
+    };
+    /**
+     * Critical Today
+     */
+    critical_today: Array<string>;
+    /**
+     * Has Critical Day
+     */
+    has_critical_day: boolean;
+    /**
+     * Composite Score
+     */
+    composite_score: number;
+    /**
+     * Note
+     */
+    note: string;
 };
 
 /**
@@ -1385,6 +2900,62 @@ export type BirthInput = {
 };
 
 /**
+ * BirthNakshatraRef
+ */
+export type BirthNakshatraRef = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Index
+     */
+    index: number;
+};
+
+/**
+ * BusinessNameAnalysisResponse
+ */
+export type BusinessNameAnalysisResponse = {
+    /**
+     * Input
+     */
+    input: string;
+    /**
+     * Input Type
+     */
+    input_type: string;
+    /**
+     * Expression Number
+     */
+    expression_number: number;
+    /**
+     * Single Digit
+     */
+    single_digit: number;
+    /**
+     * Is Master
+     */
+    is_master: boolean;
+    /**
+     * Theme
+     */
+    theme: string;
+    /**
+     * Favourable For
+     */
+    favourable_for: Array<string>;
+    /**
+     * Caution
+     */
+    caution: string;
+    /**
+     * Harmony Score
+     */
+    harmony_score: number;
+};
+
+/**
  * BusinessNamePostRequest
  */
 export type BusinessNamePostRequest = {
@@ -1407,7 +2978,7 @@ export type CalendarDay = {
      */
     date: string;
     /**
-     * Tithi for this day.
+     * Tithi at sunrise.
      */
     tithi: CalendarTithi;
     /**
@@ -1415,21 +2986,85 @@ export type CalendarDay = {
      */
     vara: CalendarVara;
     /**
-     * Moon nakshatra for this day.
+     * Moon nakshatra at sunrise.
      */
     nakshatra: CalendarNakshatra;
     /**
-     * Yoga for this day.
+     * Yoga at sunrise.
      */
     yoga: CalendarYoga;
     /**
-     * Karana for this day.
+     * Karana at sunrise.
      */
     karana: CalendarKarana;
     /**
      * Rahu Kaal window for this day.
      */
     rahu_kaal: CalendarRahuKaal;
+    /**
+     * Sunrise
+     *
+     * Sunrise, ISO 8601 local time with offset.
+     */
+    sunrise?: string | null;
+    /**
+     * Sunset
+     *
+     * Sunset, ISO 8601 local time with offset.
+     */
+    sunset?: string | null;
+    /**
+     * Moonrise
+     *
+     * First moonrise before the next sunrise. Null if none.
+     */
+    moonrise?: string | null;
+    /**
+     * Moonset
+     *
+     * First moonset before the next sunrise. Null if none.
+     */
+    moonset?: string | null;
+    /**
+     * Paksha
+     *
+     * Paksha at sunrise.
+     */
+    paksha?: string | null;
+    /**
+     * Lunar month at sunrise, amanta and purnimanta.
+     */
+    masa?: Masa | null;
+    /**
+     * Tithis
+     *
+     * Every tithi active between this sunrise and the next.
+     */
+    tithis?: Array<DayTithi> | null;
+    /**
+     * Nakshatras
+     *
+     * Every nakshatra active between this sunrise and the next.
+     */
+    nakshatras?: Array<DayNakshatra> | null;
+    /**
+     * Yogas
+     *
+     * Every yoga active between this sunrise and the next.
+     */
+    yogas?: Array<DayYoga> | null;
+    /**
+     * Karanas
+     *
+     * Every karana active between this sunrise and the next.
+     */
+    karanas?: Array<DayKarana> | null;
+    /**
+     * Bhadra
+     *
+     * Bhadra (Vishti karana) windows during the day.
+     */
+    bhadra?: Array<BhadraWindow> | null;
 };
 
 /**
@@ -1614,6 +3249,32 @@ export type CardOfDayResponse = {
 };
 
 /**
+ * ChaldeanNumberBlock
+ */
+export type ChaldeanNumberBlock = {
+    /**
+     * Raw
+     */
+    raw: number;
+    /**
+     * Reduced
+     */
+    reduced: number;
+    /**
+     * Theme
+     */
+    theme: string;
+    /**
+     * Keywords
+     */
+    keywords: Array<string>;
+    /**
+     * Interpretation
+     */
+    interpretation: string;
+};
+
+/**
  * ChaldeanRequest
  */
 export type ChaldeanRequest = {
@@ -1629,6 +3290,71 @@ export type ChaldeanRequest = {
      * Birth date YYYY-MM-DD (BirthInput `date`)
      */
     date: string;
+};
+
+/**
+ * ChaldeanResponse
+ */
+export type ChaldeanResponse = {
+    /**
+     * System
+     */
+    system: string;
+    /**
+     * Full Name
+     */
+    full_name: string;
+    /**
+     * Birth Date
+     */
+    birth_date: string;
+    name_number: ChaldeanNumberBlock;
+    birth_number: ChaldeanNumberBlock;
+    compound_number: ChaldeanNumberBlock;
+};
+
+/**
+ * ChandrabalaDetail
+ */
+export type ChandrabalaDetail = {
+    /**
+     * Moon House From Natal
+     */
+    moon_house_from_natal: number;
+    /**
+     * Is Favorable
+     */
+    is_favorable: boolean;
+    /**
+     * Favorable Houses
+     */
+    favorable_houses: Array<number>;
+};
+
+/**
+ * CharAntardasha
+ */
+export type CharAntardasha = {
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Years
+     */
+    years: number;
+    /**
+     * Start Date
+     */
+    start_date: string;
+    /**
+     * End Date
+     */
+    end_date: string;
 };
 
 /**
@@ -1694,6 +3420,72 @@ export type CharDashaRequest = {
      * Dasha cycles to compute (1-3)
      */
     cycles?: number;
+};
+
+/**
+ * CharDashaResponse
+ */
+export type CharDashaResponse = {
+    /**
+     * Atmakaraka
+     */
+    atmakaraka: string | null;
+    /**
+     * Start Rashi
+     */
+    start_rashi: string;
+    /**
+     * Start Rashi Index
+     */
+    start_rashi_index: number;
+    /**
+     * Karakas
+     */
+    karakas: {
+        [key: string]: string;
+    };
+    /**
+     * Current Mahadasha
+     */
+    current_mahadasha: string | null;
+    /**
+     * Current Antardasha
+     */
+    current_antardasha: string | null;
+    /**
+     * Periods
+     */
+    periods: Array<CharMahadasha>;
+};
+
+/**
+ * CharMahadasha
+ */
+export type CharMahadasha = {
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Years
+     */
+    years: number;
+    /**
+     * Start Date
+     */
+    start_date: string;
+    /**
+     * End Date
+     */
+    end_date: string;
+    /**
+     * Antardashas
+     */
+    antardashas: Array<CharAntardasha>;
 };
 
 /**
@@ -1874,6 +3666,27 @@ export type ChoghadiyaResponse = {
      * 8 Choghadiya periods from sunset to next sunrise.
      */
     night_choghadiya: Array<ChoghadiyaPeriod>;
+};
+
+/**
+ * ClassicalSource
+ *
+ * A classical text the yoga's definition and results are drawn from. Only the text and, where
+ * unambiguous, the section topic are given; chapter and verse numbers differ between editions.
+ */
+export type ClassicalSource = {
+    /**
+     * Text
+     *
+     * Classical text
+     */
+    text: string;
+    /**
+     * Section
+     *
+     * Section of the text, when unambiguous
+     */
+    section?: string | null;
 };
 
 /**
@@ -2225,6 +4038,24 @@ export type CrystalRecommendResponse = {
 };
 
 /**
+ * DailyScore
+ */
+export type DailyScore = {
+    /**
+     * Score
+     */
+    score: number;
+    /**
+     * Max Score
+     */
+    max_score: number;
+    /**
+     * Label
+     */
+    label: string;
+};
+
+/**
  * DailyTransitResponse
  */
 export type DailyTransitResponse = {
@@ -2459,6 +4290,82 @@ export type DashaTransitsRequest = {
 };
 
 /**
+ * DashaTransitsResponse
+ */
+export type DashaTransitsResponse = {
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Active Dasha
+     */
+    active_dasha: {
+        [key: string]: unknown;
+    };
+    /**
+     * Transit Positions
+     */
+    transit_positions: {
+        [key: string]: unknown;
+    };
+    /**
+     * Correlations
+     */
+    correlations: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * Periods Of Significance
+     */
+    periods_of_significance: Array<{
+        [key: string]: unknown;
+    }>;
+};
+
+/**
+ * DashakootDoshas
+ */
+export type DashakootDoshas = {
+    /**
+     * Nadi Dosha
+     */
+    nadi_dosha: boolean;
+    /**
+     * Nadi Cancelled
+     */
+    nadi_cancelled: boolean;
+    /**
+     * Bhakoot Dosha
+     */
+    bhakoot_dosha: boolean;
+    /**
+     * Bhakoot Cancelled
+     */
+    bhakoot_cancelled: boolean;
+    /**
+     * Rajju Dosha
+     */
+    rajju_dosha: boolean;
+    /**
+     * Rajju Group Boy
+     */
+    rajju_group_boy: string | null;
+    /**
+     * Rajju Group Girl
+     */
+    rajju_group_girl: string | null;
+    /**
+     * Vedha Dosha
+     */
+    vedha_dosha: boolean;
+    /**
+     * Vedha Pair
+     */
+    vedha_pair: string | null;
+};
+
+/**
  * DashakootRequest
  */
 export type DashakootRequest = {
@@ -2470,6 +4377,427 @@ export type DashakootRequest = {
      * Bride (girl) birth details. In classical Vedic matchmaking, person2 is always the bride. Tara and Stree Deergha are computed from person2 (bride) nakshatra to person1 (groom).
      */
     person2: BirthInput;
+};
+
+/**
+ * DashakootResponse
+ */
+export type DashakootResponse = {
+    /**
+     * Total Score
+     */
+    total_score: number;
+    /**
+     * Max Score
+     */
+    max_score: number;
+    /**
+     * Percentage
+     */
+    percentage: number;
+    /**
+     * Compatibility Level
+     */
+    compatibility_level: string;
+    /**
+     * Breakdown
+     */
+    breakdown: {
+        [key: string]: number;
+    };
+    /**
+     * Max Per Koota
+     */
+    max_per_koota: {
+        [key: string]: number;
+    };
+    doshas: DashakootDoshas;
+    /**
+     * Supplementary
+     */
+    supplementary: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * DayKarana
+ */
+export type DayKarana = {
+    /**
+     * At Sunrise
+     *
+     * True for the limb running at this day's sunrise (the one a printed panchang names for the day).
+     */
+    at_sunrise: boolean;
+    /**
+     * Is Kshaya
+     *
+     * Starts after this sunrise and ends before the next, so no sunrise falls in it.
+     */
+    is_kshaya: boolean;
+    /**
+     * Is Vriddhi
+     *
+     * Runs through two consecutive sunrises, so it is the sunrise limb of two days (flagged on both).
+     */
+    is_vriddhi: boolean;
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Number
+     *
+     * 1 to 60 within the lunar month.
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Lord
+     */
+    lord?: string | null;
+    /**
+     * Is Vishti
+     *
+     * Vishti karana, also called Bhadra.
+     */
+    is_vishti: boolean;
+};
+
+/**
+ * DayNakshatra
+ */
+export type DayNakshatra = {
+    /**
+     * At Sunrise
+     *
+     * True for the limb running at this day's sunrise (the one a printed panchang names for the day).
+     */
+    at_sunrise: boolean;
+    /**
+     * Is Kshaya
+     *
+     * Starts after this sunrise and ends before the next, so no sunrise falls in it.
+     */
+    is_kshaya: boolean;
+    /**
+     * Is Vriddhi
+     *
+     * Runs through two consecutive sunrises, so it is the sunrise limb of two days (flagged on both).
+     */
+    is_vriddhi: boolean;
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Index
+     *
+     * 0 = Ashwini ... 26 = Revati.
+     */
+    index: number;
+    /**
+     * Number
+     *
+     * 1 to 27.
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Lord
+     *
+     * Vimshottari lord.
+     */
+    lord: string;
+    /**
+     * Padas
+     *
+     * Pada changes within the day (single-day endpoint only).
+     */
+    padas?: Array<DayPada> | null;
+};
+
+/**
+ * DayPada
+ */
+export type DayPada = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Pada
+     *
+     * 1 to 4.
+     */
+    pada: number;
+};
+
+/**
+ * DayParts
+ */
+export type DayParts = {
+    pratah: TimeWindow;
+    sangava: TimeWindow;
+    madhyahna: TimeWindow;
+    aparahna: TimeWindow;
+    sayahna: TimeWindow;
+};
+
+/**
+ * DayTimings
+ */
+export type DayTimings = {
+    /**
+     * 14th muhurta of the preceding night.
+     */
+    brahma_muhurta: TimeWindow;
+    pratah_sandhya: TimeWindow;
+    /**
+     * 8th day muhurta. Null on Wednesdays, when that muhurta is a Durmuhurta.
+     */
+    abhijit?: TimeWindow | null;
+    vijaya_muhurta: TimeWindow;
+    godhuli_muhurta: TimeWindow;
+    sayahna_sandhya: TimeWindow;
+    /**
+     * 8th night muhurta (around local midnight).
+     */
+    nishita_muhurta: TimeWindow;
+    /**
+     * Madhyahna
+     *
+     * Local apparent noon. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    madhyahna: string;
+    /**
+     * First three muhurtas of the night (one fifth of it).
+     */
+    pradosh: TimeWindow;
+    rahu_kaal: TimeWindow;
+    gulika_kaal: TimeWindow;
+    yamaganda_kaal: TimeWindow;
+    /**
+     * Durmuhurta
+     */
+    durmuhurta: Array<TimeWindow>;
+    /**
+     * Varjyam
+     *
+     * Windows beginning this day (4 ghatis of the nakshatra).
+     */
+    varjyam: Array<NakshatraWindow>;
+    /**
+     * Amrit Kaal
+     *
+     * Windows beginning this day (4 ghatis of the nakshatra).
+     */
+    amrit_kaal: Array<NakshatraWindow>;
+    /**
+     * Bhadra
+     *
+     * Vishti karana during the day, split where the Moon changes sign.
+     */
+    bhadra: Array<BhadraWindow>;
+    /**
+     * Panchaka
+     *
+     * Moon in Kumbha or Meena (Dhanishtha pada 3 to Revati).
+     */
+    panchaka: Array<TimeWindow>;
+    /**
+     * The day in five equal parts, used for festival timing.
+     */
+    day_parts: DayParts;
+};
+
+/**
+ * DayTithi
+ */
+export type DayTithi = {
+    /**
+     * At Sunrise
+     *
+     * True for the limb running at this day's sunrise (the one a printed panchang names for the day).
+     */
+    at_sunrise: boolean;
+    /**
+     * Is Kshaya
+     *
+     * Starts after this sunrise and ends before the next, so no sunrise falls in it.
+     */
+    is_kshaya: boolean;
+    /**
+     * Is Vriddhi
+     *
+     * Runs through two consecutive sunrises, so it is the sunrise limb of two days (flagged on both).
+     */
+    is_vriddhi: boolean;
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Number
+     *
+     * 1 to 30 (1-15 Shukla, 16-30 Krishna).
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Paksha
+     *
+     * Shukla or Krishna.
+     */
+    paksha: string;
+    /**
+     * Fivefold
+     *
+     * Nanda, Bhadra, Jaya, Rikta or Purna.
+     */
+    fivefold: string;
+    /**
+     * Is Chidra
+     */
+    is_chidra: boolean;
+};
+
+/**
+ * DayYoga
+ */
+export type DayYoga = {
+    /**
+     * At Sunrise
+     *
+     * True for the limb running at this day's sunrise (the one a printed panchang names for the day).
+     */
+    at_sunrise: boolean;
+    /**
+     * Is Kshaya
+     *
+     * Starts after this sunrise and ends before the next, so no sunrise falls in it.
+     */
+    is_kshaya: boolean;
+    /**
+     * Is Vriddhi
+     *
+     * Runs through two consecutive sunrises, so it is the sunrise limb of two days (flagged on both).
+     */
+    is_vriddhi: boolean;
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Index
+     */
+    index: number;
+    /**
+     * Number
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Is Inauspicious
+     */
+    is_inauspicious: boolean;
+};
+
+/**
+ * DigitNumberAnalysisResponse
+ *
+ * Mobile or vehicle number analysis (digit-sum reduction).
+ */
+export type DigitNumberAnalysisResponse = {
+    /**
+     * Input
+     */
+    input: string;
+    /**
+     * Input Type
+     */
+    input_type: string;
+    /**
+     * Total
+     */
+    total: number;
+    /**
+     * Single Digit
+     */
+    single_digit: number;
+    /**
+     * Is Master
+     */
+    is_master: boolean;
+    /**
+     * Theme
+     */
+    theme: string;
+    /**
+     * Favourable For
+     */
+    favourable_for: Array<string>;
+    /**
+     * Caution
+     */
+    caution: string;
+    /**
+     * Harmony Score
+     */
+    harmony_score: number;
 };
 
 /**
@@ -2664,6 +4992,14 @@ export type DivisionalResponse = {
     D60: {
         [key: string]: unknown;
     };
+    /**
+     * Houses
+     *
+     * Whole-sign houses of each varga chart, counted from that chart's lagna: {chart: [{house, sign, sign_num, lord, planets}]}. Present only when the birth time is known. Each planet entry in a chart also carries house, dignity (exalted, debilitated, own_sign, friendly, neutral, enemy; the seven classical planets) and is_vargottama (same sign as in D1).
+     */
+    houses?: {
+        [key: string]: unknown;
+    } | null;
     /**
      * Birth Time Provided
      *
@@ -2908,12 +5244,6 @@ export type DreamSymbol = {
      */
     vedic_auspicious?: boolean | null;
     /**
-     * Vedic Source
-     *
-     * Classical text source for the Vedic interpretation.
-     */
-    vedic_source: string;
-    /**
      * Traditions Agree
      *
      * Whether Jungian and Vedic traditions agree: 'agree', 'conflict', or 'partial'.
@@ -2970,6 +5300,41 @@ export type DreamSymbolListResponse = {
 };
 
 /**
+ * EclipseLocal
+ */
+export type EclipseLocal = {
+    /**
+     * Begins
+     *
+     * First contact seen from the location (null when it rises already eclipsed).
+     */
+    begins?: string | null;
+    /**
+     * Maximum
+     *
+     * Greatest phase seen from the location (at moonrise when the Moon rises eclipsed).
+     */
+    maximum: string;
+    /**
+     * Ends
+     *
+     * Last contact of the umbral (or penumbral) phase.
+     */
+    ends?: string | null;
+    /**
+     * Moonrise
+     *
+     * Moonrise, for a lunar eclipse that is in progress at moonrise.
+     */
+    moonrise?: string | null;
+};
+
+/**
+ * ErrorCode
+ */
+export type ErrorCode = 'authentication_failed' | 'api_key_missing' | 'api_key_not_found' | 'api_key_revoked' | 'api_key_invalid' | 'magic_link_not_found' | 'magic_link_already_used' | 'magic_link_expired' | 'session_not_found' | 'session_revoked' | 'session_expired' | 'exchange_code_not_found' | 'exchange_code_already_used' | 'ip_rate_limit_exceeded' | 'burst_limit_exceeded' | 'monthly_usage_limit_exceeded' | 'magic_link_ip_limit_exceeded' | 'magic_link_email_limit_exceeded' | 'exchange_code_attempt_limit_exceeded' | 'validation_error' | 'invalid_email' | 'invalid_key_name' | 'invalid_request_body' | 'date_out_of_supported_range' | 'polar_latitude_unsupported' | 'sun_calculation_failed' | 'solar_day_out_of_range' | 'ephemeris_unavailable' | 'location_required' | 'geocode_query_too_short' | 'plan_not_found' | 'account_not_found' | 'key_not_found' | 'subscription_not_found' | 'city_not_found' | 'interpretation_not_found' | 'resource_not_found' | 'endpoint_restricted' | 'ownership_denied' | 'insufficient_tier' | 'payment_verification_failed' | 'order_creation_failed' | 'already_on_plan' | 'max_keys_exceeded' | 'subscription_expired' | 'payment_provider_unavailable' | 'payment_request_invalid' | 'payload_too_large' | 'email_delivery_failed' | 'geocode_unavailable' | 'dependency_unavailable' | 'internal_error';
+
+/**
  * ErrorResponse
  *
  * Standard error envelope returned by all Asterwise API endpoints.
@@ -2988,11 +5353,9 @@ export type ErrorResponse = {
      */
     success?: boolean;
     /**
-     * Error
-     *
-     * Machine-readable error code. Use this for programmatic error handling. See doc_url for the canonical docs page.
+     * Machine-readable error code. Use this for programmatic error handling. See doc_url for the canonical docs page. The full set of codes is the ErrorCode enum in this schema.
      */
-    error: string;
+    error: ErrorCode;
     /**
      * Message
      *
@@ -3050,7 +5413,7 @@ export type FestivalCalendarResponse = {
     /**
      * Total
      *
-     * Total number of festivals found.
+     * Number of entries returned.
      */
     total: number;
     /**
@@ -3059,6 +5422,40 @@ export type FestivalCalendarResponse = {
      * Festivals sorted chronologically by date.
      */
     festivals: Array<FestivalEntry>;
+};
+
+/**
+ * FestivalEclipse
+ */
+export type FestivalEclipse = {
+    /**
+     * Body
+     *
+     * sun or moon.
+     */
+    body: string;
+    /**
+     * Kind
+     *
+     * total, annular, hybrid, partial or penumbral.
+     */
+    kind: string;
+    /**
+     * Greatest
+     *
+     * Instant of greatest eclipse (anywhere on Earth), local time.
+     */
+    greatest: string;
+    /**
+     * Visible Here
+     *
+     * Whether any part is visible from the requested location.
+     */
+    visible_here: boolean;
+    /**
+     * Local contact times when visible.
+     */
+    local?: EclipseLocal | null;
 };
 
 /**
@@ -3074,19 +5471,19 @@ export type FestivalEntry = {
     /**
      * Date
      *
-     * Festival date in YYYY-MM-DD format.
+     * Festival date in YYYY-MM-DD format (start date for a period).
      */
     date: string;
     /**
      * Type
      *
-     * Festival type: 'solar' (sankranti-based) or 'tithi' (lunar day-based).
+     * 'solar' (sankranti-based), 'tithi' (lunar day-based) or 'eclipse'.
      */
     type: string;
     /**
      * Description
      *
-     * Classical basis for the festival date (tithi or sankranti).
+     * Classical basis for the date: the tithi or sankranti and the rule that picks the day.
      */
     description: string;
     /**
@@ -3095,6 +5492,133 @@ export type FestivalEntry = {
      * Cultural and religious significance.
      */
     significance: string;
+    /**
+     * Id
+     *
+     * Stable identifier, e.g. diwali, ekadashi, pradosh_vrat, pitru_paksha.
+     */
+    id?: string | null;
+    /**
+     * Category
+     *
+     * festival, vrat, sankranti, eclipse or period.
+     */
+    category?: string | null;
+    /**
+     * End Date
+     *
+     * Last day, for a period (Pitru Paksha, Chaturmas, Adhik Maas, ...).
+     */
+    end_date?: string | null;
+    masa?: FestivalMasa | null;
+    /**
+     * Paksha
+     */
+    paksha?: string | null;
+    /**
+     * The tithi the festival follows, with its exact start and end.
+     */
+    tithi?: FestivalTithi | null;
+    /**
+     * Rule
+     *
+     * Part of the day in which the tithi must prevail: sunrise, purvahna, madhyahna, aparahna, sayahna, pradosh, nishita, moonrise, arunodaya, or ekadashi (Smarta rule).
+     */
+    rule?: string | null;
+    /**
+     * Puja window on the day: that part of the day while the tithi lasts.
+     */
+    observance_window?: FestivalWindow | null;
+    /**
+     * Note
+     *
+     * Why the date moved (Bhadra, a short tithi, ...).
+     */
+    note?: string | null;
+    sankranti?: FestivalSankranti | null;
+    eclipse?: FestivalEclipse | null;
+};
+
+/**
+ * FestivalMasa
+ */
+export type FestivalMasa = {
+    /**
+     * Amanta
+     *
+     * Amanta month name (with 'Adhik' for an intercalary month).
+     */
+    amanta: string;
+    /**
+     * Purnimanta
+     *
+     * Purnimanta month name.
+     */
+    purnimanta: string;
+    /**
+     * Is Adhik
+     */
+    is_adhik: boolean;
+};
+
+/**
+ * FestivalSankranti
+ */
+export type FestivalSankranti = {
+    /**
+     * Rashi
+     *
+     * Sidereal sign the Sun enters.
+     */
+    rashi: string;
+    /**
+     * Moment
+     *
+     * Ingress instant, ISO 8601 local time.
+     */
+    moment: string;
+};
+
+/**
+ * FestivalTithi
+ */
+export type FestivalTithi = {
+    /**
+     * Number
+     *
+     * 1 to 30.
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Start
+     *
+     * Tithi start, ISO 8601 local time.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * Tithi end, ISO 8601 local time.
+     */
+    end: string;
+};
+
+/**
+ * FestivalWindow
+ */
+export type FestivalWindow = {
+    /**
+     * Start
+     */
+    start: string;
+    /**
+     * End
+     */
+    end: string;
 };
 
 /**
@@ -3151,6 +5675,58 @@ export type GemstoneRequest = {
      * Sidereal ayanamsa mode used in calculations
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+};
+
+/**
+ * GemstoneResponse
+ */
+export type GemstoneResponse = {
+    /**
+     * Primary
+     */
+    primary: {
+        [key: string]: unknown;
+    };
+    /**
+     * Secondary
+     */
+    secondary: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Yogakaraka Gem
+     */
+    yogakaraka_gem?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Fifth Lord Gem
+     */
+    fifth_lord_gem?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Ninth Lord Gem
+     */
+    ninth_lord_gem?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Atmakaraka Gem
+     */
+    atmakaraka_gem?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Contraindicated
+     */
+    contraindicated: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * Note
+     */
+    note: string;
 };
 
 /**
@@ -3244,6 +5820,121 @@ export type GeocodeResult = {
 };
 
 /**
+ * GhatChakraResponse
+ */
+export type GhatChakraResponse = {
+    /**
+     * Janma Rasi
+     */
+    janma_rasi: string;
+    /**
+     * Janma Rasi Index
+     */
+    janma_rasi_index: number;
+    ghatak_parameters: GhatakParameters;
+    /**
+     * Guidance
+     */
+    guidance: string;
+    /**
+     * Avoidance Guidance
+     */
+    avoidance_guidance: Array<string>;
+};
+
+/**
+ * GhatakMasa
+ */
+export type GhatakMasa = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * GhatakNakshatra
+ */
+export type GhatakNakshatra = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * GhatakParameters
+ */
+export type GhatakParameters = {
+    masa: GhatakMasa;
+    tithi: GhatakTithi;
+    vara: GhatakVara;
+    nakshatra: GhatakNakshatra;
+};
+
+/**
+ * GhatakTithi
+ */
+export type GhatakTithi = {
+    /**
+     * Group
+     */
+    group: string;
+    /**
+     * Tithi Numbers
+     */
+    tithi_numbers: Array<number>;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * GhatakVara
+ */
+export type GhatakVara = {
+    /**
+     * Day
+     */
+    day: string;
+    /**
+     * Description
+     */
+    description: string;
+};
+
+/**
+ * GocharNatalRef
+ */
+export type GocharNatalRef = {
+    /**
+     * Moon Sign
+     */
+    moon_sign: string;
+    /**
+     * Moon Sign Index
+     */
+    moon_sign_index: number;
+    /**
+     * Ascendant Sign
+     */
+    ascendant_sign: string;
+    /**
+     * Ascendant Sign Index
+     */
+    ascendant_sign_index: number;
+};
+
+/**
  * GocharRequest
  *
  * Gochar — extends :class:`BirthInput` with optional transit instant fields.
@@ -3321,6 +6012,214 @@ export type GocharRequest = {
 };
 
 /**
+ * GocharResponse
+ */
+export type GocharResponse = {
+    natal: GocharNatalRef;
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Transits
+     */
+    transits: Array<GocharTransitEntry>;
+    summary: GocharSummary;
+};
+
+/**
+ * GocharSummary
+ */
+export type GocharSummary = {
+    /**
+     * Favorable Count
+     */
+    favorable_count: number;
+    /**
+     * Unfavorable Count
+     */
+    unfavorable_count: number;
+    /**
+     * Vedha Blocked Count
+     */
+    vedha_blocked_count: number;
+    /**
+     * Overall Score
+     */
+    overall_score: number;
+    /**
+     * Sade Sati Active
+     */
+    sade_sati_active: boolean;
+    /**
+     * Sade Sati Phase
+     */
+    sade_sati_phase: string | null;
+    /**
+     * Sade Sati Interpretation
+     *
+     * Phase-specific Sade Sati interpretation when active. Contains name, duration, saturn_position, and interpretation text for the current phase (rising, peak, or setting).
+     */
+    sade_sati_interpretation?: {
+        [key: string]: unknown;
+    } | null;
+    /**
+     * Chandra Ashtama Active
+     */
+    chandra_ashtama_active: boolean;
+};
+
+/**
+ * GocharTransitEntry
+ */
+export type GocharTransitEntry = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Transit Sign
+     */
+    transit_sign: string;
+    /**
+     * Transit Sign Index
+     */
+    transit_sign_index: number;
+    /**
+     * Transit Degree
+     */
+    transit_degree: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Nakshatra
+     */
+    nakshatra: string | null;
+    /**
+     * Nakshatra Pada
+     */
+    nakshatra_pada: number | null;
+    /**
+     * House From Moon
+     */
+    house_from_moon: number;
+    /**
+     * House From Lagna
+     */
+    house_from_lagna: number;
+    /**
+     * Is Favorable From Moon
+     */
+    is_favorable_from_moon: boolean;
+    /**
+     * Is Favorable From Lagna
+     */
+    is_favorable_from_lagna: boolean;
+    /**
+     * Vedha Active
+     */
+    vedha_active: boolean;
+    /**
+     * Vedha Blocking Planet
+     */
+    vedha_blocking_planet: string | null;
+    /**
+     * Ashtakavarga Score
+     */
+    ashtakavarga_score: number | null;
+    /**
+     * Interpretation
+     */
+    interpretation: string;
+    /**
+     * Themes
+     */
+    themes: Array<string>;
+    /**
+     * Quality
+     */
+    quality: string;
+};
+
+/**
+ * HarshaBalaEntry
+ */
+export type HarshaBalaEntry = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Harsha Bala
+     *
+     * Harsha Bala score for this planet (0-20).
+     */
+    harsha_bala: number;
+    /**
+     * Max Harsha Bala
+     */
+    max_harsha_bala?: number;
+    /**
+     * Varsha House
+     *
+     * Planet's house in the Varshaphal chart (from Varsha Ascendant).
+     */
+    varsha_house: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Components
+     *
+     * Breakdown of the 4 Harsha Bala components.
+     */
+    components: {
+        [key: string]: unknown;
+    };
+    /**
+     * Interpretation
+     */
+    interpretation: string;
+};
+
+/**
+ * HarshaBalaResponse
+ */
+export type HarshaBalaResponse = {
+    /**
+     * Target Year
+     */
+    target_year: number;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Solar Return Utc
+     */
+    solar_return_utc: string;
+    /**
+     * Is Day Return
+     */
+    is_day_return: boolean;
+    /**
+     * Varshaphal Ascendant Longitude
+     */
+    varshaphal_ascendant_longitude: number;
+    /**
+     * Planets
+     */
+    planets: Array<HarshaBalaEntry>;
+};
+
+/**
  * HoraPeriod
  */
 export type HoraPeriod = {
@@ -3373,11 +6272,23 @@ export type HoraResponse = {
      */
     date: string;
     /**
+     * Convention
+     *
+     * Hora division used. ``unequal_seasonal`` = 12 day + 12 night parts from real sunrise/sunset (panchanga / electional).
+     */
+    convention: string;
+    /**
      * Sunrise
      *
      * Sunrise time in HH:MM local time.
      */
     sunrise: string;
+    /**
+     * Sunset
+     *
+     * Sunset time in HH:MM local time.
+     */
+    sunset: string;
     /**
      * Next Sunrise
      *
@@ -3387,9 +6298,250 @@ export type HoraResponse = {
     /**
      * Horas
      *
-     * 24 planetary hours from sunrise to next sunrise.
+     * 24 planetary hours: 12 from sunrise to sunset, then 12 from sunset to next sunrise.
      */
     horas: Array<HoraPeriod>;
+};
+
+/**
+ * HoroscopeChapter
+ */
+export type HoroscopeChapter = {
+    /**
+     * Chapter Number
+     */
+    chapter_number: number;
+    /**
+     * Start Date
+     *
+     * Chapter start date (YYYY-MM-DD)
+     */
+    start_date: string;
+    /**
+     * End Date
+     *
+     * Chapter end date (YYYY-MM-DD)
+     */
+    end_date: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Theme
+     */
+    theme: string;
+    /**
+     * Narrative
+     */
+    narrative: string;
+};
+
+/**
+ * HoroscopeContent
+ *
+ * Stored horoscope prose; fields present depend on horizon (daily/weekly/monthly/yearly).
+ */
+export type HoroscopeContent = {
+    /**
+     * Headline
+     */
+    headline: string;
+    /**
+     * Narrative
+     */
+    narrative: string;
+    /**
+     * Career
+     */
+    career: string;
+    /**
+     * Money
+     */
+    money: string;
+    /**
+     * Love
+     */
+    love: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Remedy
+     *
+     * Programmatically injected Vedic remedy text
+     */
+    remedy?: string;
+    /**
+     * Do
+     *
+     * Daily: actions to take
+     */
+    do?: Array<string> | null;
+    /**
+     * Avoid
+     *
+     * Daily: actions to avoid
+     */
+    avoid?: Array<string> | null;
+    /**
+     * Open Loop
+     *
+     * Daily: forward-looking watch item
+     */
+    open_loop?: string | null;
+    /**
+     * Peak Day
+     *
+     * Weekly: strongest day
+     */
+    peak_day?: string | null;
+    /**
+     * Caution Day
+     *
+     * Weekly: day to approach carefully
+     */
+    caution_day?: string | null;
+    /**
+     * Weekly Mantra
+     *
+     * Weekly: shareable mantra line
+     */
+    weekly_mantra?: string | null;
+    /**
+     * Phases
+     *
+     * Monthly: phased breakdown
+     */
+    phases?: Array<HoroscopePhase> | null;
+    /**
+     * Power Window
+     *
+     * Monthly: favorable date window
+     */
+    power_window?: string | null;
+    /**
+     * Caution Window
+     *
+     * Monthly: cautious date window
+     */
+    caution_window?: string | null;
+    /**
+     * Closing Message
+     *
+     * Monthly or yearly: shareable closing line
+     */
+    closing_message?: string | null;
+    /**
+     * Year Theme
+     *
+     * Yearly: karmic theme for the year
+     */
+    year_theme?: string | null;
+    /**
+     * Chapters
+     *
+     * Yearly: chapter breakdown
+     */
+    chapters?: Array<HoroscopeChapter> | null;
+    /**
+     * Auspicious Months
+     *
+     * Yearly: top auspicious months by name
+     */
+    auspicious_months?: Array<string> | null;
+    /**
+     * Landmark Dates
+     *
+     * Yearly: key dates with tone
+     */
+    landmark_dates?: Array<HoroscopeLandmarkDate> | null;
+};
+
+/**
+ * HoroscopeData
+ *
+ * Payload returned by Vedic horoscope GET endpoints.
+ */
+export type HoroscopeData = {
+    content: HoroscopeContent;
+    /**
+     * Generated At
+     *
+     * ISO timestamp when the horoscope was generated (UTC)
+     */
+    generated_at?: string | null;
+    /**
+     * Period Key
+     *
+     * Period identifier (date, week, month, or year key)
+     */
+    period_key: string;
+    /**
+     * Horizon
+     *
+     * Horizon: daily, weekly, monthly, or yearly
+     */
+    horizon: string;
+    /**
+     * Moon Sign
+     *
+     * Normalised English Moon sign slug
+     */
+    moon_sign: string;
+};
+
+/**
+ * HoroscopeLandmarkDate
+ */
+export type HoroscopeLandmarkDate = {
+    /**
+     * Date
+     *
+     * Landmark date (YYYY-MM-DD)
+     */
+    date: string;
+    /**
+     * Event
+     */
+    event: string;
+    /**
+     * Tone
+     *
+     * Either favorable or challenging
+     */
+    tone: string;
+};
+
+/**
+ * HoroscopePhase
+ */
+export type HoroscopePhase = {
+    /**
+     * Phase Number
+     */
+    phase_number: number;
+    /**
+     * Start Date
+     *
+     * Phase start date (YYYY-MM-DD)
+     */
+    start_date: string;
+    /**
+     * End Date
+     *
+     * Phase end date (YYYY-MM-DD)
+     */
+    end_date: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Narrative
+     */
+    narrative: string;
 };
 
 /**
@@ -3529,6 +6681,70 @@ export type IshtaDevtaRequest = {
 };
 
 /**
+ * IshtaDevtaResponse
+ */
+export type IshtaDevtaResponse = {
+    /**
+     * Atmakaraka
+     */
+    atmakaraka: string;
+    /**
+     * Karakamsha Lagna
+     */
+    karakamsha_lagna: string;
+    /**
+     * Karakamsha Lagna Index
+     */
+    karakamsha_lagna_index: number;
+    /**
+     * Jivanmuktamsa Planet
+     */
+    jivanmuktamsa_planet?: string | null;
+    /**
+     * Navamsa Lagna
+     */
+    navamsa_lagna: string;
+    /**
+     * Navamsa Lagna Index
+     */
+    navamsa_lagna_index: number;
+    /**
+     * Twelfth House Sign
+     */
+    twelfth_house_sign: string;
+    /**
+     * Twelfth House Index
+     */
+    twelfth_house_index: number;
+    /**
+     * Planets In 12Th
+     */
+    planets_in_12th: Array<string>;
+    /**
+     * Ishta Devta Planet
+     */
+    ishta_devta_planet: string;
+    /**
+     * Deity
+     */
+    deity: string;
+    /**
+     * Description
+     */
+    description: string;
+    /**
+     * Method
+     */
+    method: string;
+    /**
+     * D9 Positions
+     */
+    d9_positions: {
+        [key: string]: unknown;
+    };
+};
+
+/**
  * KPBirthRequest
  *
  * KP natal chart / significators — extends :class:`BirthInput`.
@@ -3588,6 +6804,85 @@ export type KpBirthRequest = {
 };
 
 /**
+ * KPChartResponse
+ */
+export type KpChartResponse = {
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    lagna: KpLagna;
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
+    /**
+     * House Cusps
+     */
+    house_cusps: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
+};
+
+/**
+ * KPLagna
+ */
+export type KpLagna = {
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Nakshatra Lord
+     */
+    nakshatra_lord: string;
+    /**
+     * Sub Lord
+     */
+    sub_lord: string;
+};
+
+/**
+ * KPRulingPlanetBody
+ */
+export type KpRulingPlanetBody = {
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Sign Lord
+     */
+    sign_lord: string;
+    /**
+     * Nakshatra Lord
+     */
+    nakshatra_lord: string;
+    /**
+     * Sub Lord
+     */
+    sub_lord: string;
+};
+
+/**
  * KPRulingPlanetsRequest
  */
 export type KpRulingPlanetsRequest = {
@@ -3621,6 +6916,56 @@ export type KpRulingPlanetsRequest = {
      * IANA timezone
      */
     target_timezone?: string | null;
+};
+
+/**
+ * KPRulingPlanetsResponse
+ */
+export type KpRulingPlanetsResponse = {
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Target Utc
+     */
+    target_utc: string;
+    /**
+     * Day Lord
+     */
+    day_lord: string;
+    moon: KpRulingPlanetBody;
+    ascendant: KpRulingPlanetBody;
+    /**
+     * Ruling Planets
+     */
+    ruling_planets: Array<string>;
+};
+
+/**
+ * KPSignificatorsResponse
+ */
+export type KpSignificatorsResponse = {
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Significators
+     */
+    significators: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
+    /**
+     * Planet Significators
+     */
+    planet_significators: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
 };
 
 /**
@@ -3701,6 +7046,116 @@ export type KarmicLessonsResponse = {
      * Has Karmic Lessons
      */
     has_karmic_lessons: boolean;
+};
+
+/**
+ * LalKitabChartResponse
+ */
+export type LalKitabChartResponse = {
+    /**
+     * System
+     */
+    system: string;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
+    /**
+     * Houses
+     */
+    houses: {
+        [key: string]: {
+            [key: string]: unknown;
+        };
+    };
+    /**
+     * Rin Analysis
+     */
+    rin_analysis: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * LalKitabPlanetRemedy
+ */
+export type LalKitabPlanetRemedy = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Lk House
+     */
+    lk_house: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Pucca Ghar
+     */
+    pucca_ghar: boolean;
+    /**
+     * Kachcha Ghar
+     */
+    kachcha_ghar: boolean;
+    /**
+     * Uchcha
+     */
+    uchcha: boolean;
+    /**
+     * Neecha
+     */
+    neecha: boolean;
+    /**
+     * Remedies
+     */
+    remedies: Array<LalKitabRemedyItem>;
+    /**
+     * Priority
+     */
+    priority: string;
+};
+
+/**
+ * LalKitabRemediesResponse
+ */
+export type LalKitabRemediesResponse = {
+    /**
+     * System
+     */
+    system: string;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Remedies
+     */
+    remedies: Array<LalKitabPlanetRemedy>;
+};
+
+/**
+ * LalKitabRemedyItem
+ */
+export type LalKitabRemedyItem = {
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Action
+     */
+    action: string;
 };
 
 /**
@@ -3798,6 +7253,50 @@ export type LifePathResponse = {
 };
 
 /**
+ * LoShuNumberEntry
+ */
+export type LoShuNumberEntry = {
+    /**
+     * Count
+     */
+    count: number;
+    /**
+     * Plane
+     */
+    plane: string;
+    /**
+     * Trait
+     */
+    trait: string;
+    /**
+     * Status
+     */
+    status: string;
+    /**
+     * Note
+     */
+    note: string;
+};
+
+/**
+ * LoShuPlaneEntry
+ */
+export type LoShuPlaneEntry = {
+    /**
+     * Numbers
+     */
+    numbers: Array<number>;
+    /**
+     * Description
+     */
+    description: string;
+    /**
+     * Complete
+     */
+    complete: boolean;
+};
+
+/**
  * LoShuRequest
  */
 export type LoShuRequest = {
@@ -3807,6 +7306,44 @@ export type LoShuRequest = {
      * Birth date YYYY-MM-DD (BirthInput `date`)
      */
     date: string;
+};
+
+/**
+ * LoShuResponse
+ */
+export type LoShuResponse = {
+    /**
+     * Birth Date
+     */
+    birth_date: string;
+    /**
+     * Grid
+     */
+    grid: Array<Array<number>>;
+    /**
+     * Present Numbers
+     */
+    present_numbers: Array<number>;
+    /**
+     * Missing Numbers
+     */
+    missing_numbers: Array<number>;
+    /**
+     * Repeated Numbers
+     */
+    repeated_numbers: Array<number>;
+    /**
+     * Plane Analysis
+     */
+    plane_analysis: {
+        [key: string]: LoShuPlaneEntry;
+    };
+    /**
+     * Number Analysis
+     */
+    number_analysis: {
+        [key: string]: LoShuNumberEntry;
+    };
 };
 
 /**
@@ -3897,6 +7434,52 @@ export type LunarReturnRequest = {
      * Find the next lunar return after this date (YYYY-MM-DD). Defaults to today.
      */
     after_date?: string | null;
+};
+
+/**
+ * Masa
+ */
+export type Masa = {
+    /**
+     * Month ending at new moon (South and West India).
+     */
+    amanta: MasaName;
+    /**
+     * Month ending at full moon (North India).
+     */
+    purnimanta: MasaName;
+    /**
+     * Is Kshaya
+     *
+     * True in the rare month in which the Sun changes sign twice.
+     */
+    is_kshaya: boolean;
+};
+
+/**
+ * MasaName
+ */
+export type MasaName = {
+    /**
+     * Index
+     *
+     * 1 = Chaitra ... 12 = Phalguna.
+     */
+    index: number;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Display Name
+     *
+     * Name with 'Adhik' prefix for an intercalary month.
+     */
+    display_name: string;
+    /**
+     * Is Adhik
+     */
+    is_adhik: boolean;
 };
 
 /**
@@ -4128,15 +7711,155 @@ export type MoonPhaseResponse = {
 };
 
 /**
+ * MuhurtaChandra
+ */
+export type MuhurtaChandra = {
+    /**
+     * Participant
+     */
+    participant: string;
+    /**
+     * Moon House
+     */
+    moon_house: number;
+    /**
+     * Is Favorable
+     */
+    is_favorable: boolean;
+};
+
+/**
+ * MuhurtaCriteria
+ */
+export type MuhurtaCriteria = {
+    /**
+     * Nakshatras
+     */
+    nakshatras: Array<string>;
+    /**
+     * Recommended Nakshatras
+     */
+    recommended_nakshatras: Array<string>;
+    /**
+     * Tithis
+     */
+    tithis: Array<string>;
+    /**
+     * Weekdays
+     */
+    weekdays: Array<string>;
+    /**
+     * Preferred Lagnas
+     */
+    preferred_lagnas: Array<string>;
+    /**
+     * Avoided Seasons
+     */
+    avoided_seasons: Array<string>;
+    /**
+     * Avoided Periods
+     */
+    avoided_periods: Array<string>;
+    /**
+     * Daytime Only
+     */
+    daytime_only: boolean;
+};
+
+/**
+ * MuhurtaLagna
+ */
+export type MuhurtaLagna = {
+    /**
+     * Index
+     *
+     * 0 = Mesha ... 11 = Meena (sidereal).
+     */
+    index: number;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
+ * MuhurtaNamed
+ */
+export type MuhurtaNamed = {
+    /**
+     * Number
+     */
+    number: number;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
+ * MuhurtaParticipant
+ *
+ * A person whose Tarabala and Chandrabala should be favourable. Give either
+ * ``nakshatra`` (and optionally ``moon_rashi``), or birth details from which
+ * the Moon's nakshatra and sign are computed.
+ */
+export type MuhurtaParticipant = {
+    /**
+     * Label
+     *
+     * Name used in the output, e.g. 'Bride'.
+     */
+    label?: string | null;
+    /**
+     * Nakshatra
+     *
+     * Janma nakshatra: a name (e.g. 'Rohini') or 1-27.
+     */
+    nakshatra?: string | number | null;
+    /**
+     * Moon Rashi
+     *
+     * Janma rashi (Moon sign): a name ('Vrishabha' or 'Taurus') or 1-12.
+     */
+    moon_rashi?: string | number | null;
+    /**
+     * Birth Date
+     *
+     * YYYY-MM-DD
+     */
+    birth_date?: string | null;
+    /**
+     * Birth Time
+     *
+     * HH:MM (24-hour, local time at the birth place)
+     */
+    birth_time?: string | null;
+    /**
+     * Birth Latitude
+     */
+    birth_latitude?: number | null;
+    /**
+     * Birth Longitude
+     */
+    birth_longitude?: number | null;
+    /**
+     * Birth Timezone
+     *
+     * IANA timezone of the birth place
+     */
+    birth_timezone?: string | null;
+};
+
+/**
  * MuhurtaRequest
  */
 export type MuhurtaRequest = {
     /**
      * Event Type
      *
-     * Type of event. One of: marriage, travel, business, griha_pravesh, naming_ceremony
+     * Activity. One of: marriage; griha_pravesh (housewarming); business (starting a business or shop); travel; naming_ceremony; vehicle_purchase; property_purchase; mundan (first haircut); annaprashan (first solid food); upanayana (sacred thread); vidyarambha (beginning education).
      */
-    event_type: string;
+    event_type: 'marriage' | 'griha_pravesh' | 'business' | 'travel' | 'naming_ceremony' | 'vehicle_purchase' | 'property_purchase' | 'mundan' | 'annaprashan' | 'upanayana' | 'vidyarambha';
     /**
      * From Date
      *
@@ -4146,39 +7869,342 @@ export type MuhurtaRequest = {
     /**
      * To Date
      *
-     * End date in YYYY-MM-DD format (inclusive). Maximum 30 days from from_date.
+     * End date in YYYY-MM-DD format (inclusive). At most 366 days after from_date.
      */
     to_date: string;
+    /**
+     * Location
+     *
+     * City name, resolved to latitude, longitude and timezone. Not needed when those are given.
+     */
+    location?: string | null;
     /**
      * Latitude
      *
      * Location latitude
      */
-    latitude: number;
+    latitude?: number | null;
     /**
      * Longitude
      *
      * Location longitude
      */
-    longitude: number;
+    longitude?: number | null;
     /**
      * Timezone
      *
      * IANA timezone string e.g. Asia/Kolkata
      */
-    timezone: string;
+    timezone?: string | null;
     /**
      * Ayanamsa
-     *
-     * lahiri | raman | kp | tropical
      */
-    ayanamsa?: string;
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
     /**
      * Top N
      *
-     * Number of top windows to return (1-20)
+     * Number of windows to return (1-50)
      */
     top_n?: number;
+    /**
+     * Max Windows Per Day
+     *
+     * At most this many windows per day, so results spread across dates (1-10).
+     */
+    max_windows_per_day?: number;
+    /**
+     * Min Duration Minutes
+     *
+     * Drop windows shorter than this (1-240 minutes).
+     */
+    min_duration_minutes?: number;
+    /**
+     * Participants
+     *
+     * Up to two people (e.g. bride and groom). Adds Tarabala and Chandrabala: a Naidhana tara or the Moon in the 8th house from a participant's Moon rules a moment out.
+     */
+    participants?: Array<MuhurtaParticipant> | null;
+};
+
+/**
+ * MuhurtaResponse
+ */
+export type MuhurtaResponse = {
+    /**
+     * Event Type
+     */
+    event_type: string;
+    /**
+     * Activity
+     */
+    activity: string;
+    /**
+     * From Date
+     */
+    from_date: string;
+    /**
+     * To Date
+     */
+    to_date: string;
+    /**
+     * Timezone
+     */
+    timezone: string;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * The rules applied for this activity.
+     */
+    criteria: MuhurtaCriteria;
+    /**
+     * Total Windows Found
+     *
+     * Valid windows in the range before top_n is applied.
+     */
+    total_windows_found: number;
+    /**
+     * Total Windows Evaluated
+     *
+     * Pieces of time examined (cut at every change).
+     */
+    total_windows_evaluated: number;
+    /**
+     * Excluded Minutes
+     *
+     * Minutes ruled out, by first reason: chaturmas, adhik_maas, pitru_paksha, kharmas, holashtak, guru_asta, shukra_asta, panchaka, night, weekday, tithi, nakshatra, yoga, rahu_kaal, yamaganda, gulika, durmuhurta, varjyam, bhadra, tarabala, chandrabala.
+     */
+    excluded_minutes: {
+        [key: string]: number;
+    };
+    /**
+     * Top Windows
+     */
+    top_windows: Array<MuhurtaWindow>;
+    /**
+     * Notes
+     */
+    notes: Array<string>;
+};
+
+/**
+ * MuhurtaTara
+ */
+export type MuhurtaTara = {
+    /**
+     * Participant
+     */
+    participant: string;
+    /**
+     * Tara
+     */
+    tara: string;
+    /**
+     * Count From Birth
+     */
+    count_from_birth: number;
+    /**
+     * Is Favorable
+     */
+    is_favorable: boolean;
+};
+
+/**
+ * MuhurtaWindow
+ */
+export type MuhurtaWindow = {
+    /**
+     * Date
+     *
+     * Panchanga day (the date of the sunrise that opens it). A window after midnight carries the previous calendar date here. Kept from the earlier Choghadiya-slot response; prefer civil_date and start_at.
+     */
+    date: string;
+    /**
+     * Start
+     *
+     * Start, HH:MM local time. Kept from the earlier Choghadiya-slot response; prefer start_at.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End, HH:MM local time. Kept from the earlier Choghadiya-slot response; prefer end_at.
+     */
+    end: string;
+    /**
+     * Score
+     *
+     * 0-100.
+     */
+    score: number;
+    /**
+     * Choghadiya
+     *
+     * Choghadiya at the window's start.
+     */
+    choghadiya: string;
+    /**
+     * Choghadiya Type
+     */
+    choghadiya_type: string;
+    /**
+     * Yoga
+     *
+     * Panchanga yoga name.
+     */
+    yoga: string;
+    /**
+     * Vara
+     *
+     * Weekday name (Sanskrit).
+     */
+    vara: string;
+    /**
+     * Vara Number
+     *
+     * 1 = Sunday ... 7 = Saturday.
+     */
+    vara_number: number;
+    /**
+     * Tithi
+     *
+     * Tithi name; see paksha and tithi_number.
+     */
+    tithi: string;
+    /**
+     * Tithi Number
+     *
+     * 1-30 (16-30 Krishna).
+     */
+    tithi_number: number;
+    /**
+     * Reason
+     *
+     * Reasons joined into one line. Kept from the earlier Choghadiya-slot response; prefer reasons.
+     */
+    reason: string;
+    /**
+     * Is Rahu Kaal
+     *
+     * Always false: Rahu Kaal is excluded from every window.
+     */
+    is_rahu_kaal: boolean;
+    /**
+     * Is Abhijit
+     */
+    is_abhijit: boolean;
+    /**
+     * Is Amrita Siddhi
+     */
+    is_amrita_siddhi: boolean;
+    /**
+     * Is Sarvartha Siddhi
+     */
+    is_sarvartha_siddhi: boolean;
+    /**
+     * Start At
+     *
+     * Window start, ISO 8601 local time with offset.
+     */
+    start_at: string;
+    /**
+     * End At
+     *
+     * Window end, ISO 8601 local time with offset.
+     */
+    end_at: string;
+    /**
+     * Civil Date
+     *
+     * Calendar date on which the window starts.
+     */
+    civil_date: string;
+    /**
+     * Panchanga Day
+     *
+     * Same as date: the sunrise date of the panchanga day.
+     */
+    panchanga_day: string;
+    /**
+     * Duration Minutes
+     */
+    duration_minutes: number;
+    /**
+     * Grade
+     *
+     * Excellent (85+), Good (70+) or Acceptable.
+     */
+    grade: string;
+    /**
+     * Paksha
+     */
+    paksha: string;
+    nakshatra: MuhurtaNamed;
+    /**
+     * Yoga Number
+     */
+    yoga_number: number;
+    /**
+     * Karana
+     */
+    karana: string;
+    /**
+     * Vara Lord
+     */
+    vara_lord: string;
+    /**
+     * Rising sign, for activities that use lagna.
+     */
+    lagna?: MuhurtaLagna | null;
+    /**
+     * Masa
+     *
+     * Amanta lunar month.
+     */
+    masa: string;
+    /**
+     * Is Guru Pushya
+     */
+    is_guru_pushya: boolean;
+    /**
+     * Is Ravi Pushya
+     */
+    is_ravi_pushya: boolean;
+    /**
+     * Reasons
+     *
+     * What makes the window good.
+     */
+    reasons: Array<string>;
+    /**
+     * Cautions
+     *
+     * Weaker points of an otherwise valid window.
+     */
+    cautions: Array<string>;
+    /**
+     * Tarabala
+     */
+    tarabala?: Array<MuhurtaTara> | null;
+    /**
+     * Chandrabala
+     */
+    chandrabala?: Array<MuhurtaChandra> | null;
+};
+
+/**
+ * NakshatraActivities
+ */
+export type NakshatraActivities = {
+    /**
+     * Favorable
+     */
+    favorable: Array<string>;
+    /**
+     * Unfavorable
+     */
+    unfavorable: Array<string>;
 };
 
 /**
@@ -4223,6 +8249,8 @@ export type NakshatraData = {
 
 /**
  * NakshatraPredictionRequest
+ *
+ * Nakshatra daily prediction — extends BirthInput with optional target_date.
  */
 export type NakshatraPredictionRequest = {
     /**
@@ -4275,8 +8303,155 @@ export type NakshatraPredictionRequest = {
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
     /**
      * Target Date
+     *
+     * Date for the prediction day; defaults to today
      */
     target_date?: string | null;
+};
+
+/**
+ * NakshatraPredictionResponse
+ */
+export type NakshatraPredictionResponse = {
+    /**
+     * Target Date
+     */
+    target_date: string;
+    transit_moon: TransitMoonRef;
+    tarabala: TarabalaDetail;
+    chandrabala: ChandrabalaDetail;
+    daily_score: DailyScore;
+    transit_nakshatra_quality: TransitNakshatraQuality;
+    nakshatra_activities: NakshatraActivities;
+    birth_nakshatra: BirthNakshatraRef;
+    /**
+     * Natal Moon Sign Index
+     */
+    natal_moon_sign_index: number;
+    /**
+     * Transit Nakshatras
+     *
+     * Every nakshatra the Moon passes through from sunrise to the next sunrise at the birth place, each with its tara.
+     */
+    transit_nakshatras?: Array<TransitNakshatraTara> | null;
+};
+
+/**
+ * NakshatraProfileResponse
+ */
+export type NakshatraProfileResponse = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Index
+     */
+    index: number;
+    /**
+     * Interpretation
+     */
+    interpretation: {
+        [key: string]: unknown;
+    };
+    /**
+     * Activities
+     */
+    activities: {
+        [key: string]: unknown;
+    };
+    /**
+     * Body Map
+     */
+    body_map: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * NakshatraSpan
+ */
+export type NakshatraSpan = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Index
+     */
+    index: number;
+    /**
+     * Name
+     */
+    name: string;
+};
+
+/**
+ * NakshatraWindow
+ */
+export type NakshatraWindow = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Nakshatra
+     */
+    nakshatra: string;
+};
+
+/**
+ * NameCorrectionNameScore
+ */
+export type NameCorrectionNameScore = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Expression
+     */
+    expression: number;
+    /**
+     * Soul Urge
+     */
+    soul_urge: number;
+    /**
+     * Personality
+     */
+    personality: number;
+    /**
+     * Is Master
+     */
+    is_master: boolean;
+    /**
+     * Karmic Debt
+     */
+    karmic_debt?: number | null;
+    /**
+     * Compatibility
+     */
+    compatibility: string;
+    /**
+     * Harmony Score
+     */
+    harmony_score: number;
 };
 
 /**
@@ -4295,6 +8470,33 @@ export type NameCorrectionRequest = {
      * Birth date YYYY-MM-DD (BirthInput `date`)
      */
     date: string;
+};
+
+/**
+ * NameCorrectionResponse
+ */
+export type NameCorrectionResponse = {
+    /**
+     * Full Name
+     */
+    full_name: string;
+    /**
+     * Birth Date
+     */
+    birth_date: string;
+    /**
+     * Life Path
+     */
+    life_path: number;
+    current_name: NameCorrectionNameScore;
+    /**
+     * Alternatives
+     */
+    alternatives: Array<NameCorrectionNameScore>;
+    /**
+     * Recommendation
+     */
+    recommendation?: string | null;
 };
 
 /**
@@ -4340,7 +8542,7 @@ export type NatalCrystalContext = {
     /**
      * Lagna Lord
      *
-     * Lord of the 1st house per classical Vedic tradition.
+     * Lord of the 1st house.
      */
     lagna_lord: string;
     /**
@@ -4464,7 +8666,7 @@ export type NatalCrystalEntry = {
     /**
      * Match Score
      *
-     * Classical Vedic gemstone tradition match score.
+     * Gemstone match score based on house lordship.
      */
     match_score: number;
     /**
@@ -4669,7 +8871,7 @@ export type NatalResponse = {
     /**
      * Graha Drishti
      *
-     * Graha Drishti matrix (#143): each graha → map of aspected whole-sign house (1–12) to strength percent (25–100). Per classical Vedic aspect tradition.
+     * Graha Drishti matrix (#143): each graha → map of aspected whole-sign house (1–12) to strength percent (25–100).
      */
     graha_drishti?: {
         [key: string]: {
@@ -4685,7 +8887,7 @@ export type NatalResponse = {
     /**
      * Arudha Padas
      *
-     * Arudha A1–A12 (#141): each pada → sign_index and sign_name per classical Vedic tradition.
+     * Arudha A1–A12 (#141): each pada → sign_index and sign_name.
      */
     arudha_padas?: {
         [key: string]: {
@@ -4994,8 +9196,99 @@ export type PanchangaRequest = {
 
 /**
  * PanchangaResponse
+ *
+ * ``tithi``, ``vara``, ``nakshatra``, ``yoga`` and ``karana`` are the limbs at
+ * one instant: sunrise when no time is given, otherwise the given time. The
+ * remaining fields describe the whole panchanga day containing that instant
+ * (sunrise to next sunrise): every limb active in it, sunrise and moonrise,
+ * lunar month, samvat, season and the day's timings.
  */
 export type PanchangaResponse = {
+    /**
+     * Date
+     *
+     * Civil date whose sunrise opens this panchanga day.
+     */
+    date?: string | null;
+    /**
+     * Timezone
+     */
+    timezone?: string | null;
+    /**
+     * Sunrise
+     *
+     * Sun's upper limb on the horizon, standard refraction. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    sunrise?: string | null;
+    /**
+     * Sunset
+     */
+    sunset?: string | null;
+    /**
+     * Next Sunrise
+     */
+    next_sunrise?: string | null;
+    /**
+     * Moonrise
+     *
+     * First moonrise between this sunrise and the next (disc centre, no refraction). Null if none.
+     */
+    moonrise?: string | null;
+    /**
+     * Moonset
+     *
+     * First moonset between this sunrise and the next. Null if none.
+     */
+    moonset?: string | null;
+    /**
+     * Day Duration Minutes
+     */
+    day_duration_minutes?: number | null;
+    /**
+     * Night Duration Minutes
+     */
+    night_duration_minutes?: number | null;
+    /**
+     * Paksha
+     *
+     * Paksha at sunrise.
+     */
+    paksha?: string | null;
+    /**
+     * Tithis
+     *
+     * Every tithi active between this sunrise and the next, with start and end.
+     */
+    tithis?: Array<DayTithi> | null;
+    /**
+     * Nakshatras
+     */
+    nakshatras?: Array<DayNakshatra> | null;
+    /**
+     * Yogas
+     */
+    yogas?: Array<DayYoga> | null;
+    /**
+     * Karanas
+     */
+    karanas?: Array<DayKarana> | null;
+    /**
+     * Sun Rashi
+     */
+    sun_rashi?: Array<SignSpan> | null;
+    /**
+     * Moon Rashi
+     */
+    moon_rashi?: Array<SignSpan> | null;
+    /**
+     * Sun Nakshatra
+     */
+    sun_nakshatra?: Array<NakshatraSpan> | null;
+    masa?: Masa | null;
+    samvat?: Samvat | null;
+    ritu?: Ritu | null;
+    ayana?: Ayana | null;
+    timings?: DayTimings | null;
     /**
      * Lunar day — the angular relationship between Sun and Moon
      */
@@ -5030,6 +9323,40 @@ export type PapasamyamRequest = {
      * Bride (girl) birth details. person2 is the bride.
      */
     person2: BirthInput;
+};
+
+/**
+ * PapasamyamResponse
+ */
+export type PapasamyamResponse = {
+    /**
+     * Person1
+     */
+    person1: {
+        [key: string]: unknown;
+    };
+    /**
+     * Person2
+     */
+    person2: {
+        [key: string]: unknown;
+    };
+    /**
+     * Score Difference
+     */
+    score_difference: number;
+    /**
+     * Compatible
+     */
+    compatible: boolean;
+    /**
+     * Compatibility Level
+     */
+    compatibility_level: string;
+    /**
+     * Threshold
+     */
+    threshold: number;
 };
 
 /**
@@ -5333,6 +9660,246 @@ export type PinnacleChallenge = {
 };
 
 /**
+ * PitruDoshaResponse
+ */
+export type PitruDoshaResponse = {
+    /**
+     * Present
+     */
+    present: boolean;
+    /**
+     * Severity
+     */
+    severity?: string | null;
+    /**
+     * Severity Note
+     */
+    severity_note?: string | null;
+    /**
+     * Combinations Triggered
+     */
+    combinations_triggered: Array<string>;
+    /**
+     * Combinations Count
+     */
+    combinations_count: number;
+    sun_analysis: PitruSunAnalysis;
+    ninth_lord_analysis: PitruNinthLordAnalysis;
+    /**
+     * All Factors
+     */
+    all_factors: Array<string>;
+    /**
+     * Cancellations
+     */
+    cancellations: Array<string>;
+    /**
+     * Interpretation
+     */
+    interpretation: string;
+    /**
+     * Classical Symptoms
+     */
+    classical_symptoms: Array<string>;
+    /**
+     * Remedies
+     */
+    remedies: Array<string>;
+};
+
+/**
+ * PitruNinthLordAnalysis
+ */
+export type PitruNinthLordAnalysis = {
+    /**
+     * Planet
+     */
+    planet?: string | null;
+    /**
+     * House
+     */
+    house?: number | null;
+    /**
+     * Sign Index
+     */
+    sign_index?: number | null;
+    /**
+     * Debilitated
+     */
+    debilitated: boolean;
+    /**
+     * Afflictions
+     */
+    afflictions: Array<string>;
+};
+
+/**
+ * PitruSunAnalysis
+ */
+export type PitruSunAnalysis = {
+    /**
+     * House
+     */
+    house?: number | null;
+    /**
+     * Sign Index
+     */
+    sign_index?: number | null;
+    /**
+     * Debilitated
+     */
+    debilitated: boolean;
+    /**
+     * Afflictions
+     */
+    afflictions: Array<string>;
+};
+
+/**
+ * PlanetNatureAllResponse
+ */
+export type PlanetNatureAllResponse = {
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: PlanetNatureEntry;
+    };
+};
+
+/**
+ * PlanetNatureEntry
+ */
+export type PlanetNatureEntry = {
+    /**
+     * Tattva
+     *
+     * Element (Pancha Bhuta). Null for Rahu and Ketu: no tattva is assigned to the nodes.
+     */
+    tattva: string | null;
+    /**
+     * Guna
+     */
+    guna: string;
+    /**
+     * Gender
+     */
+    gender: string;
+    /**
+     * Caste
+     */
+    caste: string;
+    /**
+     * Nature
+     */
+    nature: string;
+    /**
+     * Direction
+     */
+    direction: string;
+    /**
+     * Color
+     */
+    color: string;
+    /**
+     * Deity
+     */
+    deity: string;
+    /**
+     * Day
+     */
+    day: string;
+    /**
+     * Metal
+     */
+    metal: string;
+    /**
+     * Body Part
+     */
+    body_part: string;
+    /**
+     * Friends
+     */
+    friends: Array<string>;
+    /**
+     * Enemies
+     */
+    enemies: Array<string>;
+    /**
+     * Neutrals
+     */
+    neutrals: Array<string>;
+};
+
+/**
+ * PlanetNatureSingleResponse
+ */
+export type PlanetNatureSingleResponse = {
+    /**
+     * Tattva
+     *
+     * Element (Pancha Bhuta). Null for Rahu and Ketu: no tattva is assigned to the nodes.
+     */
+    tattva: string | null;
+    /**
+     * Guna
+     */
+    guna: string;
+    /**
+     * Gender
+     */
+    gender: string;
+    /**
+     * Caste
+     */
+    caste: string;
+    /**
+     * Nature
+     */
+    nature: string;
+    /**
+     * Direction
+     */
+    direction: string;
+    /**
+     * Color
+     */
+    color: string;
+    /**
+     * Deity
+     */
+    deity: string;
+    /**
+     * Day
+     */
+    day: string;
+    /**
+     * Metal
+     */
+    metal: string;
+    /**
+     * Body Part
+     */
+    body_part: string;
+    /**
+     * Friends
+     */
+    friends: Array<string>;
+    /**
+     * Enemies
+     */
+    enemies: Array<string>;
+    /**
+     * Neutrals
+     */
+    neutrals: Array<string>;
+    /**
+     * Planet
+     */
+    planet: string;
+};
+
+/**
  * PlanetPosition
  */
 export type PlanetPosition = {
@@ -5497,6 +10064,196 @@ export type PortuthamRequest = {
 };
 
 /**
+ * PoruthamResponse
+ */
+export type PoruthamResponse = {
+    /**
+     * Total Passed
+     */
+    total_passed: number;
+    /**
+     * Total Poruthams
+     */
+    total_poruthams: number;
+    /**
+     * Compatibility Level
+     */
+    compatibility_level: string;
+    /**
+     * Rajju Veto
+     */
+    rajju_veto: boolean;
+    /**
+     * Vedha Veto
+     */
+    vedha_veto: boolean;
+    /**
+     * Hard Veto
+     */
+    hard_veto: boolean;
+    /**
+     * Breakdown
+     */
+    breakdown: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * PrashnaHouseAnalysis
+ */
+export type PrashnaHouseAnalysis = {
+    /**
+     * House
+     */
+    house: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Lord
+     */
+    lord: string;
+    /**
+     * Lord Dignity
+     */
+    lord_dignity: string;
+    /**
+     * Lord House
+     */
+    lord_house: number;
+    /**
+     * Lord Longitude
+     */
+    lord_longitude: number;
+    /**
+     * Occupants
+     */
+    occupants: Array<string>;
+};
+
+/**
+ * PrashnaHouseCusp
+ */
+export type PrashnaHouseCusp = {
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Lord
+     */
+    lord: string;
+    /**
+     * Longitude
+     */
+    longitude: number;
+};
+
+/**
+ * PrashnaLagna
+ */
+export type PrashnaLagna = {
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Lord
+     */
+    lord: string;
+};
+
+/**
+ * PrashnaMoon
+ */
+export type PrashnaMoon = {
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Nakshatra
+     */
+    nakshatra: string;
+    /**
+     * Phase
+     */
+    phase: string;
+    /**
+     * Dignity
+     */
+    dignity: string;
+    /**
+     * Void Of Course
+     */
+    void_of_course: boolean;
+    /**
+     * Afflicted Moon
+     */
+    afflicted_moon: boolean;
+    /**
+     * Applying To Benefic
+     */
+    applying_to_benefic: boolean;
+};
+
+/**
+ * PrashnaPlanetSummary
+ */
+export type PrashnaPlanetSummary = {
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * House
+     */
+    house: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Dignity
+     */
+    dignity: string;
+};
+
+/**
  * PrashnaRequest
  */
 export type PrashnaRequest = {
@@ -5542,6 +10299,70 @@ export type PrashnaRequest = {
      * Ayanamsa system
      */
     ayanamsa?: 'lahiri' | 'kp';
+};
+
+/**
+ * PrashnaResponse
+ */
+export type PrashnaResponse = {
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Question
+     */
+    question: string;
+    /**
+     * Primary House
+     */
+    primary_house: number;
+    /**
+     * Ithsala Applying
+     */
+    ithsala_applying: boolean;
+    /**
+     * Ithsala Separating
+     */
+    ithsala_separating: boolean;
+    /**
+     * Query Utc
+     */
+    query_utc: string;
+    lagna: PrashnaLagna;
+    house_analysis: PrashnaHouseAnalysis;
+    moon: PrashnaMoon;
+    verdict: PrashnaVerdict;
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: PrashnaPlanetSummary;
+    };
+    /**
+     * House Cusps
+     */
+    house_cusps: {
+        [key: string]: PrashnaHouseCusp;
+    };
+};
+
+/**
+ * PrashnaVerdict
+ */
+export type PrashnaVerdict = {
+    /**
+     * Verdict
+     */
+    verdict: string;
+    /**
+     * Confidence
+     */
+    confidence: string;
+    /**
+     * Score
+     */
+    score: number;
 };
 
 /**
@@ -5640,6 +10461,82 @@ export type ProgressionRequest = {
      * Target date for progressions YYYY-MM-DD. Defaults to today.
      */
     target_date?: string | null;
+};
+
+/**
+ * PujaSuggestionEntry
+ */
+export type PujaSuggestionEntry = {
+    /**
+     * Puja Name
+     */
+    puja_name: string;
+    /**
+     * Deity
+     */
+    deity: string;
+    /**
+     * Day
+     */
+    day: string;
+    /**
+     * Offerings
+     */
+    offerings: Array<string>;
+    /**
+     * Grain
+     */
+    grain: string;
+    /**
+     * Mantra
+     */
+    mantra: string;
+};
+
+/**
+ * PujaSuggestionSingleResponse
+ */
+export type PujaSuggestionSingleResponse = {
+    /**
+     * Puja Name
+     */
+    puja_name: string;
+    /**
+     * Deity
+     */
+    deity: string;
+    /**
+     * Day
+     */
+    day: string;
+    /**
+     * Offerings
+     */
+    offerings: Array<string>;
+    /**
+     * Grain
+     */
+    grain: string;
+    /**
+     * Mantra
+     */
+    mantra: string;
+    /**
+     * Planet
+     */
+    planet: string;
+};
+
+/**
+ * PujaSuggestionsAllResponse
+ */
+export type PujaSuggestionsAllResponse = {
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: PujaSuggestionEntry;
+    };
 };
 
 /**
@@ -5774,6 +10671,24 @@ export type RemediesRequest = {
 };
 
 /**
+ * RemediesResponse
+ */
+export type RemediesResponse = {
+    /**
+     * Recommended Remedies
+     */
+    recommended_remedies: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * Planet Dignities
+     */
+    planet_dignities: Array<{
+        [key: string]: unknown;
+    }>;
+};
+
+/**
  * ReturnChartResponse
  */
 export type ReturnChartResponse = {
@@ -5803,6 +10718,124 @@ export type ReturnChartResponse = {
      * Full Western natal chart calculated for the return moment
      */
     chart: WesternNatalResponse;
+};
+
+/**
+ * Ritu
+ */
+export type Ritu = {
+    /**
+     * Vedic
+     *
+     * Season from the lunar month.
+     */
+    vedic: string;
+    /**
+     * Vedic English
+     */
+    vedic_english: string;
+    /**
+     * Drik
+     *
+     * Season from the tropical Sun.
+     */
+    drik: string;
+    /**
+     * Drik English
+     */
+    drik_english: string;
+};
+
+/**
+ * RudrakshaAllResponse
+ */
+export type RudrakshaAllResponse = {
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: RudrakshaEntry;
+    };
+};
+
+/**
+ * RudrakshaEntry
+ */
+export type RudrakshaEntry = {
+    /**
+     * Mukhi
+     */
+    mukhi: number;
+    /**
+     * Presiding Deity
+     */
+    presiding_deity: string;
+    /**
+     * Mantra
+     */
+    mantra: string;
+    /**
+     * Metal
+     */
+    metal: string;
+    /**
+     * Wearing Day
+     */
+    wearing_day: string;
+    /**
+     * Mala Beads
+     */
+    mala_beads: number;
+    /**
+     * Wearing Finger
+     */
+    wearing_finger: string;
+    /**
+     * Benefits
+     */
+    benefits: string;
+};
+
+/**
+ * RudrakshaSingleResponse
+ */
+export type RudrakshaSingleResponse = {
+    /**
+     * Mukhi
+     */
+    mukhi: number;
+    /**
+     * Presiding Deity
+     */
+    presiding_deity: string;
+    /**
+     * Mantra
+     */
+    mantra: string;
+    /**
+     * Metal
+     */
+    metal: string;
+    /**
+     * Wearing Day
+     */
+    wearing_day: string;
+    /**
+     * Mala Beads
+     */
+    mala_beads: number;
+    /**
+     * Wearing Finger
+     */
+    wearing_finger: string;
+    /**
+     * Benefits
+     */
+    benefits: string;
+    /**
+     * Planet
+     */
+    planet: string;
 };
 
 /**
@@ -5940,6 +10973,118 @@ export type SadeSatiResponse = {
 };
 
 /**
+ * SahamEntry
+ */
+export type SahamEntry = {
+    /**
+     * Slug
+     */
+    slug: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Theme
+     */
+    theme: string;
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Saham Lord
+     *
+     * Classical lord of the sign where this Saham falls.
+     */
+    saham_lord: string;
+    /**
+     * Formula Used
+     *
+     * Day or night formula and planet operands used.
+     */
+    formula_used: string;
+};
+
+/**
+ * SahamResponse
+ */
+export type SahamResponse = {
+    /**
+     * Target Year
+     */
+    target_year: number;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Solar Return Utc
+     */
+    solar_return_utc: string;
+    /**
+     * Is Day Return
+     *
+     * True if solar return occurred during daytime — determines formula variant.
+     */
+    is_day_return: boolean;
+    /**
+     * Varshaphal Ascendant Longitude
+     */
+    varshaphal_ascendant_longitude: number;
+    /**
+     * Total
+     */
+    total: number;
+    /**
+     * Sahams
+     */
+    sahams: Array<SahamEntry>;
+};
+
+/**
+ * Samvat
+ */
+export type Samvat = {
+    /**
+     * Vikram
+     *
+     * Vikram Samvat (year begins at Chaitra Shukla Pratipada).
+     */
+    vikram: number;
+    /**
+     * Shaka
+     *
+     * Shaka Samvat.
+     */
+    shaka: number;
+    /**
+     * Gujarati
+     *
+     * Gujarati Vikram Samvat (year begins at Kartika Shukla Pratipada).
+     */
+    gujarati: number;
+    /**
+     * Samvatsara
+     *
+     * Name of the Shaka year in the 60-year Chandramana cycle.
+     */
+    samvatsara: string;
+};
+
+/**
  * SecondaryProgressionResponse
  */
 export type SecondaryProgressionResponse = {
@@ -5991,6 +11136,34 @@ export type SecondaryProgressionResponse = {
      * Progressed Mc Sign
      */
     progressed_mc_sign: string;
+};
+
+/**
+ * SignSpan
+ */
+export type SignSpan = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
+    /**
+     * Index
+     *
+     * 0 = Mesha ... 11 = Meena (sidereal).
+     */
+    index: number;
+    /**
+     * Name
+     */
+    name: string;
 };
 
 /**
@@ -6450,15 +11623,69 @@ export type TamilPanchangaResponse = {
      */
     kuligai: TamilKaalPeriod;
     /**
-     * Emagandam — 4th Tamil inauspicious period.
+     * Emagandam: the Tamil spelling of Yamagandam, the same period (kept for existing clients).
      */
     emagandam: TamilKaalPeriod;
     /**
      * Nalla Neram
      *
-     * Auspicious daytime windows between the four inauspicious periods.
+     * Daytime windows free of Rahu Kalam, Yamagandam and Kuligai.
      */
     nalla_neram: Array<TamilNallaNeramWindow>;
+};
+
+/**
+ * TarabalaDetail
+ */
+export type TarabalaDetail = {
+    /**
+     * Tara Number
+     *
+     * 1-9: Janma, Sampat, Vipat, Kshema, Pratyak, Sadhana, Naidhana, Mitra, Ati-Mitra.
+     */
+    tara_number: number;
+    /**
+     * Count From Birth
+     *
+     * 1-27, counting the birth nakshatra as 1.
+     */
+    count_from_birth: number;
+    /**
+     * Cycle
+     *
+     * Round of nine the count falls in: 1, 2 or 3.
+     */
+    cycle?: number | null;
+    /**
+     * Cycle Name
+     *
+     * Janma (counts 1-9), Anujanma (10-18) or Trijanma (19-27).
+     */
+    cycle_name?: string | null;
+    /**
+     * Name
+     *
+     * Tara name; the first tara of rounds 2 and 3 is Anujanma and Trijanma.
+     */
+    name: string;
+    /**
+     * Meaning
+     */
+    meaning: string;
+    /**
+     * Is Favorable
+     */
+    is_favorable: boolean;
+    /**
+     * Is Moon In Birth Nakshatra
+     *
+     * True only for count 1.
+     */
+    is_moon_in_birth_nakshatra?: boolean | null;
+    /**
+     * Interpretation
+     */
+    interpretation: string;
 };
 
 /**
@@ -6557,6 +11784,72 @@ export type ThirumanaPoruthamRequest = {
      * Bride (girl) birth details. In Tamil Thirumana Porutham, person2 is the bride.
      */
     person2: BirthInput;
+};
+
+/**
+ * ThirumanaPoruthamResponse
+ */
+export type ThirumanaPoruthamResponse = {
+    /**
+     * Total Passed
+     */
+    total_passed: number;
+    /**
+     * Total Poruthams
+     */
+    total_poruthams: number;
+    /**
+     * Compatibility Level
+     */
+    compatibility_level: string;
+    /**
+     * Rajju Veto
+     */
+    rajju_veto: boolean;
+    /**
+     * Vedha Veto
+     */
+    vedha_veto: boolean;
+    /**
+     * Hard Veto
+     */
+    hard_veto: boolean;
+    /**
+     * Rajju Severity
+     */
+    rajju_severity: number;
+    /**
+     * Rajju Severity Label
+     */
+    rajju_severity_label: string | null;
+    /**
+     * Tradition
+     */
+    tradition: string;
+    /**
+     * Breakdown
+     */
+    breakdown: {
+        [key: string]: unknown;
+    };
+};
+
+/**
+ * TimeWindow
+ */
+export type TimeWindow = {
+    /**
+     * Start
+     *
+     * Start. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * End. ISO 8601 local time with UTC offset, e.g. 2026-11-06T10:31:09+05:30.
+     */
+    end: string;
 };
 
 /**
@@ -6705,6 +11998,77 @@ export type TransitAspectSchema = {
      * Is Applying
      */
     is_applying: boolean;
+};
+
+/**
+ * TransitMoonRef
+ */
+export type TransitMoonRef = {
+    /**
+     * Nakshatra
+     */
+    nakshatra: string;
+    /**
+     * Nakshatra Index
+     */
+    nakshatra_index: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+};
+
+/**
+ * TransitNakshatraQuality
+ */
+export type TransitNakshatraQuality = {
+    /**
+     * Nakshatra
+     */
+    nakshatra: string;
+    /**
+     * Quality Type
+     */
+    quality_type: string;
+    /**
+     * English
+     */
+    english: string;
+    /**
+     * Auspicious For
+     */
+    auspicious_for: Array<string>;
+    /**
+     * Inauspicious For
+     */
+    inauspicious_for: Array<string>;
+};
+
+/**
+ * TransitNakshatraTara
+ */
+export type TransitNakshatraTara = {
+    /**
+     * Nakshatra
+     */
+    nakshatra: string;
+    /**
+     * Nakshatra Index
+     */
+    nakshatra_index: number;
+    /**
+     * Start
+     *
+     * ISO 8601 local time.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * ISO 8601 local time.
+     */
+    end: string;
+    tara: TarabalaDetail;
 };
 
 /**
@@ -6870,6 +12234,96 @@ export type VaraData = {
 };
 
 /**
+ * VarshaPati
+ */
+export type VarshaPati = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Role
+     */
+    role: string;
+    /**
+     * Pancha Vargeeya Bala
+     */
+    pancha_vargeeya_bala: number;
+    /**
+     * Kshetra Bala
+     */
+    kshetra_bala: number;
+    /**
+     * Uchcha Bala
+     */
+    uchcha_bala: number;
+    /**
+     * Election Fallback
+     *
+     * When set, Varsha Pati was elected by fallback rather than highest aspecting score. Currently only 'muntha_pati_no_aspect'.
+     */
+    election_fallback?: string | null;
+    /**
+     * Moon Election
+     *
+     * Moon election outcome: 'cancer_lagna_exception', 'nocturnal_tri_rasi_exception', 'disqualified', or null.
+     */
+    moon_election?: string | null;
+};
+
+/**
+ * VarshaphalMuntha
+ */
+export type VarshaphalMuntha = {
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Age Years
+     */
+    age_years: number;
+    /**
+     * Muntha Lord
+     */
+    muntha_lord?: string | null;
+};
+
+/**
+ * VarshaphalPlanet
+ */
+export type VarshaphalPlanet = {
+    /**
+     * Longitude
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Degree
+     */
+    degree: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Speed
+     */
+    speed?: number | null;
+};
+
+/**
  * VarshaphalRequest
  *
  * Varshaphal — extends :class:`BirthInput` with ``target_year``.
@@ -6932,6 +12386,94 @@ export type VarshaphalRequest = {
      * Year for solar return e.g. 2026
      */
     target_year: number;
+};
+
+/**
+ * VarshaphalResponse
+ */
+export type VarshaphalResponse = {
+    /**
+     * Target Year
+     */
+    target_year: number;
+    /**
+     * Ayanamsa
+     */
+    ayanamsa: string;
+    /**
+     * Solar Return Utc
+     */
+    solar_return_utc: string;
+    /**
+     * Solar Return Jd
+     */
+    solar_return_jd: number;
+    /**
+     * Natal Sun Longitude
+     */
+    natal_sun_longitude: number;
+    /**
+     * Natal Lagna
+     */
+    natal_lagna: string;
+    /**
+     * Natal Lagna Index
+     */
+    natal_lagna_index: number;
+    /**
+     * Year Lord
+     */
+    year_lord: string;
+    muntha: VarshaphalMuntha;
+    /**
+     * Planets
+     */
+    planets: {
+        [key: string]: VarshaphalPlanet;
+    };
+    /**
+     * Varshaphal Ascendant Longitude
+     *
+     * Sidereal ascendant longitude at solar return (degrees).
+     */
+    varshaphal_ascendant_longitude?: number | null;
+    /**
+     * Varshaphal Ascendant Sign
+     *
+     * Sanskrit sign name of the Varshaphal ascendant.
+     */
+    varshaphal_ascendant_sign?: string | null;
+    /**
+     * Varshaphal Ascendant Sign Index
+     *
+     * Sign index 0-11 of the Varshaphal ascendant.
+     */
+    varshaphal_ascendant_sign_index?: number | null;
+    varsha_pati: VarshaPati;
+    /**
+     * Pancha Adhikaris
+     */
+    pancha_adhikaris: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * Pancha Vargeeya Bala
+     */
+    pancha_vargeeya_bala: {
+        [key: string]: number;
+    };
+    /**
+     * Tajika Aspects
+     */
+    tajika_aspects: Array<{
+        [key: string]: unknown;
+    }>;
+    /**
+     * Tajika Planet Pairs
+     */
+    tajika_planet_pairs: Array<{
+        [key: string]: unknown;
+    }>;
 };
 
 /**
@@ -7134,6 +12676,171 @@ export type WesternHemisphere = {
      * Planet count in houses 7–12 (above horizon)
      */
     southern: number;
+};
+
+/**
+ * WesternHoroscopeChapter
+ */
+export type WesternHoroscopeChapter = {
+    /**
+     * Chapter Number
+     */
+    chapter_number: number;
+    /**
+     * Start Date
+     *
+     * Chapter start date (YYYY-MM-DD)
+     */
+    start_date: string;
+    /**
+     * End Date
+     *
+     * Chapter end date (YYYY-MM-DD)
+     */
+    end_date: string;
+    /**
+     * Title
+     */
+    title: string;
+    /**
+     * Narrative
+     */
+    narrative: string;
+};
+
+/**
+ * WesternHoroscopeContent
+ *
+ * Stored Western tropical horoscope prose; no remedy field.
+ */
+export type WesternHoroscopeContent = {
+    /**
+     * Headline
+     */
+    headline: string;
+    /**
+     * Narrative
+     */
+    narrative: string;
+    /**
+     * Career
+     */
+    career: string;
+    /**
+     * Money
+     */
+    money: string;
+    /**
+     * Love
+     */
+    love: string;
+    /**
+     * Body
+     */
+    body: string;
+    /**
+     * Power Window
+     *
+     * Favorable action window with tropical transit context
+     */
+    power_window?: string | null;
+    /**
+     * Caution Window
+     *
+     * Cautious or low-energy window with tropical transit context
+     */
+    caution_window?: string | null;
+    /**
+     * Closing Message
+     *
+     * Shareable closing line for the period
+     */
+    closing_message?: string | null;
+    /**
+     * Phases
+     *
+     * Monthly: phased breakdown
+     */
+    phases?: Array<HoroscopePhase> | null;
+    /**
+     * Year Theme
+     *
+     * Yearly: tropical theme for the year
+     */
+    year_theme?: string | null;
+    /**
+     * Chapters
+     *
+     * Yearly: chapter breakdown
+     */
+    chapters?: Array<WesternHoroscopeChapter> | null;
+    /**
+     * Auspicious Months
+     *
+     * Yearly: auspicious month names
+     */
+    auspicious_months?: Array<string> | null;
+    /**
+     * Landmark Dates
+     *
+     * Yearly: key dates
+     */
+    landmark_dates?: Array<WesternHoroscopeLandmarkDate> | null;
+};
+
+/**
+ * WesternHoroscopeData
+ *
+ * Payload returned by Western horoscope GET endpoints.
+ */
+export type WesternHoroscopeData = {
+    content: WesternHoroscopeContent;
+    /**
+     * Generated At
+     *
+     * ISO timestamp when the horoscope was generated (UTC)
+     */
+    generated_at?: string | null;
+    /**
+     * Period Key
+     *
+     * Period identifier (date, week, month, or year key)
+     */
+    period_key: string;
+    /**
+     * Horizon
+     *
+     * Horizon: daily, weekly, monthly, or yearly
+     */
+    horizon: string;
+    /**
+     * Sun Sign
+     *
+     * Normalised English tropical Sun sign slug
+     */
+    sun_sign: string;
+    /**
+     * Zodiac Type
+     *
+     * Always western for these endpoints
+     */
+    zodiac_type: string;
+};
+
+/**
+ * WesternHoroscopeLandmarkDate
+ */
+export type WesternHoroscopeLandmarkDate = {
+    /**
+     * Date
+     *
+     * Landmark date (YYYY-MM-DD)
+     */
+    date: string;
+    /**
+     * Event
+     */
+    event: string;
 };
 
 /**
@@ -7363,7 +13070,7 @@ export type WesternPlanetPosition = {
     /**
      * Dignity Disputed
      *
-     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no classical consensus.
+     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no established consensus.
      */
     dignity_disputed: boolean;
 };
@@ -7615,6 +13322,12 @@ export type YogaResult = {
      * Interpretation keywords
      */
     keywords?: Array<string>;
+    /**
+     * Classical Sources
+     *
+     * Classical texts this yoga is drawn from (empty when the yoga comes from general tradition rather than a named text)
+     */
+    classical_sources?: Array<ClassicalSource>;
 };
 
 /**
@@ -7800,12 +13513,19 @@ export type ZodiacCompatibilityResponse = {
 export type AppApiResponseApiResponseCompatibilityResponse1 = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: AppApiSchemasWesternCompatibilityResponse;
 };
 
@@ -7815,12 +13535,19 @@ export type AppApiResponseApiResponseCompatibilityResponse1 = {
 export type AppApiResponseApiResponseCompatibilityResponse2 = {
     /**
      * Success
+     *
+     * True if the request succeeded
      */
     success?: boolean;
     /**
      * Message
+     *
+     * Human-readable status message
      */
     message?: string;
+    /**
+     * The endpoint response payload
+     */
     data: AppApiSchemasNumerologyCompatibilityResponse;
 };
 
@@ -7980,8 +13707,10 @@ export type AtmakarakaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseAtmakarakaResponse;
 };
+
+export type AtmakarakaResponse2 = AtmakarakaResponses[keyof AtmakarakaResponses];
 
 export type AshtakavargaData = {
     body: AshtakavargaRequest;
@@ -9316,7 +15045,7 @@ export type PanchangaHoraError = PanchangaHoraErrors[keyof PanchangaHoraErrors];
 
 export type PanchangaHoraResponses = {
     /**
-     * 24 planetary hours with ruling planet, start/end times, and suitable activities
+     * 24 planetary hours with ruling planet, start/end times, convention, and suitable activities
      */
     200: ApiResponseHoraResponse;
 };
@@ -9645,6 +15374,12 @@ export type PanchangaFestivalsData = {
          * IANA timezone
          */
         timezone?: string | null;
+        /**
+         * Categories
+         *
+         * Comma-separated subset of festival, vrat, sankranti, eclipse, period. Default: festival (the named festivals). Pass e.g. 'festival,vrat,period' for Ekadashis, Pradosh, Sankashti, Purnima and Amavasya, Adhik Maas and Pitru Paksha, or 'eclipse' for eclipses.
+         */
+        categories?: string | null;
     };
     url: '/v1/astro/panchanga/festivals';
 };
@@ -9813,8 +15548,10 @@ export type HoroscopeDailyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseHoroscopeData;
 };
+
+export type HoroscopeDailyResponse = HoroscopeDailyResponses[keyof HoroscopeDailyResponses];
 
 export type HoroscopeWeeklyData = {
     body?: never;
@@ -9873,8 +15610,10 @@ export type HoroscopeWeeklyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseHoroscopeData;
 };
+
+export type HoroscopeWeeklyResponse = HoroscopeWeeklyResponses[keyof HoroscopeWeeklyResponses];
 
 export type HoroscopeMonthlyData = {
     body?: never;
@@ -9933,8 +15672,10 @@ export type HoroscopeMonthlyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseHoroscopeData;
 };
+
+export type HoroscopeMonthlyResponse = HoroscopeMonthlyResponses[keyof HoroscopeMonthlyResponses];
 
 export type HoroscopeYearlyData = {
     body?: never;
@@ -9993,8 +15734,10 @@ export type HoroscopeYearlyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseHoroscopeData;
 };
+
+export type HoroscopeYearlyResponse = HoroscopeYearlyResponses[keyof HoroscopeYearlyResponses];
 
 export type WesternHoroscopeDailyData = {
     body?: never;
@@ -10053,8 +15796,10 @@ export type WesternHoroscopeDailyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseWesternHoroscopeData;
 };
+
+export type WesternHoroscopeDailyResponse = WesternHoroscopeDailyResponses[keyof WesternHoroscopeDailyResponses];
 
 export type WesternHoroscopeWeeklyData = {
     body?: never;
@@ -10113,8 +15858,10 @@ export type WesternHoroscopeWeeklyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseWesternHoroscopeData;
 };
+
+export type WesternHoroscopeWeeklyResponse = WesternHoroscopeWeeklyResponses[keyof WesternHoroscopeWeeklyResponses];
 
 export type WesternHoroscopeMonthlyData = {
     body?: never;
@@ -10173,8 +15920,10 @@ export type WesternHoroscopeMonthlyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseWesternHoroscopeData;
 };
+
+export type WesternHoroscopeMonthlyResponse = WesternHoroscopeMonthlyResponses[keyof WesternHoroscopeMonthlyResponses];
 
 export type WesternHoroscopeYearlyData = {
     body?: never;
@@ -10233,8 +15982,10 @@ export type WesternHoroscopeYearlyResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseWesternHoroscopeData;
 };
+
+export type WesternHoroscopeYearlyResponse = WesternHoroscopeYearlyResponses[keyof WesternHoroscopeYearlyResponses];
 
 export type MuhurtaData = {
     body: MuhurtaRequest;
@@ -10288,8 +16039,10 @@ export type MuhurtaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseMuhurtaResponse;
 };
+
+export type MuhurtaResponse2 = MuhurtaResponses[keyof MuhurtaResponses];
 
 export type DashaData = {
     body: DashaRequest;
@@ -10400,8 +16153,10 @@ export type DashaTransitsResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseDashaTransitsResponse;
 };
+
+export type DashaTransitsResponse2 = DashaTransitsResponses[keyof DashaTransitsResponses];
 
 export type CharDashaData = {
     body: CharDashaRequest;
@@ -10455,8 +16210,10 @@ export type CharDashaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseCharDashaResponse;
 };
+
+export type CharDashaResponse2 = CharDashaResponses[keyof CharDashaResponses];
 
 export type MatchmakingDashakootData = {
     body: DashakootRequest;
@@ -10510,8 +16267,10 @@ export type MatchmakingDashakootResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseDashakootResponse;
 };
+
+export type MatchmakingDashakootResponse = MatchmakingDashakootResponses[keyof MatchmakingDashakootResponses];
 
 export type MatchmakingPapasamyamData = {
     body: PapasamyamRequest;
@@ -10565,8 +16324,10 @@ export type MatchmakingPapasamyamResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponsePapasamyamResponse;
 };
+
+export type MatchmakingPapasamyamResponse = MatchmakingPapasamyamResponses[keyof MatchmakingPapasamyamResponses];
 
 export type MatchmakingPoruthamData = {
     body: PortuthamRequest;
@@ -10620,8 +16381,10 @@ export type MatchmakingPoruthamResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponsePoruthamResponse;
 };
+
+export type MatchmakingPoruthamResponse = MatchmakingPoruthamResponses[keyof MatchmakingPoruthamResponses];
 
 export type MatchmakingThirumanaPoruthamData = {
     body: ThirumanaPoruthamRequest;
@@ -10675,8 +16438,10 @@ export type MatchmakingThirumanaPoruthamResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseThirumanaPoruthamResponse;
 };
+
+export type MatchmakingThirumanaPoruthamResponse = MatchmakingThirumanaPoruthamResponses[keyof MatchmakingThirumanaPoruthamResponses];
 
 export type DoshasData = {
     body: DoshaRequest;
@@ -10787,8 +16552,10 @@ export type GocharResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseGocharResponse;
 };
+
+export type GocharResponse2 = GocharResponses[keyof GocharResponses];
 
 export type YogasData = {
     body: YogaRequest;
@@ -11266,8 +17033,10 @@ export type BusinessNameResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseBusinessNameAnalysisResponse;
 };
+
+export type BusinessNameResponse = BusinessNameResponses[keyof BusinessNameResponses];
 
 export type BusinessNamePostData = {
     body: BusinessNamePostRequest;
@@ -11321,8 +17090,10 @@ export type BusinessNamePostResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseBusinessNameAnalysisResponse;
 };
+
+export type BusinessNamePostResponse = BusinessNamePostResponses[keyof BusinessNamePostResponses];
 
 export type LuckyNumbersData = {
     body?: never;
@@ -11517,8 +17288,10 @@ export type NameCorrectionResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseNameCorrectionResponse;
 };
+
+export type NameCorrectionResponse2 = NameCorrectionResponses[keyof NameCorrectionResponses];
 
 export type ChaldeanData = {
     body: ChaldeanRequest;
@@ -11572,8 +17345,10 @@ export type ChaldeanResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseChaldeanResponse;
 };
+
+export type ChaldeanResponse2 = ChaldeanResponses[keyof ChaldeanResponses];
 
 export type LoShuData = {
     body: LoShuRequest;
@@ -11627,8 +17402,10 @@ export type LoShuResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseLoShuResponse;
 };
+
+export type LoShuResponse2 = LoShuResponses[keyof LoShuResponses];
 
 export type MobileNumberData = {
     body?: never;
@@ -11689,8 +17466,10 @@ export type MobileNumberResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseDigitNumberAnalysisResponse;
 };
+
+export type MobileNumberResponse = MobileNumberResponses[keyof MobileNumberResponses];
 
 export type VehicleNumberData = {
     body?: never;
@@ -11751,8 +17530,10 @@ export type VehicleNumberResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseDigitNumberAnalysisResponse;
 };
+
+export type VehicleNumberResponse = VehicleNumberResponses[keyof VehicleNumberResponses];
 
 export type ExpressionNumberData = {
     body: NameOnlyRequest;
@@ -13395,8 +19176,10 @@ export type RemediesResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseRemediesResponse;
 };
+
+export type RemediesResponse2 = RemediesResponses[keyof RemediesResponses];
 
 export type GemstonesData = {
     body: GemstoneRequest;
@@ -13450,8 +19233,10 @@ export type GemstonesResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseGemstoneResponse;
 };
+
+export type GemstonesResponse = GemstonesResponses[keyof GemstonesResponses];
 
 export type IshtaDevataData = {
     body: IshtaDevtaRequest;
@@ -13505,8 +19290,10 @@ export type IshtaDevataResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseIshtaDevtaResponse;
 };
+
+export type IshtaDevataResponse = IshtaDevataResponses[keyof IshtaDevataResponses];
 
 export type KpChartData = {
     body: KpBirthRequest;
@@ -13560,8 +19347,10 @@ export type KpChartResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseKpChartResponse;
 };
+
+export type KpChartResponse2 = KpChartResponses[keyof KpChartResponses];
 
 export type KpSignificatorsData = {
     body: KpBirthRequest;
@@ -13615,8 +19404,10 @@ export type KpSignificatorsResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseKpSignificatorsResponse;
 };
+
+export type KpSignificatorsResponse2 = KpSignificatorsResponses[keyof KpSignificatorsResponses];
 
 export type KpRulingPlanetsData = {
     body: KpRulingPlanetsRequest;
@@ -13670,8 +19461,10 @@ export type KpRulingPlanetsResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseKpRulingPlanetsResponse;
 };
+
+export type KpRulingPlanetsResponse2 = KpRulingPlanetsResponses[keyof KpRulingPlanetsResponses];
 
 export type LalKitabChartData = {
     body: LalKitabRequest;
@@ -13725,8 +19518,10 @@ export type LalKitabChartResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseLalKitabChartResponse;
 };
+
+export type LalKitabChartResponse2 = LalKitabChartResponses[keyof LalKitabChartResponses];
 
 export type LalKitabRemediesData = {
     body: LalKitabRequest;
@@ -13780,8 +19575,10 @@ export type LalKitabRemediesResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseLalKitabRemediesResponse;
 };
+
+export type LalKitabRemediesResponse2 = LalKitabRemediesResponses[keyof LalKitabRemediesResponses];
 
 export type PrashnaData = {
     body: PrashnaRequest;
@@ -13835,8 +19632,10 @@ export type PrashnaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponsePrashnaResponse;
 };
+
+export type PrashnaResponse2 = PrashnaResponses[keyof PrashnaResponses];
 
 export type NakshatraData2 = {
     body?: never;
@@ -13895,8 +19694,10 @@ export type NakshatraResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseNakshatraProfileResponse;
 };
+
+export type NakshatraResponse = NakshatraResponses[keyof NakshatraResponses];
 
 export type PlanetNatureData = {
     body?: never;
@@ -13955,8 +19756,10 @@ export type PlanetNatureResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseUnionPlanetNatureAllResponsePlanetNatureSingleResponse;
 };
+
+export type PlanetNatureResponse = PlanetNatureResponses[keyof PlanetNatureResponses];
 
 export type PujaSuggestionsData = {
     body?: never;
@@ -14015,8 +19818,10 @@ export type PujaSuggestionsResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseUnionPujaSuggestionsAllResponsePujaSuggestionSingleResponse;
 };
+
+export type PujaSuggestionsResponse = PujaSuggestionsResponses[keyof PujaSuggestionsResponses];
 
 export type RudrakshaData = {
     body?: never;
@@ -14075,8 +19880,10 @@ export type RudrakshaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseUnionRudrakshaAllResponseRudrakshaSingleResponse;
 };
+
+export type RudrakshaResponse = RudrakshaResponses[keyof RudrakshaResponses];
 
 export type AyanamshaData = {
     body?: never;
@@ -14135,8 +19942,10 @@ export type AyanamshaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseAyanamshaResponse;
 };
+
+export type AyanamshaResponse2 = AyanamshaResponses[keyof AyanamshaResponses];
 
 export type WesternBiorhythmData = {
     body: BiorhythmRequest;
@@ -14190,8 +19999,10 @@ export type WesternBiorhythmResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseUnionBiorhythmSingleDayResponseBiorhythmRangeResponse;
 };
+
+export type WesternBiorhythmResponse = WesternBiorhythmResponses[keyof WesternBiorhythmResponses];
 
 export type NakshatraPredictionData = {
     body: NakshatraPredictionRequest;
@@ -14245,8 +20056,10 @@ export type NakshatraPredictionResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseNakshatraPredictionResponse;
 };
+
+export type NakshatraPredictionResponse2 = NakshatraPredictionResponses[keyof NakshatraPredictionResponses];
 
 export type PitraDoshaData = {
     body: BirthInput;
@@ -14300,8 +20113,10 @@ export type PitraDoshaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponsePitruDoshaResponse;
 };
+
+export type PitraDoshaResponse = PitraDoshaResponses[keyof PitraDoshaResponses];
 
 export type GhatChakraData = {
     body: BirthInput;
@@ -14355,8 +20170,10 @@ export type GhatChakraResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseGhatChakraResponse;
 };
+
+export type GhatChakraResponse2 = GhatChakraResponses[keyof GhatChakraResponses];
 
 export type GeocodeData = {
     body?: never;
@@ -14796,8 +20613,10 @@ export type VarshaphalResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseVarshaphalResponse;
 };
+
+export type VarshaphalResponse2 = VarshaphalResponses[keyof VarshaphalResponses];
 
 export type VarshaphalSahamData = {
     body: VarshaphalRequest;
@@ -14851,8 +20670,10 @@ export type VarshaphalSahamResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseSahamResponse;
 };
+
+export type VarshaphalSahamResponse = VarshaphalSahamResponses[keyof VarshaphalSahamResponses];
 
 export type VarshaphalHarshaBalaData = {
     body: VarshaphalRequest;
@@ -14906,5 +20727,7 @@ export type VarshaphalHarshaBalaResponses = {
     /**
      * Successful Response
      */
-    200: unknown;
+    200: ApiResponseHarshaBalaResponse;
 };
+
+export type VarshaphalHarshaBalaResponse = VarshaphalHarshaBalaResponses[keyof VarshaphalHarshaBalaResponses];

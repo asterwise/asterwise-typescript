@@ -186,7 +186,7 @@ export const natalChart = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Western Natal Chart — Tropical
  *
- * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, essential dignities per classical Western tradition, all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
+ * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, essential dignities, all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
  */
 export const westernNatalChart = <ThrowOnError extends boolean = false>(options: Options<WesternNatalChartData, ThrowOnError>) => (options.client ?? client).post<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -414,7 +414,7 @@ export const westernProgressionsSolarArc = <ThrowOnError extends boolean = false
 /**
  * Daily Panchanga
  *
- * Calculate Vedic Panchanga for a given date and location. Returns Tithi, Nakshatra, Yoga, Karana, Vara (weekday), and auspicious and inauspicious periods for the day. Returns Tithi, Vara (weekday), Nakshatra, Yoga, and Karana for the birth date and location.
+ * Vedic Panchanga for a date and location. The top-level tithi, vara, nakshatra, yoga and karana are the limbs at sunrise (or at `time` when given). The rest describes the whole panchanga day, sunrise to next sunrise: every tithi, nakshatra, yoga and karana active in it with ISO start and end times and kshaya/vriddhi flags; sunrise, sunset, moonrise and moonset; Sun and Moon rashi; lunar month in amanta and purnimanta reckoning (with Adhik months); Vikram, Shaka and Gujarati samvat; ritu and ayana; and the day's timings: Rahu Kaal, Gulika, Yamaganda, Abhijit, Brahma Muhurta, Durmuhurta, Varjyam, Amrit Kaal, Bhadra, Panchaka, Pradosh and others.
  */
 export const panchanga = <ThrowOnError extends boolean = false>(options: Options<PanchangaData, ThrowOnError>) => (options.client ?? client).post<PanchangaResponses, PanchangaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -444,7 +444,7 @@ export const panchangaChoghadiya = <ThrowOnError extends boolean = false>(option
 /**
  * Planetary hours (Hora)
  *
- * Calculate all 24 Hora (planetary hours) for a given date and location, starting from sunrise. Each hora is ruled by a planet in the Chaldean sequence with qualities indicating suitable activities.
+ * Calculate all 24 Hora (planetary hours) for a given date and location using unequal seasonal division: 12 equal parts from sunrise to sunset and 12 from sunset to next sunrise. The first hora after sunrise is ruled by the sunrise-boundary Vedic vara lord; subsequent horas follow the Chaldean sequence. Response includes a convention field naming the division used.
  */
 export const panchangaHora = <ThrowOnError extends boolean = false>(options: Options<PanchangaHoraData, ThrowOnError>) => (options.client ?? client).post<PanchangaHoraResponses, PanchangaHoraErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -474,7 +474,7 @@ export const panchangaRahuKaal = <ThrowOnError extends boolean = false>(options:
 /**
  * Monthly Panchanga calendar
  *
- * Calculate complete Panchanga for every day of a given month at a given location. Returns all 5 Panchanga elements (Tithi, Vara, Nakshatra, Yoga, Karana) plus Rahu Kaal for each day. Useful for building monthly almanac views.
+ * Panchanga for every day of a month at a location. Each day keeps the sunrise tithi, vara, nakshatra, yoga, karana and Rahu Kaal, and adds sunrise, sunset, moonrise, moonset, paksha, the lunar month (amanta and purnimanta, with Adhik months), Bhadra windows, and every tithi, nakshatra, yoga and karana active between that sunrise and the next with ISO start and end times. A kshaya tithi (one no sunrise touches) appears on the day it runs, flagged is_kshaya; a tithi that holds two sunrises is flagged is_vriddhi on both days.
  */
 export const panchangaCalendar = <ThrowOnError extends boolean = false>(options: Options<PanchangaCalendarData, ThrowOnError>) => (options.client ?? client).get<PanchangaCalendarResponses, PanchangaCalendarErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -500,7 +500,7 @@ export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(opti
 /**
  * Tamil Panchanga
  *
- * Tamil-specific Panchanga for a date and location. Returns all four Tamil inauspicious periods (Rahu Kalam, Yamagandam, Kuligai, Emagandam), Nalla Neram (auspicious daytime windows between inauspicious periods), and the Tamil solar month name derived from the Sun's sidereal position at sunrise.
+ * Tamil-specific Panchanga for a date and location. Returns the Tamil inauspicious periods Rahu Kalam, Yamagandam and Kuligai (emagandam is the Tamil spelling of Yamagandam and repeats the same period), Nalla Neram (daytime windows free of those periods), and the Tamil solar month name derived from the Sun's sidereal position at sunrise.
  */
 export const panchangaTamil = <ThrowOnError extends boolean = false>(options: Options<PanchangaTamilData, ThrowOnError>) => (options.client ?? client).get<PanchangaTamilResponses, PanchangaTamilErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -509,9 +509,9 @@ export const panchangaTamil = <ThrowOnError extends boolean = false>(options: Op
 });
 
 /**
- * Hindu festival calendar
+ * Hindu festival and vrat calendar
  *
- * Compute all major Hindu festival dates for a given year and location. Returns 20 pan-Hindu festivals including solar sankrantis (Makar Sankranti, Vaisakhi) and tithi-based festivals (Diwali, Holi, Dussehra, Janmashtami, Ganesh Chaturthi, Ram Navami, and 12 others). All dates are astronomically computed — no hardcoded dates. Tithi festivals use the Sun-Moon elongation at local sunrise with Lahiri sidereal ayanamsa. Location is required for accurate sunrise-based tithi determination.
+ * Hindu festivals, vrats, sankrantis, eclipses and periods for a year at a location. Each lunar festival is fixed by its lunar month (amanta, with Adhik months detected from new moons and sankrantis), its tithi, and the part of the day in which the tithi must prevail (sunrise, forenoon, Madhyahna, Aparahna, Pradosh, Nishita, moonrise), with the classical tie-breaks when a tithi spans two days, Bhadra rules for Holika Dahan and Raksha Bandhan, and the Smarta Ekadashi rule. Categories: festival (about 50 named festivals), vrat (every Ekadashi, Pradosh, Sankashti Chaturthi, Masik Shivaratri, Purnima and Amavasya), sankranti (12 solar ingresses), eclipse (with local visibility and contact times), period (Adhik Maas, Chaturmas, Pitru Paksha, Navratri, Holashtak, Kharmas). By default only the named festivals are returned; pass `categories` for the rest. Lahiri ayanamsa.
  */
 export const panchangaFestivals = <ThrowOnError extends boolean = false>(options: Options<PanchangaFestivalsData, ThrowOnError>) => (options.client ?? client).get<PanchangaFestivalsResponses, PanchangaFestivalsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -551,7 +551,12 @@ export const panchangaFestivals = <ThrowOnError extends boolean = false>(options
  * - D60 — Shashtyamsha (subtle karmic residue)
  *
  * Each chart shows every planet's sign placement within that divisional
- * subdivision. Use the D9 alongside the D1 for most interpretive work.
+ * subdivision, with its dignity there (exalted, debilitated, own sign, friendly,
+ * neutral or enemy) and whether it is vargottama (same sign as in D1). When the
+ * birth time is known, each chart also has its own lagna, every planet's
+ * whole-sign house from that lagna, and a `houses` table per chart (sign, lord
+ * and occupants of each house). Use the D9 alongside the D1 for most
+ * interpretive work.
  *
  * **Ayanamsa:** All positions are sidereal. Default is Lahiri.
  *
@@ -658,7 +663,7 @@ export const westernHoroscopeYearly = <ThrowOnError extends boolean = false>(opt
 /**
  * Muhurta — Auspicious Timing
  *
- * Finds and ranks auspicious time windows for a specific event type. Scores each Choghadiya period using Choghadiya quality, Yoga, Vara (weekday), and Tithi. Returns top N ranked windows. Supported events: marriage, travel, business, griha_pravesh, naming_ceremony.
+ * Finds and ranks auspicious time windows for an activity between two dates (up to a year) at a location. The range is cut at every change of tithi, nakshatra, yoga, karana, lagna, sunrise and sunset and at the edges of Rahu Kaal, Yamaganda, Gulika, Durmuhurta, Varjyam and Bhadra, so windows start and end at exact moments. A moment is ruled out when the season bars the activity (Chaturmas, Adhik Maas, Pitru Paksha, Kharmas, Holashtak, Guru or Shukra asta, Panchaka, per activity), when its nakshatra, tithi or weekday is not one the activity allows, or when it falls in an inauspicious period. Survivors are scored 0-100 and returned with ISO 8601 start_at and end_at, the civil date and the panchanga day, the reasons and cautions (the earlier fields, including HH:MM start and end on the panchanga day's date, are still returned). Optional participants (up to two) add Tarabala and Chandrabala. Activities: marriage, griha_pravesh, business, travel, naming_ceremony, vehicle_purchase, property_purchase, mundan, annaprashan, upanayana, vidyarambha.
  */
 export const muhurta = <ThrowOnError extends boolean = false>(options: Options<MuhurtaData, ThrowOnError>) => (options.client ?? client).post<MuhurtaResponses, MuhurtaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -671,9 +676,9 @@ export const muhurta = <ThrowOnError extends boolean = false>(options: Options<M
 });
 
 /**
- * Vimshottari Dasha periods
+ * Vimshottari Dasha
  *
- * Calculate complete Vimshottari Dasha timeline for a birth chart. Returns all Mahadasha and Antardasha periods with dates, plus classical interpretation text for the currently active Mahadasha and Antardasha per classical Vedic tradition. Returns Mahadasha, Antardasha, Pratyantar, Sookshma, and Prana dasha periods up to 5 levels deep. Starting planet determined by Moon nakshatra (Janma Nakshatra).
+ * Calculate the complete Vimshottari Dasha timeline for a birth chart. Returns Mahadasha, Antardasha, Pratyantar, Sookshma, and Prana periods up to 5 levels deep, with start and end dates for each. The starting planet is determined by the Moon's nakshatra at birth (Janma Nakshatra). Interpretation text accompanies the currently active Mahadasha and Antardasha.
  */
 export const dasha = <ThrowOnError extends boolean = false>(options: Options<DashaData, ThrowOnError>) => (options.client ?? client).post<DashaResponses, DashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -761,7 +766,7 @@ export const matchmakingPorutham = <ThrowOnError extends boolean = false>(option
 });
 
 /**
- * Tamil Thirumana Porutham — 10-Porutham Compatibility
+ * Tamil Thirumana Porutham — 12-Porutham Compatibility
  *
  * Computes all 10 Tamil Thirumana Poruthams with Tamil naming convention. Includes Rajju severity classification (Siro=most severe to Pada=least severe). Rajju and Vedha are absolute vetoes. person1 = groom, person2 = bride.
  */
@@ -808,7 +813,7 @@ export const gochar = <ThrowOnError extends boolean = false>(options: Options<Go
 /**
  * Calculate yoga combinations
  *
- * Detect all classical Vedic yogas in a natal chart — Pancha Mahapurusha Yogas, Raja Yogas, Gajakesari, Neecha Bhanga Raja Yoga, Budhaditya, Chandra Mangala, and more. Each detected yoga returns formation conditions, classical results, modern summary, and keywords.
+ * Detect all classical Vedic yogas in a natal chart — Pancha Mahapurusha Yogas, Raja Yogas, Gajakesari, Neecha Bhanga Raja Yoga, Budhaditya, Chandra Mangala, and more. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
  */
 export const yogas = <ThrowOnError extends boolean = false>(options: Options<YogasData, ThrowOnError>) => (options.client ?? client).post<YogasResponses, YogasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1210,7 +1215,7 @@ export const crystalsRecommend = <ThrowOnError extends boolean = false>(options:
 /**
  * Crystal recommendations from Vedic natal chart
  *
- * Recommend crystals based on classical Vedic gemstone tradition house lordship rules. Computes the natal chart and identifies the planets that lord Trikona houses (1, 5, 9). Lagna lord = Life Stone (+5), Yogakaraka = supreme benefic (+5), 9th lord = Fortune Stone (+4), 5th lord = Lucky Stone (+3). Where a planet lords both a Trikona and a Dusthana (6, 8, 12), the Trikona Trikona lordship still prevails — the planet is still recommended. Planets not lordsing any Trikona house are contraindicated. Only crystals with classical Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
+ * Recommend crystals based on gemstone house lordship rules. Computes the natal chart and identifies the planets that lord Trikona houses (1, 5, 9). Lagna lord = Life Stone (+5), Yogakaraka = supreme benefic (+5), 9th lord = Fortune Stone (+4), 5th lord = Lucky Stone (+3). Where a planet lords both a Trikona and a Dusthana (6, 8, 12), the Trikona Trikona lordship still prevails — the planet is still recommended. Planets not lordsing any Trikona house are contraindicated. Only crystals with classical Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
  */
 export const crystalsRecommendNatal = <ThrowOnError extends boolean = false>(options: Options<CrystalsRecommendNatalData, ThrowOnError>) => (options.client ?? client).post<CrystalsRecommendNatalResponses, CrystalsRecommendNatalErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1463,7 +1468,7 @@ export const kpRulingPlanets = <ThrowOnError extends boolean = false>(options: O
 /**
  * Lal Kitab Chart
  *
- * Computes a Lal Kitab chart using fixed sign=house mapping (Aries=House1, Taurus=House2, ..., Pisces=House12). Returns all 9 planets with Lal Kitab-specific flags: Pucca Ghar (permanent strong house), Kachcha Ghar (weak house), Uchcha (exaltation), and Neecha (debilitation). Source: Lal Kitab 1952, Pt. Roop Chand Joshi. Lahiri ayanamsa always used.
+ * Computes a Lal Kitab chart using fixed sign=house mapping (Aries=House1, Taurus=House2, ..., Pisces=House12). Returns all 9 planets with Lal Kitab-specific flags: Pucca Ghar (permanent strong house), Kachcha Ghar (weak house), Uchcha (exaltation), and Neecha (debilitation). Lahiri ayanamsa always used.
  */
 export const lalKitabChart = <ThrowOnError extends boolean = false>(options: Options<LalKitabChartData, ThrowOnError>) => (options.client ?? client).post<LalKitabChartResponses, LalKitabChartErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1478,7 +1483,7 @@ export const lalKitabChart = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Lal Kitab Remedies
  *
- * Computes personalised Lal Kitab remedies from the birth chart. Returns practical remedies (donations, items to keep/bury, actions to avoid) for each planet based on its house placement. Malefic planets in Kachcha Ghar or Neecha are marked high priority. Source: Lal Kitab 1952, Pt. Roop Chand Joshi.
+ * Computes personalised Lal Kitab remedies from the birth chart. Returns practical remedies (donations, items to keep/bury, actions to avoid) for each planet based on its house placement. Malefic planets in Kachcha Ghar or Neecha are marked high priority.
  */
 export const lalKitabRemedies = <ThrowOnError extends boolean = false>(options: Options<LalKitabRemediesData, ThrowOnError>) => (options.client ?? client).post<LalKitabRemediesResponses, LalKitabRemediesErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1493,7 +1498,7 @@ export const lalKitabRemedies = <ThrowOnError extends boolean = false>(options: 
 /**
  * Prashna (Horary Chart)
  *
- * Computes a Prashna (Horary) chart for the exact moment a question is asked. Returns lagna, Moon analysis, house lord condition, occupants of the relevant house, and a classical verdict (favourable / unfavourable / mixed) with confidence level. Question category determines which house is analysed. Sources: Prashna Marga, Brihat Prashna Sara.
+ * Computes a Prashna (Horary) chart for the exact moment a question is asked. Returns lagna, Moon analysis, house lord condition, occupants of the relevant house, and a classical verdict (favourable / unfavourable / mixed) with confidence level. Question category determines which house is analysed.
  */
 export const prashna = <ThrowOnError extends boolean = false>(options: Options<PrashnaData, ThrowOnError>) => (options.client ?? client).post<PrashnaResponses, PrashnaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1519,7 +1524,7 @@ export const nakshatra = <ThrowOnError extends boolean = false>(options: Options
 /**
  * Graha Nature
  *
- * Returns classical graha properties for all nine planets or a single planet per classical Vedic tradition. Includes tattva, guna, gender, caste, direction, color, deity, ruling day, metal, body part governed, and naisargika maitri (natural friends, enemies, neutrals). Pass ?planet=Sun (or Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) for a single planet. Omit ?planet to get all nine planets.
+ * Returns classical graha properties for all nine planets or a single planet. Includes tattva, guna, gender, caste, direction, color, deity, ruling day, metal, body part governed, and naisargika maitri (natural friends, enemies, neutrals). Pass ?planet=Sun (or Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) for a single planet. Omit ?planet to get all nine planets.
  */
 export const planetNature = <ThrowOnError extends boolean = false>(options?: Options<PlanetNatureData, ThrowOnError>) => (options?.client ?? client).get<PlanetNatureResponses, PlanetNatureErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1530,7 +1535,7 @@ export const planetNature = <ThrowOnError extends boolean = false>(options?: Opt
 /**
  * Puja Suggestions
  *
- * Returns classical puja recommendations for planetary propitiation. Each planet has a specific puja, presiding deity, day of the week, offerings, grain, and mantra grounded in classical Vedic worship tradition. Pass ?planet=Saturn for a single planet. Omit ?planet to get all nine planets.
+ * Returns classical puja recommendations for planetary propitiation. Each planet has a specific puja, presiding deity, day of the week, offerings, grain, and mantra. Pass ?planet=Saturn for a single planet. Omit ?planet to get all nine planets.
  */
 export const pujaSuggestions = <ThrowOnError extends boolean = false>(options?: Options<PujaSuggestionsData, ThrowOnError>) => (options?.client ?? client).get<PujaSuggestionsResponses, PujaSuggestionsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1578,7 +1583,7 @@ export const westernBiorhythm = <ThrowOnError extends boolean = false>(options: 
 /**
  * Personal Nakshatra Prediction (Tarabala)
  *
- * Returns a personalised daily prediction using Tarabala and Chandrabala from classical muhurta tradition. Tarabala measures the auspiciousness of the current day for an individual by assessing the relationship between their natal Moon nakshatra and the daily transit Moon nakshatra. Nine Taras from Janma (birth) to Ati-Mitra (great friend). Chandrabala measures the transit Moon's house from natal Moon. Also returns the transit nakshatra's quality type (Dhruva/Chara/ Ugra/Tikshna/Kshipra/Mridu/Mishra) with auspicious and inauspicious activities for today. Computed per classical Vedic nakshatra tradition.
+ * Returns a personalised daily prediction using Tarabala and Chandrabala for the day at the birth place (sunrise to next sunrise). The top-level tara is the one at sunrise; transit_nakshatras lists every nakshatra the Moon passes through that day with its tara. The tara names the round of nine: the first tara is Janma at count 1 (Moon in the birth nakshatra), Anujanma at 10 and Trijanma at 19. Tarabala measures the auspiciousness of the current day for an individual by assessing the relationship between their natal Moon nakshatra and the daily transit Moon nakshatra. Nine Taras from Janma (birth) to Ati-Mitra (great friend). Chandrabala measures the transit Moon's house from natal Moon. Also returns the transit nakshatra's quality type (Dhruva/Chara/ Ugra/Tikshna/Kshipra/Mridu/Mishra) with auspicious and inauspicious activities for today.
  */
 export const nakshatraPrediction = <ThrowOnError extends boolean = false>(options: Options<NakshatraPredictionData, ThrowOnError>) => (options.client ?? client).post<NakshatraPredictionResponses, NakshatraPredictionErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1593,7 +1598,7 @@ export const nakshatraPrediction = <ThrowOnError extends boolean = false>(option
 /**
  * Pitru Dosha (Pitru Shapa)
  *
- * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations that indicate Pitru Dosha presence per classical Vedic doctrine. Returns presence flag, severity (mild/moderate/severe), which of the 5 classical combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
+ * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations that indicate Pitru Dosha presence. Returns presence flag, severity (mild/moderate/severe), which of the 5 classical combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
  */
 export const pitraDosha = <ThrowOnError extends boolean = false>(options: Options<PitraDoshaData, ThrowOnError>) => (options.client ?? client).post<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1608,7 +1613,7 @@ export const pitraDosha = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Ghat Chakra
  *
- * Returns the four Ghatak (inauspicious) timing parameters for a native based on their Janma Rasi (natal Moon sign). Ghat Chakra identifies the lunar month (Masa), lunar day group (Tithi), weekday (Vara), and transit nakshatra that are persistently inauspicious for that individual. When transit periods align with these Ghatak parameters, starting new ventures, surgery, travel, or auspicious ceremonies should be avoided. Computed per classical muhurta tradition.
+ * Returns the four Ghatak (inauspicious) timing parameters for a native based on their Janma Rasi (natal Moon sign). Ghat Chakra identifies the lunar month (Masa), lunar day group (Tithi), weekday (Vara), and transit nakshatra that are persistently inauspicious for that individual. When transit periods align with these Ghatak parameters, starting new ventures, surgery, travel, or auspicious ceremonies should be avoided.
  */
 export const ghatChakra = <ThrowOnError extends boolean = false>(options: Options<GhatChakraData, ThrowOnError>) => (options.client ?? client).post<GhatChakraResponses, GhatChakraErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1621,7 +1626,7 @@ export const ghatChakra = <ThrowOnError extends boolean = false>(options: Option
 });
 
 /**
- * Geocode
+ * Resolve a city or place name to latitude, longitude, and timezone
  *
  * Resolve a city or place name to coordinates and timezone.
  *
@@ -1642,7 +1647,7 @@ export const geocode = <ThrowOnError extends boolean = false>(options: Options<G
 });
 
 /**
- * Timezone From Coordinates
+ * Return the IANA timezone for a given coordinate pair
  *
  * Get IANA timezone for a coordinate pair.
  * Fully offline — no external API call.
@@ -1758,7 +1763,7 @@ export const varshaphal = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Varshaphal — Tajika Saham Points
  *
- * Computes all 10 Tajika Saham (sensitive points) for a Varshaphal chart. Sahams are the Tajika equivalent of Arabic Parts — mathematically derived points that focus on specific life themes for the year. Formula: A - B + Ascendant (conditional +30° per classical Tajika Saham rules). Day and night formulas differ — the operands swap based on whether the solar return occurs during daytime or nighttime. 10 Sahams returned: Punya (Fortune), Vidya (Education), Yashas (Fame), Mitra (Friends), Mahatmya (Status), Asha (Desires), Karmakarya (Career), Vyapara (Business), Vivaha (Marriage), Santapa (Sorrow/Stress). Yashas and Mahatmya use Punya Saham as an operand — computed first.
+ * Computes all 10 Tajika Saham (sensitive points) for a Varshaphal chart. Sahams are the Tajika equivalent of Arabic Parts — mathematically derived points that focus on specific life themes for the year. Formula: A - B + Ascendant (conditional +30° per Tajika Saham rules). Day and night formulas differ — the operands swap based on whether the solar return occurs during daytime or nighttime. 10 Sahams returned: Punya (Fortune), Vidya (Education), Yashas (Fame), Mitra (Friends), Mahatmya (Status), Asha (Desires), Karmakarya (Career), Vyapara (Business), Vivaha (Marriage), Santapa (Sorrow/Stress). Yashas and Mahatmya use Punya Saham as an operand — computed first.
  */
 export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: Options<VarshaphalSahamData, ThrowOnError>) => (options.client ?? client).post<VarshaphalSahamResponses, VarshaphalSahamErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1773,7 +1778,7 @@ export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: O
 /**
  * Varshaphal — Harsha Bala
  *
- * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house placement), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (gender-appropriate house hemisphere), Dina-Ratri (day/night return alignment). Computed per classical Tajika tradition.
+ * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house placement), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (gender-appropriate house hemisphere), Dina-Ratri (day/night return alignment). Computed per Tajika rules.
  */
 export const varshaphalHarshaBala = <ThrowOnError extends boolean = false>(options: Options<VarshaphalHarshaBalaData, ThrowOnError>) => (options.client ?? client).post<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

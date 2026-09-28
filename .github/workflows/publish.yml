@@ -3,7 +3,7 @@ name: Publish to npm
 on:
   push:
     tags:
-      # Release tags are typescript-v<version> (e.g. typescript-v0.2.4).
+      # Release tags are typescript-v<version> (e.g. typescript-v0.3.0).
       - "typescript-v*"
 
 jobs:
@@ -21,14 +21,27 @@ jobs:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
+      - name: Tag must match the package version
+        run: |
+          tag="${GITHUB_REF_NAME#typescript-v}"
+          pkg="$(node -p "require('./package.json').version")"
+          echo "tag=$tag package.json=$pkg"
+          if [ "$tag" != "$pkg" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $pkg"
+            exit 1
+          fi
+
       - name: Use an npm that supports trusted publishing
         run: npm install -g npm@latest && npm --version
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Test (builds first)
+        run: npm test
+
+      - name: Published types compile under strict nodenext
+        run: npm run verify:nodenext
 
       - name: Publish to npm
         run: npm publish --access public --provenance

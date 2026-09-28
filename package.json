@@ -1,6 +1,6 @@
 {
   "name": "asterwise",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Official TypeScript SDK for the Asterwise API: Vedic and Western astrology, numerology, tarot. 118 endpoints, generated from the OpenAPI document; positions checked against NASA JPL Horizons; MCP server for Claude and Cursor.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
