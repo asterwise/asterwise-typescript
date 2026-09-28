@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.3.1 — 2026-09-28
+
+Regenerated from the API as deployed on 2026-09-28 (engine 7d68ba3).
+Additive only: no function, field or type was removed or narrowed.
+
+### Added
+
+- `utc_offset?: string | null` (`±HH:MM` or `±HH:MM:SS`) on every
+  birth-data request type: an explicit offset that overrides the time
+  zone's.
+- `NatalResponse.birth_moment?: BirthMoment`: the UTC instant the chart
+  used, the offset applied, `offset_basis` (`'iana' | 'local_mean_time' |
+  'explicit_offset'`) and `local_time_status` (`'ok' | 'nonexistent' |
+  'ambiguous'`).
+- `AyanamshaSystemValue.true_value_decimal`: mean ayanamsa plus nutation,
+  the offset the API subtracts from apparent positions. `value_decimal`
+  stays the mean value.
+
+The API fixes that came with these fields apply to 0.3.0 as well. See
+https://docs.asterwise.com/reference/changelog.
+
 ## 0.3.0 — 2026-09-28
 
 Regenerated from the API as deployed on 2026-09-28. No function was

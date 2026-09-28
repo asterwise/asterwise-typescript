@@ -2240,9 +2240,15 @@ export type AshtakavargaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -2423,9 +2429,15 @@ export type AshtottariRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -2498,9 +2510,15 @@ export type AtmakarakaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -2594,9 +2612,15 @@ export type AyanamshaSystemValue = {
     /**
      * Value Decimal
      *
-     * Ayanamsha offset in decimal degrees
+     * Mean ayanamsha (no nutation) in decimal degrees, the conventionally published figure
      */
     value_decimal: number;
+    /**
+     * True Value Decimal
+     *
+     * True ayanamsha: the mean value plus nutation in longitude, in decimal degrees. This is the offset subtracted from apparent tropical longitudes to give the sidereal positions every Vedic endpoint returns.
+     */
+    true_value_decimal: number;
     /**
      * Degrees
      */
@@ -2888,15 +2912,51 @@ export type BirthInput = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
      * Sidereal ayanamsa mode used in calculations
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+};
+
+/**
+ * BirthMoment
+ */
+export type BirthMoment = {
+    /**
+     * Utc
+     *
+     * The birth instant the chart was computed for, in UTC (ISO 8601, to the second).
+     */
+    utc: string;
+    /**
+     * Utc Offset
+     *
+     * UTC offset applied to the local birth time, as ±HH:MM or ±HH:MM:SS.
+     */
+    utc_offset: string;
+    /**
+     * Offset Basis
+     *
+     * Where the offset came from: the IANA time zone; the birthplace's local mean time (longitude / 15 hours), used for dates before the zone adopted a standard time; or the explicit utc_offset input.
+     */
+    offset_basis: 'iana' | 'local_mean_time' | 'explicit_offset';
+    /**
+     * Local Time Status
+     *
+     * 'nonexistent': the local time fell in a daylight-saving gap and was read with the offset in force before the change (moved forward by the gap). 'ambiguous': the local time occurred twice and the first occurrence was used. 'ok' otherwise.
+     */
+    local_time_status: 'ok' | 'nonexistent' | 'ambiguous';
 };
 
 /**
@@ -3405,9 +3465,15 @@ export type CharDashaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -3531,9 +3597,15 @@ export type ChartRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -4194,9 +4266,15 @@ export type DashaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -4260,9 +4338,15 @@ export type DashaTransitsRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -4633,7 +4717,7 @@ export type DayTimings = {
     /**
      * Panchaka
      *
-     * Moon in Kumbha or Meena (Dhanishtha pada 3 to Revati).
+     * Moon in Kumbha or Meena (Dhanishta pada 3 to Revati).
      */
     panchaka: Array<TimeWindow>;
     /**
@@ -4843,9 +4927,15 @@ export type DivisionalRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -5069,9 +5159,15 @@ export type DoshaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -5666,9 +5762,15 @@ export type GemstoneRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -5982,9 +6084,15 @@ export type GocharRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -6669,9 +6777,15 @@ export type IshtaDevtaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -6792,9 +6906,15 @@ export type KpBirthRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -7205,9 +7325,15 @@ export type LalKitabRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -7419,9 +7545,15 @@ export type LunarReturnRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -8292,9 +8424,15 @@ export type NakshatraPredictionRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -8741,9 +8879,15 @@ export type NatalRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -8798,6 +8942,10 @@ export type NatalResponse = {
      * Ayanamsa mode used for the chart
      */
     ayanamsa_used: string;
+    /**
+     * How the local birth date and time were turned into the UTC instant used.
+     */
+    birth_moment?: BirthMoment | null;
     /**
      * Birth Time Provided
      *
@@ -9183,9 +9331,15 @@ export type PanchangaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset for the local date and times, as ±HH:MM or ±HH:MM:SS. Overrides the offset `timezone` would give.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -10026,9 +10180,15 @@ export type PlanetaryReturnRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -10446,9 +10606,15 @@ export type ProgressionRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -10653,9 +10819,15 @@ export type RemediesRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -10881,9 +11053,15 @@ export type SadeSatiRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -11335,9 +11513,15 @@ export type SolarReturnRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -11471,9 +11655,15 @@ export type StrengthRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -12371,9 +12561,15 @@ export type VarshaphalRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -12936,9 +13132,15 @@ export type WesternNatalRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -13118,9 +13320,15 @@ export type WesternTransitRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -13277,9 +13485,15 @@ export type YogaRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
@@ -13434,9 +13648,15 @@ export type YoginiRequest = {
     /**
      * Timezone
      *
-     * IANA timezone. Required if location not provided.
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
      */
     timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
     /**
      * Ayanamsa
      *
