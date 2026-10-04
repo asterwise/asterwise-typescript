@@ -9,7 +9,7 @@
  * app/core/error_codes.py in asterwise-api, then re-run the
  * generator with --write-sdks.
  *
- * Generated from 47 codes (hash a6da401d38ca7954) ErrorCode members.
+ * Generated from 40 codes (hash b8c8f8276214675d) ErrorCode members.
  */
 
 /**
@@ -31,9 +31,6 @@ export type ErrorCode =
   | "email_delivery_failed"
   | "email_not_verified"
   | "ephemeris_unavailable"
-  | "exchange_code_already_used"
-  | "exchange_code_attempt_limit_exceeded"
-  | "exchange_code_not_found"
   | "geocode_query_too_short"
   | "geocode_unavailable"
   | "internal_error"
@@ -42,11 +39,7 @@ export type ErrorCode =
   | "ip_rate_limit_exceeded"
   | "key_not_found"
   | "location_required"
-  | "magic_link_already_used"
-  | "magic_link_email_limit_exceeded"
-  | "magic_link_expired"
-  | "magic_link_ip_limit_exceeded"
-  | "magic_link_not_found"
+  | "login_attempts_exceeded"
   | "max_keys_exceeded"
   | "monthly_usage_limit_exceeded"
   | "order_creation_failed"
@@ -83,9 +76,6 @@ export const ALL_ERROR_CODES: readonly ErrorCode[] = [
   "email_delivery_failed",
   "email_not_verified",
   "ephemeris_unavailable",
-  "exchange_code_already_used",
-  "exchange_code_attempt_limit_exceeded",
-  "exchange_code_not_found",
   "geocode_query_too_short",
   "geocode_unavailable",
   "internal_error",
@@ -94,11 +84,7 @@ export const ALL_ERROR_CODES: readonly ErrorCode[] = [
   "ip_rate_limit_exceeded",
   "key_not_found",
   "location_required",
-  "magic_link_already_used",
-  "magic_link_email_limit_exceeded",
-  "magic_link_expired",
-  "magic_link_ip_limit_exceeded",
-  "magic_link_not_found",
+  "login_attempts_exceeded",
   "max_keys_exceeded",
   "monthly_usage_limit_exceeded",
   "order_creation_failed",
