@@ -9,7 +9,7 @@
  * app/core/error_codes.py in asterwise-api, then re-run the
  * generator with --write-sdks.
  *
- * Generated from 52 codes (hash 1e1be58fe6dc4705) ErrorCode members.
+ * Generated from 47 codes (hash 044809858b44cecd) ErrorCode members.
  */
 
 /**
@@ -28,8 +28,6 @@ export type ErrorCode =
   | "authentication_failed"
   | "burst_limit_exceeded"
   | "city_not_found"
-  | "date_out_of_supported_range"
-  | "dependency_unavailable"
   | "email_delivery_failed"
   | "endpoint_restricted"
   | "ephemeris_unavailable"
@@ -38,9 +36,7 @@ export type ErrorCode =
   | "exchange_code_not_found"
   | "geocode_query_too_short"
   | "geocode_unavailable"
-  | "insufficient_tier"
   | "internal_error"
-  | "interpretation_not_found"
   | "invalid_email"
   | "invalid_key_name"
   | "invalid_request_body"
@@ -61,7 +57,6 @@ export type ErrorCode =
   | "payment_request_invalid"
   | "payment_verification_failed"
   | "plan_not_found"
-  | "polar_latitude_unsupported"
   | "resource_not_found"
   | "session_expired"
   | "session_not_found"
@@ -85,8 +80,6 @@ export const ALL_ERROR_CODES: readonly ErrorCode[] = [
   "authentication_failed",
   "burst_limit_exceeded",
   "city_not_found",
-  "date_out_of_supported_range",
-  "dependency_unavailable",
   "email_delivery_failed",
   "endpoint_restricted",
   "ephemeris_unavailable",
@@ -95,9 +88,7 @@ export const ALL_ERROR_CODES: readonly ErrorCode[] = [
   "exchange_code_not_found",
   "geocode_query_too_short",
   "geocode_unavailable",
-  "insufficient_tier",
   "internal_error",
-  "interpretation_not_found",
   "invalid_email",
   "invalid_key_name",
   "invalid_request_body",
@@ -118,7 +109,6 @@ export const ALL_ERROR_CODES: readonly ErrorCode[] = [
   "payment_request_invalid",
   "payment_verification_failed",
   "plan_not_found",
-  "polar_latitude_unsupported",
   "resource_not_found",
   "session_expired",
   "session_not_found",
