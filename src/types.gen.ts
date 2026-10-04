@@ -5428,7 +5428,7 @@ export type EclipseLocal = {
 /**
  * ErrorCode
  */
-export type ErrorCode = 'authentication_failed' | 'api_key_missing' | 'api_key_not_found' | 'api_key_revoked' | 'api_key_invalid' | 'magic_link_not_found' | 'magic_link_already_used' | 'magic_link_expired' | 'session_not_found' | 'session_revoked' | 'session_expired' | 'exchange_code_not_found' | 'exchange_code_already_used' | 'ip_rate_limit_exceeded' | 'burst_limit_exceeded' | 'monthly_usage_limit_exceeded' | 'magic_link_ip_limit_exceeded' | 'magic_link_email_limit_exceeded' | 'exchange_code_attempt_limit_exceeded' | 'validation_error' | 'invalid_email' | 'invalid_request_body' | 'sun_calculation_failed' | 'solar_day_out_of_range' | 'ephemeris_unavailable' | 'location_required' | 'geocode_query_too_short' | 'plan_not_found' | 'account_not_found' | 'key_not_found' | 'subscription_not_found' | 'city_not_found' | 'resource_not_found' | 'ownership_denied' | 'payment_verification_failed' | 'order_creation_failed' | 'already_on_plan' | 'max_keys_exceeded' | 'subscription_expired' | 'payment_provider_unavailable' | 'payment_request_invalid' | 'payload_too_large' | 'email_delivery_failed' | 'geocode_unavailable' | 'internal_error';
+export type ErrorCode = 'authentication_failed' | 'api_key_missing' | 'api_key_not_found' | 'api_key_revoked' | 'api_key_invalid' | 'session_not_found' | 'session_revoked' | 'session_expired' | 'session_required' | 'email_not_verified' | 'ip_rate_limit_exceeded' | 'login_attempts_exceeded' | 'burst_limit_exceeded' | 'monthly_usage_limit_exceeded' | 'validation_error' | 'invalid_email' | 'invalid_request_body' | 'sun_calculation_failed' | 'solar_day_out_of_range' | 'ephemeris_unavailable' | 'location_required' | 'geocode_query_too_short' | 'plan_not_found' | 'account_not_found' | 'key_not_found' | 'subscription_not_found' | 'city_not_found' | 'resource_not_found' | 'ownership_denied' | 'payment_verification_failed' | 'order_creation_failed' | 'already_on_plan' | 'max_keys_exceeded' | 'subscription_expired' | 'payment_provider_unavailable' | 'payment_request_invalid' | 'payload_too_large' | 'email_delivery_failed' | 'geocode_unavailable' | 'internal_error';
 
 /**
  * ErrorResponse
@@ -7343,6 +7343,20 @@ export type LalKitabRequest = {
 };
 
 /**
+ * LifePathRequest
+ *
+ * POST body for the life path number: the birth date stays out of the URL.
+ */
+export type LifePathRequest = {
+    /**
+     * Date
+     *
+     * Birth date (YYYY-MM-DD)
+     */
+    date: string;
+};
+
+/**
  * LifePathResponse
  */
 export type LifePathResponse = {
@@ -7500,6 +7514,32 @@ export type LuckyNumbersApiResponse = {
      * How to use these numbers
      */
     interpretation: string;
+};
+
+/**
+ * LuckyNumbersRequest
+ *
+ * POST body for lucky numbers: name and birth date stay out of the URL.
+ */
+export type LuckyNumbersRequest = {
+    /**
+     * Name
+     *
+     * Person name
+     */
+    name: string;
+    /**
+     * Date
+     *
+     * Birth date (YYYY-MM-DD)
+     */
+    date: string;
+    /**
+     * Count
+     *
+     * How many lucky numbers to return
+     */
+    count?: number;
 };
 
 /**
@@ -7752,6 +7792,20 @@ export type MaturityNumberResponse = {
      * Is Master Number
      */
     is_master_number: boolean;
+};
+
+/**
+ * MobileNumberRequest
+ *
+ * POST body for mobile number numerology: the number stays out of the URL.
+ */
+export type MobileNumberRequest = {
+    /**
+     * Number
+     *
+     * Mobile number (digits only or with country code)
+     */
+    number: string;
 };
 
 /**
@@ -9710,9 +9764,9 @@ export type PersonalYearPostRequest = {
     /**
      * Name
      *
-     * Person name (echoed for clients; not used in the calculation)
+     * Optional and not used in the calculation; accepted so older clients keep working
      */
-    name: string;
+    name?: string | null;
     /**
      * Date
      *
@@ -12670,6 +12724,20 @@ export type VarshaphalResponse = {
     tajika_planet_pairs: Array<{
         [key: string]: unknown;
     }>;
+};
+
+/**
+ * VehicleNumberRequest
+ *
+ * POST body for vehicle number numerology: the plate stays out of the URL.
+ */
+export type VehicleNumberRequest = {
+    /**
+     * Number
+     *
+     * Vehicle registration number
+     */
+    number: string;
 };
 
 /**
@@ -17069,6 +17137,63 @@ export type LifePathResponses = {
 
 export type LifePathResponse2 = LifePathResponses[keyof LifePathResponses];
 
+export type LifePathPostData = {
+    body: LifePathRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/life-path';
+};
+
+export type LifePathPostErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type LifePathPostError = LifePathPostErrors[keyof LifePathPostErrors];
+
+export type LifePathPostResponses = {
+    /**
+     * Life path number with interpretation metadata
+     */
+    200: ApiResponseLifePathResponse;
+};
+
+export type LifePathPostResponse = LifePathPostResponses[keyof LifePathPostResponses];
+
 export type PersonalYearData = {
     body?: never;
     path?: never;
@@ -17187,7 +17312,7 @@ export type PersonalYearPostError = PersonalYearPostErrors[keyof PersonalYearPos
 
 export type PersonalYearPostResponses = {
     /**
-     * Successful Response
+     * Personal year number and yearly guidance
      */
     200: ApiResponsePersonalYearResponse;
 };
@@ -17386,6 +17511,63 @@ export type LuckyNumbersResponses = {
 };
 
 export type LuckyNumbersResponse = LuckyNumbersResponses[keyof LuckyNumbersResponses];
+
+export type LuckyNumbersPostData = {
+    body: LuckyNumbersRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/lucky-numbers';
+};
+
+export type LuckyNumbersPostErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type LuckyNumbersPostError = LuckyNumbersPostErrors[keyof LuckyNumbersPostErrors];
+
+export type LuckyNumbersPostResponses = {
+    /**
+     * Lucky number list for the requested profile
+     */
+    200: ApiResponseLuckyNumbersApiResponse;
+};
+
+export type LuckyNumbersPostResponse = LuckyNumbersPostResponses[keyof LuckyNumbersPostResponses];
 
 export type NumberMeaningData = {
     body?: never;
@@ -17691,6 +17873,63 @@ export type MobileNumberResponses = {
 
 export type MobileNumberResponse = MobileNumberResponses[keyof MobileNumberResponses];
 
+export type MobileNumberPostData = {
+    body: MobileNumberRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/mobile-number';
+};
+
+export type MobileNumberPostErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type MobileNumberPostError = MobileNumberPostErrors[keyof MobileNumberPostErrors];
+
+export type MobileNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDigitNumberAnalysisResponse;
+};
+
+export type MobileNumberPostResponse = MobileNumberPostResponses[keyof MobileNumberPostResponses];
+
 export type VehicleNumberData = {
     body?: never;
     path?: never;
@@ -17754,6 +17993,63 @@ export type VehicleNumberResponses = {
 };
 
 export type VehicleNumberResponse = VehicleNumberResponses[keyof VehicleNumberResponses];
+
+export type VehicleNumberPostData = {
+    body: VehicleNumberRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/numerology/vehicle-number';
+};
+
+export type VehicleNumberPostErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type VehicleNumberPostError = VehicleNumberPostErrors[keyof VehicleNumberPostErrors];
+
+export type VehicleNumberPostResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseDigitNumberAnalysisResponse;
+};
+
+export type VehicleNumberPostResponse = VehicleNumberPostResponses[keyof VehicleNumberPostResponses];
 
 export type ExpressionNumberData = {
     body: NameOnlyRequest;

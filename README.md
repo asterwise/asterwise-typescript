@@ -77,7 +77,7 @@ import {
   createClient,
   createConfig,
   westernNatalChart,
-  lifePath,
+  lifePathPost,
   tarotThreeCard,
 } from 'asterwise';
 
@@ -95,9 +95,9 @@ const western = await westernNatalChart({
   },
 });
 
-const path = await lifePath({
+const path = await lifePathPost({
   client,
-  query: { date: '1985-11-12' },
+  body: { date: '1985-11-12' },
 });
 
 const spread = await tarotThreeCard({

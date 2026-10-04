@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## 0.6.0 — 2026-10-04
+
+Regenerated from the API as deployed on 2026-10-04. Existing calls keep
+working; the minor version moves because error codes were removed.
+
+### Added
+
+- `lifePathPost`, `luckyNumbersPost`, `mobileNumberPost` and
+  `vehicleNumberPost`, with body types `LifePathRequest`,
+  `LuckyNumbersRequest`, `MobileNumberRequest` and `VehicleNumberRequest`.
+  They send the birth date, name, phone or plate number in the request body
+  instead of the URL, where proxy and server logs keep it. Same results as
+  the old methods.
+- `ErrorCode` values `'session_required'`, `'email_not_verified'` and
+  `'login_attempts_exceeded'` (the generated type and `ALL_ERROR_CODES`; dashboard and account routes only).
+
+### Changed
+
+- `PersonalYearPostRequest['name']` is optional; the calculation never used it.
+
+### Deprecated
+
+- `lifePath`, `personalYear`, `luckyNumbers`, `mobileNumber` and
+  `vehicleNumber` (the `GET` forms) are marked `@deprecated`. They keep
+  working for at least 12 months; switch to the `…Post` functions.
+
+### Removed
+
+- Eight `ErrorCode` values for magic-link sign-in, which the API removed:
+  `magic_link_not_found`, `magic_link_already_used`, `magic_link_expired`,
+  `magic_link_ip_limit_exceeded`, `magic_link_email_limit_exceeded`,
+  `exchange_code_not_found`, `exchange_code_already_used`,
+  `exchange_code_attempt_limit_exceeded`. Only the website's sign-in pages
+  could receive them.
+
 ## 0.5.0 — 2026-10-04
 
 Regenerated from the API as deployed on 2026-10-04. No function or request

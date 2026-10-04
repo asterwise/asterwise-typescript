@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import type { Client, Options as Options2, TDataShape } from './client/index.js';
-import type { AngelListData, AngelListErrors, AngelListResponses, AngelNumberData, AngelNumberErrors, AngelNumberResponses, AngelPersonalData, AngelPersonalErrors, AngelPersonalResponses, AngelTodayData, AngelTodayErrors, AngelTodayResponses, AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, AyanamshaData, AyanamshaErrors, AyanamshaResponses, BalanceNumberData, BalanceNumberErrors, BalanceNumberResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, CrystalData, CrystalErrors, CrystalResponses, CrystalsByPlanetData, CrystalsByPlanetErrors, CrystalsByPlanetResponses, CrystalsListData, CrystalsListErrors, CrystalsListResponses, CrystalsRecommendData, CrystalsRecommendErrors, CrystalsRecommendNatalData, CrystalsRecommendNatalErrors, CrystalsRecommendNatalResponses, CrystalsRecommendResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, DreamSymbolData, DreamSymbolErrors, DreamSymbolResponses, DreamSymbolsData, DreamSymbolsErrors, DreamSymbolsResponses, ExpressionNumberData, ExpressionNumberErrors, ExpressionNumberResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GhatChakraData, GhatChakraErrors, GhatChakraResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KarmicLessonsData, KarmicLessonsErrors, KarmicLessonsResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MaturityNumberData, MaturityNumberErrors, MaturityNumberResponses, MobileNumberData, MobileNumberErrors, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraPredictionData, NakshatraPredictionErrors, NakshatraPredictionResponses, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaFestivalsData, PanchangaFestivalsErrors, PanchangaFestivalsResponses, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PanchangaTamilData, PanchangaTamilErrors, PanchangaTamilResponses, PersonalCyclesData, PersonalCyclesErrors, PersonalCyclesResponses, PersonalityNumberData, PersonalityNumberErrors, PersonalityNumberResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PitraDoshaData, PitraDoshaErrors, PitraDoshaResponses, PlanetNatureData, PlanetNatureErrors, PlanetNatureResponses, PrashnaData, PrashnaErrors, PrashnaResponses, PujaSuggestionsData, PujaSuggestionsErrors, PujaSuggestionsResponses, RemediesData, RemediesErrors, RemediesResponses, RudrakshaData, RudrakshaErrors, RudrakshaResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, SoulUrgeNumberData, SoulUrgeNumberErrors, SoulUrgeNumberResponses, StrengthData, StrengthErrors, StrengthResponses, TarotCardData, TarotCardErrors, TarotCardOfTheDayData, TarotCardOfTheDayErrors, TarotCardOfTheDayResponses, TarotCardResponses, TarotCardsData, TarotCardsErrors, TarotCardsResponses, TarotCelticCrossData, TarotCelticCrossErrors, TarotCelticCrossResponses, TarotDrawData, TarotDrawErrors, TarotDrawResponses, TarotMajorArcanaData, TarotMajorArcanaErrors, TarotMajorArcanaResponses, TarotSuitData, TarotSuitErrors, TarotSuitResponses, TarotThreeCardData, TarotThreeCardErrors, TarotThreeCardResponses, TarotYesNoData, TarotYesNoErrors, TarotYesNoResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalHarshaBalaData, VarshaphalHarshaBalaErrors, VarshaphalHarshaBalaResponses, VarshaphalResponses, VarshaphalSahamData, VarshaphalSahamErrors, VarshaphalSahamResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberResponses, WesternAspectsData, WesternAspectsErrors, WesternAspectsResponses, WesternBiorhythmData, WesternBiorhythmErrors, WesternBiorhythmResponses, WesternCompatibilityData, WesternCompatibilityErrors, WesternCompatibilityResponses, WesternCompatibilityZodiacData, WesternCompatibilityZodiacErrors, WesternCompatibilityZodiacResponses, WesternCompositeData, WesternCompositeErrors, WesternCompositeResponses, WesternHoroscopeDailyData, WesternHoroscopeDailyErrors, WesternHoroscopeDailyResponses, WesternHoroscopeMonthlyData, WesternHoroscopeMonthlyErrors, WesternHoroscopeMonthlyResponses, WesternHoroscopeWeeklyData, WesternHoroscopeWeeklyErrors, WesternHoroscopeWeeklyResponses, WesternHoroscopeYearlyData, WesternHoroscopeYearlyErrors, WesternHoroscopeYearlyResponses, WesternLunarReturnData, WesternLunarReturnErrors, WesternLunarReturnResponses, WesternMoonCalendarData, WesternMoonCalendarErrors, WesternMoonCalendarResponses, WesternMoonPhaseData, WesternMoonPhaseErrors, WesternMoonPhaseResponses, WesternNatalChartData, WesternNatalChartErrors, WesternNatalChartResponses, WesternPlanetaryReturnData, WesternPlanetaryReturnErrors, WesternPlanetaryReturnResponses, WesternProgressionsSecondaryData, WesternProgressionsSecondaryErrors, WesternProgressionsSecondaryResponses, WesternProgressionsSolarArcData, WesternProgressionsSolarArcErrors, WesternProgressionsSolarArcResponses, WesternSolarReturnData, WesternSolarReturnErrors, WesternSolarReturnResponses, WesternSynastryData, WesternSynastryErrors, WesternSynastryResponses, WesternTransitsDailyData, WesternTransitsDailyErrors, WesternTransitsDailyResponses, WesternTransitsMonthlyData, WesternTransitsMonthlyErrors, WesternTransitsMonthlyResponses, WesternTransitsWeeklyData, WesternTransitsWeeklyErrors, WesternTransitsWeeklyResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen.js';
+import type { AngelListData, AngelListErrors, AngelListResponses, AngelNumberData, AngelNumberErrors, AngelNumberResponses, AngelPersonalData, AngelPersonalErrors, AngelPersonalResponses, AngelTodayData, AngelTodayErrors, AngelTodayResponses, AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, AyanamshaData, AyanamshaErrors, AyanamshaResponses, BalanceNumberData, BalanceNumberErrors, BalanceNumberResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, CrystalData, CrystalErrors, CrystalResponses, CrystalsByPlanetData, CrystalsByPlanetErrors, CrystalsByPlanetResponses, CrystalsListData, CrystalsListErrors, CrystalsListResponses, CrystalsRecommendData, CrystalsRecommendErrors, CrystalsRecommendNatalData, CrystalsRecommendNatalErrors, CrystalsRecommendNatalResponses, CrystalsRecommendResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, DreamSymbolData, DreamSymbolErrors, DreamSymbolResponses, DreamSymbolsData, DreamSymbolsErrors, DreamSymbolsResponses, ExpressionNumberData, ExpressionNumberErrors, ExpressionNumberResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GhatChakraData, GhatChakraErrors, GhatChakraResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KarmicLessonsData, KarmicLessonsErrors, KarmicLessonsResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathPostData, LifePathPostErrors, LifePathPostResponses, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersPostData, LuckyNumbersPostErrors, LuckyNumbersPostResponses, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MaturityNumberData, MaturityNumberErrors, MaturityNumberResponses, MobileNumberData, MobileNumberErrors, MobileNumberPostData, MobileNumberPostErrors, MobileNumberPostResponses, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraPredictionData, NakshatraPredictionErrors, NakshatraPredictionResponses, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaFestivalsData, PanchangaFestivalsErrors, PanchangaFestivalsResponses, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PanchangaTamilData, PanchangaTamilErrors, PanchangaTamilResponses, PersonalCyclesData, PersonalCyclesErrors, PersonalCyclesResponses, PersonalityNumberData, PersonalityNumberErrors, PersonalityNumberResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PitraDoshaData, PitraDoshaErrors, PitraDoshaResponses, PlanetNatureData, PlanetNatureErrors, PlanetNatureResponses, PrashnaData, PrashnaErrors, PrashnaResponses, PujaSuggestionsData, PujaSuggestionsErrors, PujaSuggestionsResponses, RemediesData, RemediesErrors, RemediesResponses, RudrakshaData, RudrakshaErrors, RudrakshaResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, SoulUrgeNumberData, SoulUrgeNumberErrors, SoulUrgeNumberResponses, StrengthData, StrengthErrors, StrengthResponses, TarotCardData, TarotCardErrors, TarotCardOfTheDayData, TarotCardOfTheDayErrors, TarotCardOfTheDayResponses, TarotCardResponses, TarotCardsData, TarotCardsErrors, TarotCardsResponses, TarotCelticCrossData, TarotCelticCrossErrors, TarotCelticCrossResponses, TarotDrawData, TarotDrawErrors, TarotDrawResponses, TarotMajorArcanaData, TarotMajorArcanaErrors, TarotMajorArcanaResponses, TarotSuitData, TarotSuitErrors, TarotSuitResponses, TarotThreeCardData, TarotThreeCardErrors, TarotThreeCardResponses, TarotYesNoData, TarotYesNoErrors, TarotYesNoResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalHarshaBalaData, VarshaphalHarshaBalaErrors, VarshaphalHarshaBalaResponses, VarshaphalResponses, VarshaphalSahamData, VarshaphalSahamErrors, VarshaphalSahamResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberPostData, VehicleNumberPostErrors, VehicleNumberPostResponses, VehicleNumberResponses, WesternAspectsData, WesternAspectsErrors, WesternAspectsResponses, WesternBiorhythmData, WesternBiorhythmErrors, WesternBiorhythmResponses, WesternCompatibilityData, WesternCompatibilityErrors, WesternCompatibilityResponses, WesternCompatibilityZodiacData, WesternCompatibilityZodiacErrors, WesternCompatibilityZodiacResponses, WesternCompositeData, WesternCompositeErrors, WesternCompositeResponses, WesternHoroscopeDailyData, WesternHoroscopeDailyErrors, WesternHoroscopeDailyResponses, WesternHoroscopeMonthlyData, WesternHoroscopeMonthlyErrors, WesternHoroscopeMonthlyResponses, WesternHoroscopeWeeklyData, WesternHoroscopeWeeklyErrors, WesternHoroscopeWeeklyResponses, WesternHoroscopeYearlyData, WesternHoroscopeYearlyErrors, WesternHoroscopeYearlyResponses, WesternLunarReturnData, WesternLunarReturnErrors, WesternLunarReturnResponses, WesternMoonCalendarData, WesternMoonCalendarErrors, WesternMoonCalendarResponses, WesternMoonPhaseData, WesternMoonPhaseErrors, WesternMoonPhaseResponses, WesternNatalChartData, WesternNatalChartErrors, WesternNatalChartResponses, WesternPlanetaryReturnData, WesternPlanetaryReturnErrors, WesternPlanetaryReturnResponses, WesternProgressionsSecondaryData, WesternProgressionsSecondaryErrors, WesternProgressionsSecondaryResponses, WesternProgressionsSolarArcData, WesternProgressionsSolarArcErrors, WesternProgressionsSolarArcResponses, WesternSolarReturnData, WesternSolarReturnErrors, WesternSolarReturnResponses, WesternSynastryData, WesternSynastryErrors, WesternSynastryResponses, WesternTransitsDailyData, WesternTransitsDailyErrors, WesternTransitsDailyResponses, WesternTransitsMonthlyData, WesternTransitsMonthlyErrors, WesternTransitsMonthlyResponses, WesternTransitsWeeklyData, WesternTransitsWeeklyErrors, WesternTransitsWeeklyResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -871,9 +871,11 @@ export const numerologyCompatibility = <ThrowOnError extends boolean = false>(op
 });
 
 /**
- * Get life path number
+ * Get life path number (deprecated GET)
  *
- * Calculates the life path number for a birth date and returns interpretation details. Query: `date` (YYYY-MM-DD). Requires authenticated API key access (Core tier or above in product terms). Returns number, master/karmic markers, and guidance keywords.
+ * Deprecated: put the birth date in a JSON body with POST /v1/numerology/life-path instead, so it stays out of URLs and logs. This GET form keeps working for at least 12 months and answers with a `Deprecation` header.
+ *
+ * @deprecated
  */
 export const lifePath = <ThrowOnError extends boolean = false>(options: Options<LifePathData, ThrowOnError>) => (options.client ?? client).get<LifePathResponses, LifePathErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -882,9 +884,26 @@ export const lifePath = <ThrowOnError extends boolean = false>(options: Options<
 });
 
 /**
- * Get personal year number
+ * Get life path number
  *
- * Calculates personal year influence for a given birth date and target year. Query: `date`, `year`. Requires authenticated API key access (Core tier or above in product terms). Returns theme, opportunities, challenges, and practical advice.
+ * Calculates the life path number for a birth date and returns interpretation details. Body: `date` (YYYY-MM-DD). Returns number, master/karmic markers, and guidance keywords.
+ */
+export const lifePathPost = <ThrowOnError extends boolean = false>(options: Options<LifePathPostData, ThrowOnError>) => (options.client ?? client).post<LifePathPostResponses, LifePathPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/life-path',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Get personal year number (deprecated GET)
+ *
+ * Deprecated: put the birth date in a JSON body with POST /v1/numerology/personal-year instead, so it stays out of URLs and logs. This GET form keeps working for at least 12 months and answers with a `Deprecation` header.
+ *
+ * @deprecated
  */
 export const personalYear = <ThrowOnError extends boolean = false>(options: Options<PersonalYearData, ThrowOnError>) => (options.client ?? client).get<PersonalYearResponses, PersonalYearErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -893,9 +912,9 @@ export const personalYear = <ThrowOnError extends boolean = false>(options: Opti
 });
 
 /**
- * Get personal year number (JSON body)
+ * Get personal year number
  *
- * Same calculation as GET /v1/numerology/personal-year with an MCP-friendly JSON body: `name`, `date` (YYYY-MM-DD), optional `year` (defaults to the current calendar year).
+ * Calculates the personal year number and its guidance for a birth date. Body: `date` (YYYY-MM-DD), optional `year` (defaults to the current calendar year). Returns theme, opportunities, challenges, and practical advice.
  */
 export const personalYearPost = <ThrowOnError extends boolean = false>(options: Options<PersonalYearPostData, ThrowOnError>) => (options.client ?? client).post<PersonalYearPostResponses, PersonalYearPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -934,14 +953,31 @@ export const businessNamePost = <ThrowOnError extends boolean = false>(options: 
 });
 
 /**
- * Generate lucky numbers
+ * Generate lucky numbers (deprecated GET)
  *
- * Generates a deterministic lucky number set from `name` and `date` query params (BirthInput-aligned). Requires authenticated API key access (Core tier or above in product terms). Returns lucky numbers with supporting numerology context.
+ * Deprecated: put the name and birth date in a JSON body with POST /v1/numerology/lucky-numbers instead, so it stays out of URLs and logs. This GET form keeps working for at least 12 months and answers with a `Deprecation` header.
+ *
+ * @deprecated
  */
 export const luckyNumbers = <ThrowOnError extends boolean = false>(options: Options<LuckyNumbersData, ThrowOnError>) => (options.client ?? client).get<LuckyNumbersResponses, LuckyNumbersErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/numerology/lucky-numbers',
     ...options
+});
+
+/**
+ * Generate lucky numbers
+ *
+ * Generates a deterministic lucky number set from `name` and `date` in the JSON body (BirthInput-aligned), with optional `count` (1-20, default 6). Returns lucky numbers with supporting numerology context.
+ */
+export const luckyNumbersPost = <ThrowOnError extends boolean = false>(options: Options<LuckyNumbersPostData, ThrowOnError>) => (options.client ?? client).post<LuckyNumbersPostResponses, LuckyNumbersPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/lucky-numbers',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
 });
 
 /**
@@ -1001,9 +1037,11 @@ export const loShu = <ThrowOnError extends boolean = false>(options: Options<LoS
 });
 
 /**
- * Mobile Number Numerology
+ * Mobile Number Numerology (deprecated GET)
  *
- * Analyses a mobile/phone number numerologically. Sums all digits to a single number and returns theme, harmony score, and recommended uses.
+ * Deprecated: send the mobile number in a JSON body with POST /v1/numerology/mobile-number instead, so it stays out of URLs and logs. This GET form keeps working for at least 12 months and answers with a `Deprecation` header.
+ *
+ * @deprecated
  */
 export const mobileNumber = <ThrowOnError extends boolean = false>(options: Options<MobileNumberData, ThrowOnError>) => (options.client ?? client).get<MobileNumberResponses, MobileNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1012,14 +1050,46 @@ export const mobileNumber = <ThrowOnError extends boolean = false>(options: Opti
 });
 
 /**
- * Vehicle Number Numerology
+ * Mobile Number Numerology
  *
- * Analyses a vehicle registration number numerologically. Extracts digits, sums to single number, returns theme and harmony score.
+ * Analyses a mobile/phone number numerologically. Body: `number`. Sums all digits to a single number and returns theme, harmony score, and recommended uses.
+ */
+export const mobileNumberPost = <ThrowOnError extends boolean = false>(options: Options<MobileNumberPostData, ThrowOnError>) => (options.client ?? client).post<MobileNumberPostResponses, MobileNumberPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/mobile-number',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Vehicle Number Numerology (deprecated GET)
+ *
+ * Deprecated: send the vehicle number in a JSON body with POST /v1/numerology/vehicle-number instead, so it stays out of URLs and logs. This GET form keeps working for at least 12 months and answers with a `Deprecation` header.
+ *
+ * @deprecated
  */
 export const vehicleNumber = <ThrowOnError extends boolean = false>(options: Options<VehicleNumberData, ThrowOnError>) => (options.client ?? client).get<VehicleNumberResponses, VehicleNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/numerology/vehicle-number',
     ...options
+});
+
+/**
+ * Vehicle Number Numerology
+ *
+ * Analyses a vehicle registration number numerologically. Body: `number`. Extracts digits, sums to single number, returns theme and harmony score.
+ */
+export const vehicleNumberPost = <ThrowOnError extends boolean = false>(options: Options<VehicleNumberPostData, ThrowOnError>) => (options.client ?? client).post<VehicleNumberPostResponses, VehicleNumberPostErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/numerology/vehicle-number',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
 });
 
 /**
