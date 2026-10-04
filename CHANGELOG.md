@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.5.0 — 2026-10-04
+
+Regenerated from the API as deployed on 2026-10-04. No function or request
+field changed.
+
+### Removed
+
+- `ErrorCode` values `'endpoint_restricted'` and `'invalid_key_name'` (the
+  generated type and `ALL_ERROR_CODES`). Both came only from the API's old
+  unauthenticated `POST /v1/keys` route, which was retired; the SDK never
+  called it. Keys are created in the dashboard.
+
 ## 0.4.0 — 2026-10-04
 
 Regenerated from the API as deployed on 2026-10-04. No function or request
