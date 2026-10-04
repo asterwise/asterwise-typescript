@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.4.0 — 2026-10-04
+
+Regenerated from the API as deployed on 2026-10-04. No function or request
+field changed. The minor version moves because five error codes were
+removed, which can break code that names them.
+
+### Removed
+
+- Five `ErrorCode` values the API never returned:
+  `'date_out_of_supported_range'`, `'polar_latitude_unsupported'`,
+  `'interpretation_not_found'`, `'insufficient_tier'`,
+  `'dependency_unavailable'` (the generated `ErrorCode` type and
+  `ALL_ERROR_CODES`). Dates outside 1800-01-01 to 2099-12-31 come back as
+  `'validation_error'`, as they already did.
+
+### Fixed
+
+- Natal crystal recommendation doc comment: "the Trikona Trikona
+  lordship" and "lordsing" typos.
+
 ## 0.3.1 — 2026-09-28
 
 Regenerated from the API as deployed on 2026-09-28 (engine 7d68ba3).
