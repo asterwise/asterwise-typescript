@@ -9,6 +9,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # The "npm" environment only accepts typescript-v* tags and waits for an
+    # approval from the asterwise account before anything is published.
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/asterwise
     permissions:
       contents: read
       id-token: write   # npm trusted publishing (OIDC); no NPM_TOKEN needed
