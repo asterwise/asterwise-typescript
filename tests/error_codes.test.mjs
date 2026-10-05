@@ -57,8 +57,10 @@ describe("Generated error codes", () => {
     assert.ok(Array.isArray(ALL_ERROR_CODES));
   });
 
-  it("first and last codes match registry sort order", () => {
-    assert.equal(ALL_ERROR_CODES[0], "account_not_found");
-    assert.equal(ALL_ERROR_CODES[ALL_ERROR_CODES.length - 1], "validation_error");
+  it("the ErrorCode type lists exactly the runtime codes, in the same order", () => {
+    const union = source.match(/export type ErrorCode =([\s\S]*?);/);
+    assert.ok(union, "ErrorCode union not found in src/types/error_codes.ts");
+    const typeCodes = [...union[1].matchAll(/"([a-z0-9_]+)"/g)].map((m) => m[1]);
+    assert.deepEqual(typeCodes, [...ALL_ERROR_CODES]);
   });
 });

@@ -9,7 +9,7 @@
  * app/core/error_codes.py in asterwise-api, then re-run the
  * generator with --write-sdks.
  *
- * Generated from 40 codes (hash b8c8f8276214675d) ErrorCode members.
+ * Generated from 41 codes (hash ce57ccac0f42904f) ErrorCode members.
  */
 
 /**
@@ -19,6 +19,7 @@
  *   if (response.error === "api_key_revoked") { ... }
  */
 export type ErrorCode =
+  | "account_action_limit_exceeded"
   | "account_not_found"
   | "already_on_plan"
   | "api_key_invalid"
@@ -64,6 +65,7 @@ export type ErrorCode =
  * Runtime array of every valid ErrorCode value.
  */
 export const ALL_ERROR_CODES: readonly ErrorCode[] = [
+  "account_action_limit_exceeded",
   "account_not_found",
   "already_on_plan",
   "api_key_invalid",
