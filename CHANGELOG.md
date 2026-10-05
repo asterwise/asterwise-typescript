@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## 0.7.0 — 2026-10-05
+
+Same API, same methods, same request and response types. Generated with
+`@hey-api/openapi-ts` 0.99 (was 0.96). The minor version moves because
+strict TypeScript code that reads `res.response` may need a one-character
+change.
+
+### Changed
+
+- `request` and `response` on a result are now typed as optional (unless
+  you pass `throwOnError: true`, where they stay required). They could
+  always be missing at run time: on a network failure (no connection, DNS,
+  timeout) 0.6.x also returned `response: undefined` while typing it as
+  always present. Write `res.response?.status` instead of
+  `res.response.status`.
+- Two failures that used to reject the promise now come back as an error
+  result like any other, and still throw with `throwOnError: true`: a
+  success response whose body isn't valid JSON, and a request that can't be
+  built (for example an invalid `baseUrl`). Every other case, including
+  HTTP errors and network failures, behaves as in 0.6.1.
+- Each method now declares its return type (`RequestResult<…>`), so editors
+  show it directly. `asterwise/client` also exports `ClientMeta`, for typing
+  the `meta` option.
+
+### Upgrading
+
+```ts
+const res = await natalChart({ body });
+if (res.error) {
+  console.error(res.response?.status ?? "no response", res.error);
+} else {
+  console.log(res.data);
+}
+```
+
 ## 0.6.1 — 2026-10-05
 
 No changes to how you call the SDK.

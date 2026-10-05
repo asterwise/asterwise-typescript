@@ -1,6 +1,6 @@
 {
   "name": "asterwise",
-  "version": "0.6.1",
+  "version": "0.7.0",
   "description": "Official TypeScript SDK for the Asterwise API: Vedic and Western astrology, numerology, tarot. 117 endpoints, generated from the OpenAPI document; positions checked against NASA JPL Horizons; MCP server for Claude and Cursor.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -56,7 +56,7 @@
     "url": "https://github.com/asterwise/asterwise-typescript/issues"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.96.0",
+    "@hey-api/openapi-ts": "^0.99.0",
     "typescript": "^5.0.0"
   },
   "type": "module"
