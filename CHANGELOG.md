@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.6.1 — 2026-10-05
+
+No changes to how you call the SDK.
+
+### Fixed
+
+- No runtime dependencies. 0.6.0 listed `@hey-api/client-fetch`, which the
+  SDK never imports (its HTTP client is bundled in `asterwise/client`) and
+  which pulled the whole `@hey-api/openapi-ts` code generator, and its
+  vulnerable `js-yaml` 4.1.1, into every app that installed the SDK.
+- `geocode` description: "Returns up to `limit` matches (default 5, at most
+  10)" instead of a raw `{limit}`.
+
+### Added
+
+- `ErrorCode` value `'account_action_limit_exceeded'` (dashboard only: a
+  deletion code asked for too often, or a data export already running).
+
 ## 0.6.0 — 2026-10-04
 
 Regenerated from the API as deployed on 2026-10-04. Existing calls keep

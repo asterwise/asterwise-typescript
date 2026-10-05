@@ -18,7 +18,7 @@
  * - F-138 (src/types/error_codes.ts) silently deleted on every regen
  */
 import { spawnSync } from "node:child_process";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -80,6 +80,18 @@ const ERROR_GEN = resolve(
   "scripts/generate_error_artifacts.py"
 );
 
+// The generator imports the API's own code, which needs the API's Python
+// (3.11) and packages. A bare "python3" may be an older system Python that
+// can't import it. ASTERWISE_API_PYTHON overrides; else the API's venv.
+function apiPython() {
+  if (process.env.ASTERWISE_API_PYTHON) return process.env.ASTERWISE_API_PYTHON;
+  for (const venv of [".venv", "venv"]) {
+    const candidate = resolve(ASTERWISE_API_ROOT, venv, "bin", "python");
+    if (existsSync(candidate)) return candidate;
+  }
+  return "python3";
+}
+
 function runErrorCodesGenerator() {
   try {
     readFileSync(ERROR_GEN, "utf8");
@@ -89,13 +101,16 @@ function runErrorCodesGenerator() {
         "    Manual recovery: cd ../asterwise-api && \n" +
         "    python3 scripts/generate_error_artifacts.py --write --write-sdks"
     );
+    // openapi-ts has already deleted src/types/error_codes.ts: fail, so a
+    // regeneration never "succeeds" without it.
+    process.exitCode = 1;
     return false;
   }
 
   console.log("  → F-138: regenerating src/types/error_codes.ts...");
 
   const result = spawnSync(
-    "python3",
+    apiPython(),
     [
       ERROR_GEN,
       "--write",
@@ -118,6 +133,7 @@ function runErrorCodesGenerator() {
         "    Manual recovery: cd ../asterwise-api && \n" +
         "    python3 scripts/generate_error_artifacts.py --write --write-sdks"
     );
+    process.exitCode = 1;
     return false;
   }
 

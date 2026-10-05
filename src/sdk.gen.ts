@@ -1700,7 +1700,7 @@ export const ghatChakra = <ThrowOnError extends boolean = false>(options: Option
  *
  * Resolve a city or place name to coordinates and timezone.
  *
- * Returns up to {limit} matches. When a query is ambiguous
+ * Returns up to `limit` matches (default 5, at most 10). When a query is ambiguous
  * (e.g. 'Fatehabad' exists in multiple states), multiple results
  * are returned so the developer can present a disambiguation UI
  * or use the first result.

@@ -28,7 +28,8 @@ export default defineConfig({
     // See https://github.com/hey-api/openapi-ts docs for the
     // output.module.extension option.
     module: { extension: ".js" },
-    postProcess: ["prettier", "eslint"],
+    // No postProcess: prettier and eslint aren't dependencies here. Before
+    // 0.99 the generator skipped them silently; 0.99 fails instead.
   },
   plugins: [
     "@hey-api/client-fetch",
