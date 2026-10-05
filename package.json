@@ -56,7 +56,7 @@
     "url": "https://github.com/asterwise/asterwise-typescript/issues"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.96.0",
+    "@hey-api/openapi-ts": "^0.97.3",
     "typescript": "^5.0.0"
   },
   "type": "module"
