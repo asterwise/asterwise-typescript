@@ -843,7 +843,7 @@ export const matchmaking = <ThrowOnError extends boolean = false>(options: Optio
 /**
  * Generate numerology profile
  *
- * Builds a complete numerology profile from name and birth date (BirthInput-aligned: `name`, `date`). Requires authenticated API key access (Core tier or above in product terms). Returns core numbers, interpretations, cycles, and supportive metadata.
+ * Builds a complete numerology profile from name and birth date (BirthInput-aligned: `name`, `date`). Returns core numbers, interpretations, cycles, and supportive metadata.
  */
 export const numerologyProfile = <ThrowOnError extends boolean = false>(options: Options<NumerologyProfileData, ThrowOnError>): RequestResult<NumerologyProfileResponses, NumerologyProfileErrors, ThrowOnError> => (options.client ?? client).post<NumerologyProfileResponses, NumerologyProfileErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -858,7 +858,7 @@ export const numerologyProfile = <ThrowOnError extends boolean = false>(options:
 /**
  * Calculate numerology compatibility
  *
- * Computes compatibility between two people from their numerology signatures. Each person uses `name` and `date` (BirthInput-aligned). Requires authenticated API key access (Core tier or above in product terms). Returns score, level, and explanatory strengths/challenges.
+ * Computes compatibility between two people from their numerology signatures. Each person uses `name` and `date` (BirthInput-aligned). Returns score, level, and explanatory strengths/challenges.
  */
 export const numerologyCompatibility = <ThrowOnError extends boolean = false>(options: Options<NumerologyCompatibilityData, ThrowOnError>): RequestResult<NumerologyCompatibilityResponses, NumerologyCompatibilityErrors, ThrowOnError> => (options.client ?? client).post<NumerologyCompatibilityResponses, NumerologyCompatibilityErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -983,7 +983,7 @@ export const luckyNumbersPost = <ThrowOnError extends boolean = false>(options: 
 /**
  * Get number meaning by context
  *
- * Returns interpretation details for a specific number within a numerology context. Query `context` defaults to `general` (same meanings as life path). Requires authenticated API key access (Core tier or above in product terms). Returns meaning text and optional thematic guidance fields.
+ * Returns interpretation details for a specific number within a numerology context. Query `context` defaults to `general` (same meanings as life path). Returns meaning text and optional thematic guidance fields.
  */
 export const numberMeaning = <ThrowOnError extends boolean = false>(options: Options<NumberMeaningData, ThrowOnError>): RequestResult<NumberMeaningResponses, NumberMeaningErrors, ThrowOnError> => (options.client ?? client).get<NumberMeaningResponses, NumberMeaningErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1748,7 +1748,7 @@ export const sadeSati = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Calculate planetary strength suite
  *
- * Builds a composite strength report including shadbala, divisional charts, ashtakavarga, and karakas from birth input. Requires authenticated API key access (Vedic tier or above in product terms). Returns a unified strength payload for all supported modules.
+ * Builds a composite strength report including shadbala, divisional charts, ashtakavarga, and karakas from birth input. Returns a unified strength payload for all supported modules.
  */
 export const strength = <ThrowOnError extends boolean = false>(options: Options<StrengthData, ThrowOnError>): RequestResult<StrengthResponses, StrengthErrors, ThrowOnError> => (options.client ?? client).post<StrengthResponses, StrengthErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1763,7 +1763,7 @@ export const strength = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Planetary transits — Gochar
  *
- * Scans a date range for planetary sign ingresses and retrograde/direct station events. Requires authenticated API key access (Vedic tier or above in product terms). Returns grouped transit events for supported planets. Also known as Gochar. Returns planetary sign ingresses and retrograde/direct station events for a given date range.
+ * Scans a date range for planetary sign ingresses and retrograde/direct station events. Returns grouped transit events for supported planets. Also known as Gochar.
  */
 export const transits = <ThrowOnError extends boolean = false>(options: Options<TransitsData, ThrowOnError>): RequestResult<TransitsResponses, TransitsErrors, ThrowOnError> => (options.client ?? client).post<TransitsResponses, TransitsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

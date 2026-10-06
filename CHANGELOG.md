@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 0.8.0 — 2026-10-06
+
+Generated from the API as deployed on 2026-10-06. Requests on the wire are
+unchanged; the types now say what the API has always required.
+
+### Changed
+
+- `time` is required (`string`, was `string | null` and optional) on the 16
+  endpoints that always rejected a request without it: `kpChart`,
+  `kpSignificators`, `atmakaraka`, `charDasha`, `ishtaDevata`, `varshaphal`,
+  `varshaphalSaham`, `varshaphalHarshaBala`, `gochar`, `dashaTransits`,
+  `remedies`, `gemstones`, `nakshatraPrediction`, `pitraDosha`,
+  `ghatChakra`, `crystalsRecommendNatal`. Code that omitted it failed at the
+  API; now it fails to compile.
+- `pitraDosha`, `ghatChakra` and `crystalsRecommendNatal` take their own body
+  types (`PitruDoshaRequest`, `GhatChakraRequest`, `NatalCrystalRequest`)
+  instead of `BirthInput` / `NatalRequest`, which other endpoints share
+  without requiring a time. The fields are the same apart from `time`
+  (and `NatalCrystalRequest` has no `include_interpretation`, which the
+  endpoint never read).
+
+### Added
+
+- `prashna` accepts every ayanamsa: `'raman'` and `'tropical'` as well as
+  `'lahiri'` and `'kp'`.
+
+### Fixed
+
+- Five method descriptions no longer mention "Core tier" or "Vedic tier"
+  plans, which don't exist.
+
 ## 0.7.0 — 2026-10-05
 
 Same API, same methods, same request and response types. Generated with

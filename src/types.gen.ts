@@ -2465,7 +2465,7 @@ export type AshtottariResponse = {
 /**
  * AtmakarakaRequest
  *
- * Jaimini Charakarakas — extends :class:`BirthInput`.
+ * Jaimini Charakarakas — extends :class:`TimedBirthInput`.
  *
  * Inherits: ``name``, ``date`` (YYYY-MM-DD), ``time`` (HH:MM, required for this API),
  * ``location`` *or* ``latitude``, ``longitude``, ``timezone``, ``ayanamsa``.
@@ -2492,9 +2492,9 @@ export type AtmakarakaRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -3420,7 +3420,7 @@ export type CharAntardasha = {
 /**
  * CharDashaRequest
  *
- * Jaimini Char Dasha — extends :class:`BirthInput` with ``cycles``.
+ * Jaimini Char Dasha — extends :class:`TimedBirthInput` with ``cycles``.
  *
  * Birth fields: ``name``, ``date``, ``time``, ``latitude``, ``longitude``, ``timezone``
  * (or ``location``), ``ayanamsa``. Additional: ``cycles`` (1–3).
@@ -3447,9 +3447,9 @@ export type CharDashaRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -4292,7 +4292,7 @@ export type DashaRequest = {
 /**
  * DashaTransitsRequest
  *
- * Dasha–transit correlation — extends :class:`BirthInput`.
+ * Dasha–transit correlation — extends :class:`TimedBirthInput`.
  *
  * Birth fields: ``name``, ``date``, ``time``, ``location`` or ``latitude``/``longitude``/
  * ``timezone``, ``ayanamsa``. Optional analysis instant: ``target_date``, ``target_time``,
@@ -4320,9 +4320,9 @@ export type DashaTransitsRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -5744,9 +5744,9 @@ export type GemstoneRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -5922,6 +5922,68 @@ export type GeocodeResult = {
 };
 
 /**
+ * GhatChakraRequest
+ *
+ * Ghat Chakra request: birth details with the exact birth time.
+ */
+export type GhatChakraRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
+     */
+    time: string;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+};
+
+/**
  * GhatChakraResponse
  */
 export type GhatChakraResponse = {
@@ -6039,7 +6101,7 @@ export type GocharNatalRef = {
 /**
  * GocharRequest
  *
- * Gochar — extends :class:`BirthInput` with optional transit instant fields.
+ * Gochar — extends :class:`TimedBirthInput` with optional transit instant fields.
  *
  * Birth fields: ``name``, ``date``, ``time``, ``location`` or coordinates, ``ayanamsa``.
  * Transit evaluation: optional ``target_date``, ``target_time``, ``target_timezone``.
@@ -6066,9 +6128,9 @@ export type GocharRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -6733,7 +6795,7 @@ export type IngressEvent = {
 /**
  * IshtaDevtaRequest
  *
- * Ishta Devta — extends :class:`BirthInput`.
+ * Ishta Devta — extends :class:`TimedBirthInput`.
  *
  * Inherits: ``name``, ``date``, ``time``, ``location`` or coordinates, ``ayanamsa``.
  */
@@ -6759,9 +6821,9 @@ export type IshtaDevtaRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -6861,7 +6923,7 @@ export type IshtaDevtaResponse = {
 /**
  * KPBirthRequest
  *
- * KP natal chart / significators — extends :class:`BirthInput`.
+ * KP natal chart / significators — extends :class:`TimedBirthInput`.
  *
  * Fields: ``name``, ``date``, ``time``, ``location`` or ``latitude``/``longitude``/
  * ``timezone``, ``ayanamsa``.
@@ -6888,9 +6950,9 @@ export type KpBirthRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -8460,9 +8522,9 @@ export type NakshatraPredictionRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -8873,6 +8935,69 @@ export type NatalCrystalEntry = {
      * Classical cautions for this specific chart context.
      */
     warnings?: Array<string>;
+};
+
+/**
+ * NatalCrystalRequest
+ *
+ * Natal crystal recommendations: birth details with the exact birth time
+ * (the houses, and so the lordships, depend on it).
+ */
+export type NatalCrystalRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
+     */
+    time: string;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
 
 /**
@@ -9868,6 +9993,68 @@ export type PinnacleChallenge = {
 };
 
 /**
+ * PitruDoshaRequest
+ *
+ * Pitra Dosha request: birth details with the exact birth time.
+ */
+export type PitruDoshaRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
+     */
+    time: string;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+};
+
+/**
  * PitruDoshaResponse
  */
 export type PitruDoshaResponse = {
@@ -10510,9 +10697,9 @@ export type PrashnaRequest = {
     /**
      * Ayanamsa
      *
-     * Ayanamsa system
+     * Ayanamsa system: lahiri (default), raman, kp, or tropical for a zero offset, as on every other chart endpoint
      */
-    ayanamsa?: 'lahiri' | 'kp';
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
 
 /**
@@ -10828,7 +11015,7 @@ export type RashiDrishtiEntry = {
 /**
  * RemediesRequest
  *
- * Personalised remedies — extends :class:`BirthInput` with ``top_n``.
+ * Personalised remedies — extends :class:`TimedBirthInput` with ``top_n``.
  *
  * Birth fields: ``name``, ``date``, ``time``, ``location`` or ``latitude``/``longitude``/
  * ``timezone``, ``ayanamsa``. Additional: ``top_n`` (1–9).
@@ -10855,9 +11042,9 @@ export type RemediesRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -12570,7 +12757,7 @@ export type VarshaphalPlanet = {
 /**
  * VarshaphalRequest
  *
- * Varshaphal — extends :class:`BirthInput` with ``target_year``.
+ * Varshaphal — extends :class:`TimedBirthInput` with ``target_year``.
  *
  * Birth fields: ``name``, ``date``, ``time``, ``location`` or coordinates, ``ayanamsa``.
  * Required: ``target_year`` (solar return year).
@@ -12597,9 +12784,9 @@ export type VarshaphalRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. Required: this endpoint has no sunrise fallback.
      */
-    time?: string | null;
+    time: string;
     /**
      * Latitude
      *
@@ -18860,7 +19047,7 @@ export type CrystalsRecommendResponses = {
 export type CrystalsRecommendResponse = CrystalsRecommendResponses[keyof CrystalsRecommendResponses];
 
 export type CrystalsRecommendNatalData = {
-    body: NatalRequest;
+    body: NatalCrystalRequest;
     path?: never;
     query?: never;
     url: '/v1/crystals/recommend/natal';
@@ -20578,7 +20765,7 @@ export type NakshatraPredictionResponses = {
 export type NakshatraPredictionResponse2 = NakshatraPredictionResponses[keyof NakshatraPredictionResponses];
 
 export type PitraDoshaData = {
-    body: BirthInput;
+    body: PitruDoshaRequest;
     path?: never;
     query?: never;
     url: '/v1/astro/pitra-dosha';
@@ -20635,7 +20822,7 @@ export type PitraDoshaResponses = {
 export type PitraDoshaResponse = PitraDoshaResponses[keyof PitraDoshaResponses];
 
 export type GhatChakraData = {
-    body: BirthInput;
+    body: GhatChakraRequest;
     path?: never;
     query?: never;
     url: '/v1/astro/ghat-chakra';
