@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.9.1 — 2026-10-08
+
+### Changed
+
+- `LalKitabRequest.ayanamsa` is `'lahiri' | 'raman' | 'kp'` (was also
+  `'tropical'`), and the API now uses the one sent (it used Lahiri for every
+  value before). Tropical is refused: Lal Kitab starts from the sidereal
+  Indian chart.
+
 ## 0.9.0 — 2026-10-08
 
 Generated from the API as deployed on 2026-10-08, where Lal Kitab now follows

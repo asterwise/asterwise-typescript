@@ -7237,7 +7237,7 @@ export type LalKitabAscendant = {
     /**
      * Longitude
      *
-     * Sidereal (Lahiri) ascendant longitude in degrees.
+     * Sidereal ascendant longitude in degrees, in the requested ayanamsa.
      */
     longitude: number;
     /**
@@ -7451,9 +7451,9 @@ export type LalKitabRemedyItem = {
 /**
  * LalKitabRequest
  *
- * Lal Kitab uses standard BirthInput.
- * Ayanamsa is always Lahiri: the ayanamsa field is accepted (so requests
- * that send it keep working) but ignored, and the schema says so.
+ * Lal Kitab starts from the traditional Indian (sidereal) birth chart and
+ * names no ayanamsa, so any sidereal ayanamsa is honoured; tropical is not
+ * the chart the book starts from and is rejected.
  */
 export type LalKitabRequest = {
     /**
@@ -7507,9 +7507,9 @@ export type LalKitabRequest = {
     /**
      * Ayanamsa
      *
-     * Ignored: Lal Kitab always uses the Lahiri ayanamsa. Accepted so requests that send it keep working.
+     * Sidereal ayanamsa used to cast the birth chart: lahiri (default), raman or kp. Tropical is rejected: Lal Kitab starts from the sidereal Indian chart.
      */
-    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    ayanamsa?: 'lahiri' | 'raman' | 'kp';
 };
 
 /**
