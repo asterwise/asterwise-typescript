@@ -7231,6 +7231,28 @@ export type KarmicLessonsResponse = {
 };
 
 /**
+ * LalKitabAscendant
+ */
+export type LalKitabAscendant = {
+    /**
+     * Longitude
+     *
+     * Sidereal (Lahiri) ascendant longitude in degrees.
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     *
+     * Ascendant sign, 0 = Aries. This house is Lal Kitab house 1.
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+};
+
+/**
  * LalKitabChartResponse
  */
 export type LalKitabChartResponse = {
@@ -7242,6 +7264,13 @@ export type LalKitabChartResponse = {
      * Ayanamsa
      */
     ayanamsa: string;
+    /**
+     * Birth Time Provided
+     *
+     * False when no birth time was given: a sunrise chart is used, so the lagna and every house are approximate.
+     */
+    birth_time_provided?: boolean;
+    ascendant: LalKitabAscendant;
     /**
      * Planets
      */
@@ -7264,6 +7293,30 @@ export type LalKitabChartResponse = {
     rin_analysis: {
         [key: string]: unknown;
     };
+    /**
+     * Sources
+     */
+    sources: Array<string>;
+};
+
+/**
+ * LalKitabNotRemediable
+ */
+export type LalKitabNotRemediable = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Lk House
+     */
+    lk_house: number;
+    /**
+     * Reasons
+     *
+     * Why this placement is generally malefic.
+     */
+    reasons: Array<string>;
 };
 
 /**
@@ -7287,10 +7340,6 @@ export type LalKitabPlanetRemedy = {
      */
     pucca_ghar: boolean;
     /**
-     * Kachcha Ghar
-     */
-    kachcha_ghar: boolean;
-    /**
      * Uchcha
      */
     uchcha: boolean;
@@ -7299,13 +7348,23 @@ export type LalKitabPlanetRemedy = {
      */
     neecha: boolean;
     /**
+     * Effect
+     *
+     * Always 'doubtful' here: only planets with a doubtful (rashi phal) effect can be remedied.
+     */
+    effect: 'doubtful';
+    /**
+     * Malefic Reasons
+     *
+     * Why this placement is generally malefic.
+     */
+    malefic_reasons: Array<string>;
+    /**
      * Remedies
+     *
+     * Remedies the book gives for this planet in this house; empty when it gives none.
      */
     remedies: Array<LalKitabRemedyItem>;
-    /**
-     * Priority
-     */
-    priority: string;
 };
 
 /**
@@ -7321,9 +7380,36 @@ export type LalKitabRemediesResponse = {
      */
     ayanamsa: string;
     /**
+     * Birth Time Provided
+     *
+     * False when no birth time was given: a sunrise chart is used, so the lagna and every house are approximate.
+     */
+    birth_time_provided?: boolean;
+    ascendant: LalKitabAscendant;
+    /**
      * Remedies
+     *
+     * Planets with a doubtful effect and a malefic indication, in the order Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu.
      */
     remedies: Array<LalKitabPlanetRemedy>;
+    /**
+     * Not Remediable
+     *
+     * Planets with a malefic indication but a fixed (grah phal) effect, which Lal Kitab says remedies cannot change.
+     */
+    not_remediable: Array<LalKitabNotRemediable>;
+    /**
+     * Rin Remedies
+     */
+    rin_remedies: Array<LalKitabRinRemedy>;
+    /**
+     * Rule
+     */
+    rule: string;
+    /**
+     * Sources
+     */
+    sources: Array<string>;
 };
 
 /**
@@ -7332,20 +7418,42 @@ export type LalKitabRemediesResponse = {
 export type LalKitabRemedyItem = {
     /**
      * Type
+     *
+     * donation = give something away or feed; keep = keep or wear an item; avoid = a prohibition; remedy = any other prescribed act.
      */
-    type: string;
+    type: 'donation' | 'keep' | 'avoid' | 'remedy';
     /**
      * Action
+     *
+     * The remedy, paraphrased from the cited book page.
      */
     action: string;
+    /**
+     * Page
+     *
+     * Page in Goswami & Vashisth, Lal Kitab (based on the 1952 edition), Sagar Publications.
+     */
+    page?: number | null;
+    /**
+     * Condition
+     *
+     * Extra condition the book attaches to this remedy; null when it applies whenever the placement is malefic.
+     */
+    condition?: string | null;
+    /**
+     * Note
+     *
+     * Set when the book points to another placement's remedy (e.g. 'same as house 4'); says which.
+     */
+    note?: string | null;
 };
 
 /**
  * LalKitabRequest
  *
  * Lal Kitab uses standard BirthInput.
- * Ayanamsa is always Lahiri — the ayanamsa field
- * from BirthInput is ignored and overridden to lahiri.
+ * Ayanamsa is always Lahiri: the ayanamsa field is accepted (so requests
+ * that send it keep working) but ignored, and the schema says so.
  */
 export type LalKitabRequest = {
     /**
@@ -7399,9 +7507,63 @@ export type LalKitabRequest = {
     /**
      * Ayanamsa
      *
-     * Sidereal ayanamsa mode used in calculations
+     * Ignored: Lal Kitab always uses the Lahiri ayanamsa. Accepted so requests that send it keep working.
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+};
+
+/**
+ * LalKitabRinFound
+ */
+export type LalKitabRinFound = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * House
+     */
+    house: number;
+};
+
+/**
+ * LalKitabRinRemedy
+ */
+export type LalKitabRinRemedy = {
+    /**
+     * Rin
+     */
+    rin: string;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Planet
+     *
+     * The planet the debt belongs to.
+     */
+    planet: string;
+    /**
+     * Houses
+     *
+     * That planet's houses where an enemy indicates the debt.
+     */
+    houses: Array<number>;
+    /**
+     * Found
+     *
+     * Enemy planets found in those houses.
+     */
+    found: Array<LalKitabRinFound>;
+    /**
+     * Remedy
+     */
+    remedy: string;
+    /**
+     * Source
+     */
+    source: string;
 };
 
 /**
