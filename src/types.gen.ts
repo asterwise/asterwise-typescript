@@ -2284,7 +2284,7 @@ export type AshtakavargaResponse = {
     /**
      * Bhinna After Ekadhipatya
      *
-     * BAV after both Trikona and Ekadhipatya Shodana (lordship reduction). Keys: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn. Each value maps Sanskrit sign name to bindu count. This is the most refined per-planet Ashtakavarga.
+     * BAV after both Trikona and Ekadhipatya Shodana (lordship reduction, BPHS Ch.70: occupancy by the seven grahas only — not the Lagna or the nodes; beside an occupied sign, an empty sign with fewer bindus is cleared and one with more is cut to the occupied sign's number). Keys: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn. Each value maps Sanskrit sign name to bindu count. This is the most refined per-planet Ashtakavarga.
      */
     bhinna_after_ekadhipatya: {
         [key: string]: {
@@ -2302,7 +2302,7 @@ export type AshtakavargaResponse = {
     /**
      * Sarva Reduced
      *
-     * Reduced SAV — sum of the 7 fully reduced planet BAVs (after both Trikona and Ekadhipatya Shodana). Keys: Mesha through Meena. More accurate than sarva for predictive work.
+     * Reduced SAV — sum of the 7 fully reduced planet BAVs (after both Trikona and Ekadhipatya Shodana), the input to Shodhya Pinda. Keys: Mesha through Meena. Transit grading uses the raw tables, not these.
      */
     sarva_reduced: {
         [key: string]: number;
@@ -2310,7 +2310,7 @@ export type AshtakavargaResponse = {
     /**
      * After Trikona
      *
-     * SAV after Trikona Shodana applied directly to the raw SAV. Keys: Mesha through Meena.
+     * Legacy (kept for v1 compatibility): Trikona Shodana applied to the summed SAV. Classical Shodhana is applied to each planet's BAV (see bhinna_after_trikona); this is not a classical value. Keys: Mesha through Meena.
      */
     after_trikona: {
         [key: string]: number;
@@ -2318,7 +2318,7 @@ export type AshtakavargaResponse = {
     /**
      * After Ekadhipatya
      *
-     * SAV after both Trikona and Ekadhipatya Shodana applied directly to the raw SAV. Keys: Mesha through Meena.
+     * Legacy (kept for v1 compatibility): Trikona and Ekadhipatya Shodana applied to the summed SAV. Not a classical value; use sarva_reduced. Keys: Mesha through Meena.
      */
     after_ekadhipatya: {
         [key: string]: number;
@@ -2381,9 +2381,21 @@ export type AshtottariPeriod = {
     /**
      * Sub
      *
-     * Sub-periods (Antar Dasha). Present only when levels=2.
+     * Sub-periods (same shape, nested per levels). Present when levels ≥ 2. Under the first Mahadasha they are the remaining tail of the full Mahadasha, which began before birth.
      */
     sub?: Array<unknown> | null;
+    /**
+     * Dasha Start Date
+     *
+     * Only on the first Mahadasha row: the date (DD/MM/YYYY, UTC) the full Mahadasha began, before birth. The row itself starts at birth and lasts the balance.
+     */
+    dasha_start_date?: string | null;
+    /**
+     * Balance Years
+     *
+     * Only on the first Mahadasha row: the balance of that Mahadasha remaining at birth, in years of 365.25636 days.
+     */
+    balance_years?: number | null;
 };
 
 /**
@@ -2447,7 +2459,7 @@ export type AshtottariRequest = {
     /**
      * Levels
      *
-     * Depth of sub-periods to return. 1 returns Maha Dashas only. 2 returns Maha and Antar Dashas. Maximum is 2.
+     * Depth of sub-periods to return, as in Vimshottari: 1 Maha only, 2 adds Antar, 3 Pratyantar, 4 Sookshma, 5 Prana. Default 2.
      */
     levels?: number;
 };
@@ -2728,9 +2740,15 @@ export type BiorhythmCycleDetail = {
     /**
      * Phase
      *
-     * Phase label: High, Rising, Falling, or Low
+     * Phase label: High (value above +0.5), Low (below -0.5), otherwise Rising or Falling by the direction the curve is moving that day (see trend).
      */
     phase: string;
+    /**
+     * Trend
+     *
+     * Direction of the curve that day, from the slope of the sine: rising, falling, or turning (exactly at a peak or trough).
+     */
+    trend?: string | null;
     /**
      * Is Critical
      *
@@ -3306,6 +3324,12 @@ export type CardOfDayResponse = {
      * Active Keywords
      */
     active_keywords: Array<string>;
+    /**
+     * Timezone
+     *
+     * Time zone whose current date was taken as today: the timezone you passed, or 'UTC'. Absent when you passed an explicit date.
+     */
+    timezone?: string | null;
 };
 
 /**
@@ -3483,7 +3507,7 @@ export type CharDashaRequest = {
     /**
      * Cycles
      *
-     * Dasha cycles to compute (1-3)
+     * Dasha cycles to compute (1-3). K.N. Rao: every cycle repeats the first cycle's signs, order and years.
      */
     cycles?: number;
 };
@@ -3538,6 +3562,8 @@ export type CharMahadasha = {
     rashi_index: number;
     /**
      * Years
+     *
+     * Mahadasha length (K.N. Rao): signs counted from the rashi to its lord (forward for savya, backward for apasavya rashis) minus one, 12 when the lord is in the rashi; no year is added or taken off for an exalted or debilitated lord. Range 1–12. Scorpio and Aquarius: the co-lord outside the sign; with both outside, the one with more planets, then the one further advanced in its sign. Every cycle repeats the first cycle's years.
      */
     years: number;
     /**
@@ -3550,6 +3576,8 @@ export type CharMahadasha = {
     end_date: string;
     /**
      * Antardashas
+     *
+     * The 12 antardashas, each lasting as many months as the mahadasha has years (K.N. Rao). They run forward when the 9th sign from the mahadasha sign is savya (Aries, Taurus, Gemini, Libra, Scorpio, Sagittarius) and backward otherwise, starting from the next sign; the mahadasha sign's own antardasha is the last.
      */
     antardashas: Array<CharAntardasha>;
 };
@@ -3794,6 +3822,50 @@ export type CompatibilityRequest = {
 };
 
 /**
+ * CompositeAspectSchema
+ *
+ * Aspect between two planets of the one composite (midpoint) chart.
+ */
+export type CompositeAspectSchema = {
+    /**
+     * Planet A
+     *
+     * First composite planet
+     */
+    planet_a: string;
+    /**
+     * Planet B
+     *
+     * Second composite planet
+     */
+    planet_b: string;
+    /**
+     * Person1 Planet
+     *
+     * Legacy name for planet_a, kept for compatibility. Both planets belong to the composite chart, not to person 1 or person 2.
+     */
+    person1_planet: string;
+    /**
+     * Person2 Planet
+     *
+     * Legacy name for planet_b, kept for compatibility (see person1_planet).
+     */
+    person2_planet: string;
+    /**
+     * Type
+     */
+    type: string;
+    /**
+     * Exact Angle
+     */
+    exact_angle: number;
+    /**
+     * Orb
+     */
+    orb: number;
+};
+
+/**
  * CompositePlanetSchema
  */
 export type CompositePlanetSchema = {
@@ -3823,8 +3895,16 @@ export type CompositePlanetSchema = {
     dignity: string;
     /**
      * Dignity Score
+     *
+     * Weight of the primary sign-level dignity only: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0. Triplicity, term and face are not scored, and the weights are not summed (e.g. Mercury in Virgo scores 5 for domicile, not 5+4). Full traditional scoring is in essential_dignities (natal and return charts).
      */
     dignity_score: number;
+    /**
+     * Dignity Disputed
+     *
+     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no established consensus.
+     */
+    dignity_disputed: boolean;
 };
 
 /**
@@ -3849,8 +3929,10 @@ export type CompositeResponse = {
     ascendant_sign_index: number;
     /**
      * Aspects
+     *
+     * Aspects between planets within the composite chart
      */
-    aspects: Array<SynastryAspectSchema>;
+    aspects: Array<CompositeAspectSchema>;
 };
 
 /**
@@ -3904,7 +3986,7 @@ export type CoreNumber = {
     /**
      * Karmic Debt Number
      *
-     * The karmic debt number if applicable
+     * Karmic debt: 13, 14, 16 or 19 met anywhere in the reduction of the number's total (e.g. 58 → 13 → 4 is 13); null when none
      */
     karmic_debt_number?: number | null;
     /**
@@ -3970,13 +4052,13 @@ export type CrystalEntry = {
     /**
      * Vedic Planet
      *
-     * Vedic planetary correspondence. Null if no classical Vedic text assigns this stone.
+     * Vedic planet: the planet of a navaratna gem, or the planet an uparatna substitutes for. Null if the stone has no Vedic gem use.
      */
     vedic_planet?: string | null;
     /**
      * Vedic Correspondence
      *
-     * 'navaratna' (primary classical gem), 'uparatna' (substitute gem), or 'none_classical' (no Vedic text assigns this stone).
+     * 'navaratna' (primary classical gem, Phaladeepika table), 'uparatna' (substitute gem — includes common modern substitutes such as Tiger's Eye for Ketu; the description says when a substitute is not classical), or 'none_classical' (no Vedic gem use).
      */
     vedic_correspondence: string;
     /**
@@ -4200,21 +4282,33 @@ export type DashaPeriod = {
     /**
      * Start Date
      *
-     * ISO-like UTC date string for period start
+     * Period start, DD/MM/YYYY (UTC calendar date). The first Mahadasha row starts at birth.
      */
     start_date: string;
     /**
      * End Date
      *
-     * ISO-like UTC date string for period end
+     * Period end, DD/MM/YYYY (UTC calendar date)
      */
     end_date: string;
     /**
      * Sub
      *
-     * Nested sub-periods for deeper hierarchy levels
+     * Nested sub-periods for deeper hierarchy levels. Under the first Mahadasha these are the remaining tail of the full Mahadasha, which began before birth: periods that ended before birth are omitted and the one running at birth starts at birth.
      */
     sub?: Array<DashaPeriod> | null;
+    /**
+     * Dasha Start Date
+     *
+     * Only on the first Mahadasha row: the date (DD/MM/YYYY, UTC) the full Mahadasha began, before birth. The row itself starts at birth and lasts the balance.
+     */
+    dasha_start_date?: string | null;
+    /**
+     * Balance Years
+     *
+     * Only on the first Mahadasha row: the balance of that Mahadasha remaining at birth, in years of 365.25636 days.
+     */
+    balance_years?: number | null;
     /**
      * Modern Summary
      *
@@ -4395,12 +4489,16 @@ export type DashaTransitsResponse = {
     };
     /**
      * Correlations
+     *
+     * Dasha lord × transiting planet aspects: dasha_level, dasha_lord, transit_planet, aspect_type (conjunction | opposition | trine | square | special), aspect_house (int 1-12: the natal dasha lord's sign counted from the transiting planet), drishti ('7th', '3rd', '10th', '5th', '9th', '4th', '8th'; absent for a conjunction), score, natal_rashi, transit_rashi, is_retrograde, significance. Aspects are cast by the transiting planet (BPHS Ch.26).
      */
     correlations: Array<{
         [key: string]: unknown;
     }>;
     /**
      * Periods Of Significance
+     *
+     * Correlations with score ≥ 2, same shape as correlations.
      */
     periods_of_significance: Array<{
         [key: string]: unknown;
@@ -4856,16 +4954,40 @@ export type DigitNumberAnalysisResponse = {
     input_type: string;
     /**
      * Total
+     *
+     * Sum of the digits in digits_used
      */
     total: number;
     /**
      * Single Digit
+     *
+     * Total reduced to 1-9 (master totals reduce too, e.g. 11 → 2)
      */
     single_digit: number;
     /**
      * Is Master
+     *
+     * True when the total, or a step of its reduction, is 11, 22 or 33
      */
     is_master: boolean;
+    /**
+     * Master Number
+     *
+     * The master number (11, 22 or 33) met while reducing the total; omitted when none
+     */
+    master_number?: number | null;
+    /**
+     * Digits Used
+     *
+     * Digits that were summed. Mobile: the national number without the country code (e.g. '+91 98765 43210' → '9876543210'). Vehicle: every digit on the plate.
+     */
+    digits_used?: string | null;
+    /**
+     * Country Code
+     *
+     * Mobile only: country calling code that was recognised and left out of the sum
+     */
+    country_code?: number | null;
     /**
      * Theme
      */
@@ -5053,7 +5175,7 @@ export type DivisionalResponse = {
     /**
      * D30
      *
-     * Trimshamsha — misfortunes and evils
+     * Trimshamsha — misfortunes and evils. Unequal portions per BPHS: odd signs Mars 5° → Aries, Saturn 5° → Aquarius, Jupiter 8° → Sagittarius, Mercury 7° → Gemini, Venus 5° → Libra; even signs reversed into the lords' even signs (Taurus, Virgo, Pisces, Capricorn, Scorpio). Every body is placed, Sun and Moon included, as in Jagannatha Hora.
      */
     D30: {
         [key: string]: unknown;
@@ -5077,7 +5199,7 @@ export type DivisionalResponse = {
     /**
      * D60
      *
-     * Shashtyamsha — all matters, most subtle divisional chart
+     * Shashtyamsha — all matters, most subtle divisional chart. 60 parts of 0°30', counted from the planet's own sign (BPHS; Jagannatha Hora default).
      */
     D60: {
         [key: string]: unknown;
@@ -5366,7 +5488,7 @@ export type DreamSymbol = {
     /**
      * Related Symbols
      *
-     * Slugs of related dream symbols.
+     * Slugs of four related dream symbols: hand-picked links first, then the most similar symbols by category, themes and meaning. Every slug exists in the catalogue; links are reciprocal.
      */
     related_symbols: Array<string>;
 };
@@ -5618,13 +5740,19 @@ export type FestivalEntry = {
     /**
      * Rule
      *
-     * Part of the day in which the tithi must prevail: sunrise, purvahna, madhyahna, aparahna, sayahna, pradosh, nishita, moonrise, arunodaya, or ekadashi (Smarta rule).
+     * Part of the day in which the tithi prevails on the chosen day: sunrise, purvahna, madhyahna, aparahna, sayahna, pradosh, nishita, moonrise, arunodaya, or ekadashi (Smarta rule). A rule with a fallback reports the part of the day that decided (the Purnima vrat: madhyahna, or sunrise when Purnima holds no Madhyahna; Vat Purnima: moonrise, or sunrise when no moonrise falls in Purnima). day_after: kept the day after another festival (Holi, after Holika Dahan); its tithi is the one it is named for and it has no observance_window.
      */
     rule?: string | null;
     /**
-     * Puja window on the day: that part of the day while the tithi lasts.
+     * Puja window on the day: that part of the day while the tithi lasts. For a moonrise rule (Karva Chauth, Sankashti Chaturthi, Vat Purnima) it is the moonrise instant of the day, when the fast is broken, even if the tithi has ended by then (see tithi_at_moonrise).
      */
     observance_window?: FestivalWindow | null;
+    /**
+     * Tithi At Moonrise
+     *
+     * Moonrise rules only: true when the tithi is still running at the moonrise in observance_window; false when the day was chosen because no moonrise fell in the tithi (it ended before the Moon rose) and the moonrise is shown for breaking the fast.
+     */
+    tithi_at_moonrise?: boolean | null;
     /**
      * Note
      *
@@ -5785,42 +5913,56 @@ export type GemstoneRequest = {
 export type GemstoneResponse = {
     /**
      * Primary
+     *
+     * Lagna lord's gem: planet, reason, gemstone, substitute_gemstone, metal, colour, note. The lagna lord is always a functional benefic (BPHS Ch.34), so this is never withheld for lordship; it can still be contraindicated when the planet is debilitated or combust. Every slot also carries `contraindicated` (bool) and `caution` (string or null): when the slot's planet appears in `contraindicated`, the slot says `contraindicated: true` with a caution — do not wear that gem for this role. A 5th/9th lord that also owns a dusthana keeps `contraindicated: false` with a caution naming the dusthana.
      */
     primary: {
         [key: string]: unknown;
     };
     /**
      * Secondary
+     *
+     * Same object as atmakaraka_gem (kept for compatibility).
      */
-    secondary: {
+    secondary?: {
         [key: string]: unknown;
     } | null;
     /**
      * Yogakaraka Gem
+     *
+     * Yogakaraka's gem (planet, gemstone); null when the lagna has no yogakaraka. Every slot also carries `contraindicated` (bool) and `caution` (string or null): when the slot's planet appears in `contraindicated`, the slot says `contraindicated: true` with a caution — do not wear that gem for this role. A 5th/9th lord that also owns a dusthana keeps `contraindicated: false` with a caution naming the dusthana.
      */
     yogakaraka_gem?: {
         [key: string]: unknown;
     } | null;
     /**
      * Fifth Lord Gem
+     *
+     * 5th lord's gem (planet, gemstone). Every slot also carries `contraindicated` (bool) and `caution` (string or null): when the slot's planet appears in `contraindicated`, the slot says `contraindicated: true` with a caution — do not wear that gem for this role. A 5th/9th lord that also owns a dusthana keeps `contraindicated: false` with a caution naming the dusthana.
      */
     fifth_lord_gem?: {
         [key: string]: unknown;
     } | null;
     /**
      * Ninth Lord Gem
+     *
+     * 9th lord's gem (planet, gemstone). Every slot also carries `contraindicated` (bool) and `caution` (string or null): when the slot's planet appears in `contraindicated`, the slot says `contraindicated: true` with a caution — do not wear that gem for this role. A 5th/9th lord that also owns a dusthana keeps `contraindicated: false` with a caution naming the dusthana.
      */
     ninth_lord_gem?: {
         [key: string]: unknown;
     } | null;
     /**
      * Atmakaraka Gem
+     *
+     * Atmakaraka's gem (planet, gemstone). Every slot also carries `contraindicated` (bool) and `caution` (string or null): when the slot's planet appears in `contraindicated`, the slot says `contraindicated: true` with a caution — do not wear that gem for this role. A 5th/9th lord that also owns a dusthana keeps `contraindicated: false` with a caution naming the dusthana.
      */
     atmakaraka_gem?: {
         [key: string]: unknown;
     } | null;
     /**
      * Contraindicated
+     *
+     * Planets whose gem must not be worn in this chart (planet, gemstone, reason): dusthana (6/8/12) lords that own no trikona, debilitated planets, combust planets. Same rule as POST /v1/crystals/recommend/natal.
      */
     contraindicated: Array<{
         [key: string]: unknown;
@@ -5856,7 +5998,7 @@ export type GeocodeResponse = {
     /**
      * Results
      *
-     * List of matching locations.
+     * List of matching locations, best match first. Repeat matches for one place (same city, state and country within 5 km) are listed once.
      */
     results: Array<GeocodeResult>;
     /**
@@ -6288,6 +6430,12 @@ export type GocharTransitEntry = {
      */
     is_favorable_from_lagna: boolean;
     /**
+     * Bindu Override
+     *
+     * True when the bindus in ashtakavarga_score decided is_favorable_from_moon and is_favorable_from_lagna (5 or more: favourable; 3 or fewer: unfavourable) instead of the house from the Moon or Lagna. False when the score is 4 or unavailable and the house rule stands.
+     */
+    bindu_override?: boolean;
+    /**
      * Vedha Active
      */
     vedha_active: boolean;
@@ -6297,8 +6445,16 @@ export type GocharTransitEntry = {
     vedha_blocking_planet: string | null;
     /**
      * Ashtakavarga Score
+     *
+     * Bindus (0-8) in this planet's own raw Bhinna Ashtakavarga for the transit sign. 5 or more makes the transit favourable and 3 or fewer unfavourable whatever the house from the Moon; 4 leaves the house rule in force (BPHS Ch.72; Phaladeepika Adhyaya 26).
      */
     ashtakavarga_score: number | null;
+    /**
+     * Ashtakavarga Score Reduced
+     *
+     * The same sign's bindus after Trikona Shodhana, for reference. Not used to grade the transit.
+     */
+    ashtakavarga_score_reduced?: number | null;
     /**
      * Interpretation
      */
@@ -6334,7 +6490,7 @@ export type HarshaBalaEntry = {
     /**
      * Varsha House
      *
-     * Planet's house in the Varshaphal chart (from Varsha Ascendant).
+     * Planet's whole-sign house in the Varshaphal chart, counted from the Varsha Ascendant's sign.
      */
     varsha_house: number;
     /**
@@ -6775,9 +6931,15 @@ export type IngressEvent = {
     /**
      * Date Iso
      *
-     * Date of ingress in YYYY-MM-DD format
+     * Instant of ingress in UTC, ISO 8601 without an offset (YYYY-MM-DDTHH:MM:SS). Read it as UTC; datetime_utc carries the Z.
      */
     date_iso: string;
+    /**
+     * Datetime Utc
+     *
+     * Instant of ingress, ISO 8601 UTC with Z (e.g. 2026-06-02T08:03:11Z).
+     */
+    datetime_utc?: string | null;
     /**
      * Is Sankranti
      *
@@ -6926,7 +7088,9 @@ export type IshtaDevtaResponse = {
  * KP natal chart / significators — extends :class:`TimedBirthInput`.
  *
  * Fields: ``name``, ``date``, ``time``, ``location`` or ``latitude``/``longitude``/
- * ``timezone``, ``ayanamsa``.
+ * ``timezone``, ``ayanamsa``. KP always uses the Krishnamurti ayanamsa: the
+ * ``ayanamsa`` field is accepted (so requests that send it keep working) but
+ * ignored, and the schema says so.
  */
 export type KpBirthRequest = {
     /**
@@ -6980,7 +7144,7 @@ export type KpBirthRequest = {
     /**
      * Ayanamsa
      *
-     * Sidereal ayanamsa mode used in calculations
+     * Ignored: KP always uses the Krishnamurti (KP) ayanamsa. Accepted so requests that send it keep working.
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
@@ -6993,14 +7157,18 @@ export type KpChartResponse = {
      * Ayanamsa
      */
     ayanamsa: string;
+    /**
+     * House Basis
+     *
+     * How planet `house` is assigned. Always 'placidus_cusp_to_cusp' (KP occupancy between consecutive sidereal Placidus cusps).
+     */
+    house_basis: string;
     lagna: KpLagna;
     /**
      * Planets
      */
     planets: {
-        [key: string]: {
-            [key: string]: unknown;
-        };
+        [key: string]: KpPlanet;
     };
     /**
      * House Cusps
@@ -7010,6 +7178,52 @@ export type KpChartResponse = {
             [key: string]: unknown;
         };
     };
+};
+
+/**
+ * KPHouseSignificators
+ */
+export type KpHouseSignificators = {
+    /**
+     * House
+     */
+    house: number;
+    /**
+     * Sign Lord
+     *
+     * Lord of the sign on the cusp (the house owner).
+     */
+    sign_lord: string;
+    /**
+     * Occupants
+     *
+     * Planets in the house (cusp to cusp).
+     */
+    occupants: Array<string>;
+    /**
+     * Nak Of Occupants
+     *
+     * Planets in the nakshatra (star) of an occupant.
+     */
+    nak_of_occupants: Array<string>;
+    /**
+     * Nak Of Lord
+     *
+     * Planets in the nakshatra of the cusp sign lord.
+     */
+    nak_of_lord: Array<string>;
+    /**
+     * All Significators
+     *
+     * Union in the original order: occupants, sign lord, star of occupants, star of sign lord. Not a ranking; see `strength_order`.
+     */
+    all_significators: Array<string>;
+    /**
+     * Strength Order
+     *
+     * The same planets ranked strongest first per Krishnamurti: planets in the star of occupants, occupants, planets in the star of the sign lord, the sign lord. Each planet appears once, at its strongest level.
+     */
+    strength_order: Array<string>;
 };
 
 /**
@@ -7034,6 +7248,70 @@ export type KpLagna = {
     nakshatra_lord: string;
     /**
      * Sub Lord
+     */
+    sub_lord: string;
+};
+
+/**
+ * KPPlanet
+ */
+export type KpPlanet = {
+    /**
+     * Longitude
+     *
+     * Sidereal longitude (KP ayanamsa), degrees 0-360.
+     */
+    longitude: number;
+    /**
+     * Rashi Index
+     *
+     * Sign index, 0 = Mesha … 11 = Meena.
+     */
+    rashi_index: number;
+    /**
+     * Rashi
+     */
+    rashi: string;
+    /**
+     * Degree
+     *
+     * Degrees within the sign.
+     */
+    degree: number;
+    /**
+     * Is Retrograde
+     *
+     * True when the longitude speed is negative. Rahu and Ketu are the mean node, which is always retrograde.
+     */
+    is_retrograde: boolean;
+    /**
+     * House
+     *
+     * KP house (1-12), cusp to cusp: from cusp h up to, not including, cusp h+1 of the sidereal Placidus cusps. A planet exactly on a cusp is in the house that cusp starts.
+     */
+    house: number;
+    /**
+     * Rasi House
+     *
+     * Whole-sign house (1-12) counted from the lagna sign, for comparison with Parashari charts.
+     */
+    rasi_house: number;
+    /**
+     * Nakshatra Index
+     *
+     * Nakshatra index 0-26.
+     */
+    nakshatra_index: number;
+    /**
+     * Nakshatra Lord
+     *
+     * Star lord (nakshatra lord).
+     */
+    nakshatra_lord: string;
+    /**
+     * Sub Lord
+     *
+     * KP sub-lord.
      */
     sub_lord: string;
 };
@@ -7083,19 +7361,19 @@ export type KpRulingPlanetsRequest = {
     /**
      * Target Date
      *
-     * YYYY-MM-DD. Defaults to today.
+     * YYYY-MM-DD, local date in `target_timezone`. Omit together with `target_time` to use the current instant. Given without `target_time`, 12:00 local on that date is used. A date that is not in the calendar (e.g. 2026-02-30) is rejected with 422 saying the date does not exist. Supported dates: 1800-01-01 to 2099-12-31.
      */
     target_date?: string | null;
     /**
      * Target Time
      *
-     * HH:MM
+     * HH:MM (24-hour), local time in `target_timezone`. Given without `target_date`, that time today is used. Omit together with `target_date` to use the current instant. A time skipped by a daylight-saving change (e.g. 02:30 on 2026-03-08 in America/New_York) is read with the offset in force before the change, i.e. moved forward by the gap (03:30 EDT); a time that occurred twice is read as the first occurrence. `local_time_status` in the response says which applied.
      */
     target_time?: string | null;
     /**
      * Target Timezone
      *
-     * IANA timezone
+     * IANA timezone (or explicit UTC offset) for `target_date` and `target_time`. Defaults to the time zone at the coordinates.
      */
     target_timezone?: string | null;
 };
@@ -7110,8 +7388,22 @@ export type KpRulingPlanetsResponse = {
     ayanamsa: string;
     /**
      * Target Utc
+     *
+     * The instant used, ISO 8601 UTC.
      */
     target_utc: string;
+    /**
+     * Target Timezone
+     *
+     * Time zone used to read `target_date`/`target_time` and for the sunrise-based day lord.
+     */
+    target_timezone: string;
+    /**
+     * Local Time Status
+     *
+     * How `target_date`/`target_time` was read. 'nonexistent': the local time fell in a daylight-saving gap and was read with the offset in force before the change (moved forward by the gap). 'ambiguous': the local time occurred twice and the first occurrence was used. 'ok' otherwise, including when the current instant was used.
+     */
+    local_time_status?: 'ok' | 'nonexistent' | 'ambiguous';
     /**
      * Day Lord
      */
@@ -7136,9 +7428,7 @@ export type KpSignificatorsResponse = {
      * Significators
      */
     significators: {
-        [key: string]: {
-            [key: string]: unknown;
-        };
+        [key: string]: KpHouseSignificators;
     };
     /**
      * Planet Significators
@@ -7599,7 +7889,7 @@ export type LifePathResponse = {
     /**
      * Karmic Debt Number
      *
-     * Karmic debt number if present
+     * Karmic debt: 13, 14, 16 or 19 met anywhere in the reduction of the birth-date total; null when none
      */
     karmic_debt_number: number | null;
     /**
@@ -7626,8 +7916,16 @@ export type LoShuNumberEntry = {
     count: number;
     /**
      * Plane
+     *
+     * Legacy grouping of the numbers, unchanged since v1: 'mental' for 1-3, 'physical' for 4-6, 'spiritual' for 7-9. It is not a line of the Lo Shu square; `lo_shu_plane` gives the row of the square.
      */
     plane: string;
+    /**
+     * Lo Shu Plane
+     *
+     * Row of the Lo Shu square holding this number: 'mental' (top row 4-9-2), 'emotional' (middle row 3-5-7) or 'practical' (bottom row 8-1-6), matching mental_plane / emotional_plane / practical_plane in `plane_analysis`.
+     */
+    lo_shu_plane: string;
     /**
      * Trait
      */
@@ -7648,6 +7946,8 @@ export type LoShuNumberEntry = {
 export type LoShuPlaneEntry = {
     /**
      * Numbers
+     *
+     * The three numbers of this line of the Lo Shu square (4 9 2 / 3 5 7 / 8 1 6)
      */
     numbers: Array<number>;
     /**
@@ -7656,6 +7956,8 @@ export type LoShuPlaneEntry = {
     description: string;
     /**
      * Complete
+     *
+     * True when all three numbers appear in the birth date
      */
     complete: boolean;
 };
@@ -7698,6 +8000,8 @@ export type LoShuResponse = {
     repeated_numbers: Array<number>;
     /**
      * Plane Analysis
+     *
+     * The eight lines of the Lo Shu square. Rows: mental_plane 4-9-2, emotional_plane 3-5-7, practical_plane 8-1-6. Columns: thought_plane 4-3-8, will_plane 9-5-1, action_plane 2-7-6. Diagonals: diagonal_4_5_6, diagonal_2_5_8. golden_yod (3-5-7) and silver_yod (1-5-9) are deprecated duplicates of emotional_plane and will_plane, kept for v1 compatibility.
      */
     plane_analysis: {
         [key: string]: LoShuPlaneEntry;
@@ -7717,7 +8021,7 @@ export type LuckyNumbersApiResponse = {
     /**
      * Lucky Numbers
      *
-     * Generated lucky numbers
+     * Lucky numbers, no repeats: first the Life Path, Expression, Soul Urge, Personality and Birth Day (these may be master numbers 11, 22, 33), then digits 1-9 from the birth date in ascending order, topped up with unused digits 1-9 (at most 9 are guaranteed)
      */
     lucky_numbers: Array<number>;
     /**
@@ -8027,9 +8331,15 @@ export type MobileNumberRequest = {
     /**
      * Number
      *
-     * Mobile number (digits only or with country code)
+     * Mobile number, digits only or with country code. The country code is not counted: the national number of a valid number is summed (libphonenumber). With `country`, the number is read as dialled in that country first, including its international prefix (Australia '0011 …', US '011 …'). A '+' number libphonenumber does not accept is summed with every digit after the '+'; a '00' number counts as international only if the rest is a valid number, otherwise it is summed as written. With no prefix and no `country`, the only code removed is India's (a 12-digit number starting 91), and every other number is summed as written, because the country cannot be known (China '180…' would look like US +1).
      */
     number: string;
+    /**
+     * Country
+     *
+     * Optional ISO 3166 alpha-2 country the number is dialled in (e.g. 'IN', 'US', 'AU'). The number is parsed in that country first, so a country code or trunk 0 written in front is dropped and that country's international prefix is understood ('14155552671' with 'US' → 4155552671; '0011 61 412 345 678' with 'AU' → 412345678). An unknown code is a 422 `validation_error` with issue `unknown_country` on field `country`.
+     */
+    country?: string | null;
 };
 
 /**
@@ -8067,13 +8377,13 @@ export type MoonPhaseResponse = {
     /**
      * Phase Name
      *
-     * Current phase name
+     * Phase at 18:00 UTC on the date, in Dane Rudhyar's eight 45-degree phases: each phase begins at its angle (New Moon 0-45, Waxing Crescent 45-90, First Quarter 90-135, Waxing Gibbous 135-180, Full Moon 180-225, Waning Gibbous 225-270, Last Quarter 270-315, Waning Crescent 315-360), so the day before a full moon reads Waxing Gibbous. Use principal_phase for the day of an exact phase.
      */
     phase_name: string;
     /**
      * Phase Angle
      *
-     * Phase angle in degrees (0-360). 0=New Moon, 180=Full Moon
+     * Sun-Moon elongation in degrees (0-360) at 18:00 UTC. 0=New Moon, 180=Full Moon
      */
     phase_angle: number;
     /**
@@ -8085,7 +8395,7 @@ export type MoonPhaseResponse = {
     /**
      * Moon Age Days
      *
-     * Days elapsed since last New Moon (0 to 29.53)
+     * Days from the previous exact New Moon to 18:00 UTC on the date (0 to about 29.8)
      */
     moon_age_days: number;
     /**
@@ -8109,15 +8419,39 @@ export type MoonPhaseResponse = {
     /**
      * Next Phase Name
      *
-     * Name of the next major phase
+     * Name of the next principal phase (New Moon, First Quarter, Full Moon, Last Quarter) after 18:00 UTC on the date
      */
     next_phase_name: string;
     /**
      * Next Phase Date
      *
-     * Estimated date of next major phase (YYYY-MM-DD)
+     * UTC date (YYYY-MM-DD) of the exact instant of the next principal phase
      */
     next_phase_date?: string | null;
+    /**
+     * Next Phase At
+     *
+     * Exact instant of the next principal phase, ISO 8601 UTC (e.g. 2026-10-26T04:11:49Z)
+     */
+    next_phase_at?: string | null;
+    /**
+     * Computed At
+     *
+     * Instant the phase, angle, illumination and longitudes are computed for: 18:00 UTC on the date
+     */
+    computed_at?: string | null;
+    /**
+     * Principal Phase
+     *
+     * The principal phase (New Moon, First Quarter, Full Moon or Last Quarter) whose exact instant falls on this UTC date, or null. Marks the one day of each phase, as in published phase tables.
+     */
+    principal_phase?: string | null;
+    /**
+     * Principal Phase At
+     *
+     * Exact instant of principal_phase, ISO 8601 UTC
+     */
+    principal_phase_at?: string | null;
 };
 
 /**
@@ -8842,24 +9176,52 @@ export type NameCorrectionNameScore = {
     name: string;
     /**
      * Expression
+     *
+     * Expression number: each name part reduced on its own (11, 22, 33 kept), then added and reduced — same as /v1/numerology/expression
      */
     expression: number;
     /**
      * Soul Urge
+     *
+     * Soul Urge (vowels), part by part — same as /v1/numerology/soul-urge
      */
     soul_urge: number;
     /**
      * Personality
+     *
+     * Personality (consonants), part by part — same as /v1/numerology/personality
      */
     personality: number;
     /**
      * Is Master
+     *
+     * True when the Expression number is 11, 22 or 33
      */
     is_master: boolean;
     /**
      * Karmic Debt
+     *
+     * Karmic debt of the Expression number: 13, 14, 16 or 19 met anywhere in the reduction of the total (e.g. 58 → 13 → 4 is 13); null when none. Lowers harmony_score by 1
      */
     karmic_debt?: number | null;
+    /**
+     * Expression Karmic Debt
+     *
+     * Karmic debt of the Expression number (same as karmic_debt): 13, 14, 16 or 19 met anywhere in the reduction of the total (e.g. 58 → 13 → 4 is 13); null when none
+     */
+    expression_karmic_debt?: number | null;
+    /**
+     * Soul Urge Karmic Debt
+     *
+     * Karmic debt of the Soul Urge number: 13, 14, 16 or 19 met anywhere in the reduction of the total (e.g. 58 → 13 → 4 is 13); null when none
+     */
+    soul_urge_karmic_debt?: number | null;
+    /**
+     * Personality Karmic Debt
+     *
+     * Karmic debt of the Personality number: 13, 14, 16 or 19 met anywhere in the reduction of the total (e.g. 58 → 13 → 4 is 13); null when none
+     */
+    personality_karmic_debt?: number | null;
     /**
      * Compatibility
      */
@@ -8921,6 +9283,8 @@ export type NameCorrectionResponse = {
 export type NameNumberResponse = {
     /**
      * Number
+     *
+     * 1-9, or master number 11, 22 or 33
      */
     number: number;
     /**
@@ -8929,6 +9293,8 @@ export type NameNumberResponse = {
     is_master_number: boolean;
     /**
      * Karmic Debt Number
+     *
+     * Karmic debt: 13, 14, 16 or 19 met anywhere in the reduction of the name total (reduced name parts added; a one-word name uses its letter total), e.g. 58 → 13 → 4 is 13; null when none
      */
     karmic_debt_number?: number | null;
 };
@@ -8994,11 +9360,13 @@ export type NatalCrystalContext = {
     /**
      * Contraindicated Lords
      *
-     * Planets that do not lord any Trikona house — their gems are contraindicated.
+     * Planets whose gems are contraindicated in this chart: Dusthana (6/8/12) lords that own no Trikona, plus debilitated or combust planets. Same rule as POST /v1/astro/gemstones.
      */
     contraindicated_lords: Array<string>;
     /**
      * Ayanamsa
+     *
+     * Ayanamsa the chart was cast with: the request's `ayanamsa` (until 2026-10 this always read "lahiri").
      */
     ayanamsa?: string;
 };
@@ -9464,7 +9832,7 @@ export type NumerologyProfileResponse = {
      */
     personality: CoreNumber;
     /**
-     * Birth Day number - special talents
+     * Birth Day number - special talents. The day of the month reduced like the other core numbers: the 11th and 22nd stay master numbers 11 and 22, the 29th is 11; the 13th, 14th, 16th and 19th carry that karmic debt (number '13/4', karmic_debt_number 13). A master Birth Day uses the 2 or 4 interpretation text.
      */
     birth_day: CoreNumber;
     /**
@@ -9486,7 +9854,7 @@ export type NumerologyProfileResponse = {
     /**
      * Lucky Numbers
      *
-     * Personal lucky numbers
+     * Lucky numbers, no repeats: first the Life Path, Expression, Soul Urge, Personality and Birth Day (these may be master numbers 11, 22, 33), then digits 1-9 from the birth date in ascending order, topped up with unused digits 1-9 (at most 9 are guaranteed)
      */
     lucky_numbers?: Array<number>;
     /**
@@ -10125,13 +10493,13 @@ export type PinnacleChallenge = {
     /**
      * Number
      *
-     * The pinnacle or challenge number
+     * The pinnacle (1-9, 11, 22 or 33) or challenge (0-8) number
      */
     number: number;
     /**
      * Start Age
      *
-     * Starting age for this cycle
+     * Starting age for this cycle. The first cycle ends at 36 minus the Life Path (a master Life Path counted as its digit: 11 → 2), then 9 years each
      */
     start_age: number;
     /**
@@ -10152,6 +10520,36 @@ export type PinnacleChallenge = {
      * Key focus areas during this cycle
      */
     focus_areas?: Array<string>;
+};
+
+/**
+ * PitruCombination
+ */
+export type PitruCombination = {
+    /**
+     * Combination
+     *
+     * Name, e.g. 'Purvajanma Shapa Combination 2' (BPHS Ch.83).
+     */
+    combination: string;
+    /**
+     * Description
+     *
+     * What formed the combination in this chart.
+     */
+    description: string;
+    /**
+     * Factors
+     *
+     * The chart factors that met the combination's conditions.
+     */
+    factors: Array<string>;
+    /**
+     * Weight
+     *
+     * Severity weight this combination adds (2 or 3).
+     */
+    weight: number;
 };
 
 /**
@@ -10234,8 +10632,16 @@ export type PitruDoshaResponse = {
     severity_note?: string | null;
     /**
      * Combinations Triggered
+     *
+     * Names of the BPHS Ch.83 combinations that formed; details in combinations_detail.
      */
     combinations_triggered: Array<string>;
+    /**
+     * Combinations Detail
+     *
+     * One entry per formed combination, in the order of combinations_triggered.
+     */
+    combinations_detail?: Array<PitruCombination>;
     /**
      * Combinations Count
      */
@@ -10672,6 +11078,8 @@ export type PrashnaHouseAnalysis = {
     house: number;
     /**
      * Rashi Index
+     *
+     * Sign of the quesited house, counted whole sign from the lagna sign (0 = Mesha).
      */
     rashi_index: number;
     /**
@@ -10680,6 +11088,8 @@ export type PrashnaHouseAnalysis = {
     rashi: string;
     /**
      * Lord
+     *
+     * Lord of the quesited house by whole sign (lord of its sign), as BPHS and Jagannatha Hora read lordship.
      */
     lord: string;
     /**
@@ -10714,6 +11124,8 @@ export type PrashnaHouseCusp = {
     rashi: string;
     /**
      * Lord
+     *
+     * Lord of the sign on this quadrant cusp. House lordship in house_analysis is whole sign and can differ.
      */
     lord: string;
     /**
@@ -10841,13 +11253,13 @@ export type PrashnaRequest = {
     /**
      * Target Date
      *
-     * YYYY-MM-DD. Defaults to today (UTC).
+     * YYYY-MM-DD. Defaults to now: the current date and time in target_timezone.
      */
     target_date?: string | null;
     /**
      * Target Time
      *
-     * HH:MM (24h). Defaults to current time.
+     * HH:MM (24h), with target_date. Defaults to the current time in target_timezone; ignored without target_date.
      */
     target_time?: string | null;
     /**
@@ -10882,10 +11294,14 @@ export type PrashnaResponse = {
     primary_house: number;
     /**
      * Ithsala Applying
+     *
+     * Tajika Ithasala (applying) between the Lagna lord and the quesited house lord, by the Varshaphal rule: Tajika aspect by sign (same sign, 3rd/11th, 4th/10th, 5th/9th, 7th), the faster planet by mean motion (Moon, Mercury, Venus, Sun, Mars, Jupiter, Saturn) behind the slower in degrees within the mean of their Deeptamsas. Retrogression is not modelled. False when one planet rules both houses (always for 'self'; compare lagna.lord and house_analysis.lord).
      */
     ithsala_applying: boolean;
     /**
      * Ithsala Separating
+     *
+     * Tajika Musaripha (separating): the two lords in Tajika aspect within the same orb but the faster planet already past the slower one's degree. False when one planet rules both houses.
      */
     ithsala_separating: boolean;
     /**
@@ -10962,8 +11378,16 @@ export type ProgressedPlanetSchema = {
     dignity: string;
     /**
      * Dignity Score
+     *
+     * Weight of the primary sign-level dignity only: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0. Triplicity, term and face are not scored, and the weights are not summed (e.g. Mercury in Virgo scores 5 for domicile, not 5+4). Full traditional scoring is in essential_dignities (natal and return charts).
      */
     dignity_score: number;
+    /**
+     * Dignity Disputed
+     *
+     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no established consensus.
+     */
+    dignity_disputed: boolean;
 };
 
 /**
@@ -11251,6 +11675,8 @@ export type RemediesRequest = {
 export type RemediesResponse = {
     /**
      * Recommended Remedies
+     *
+     * One row per planet needing a remedy, highest priority first. Keys: planet, dignity, rashi, house, is_dusthana_lord (the planet rules the 6th, 8th or 12th sign from the lagna — lordship only), in_dusthana_house (the planet is placed in the 6th, 8th or 12th house), is_combust (within the Sun's combustion orb, from the combustion engine; a combust planet that is not strongly placed gets dusthana-level priority), reason, mantra, repetitions, deity, gemstone, colour, metal, fast_day, charity, action_daily, action_weekly.
      */
     recommended_remedies: Array<{
         [key: string]: unknown;
@@ -11363,8 +11789,16 @@ export type RudrakshaEntry = {
     mala_beads: number;
     /**
      * Wearing Finger
+     *
+     * Legacy field, kept for compatibility. Rudraksha is not worn on a finger, so this is always 'Not applicable (worn on neck or wrist)'. See how_to_wear.
      */
     wearing_finger: string;
+    /**
+     * How To Wear
+     *
+     * How the bead is worn: strung on thread or capped in the listed metal, at the neck (pendant or mala) or on the wrist (Shiva Purana Vidyeshvara Samhita Ch.25).
+     */
+    how_to_wear: string;
     /**
      * Benefits
      */
@@ -11401,8 +11835,16 @@ export type RudrakshaSingleResponse = {
     mala_beads: number;
     /**
      * Wearing Finger
+     *
+     * Legacy field, kept for compatibility. Rudraksha is not worn on a finger, so this is always 'Not applicable (worn on neck or wrist)'. See how_to_wear.
      */
     wearing_finger: string;
+    /**
+     * How To Wear
+     *
+     * How the bead is worn: strung on thread or capped in the listed metal, at the neck (pendant or mala) or on the wrist (Shiva Purana Vidyeshvara Samhita Ch.25).
+     */
+    how_to_wear: string;
     /**
      * Benefits
      */
@@ -11411,6 +11853,92 @@ export type RudrakshaSingleResponse = {
      * Planet
      */
     planet: string;
+};
+
+/**
+ * SadeSatiPeriod
+ */
+export type SadeSatiPeriod = {
+    /**
+     * Sade Sati Number
+     */
+    sade_sati_number: number;
+    /**
+     * Overall Start
+     *
+     * First entry into the 12th sign from the Moon.
+     */
+    overall_start: string;
+    /**
+     * Overall End
+     *
+     * Final exit from the 2nd sign from the Moon.
+     */
+    overall_end: string;
+    /**
+     * Duration Years
+     */
+    duration_years: number;
+    /**
+     * Is Interrupted
+     *
+     * True when Saturn stepped out of the three signs for a while (a retrograde loop at the start or end); Sade Sati is not active during that gap.
+     */
+    is_interrupted?: boolean | null;
+    /**
+     * Phases
+     *
+     * rising (12th from Moon), peak (Moon sign), setting (2nd from Moon).
+     */
+    phases: {
+        [key: string]: SadeSatiPhase;
+    };
+};
+
+/**
+ * SadeSatiPhase
+ */
+export type SadeSatiPhase = {
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Description
+     */
+    description: string;
+    /**
+     * Start
+     *
+     * Saturn's first entry into the phase sign.
+     */
+    start: string;
+    /**
+     * End
+     *
+     * Saturn's final exit from the phase sign, after any retrograde return.
+     */
+    end: string;
+    /**
+     * Saturn Sign
+     */
+    saturn_sign: string;
+    /**
+     * Intensity
+     */
+    intensity: string;
+    /**
+     * Segments
+     *
+     * Every stay of Saturn in the phase sign; phases can interleave around a retrograde loop.
+     */
+    segments?: Array<SaturnStay>;
+    /**
+     * Is Interrupted
+     *
+     * True when Saturn left the phase sign and came back.
+     */
+    is_interrupted?: boolean | null;
 };
 
 /**
@@ -11499,10 +12027,14 @@ export type SadeSatiResponse = {
     };
     /**
      * Is Currently Active
+     *
+     * Saturn is in the 12th, 1st or 2nd sign from the natal Moon on the check date.
      */
     is_currently_active?: boolean | null;
     /**
      * Current Phase
+     *
+     * rising, peak or setting: the phase of Saturn's sign on the check date.
      */
     current_phase?: string | null;
     /**
@@ -11511,26 +12043,34 @@ export type SadeSatiResponse = {
     current_phase_description?: string | null;
     /**
      * Intensity Score
+     *
+     * 0-100 scale: rising 40 to 80, peak 70 to 90 (highest mid-phase), setting 80 to 40, by progress through the phase; 0 when not active.
      */
     intensity_score?: number | null;
     /**
      * Intensity Label
+     *
+     * high (70+), moderate (40-69) or low.
      */
     intensity_label?: string | null;
     /**
      * Next Sade Sati
+     *
+     * When not active: the next date Saturn enters one of the three signs, with its phase (rising for a new cycle; the resumed phase after a retrograde gap) and years away.
      */
     next_sade_sati?: {
         [key: string]: unknown;
     } | null;
     /**
      * All Periods
+     *
+     * Every Sade Sati cycle that begins between 10 years before birth and 50 years after the check date, each to its final exit from the 2nd sign (a cycle under way at the start of that range is left out).
      */
-    all_periods?: Array<{
-        [key: string]: unknown;
-    }> | null;
+    all_periods?: Array<SadeSatiPeriod> | null;
     /**
      * Small Panoti
+     *
+     * Every Small Panoti in the same range, each to Saturn's final exit from the sign.
      */
     small_panoti?: Array<SmallPanotiPeriod>;
     /**
@@ -11666,6 +12206,26 @@ export type Samvat = {
 };
 
 /**
+ * SaturnStay
+ *
+ * One continuous stay of Saturn in a sign (UTC dates).
+ */
+export type SaturnStay = {
+    /**
+     * Start
+     *
+     * Date Saturn entered the sign (YYYY-MM-DD, UTC).
+     */
+    start: string;
+    /**
+     * End
+     *
+     * Date Saturn left the sign (YYYY-MM-DD, UTC).
+     */
+    end: string;
+};
+
+/**
  * SecondaryProgressionResponse
  */
 export type SecondaryProgressionResponse = {
@@ -11703,6 +12263,8 @@ export type SecondaryProgressionResponse = {
     progressed_planets: Array<ProgressedPlanetSchema>;
     /**
      * Progressed Ascendant
+     *
+     * Progressed Ascendant: the Ascendant that goes with progressed_mc — derived from the progressed MC's right ascension (RAMC) at the birth latitude (Placidus).
      */
     progressed_ascendant: number;
     /**
@@ -11711,6 +12273,8 @@ export type SecondaryProgressionResponse = {
     progressed_ascendant_sign: string;
     /**
      * Progressed Mc
+     *
+     * Progressed MC: natal MC advanced by the solar arc in longitude
      */
     progressed_mc: number;
     /**
@@ -11771,20 +12335,38 @@ export type SmallPanotiPeriod = {
     position_from_moon: number;
     /**
      * Start
+     *
+     * Saturn's first entry into the sign.
      */
     start: string;
     /**
      * End
+     *
+     * Saturn's final exit from the sign, after any retrograde return.
      */
     end: string;
     /**
      * Is Currently Active
+     *
+     * Saturn is in this sign on the check date.
      */
     is_currently_active: boolean;
     /**
      * Duration Years
      */
     duration_years: number;
+    /**
+     * Segments
+     *
+     * Every stay of Saturn in the sign; more than one when it retrogrades out and back in.
+     */
+    segments?: Array<SaturnStay>;
+    /**
+     * Is Interrupted
+     *
+     * True when Saturn left the sign and came back (more than one segment).
+     */
+    is_interrupted?: boolean | null;
 };
 
 /**
@@ -11821,8 +12403,16 @@ export type SolarArcPlanetSchema = {
     dignity: string;
     /**
      * Dignity Score
+     *
+     * Weight of the primary sign-level dignity only: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0. Triplicity, term and face are not scored, and the weights are not summed (e.g. Mercury in Virgo scores 5 for domicile, not 5+4). Full traditional scoring is in essential_dignities (natal and return charts).
      */
     dignity_score: number;
+    /**
+     * Dignity Disputed
+     *
+     * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no established consensus.
+     */
+    dignity_disputed: boolean;
 };
 
 /**
@@ -12004,9 +12594,15 @@ export type StationEvent = {
     /**
      * Date Iso
      *
-     * Date of station in YYYY-MM-DD format
+     * Instant of station in UTC, ISO 8601 without an offset (YYYY-MM-DDTHH:MM:SS). Read it as UTC; datetime_utc carries the Z.
      */
     date_iso: string;
+    /**
+     * Datetime Utc
+     *
+     * Instant of station, ISO 8601 UTC with Z.
+     */
+    datetime_utc?: string | null;
     /**
      * Longitude
      *
@@ -12082,6 +12678,20 @@ export type StrengthRequest = {
  * ``bhavadhipati_bala``, ``bhava_dig_bala``, ``bhava_drik_bala``, ``total``), ``vimshopaka_bala``
  * (per-planet sixteen-varga score and threshold), ``divisional_charts``, ``ashtakavarga``, ``karakas``,
  * ``birth_time_provided``, and optional ``graha_yuddha``.
+ *
+ * Shadbala follows B.V. Raman's worked example and Jagannatha Hora: the Sun's and the Moon's
+ * ``cheshta_bala`` is 0, because BPHS's Cheshta Bala for them (the Sun's Ayana, the Moon's
+ * Paksha) is counted in Kala Bala, where the Sun's ``ayana`` and the Moon's ``paksha`` are
+ * doubled (0–120). ``ayana`` uses the kranti (declination) of the planet's ecliptic longitude,
+ * true obliquity of date, latitude ignored, so it stays within 0–60 (0–120 for the doubled Sun).
+ * ``paksha`` takes each planet's nature in the chart (BPHS Ch.3, as in Jagannatha Hora): the Moon
+ * is benefic in Shukla paksha and malefic in Krishna paksha (so a waning Moon is strongest near
+ * Amavasya), Mercury follows his companions, Jupiter and Venus are benefic, the rest malefic.
+ *
+ * Vimshopaka ``threshold`` bands (BPHS Ch.45): ``extremely_auspicious`` (15 or more), ``good``
+ * (10 or more), ``moderate`` (5 or more) and ``zero_capacity`` (below 5). Under BPHS scoring every
+ * varga earns at least a quarter of its weight (great enemy's sign), so the score is never below
+ * 5.0 and ``zero_capacity`` does not occur; it is kept in the set of values for compatibility.
  */
 export type StrengthResponse = {
     [key: string]: unknown;
@@ -12561,6 +13171,12 @@ export type TodayAngelNumberResponse = {
      * The angel number sequence derived from today's date.
      */
     angel_number: string;
+    /**
+     * Timezone
+     *
+     * Time zone whose current date was taken as today: the timezone you passed, or 'UTC'. Absent when you passed an explicit date.
+     */
+    timezone?: string | null;
 };
 
 /**
@@ -12589,6 +13205,8 @@ export type TransitAspectSchema = {
     orb: number;
     /**
      * Is Applying
+     *
+     * True if the transiting planet's instantaneous motion is closing the orb to the (fixed) natal planet. False if separating or exact.
      */
     is_applying: boolean;
 };
@@ -12870,6 +13488,8 @@ export type VarshaPati = {
 export type VarshaphalMuntha = {
     /**
      * Rashi Index
+     *
+     * Muntha sign 0-11: natal lagna sign + age_years (one sign a year).
      */
     rashi_index: number;
     /**
@@ -12878,6 +13498,8 @@ export type VarshaphalMuntha = {
     rashi: string;
     /**
      * Age Years
+     *
+     * Completed years for this varsha: target_year minus birth year (Tajika Neelakanthi), not read off the return's UTC date.
      */
     age_years: number;
     /**
@@ -12982,7 +13604,7 @@ export type VarshaphalRequest = {
     /**
      * Target Year
      *
-     * Year for solar return e.g. 2026
+     * Varshaphal year, e.g. 2026: the solar return nearest the birthday in this year (in UT it can fall the day before or after the birthday, or on 31 December for a 1 January birthday). Each year gives a different return. Must not be before the birth year.
      */
     target_year: number;
 };
@@ -13001,6 +13623,8 @@ export type VarshaphalResponse = {
     ayanamsa: string;
     /**
      * Solar Return Utc
+     *
+     * Solar return instant (UTC, to the minute): the Sun back on its natal longitude, the return nearest the birthday in target_year.
      */
     solar_return_utc: string;
     /**
@@ -13021,8 +13645,16 @@ export type VarshaphalResponse = {
     natal_lagna_index: number;
     /**
      * Year Lord
+     *
+     * Weekday (vara) lord at the solar-return instant, sunrise to sunrise at the birth place. Historical name: this is NOT the Tajika year lord. The year lord (Varsha Pati / Varsheshwara) is varsha_pati.planet. Same value as vara_lord.
      */
     year_lord: string;
+    /**
+     * Vara Lord
+     *
+     * Weekday (vara) lord at the solar-return instant (same value as year_lord).
+     */
+    vara_lord?: string | null;
     muntha: VarshaphalMuntha;
     /**
      * Planets
@@ -13069,6 +13701,8 @@ export type VarshaphalResponse = {
     }>;
     /**
      * Tajika Planet Pairs
+     *
+     * Pairs of the seven grahas (no Rahu/Ketu) in Tajika aspect by sign: same sign (conjunction), 3rd/11th (mitra), 4th/10th (vikrama), 5th/9th (labha), 7th (shatru). Keys: planet_a, planet_b, house_a, house_b (whole-sign houses from the Varsha lagna), diff_ab, diff_ba, aspect_ab, aspect_ba, faster_planet (by mean motion: Moon, Mercury, Venus, Sun, Mars, Jupiter, Saturn), orb_degrees (gap between their degrees within sign), orb_limit (mean of the two Deeptamsas), is_ithsala (faster planet behind the slower one within orb_limit), ithsala_type ('poorna' within 1 degree, 'vartamana' otherwise, null when not ithsala), is_musaripha (faster planet already past, within orb_limit). Retrogression is not modelled.
      */
     tajika_planet_pairs: Array<{
         [key: string]: unknown;
@@ -13174,7 +13808,7 @@ export type WesternAspect = {
     /**
      * Is Applying
      *
-     * True if the faster planet is moving toward exact aspect (orb decreasing).
+     * True if the aspect is applying at this instant: the planets' relative motion (instantaneous speeds) is closing the orb toward exactness. False if separating or exact.
      */
     is_applying: boolean;
 };
@@ -13262,19 +13896,93 @@ export type WesternElements = {
 };
 
 /**
+ * WesternEssentialDignities
+ *
+ * William Lilly's essential dignities (Christian Astrology, 1647, p.104 table).
+ */
+export type WesternEssentialDignities = {
+    /**
+     * Domicile
+     *
+     * 5 if the planet is in one of its own signs (houses), else 0
+     */
+    domicile: number;
+    /**
+     * Exaltation
+     *
+     * 4 if the planet is in its exaltation sign (anywhere in the sign), else 0
+     */
+    exaltation: number;
+    /**
+     * Triplicity
+     *
+     * 3 if the planet rules the sign's element for the chart's sect, else 0. Lilly's rulers (day/night): fire Sun/Jupiter, earth Venus/Moon, air Saturn/Mercury, water Mars by day and night.
+     */
+    triplicity: number;
+    /**
+     * Term
+     *
+     * 2 if the degree is in the planet's term (Ptolemaic terms as printed by Lilly), else 0
+     */
+    term: number;
+    /**
+     * Face
+     *
+     * 1 if the degree is in the planet's face (10° decans, Chaldean order), else 0
+     */
+    face: number;
+    /**
+     * Detriment
+     *
+     * -5 if the planet is in its detriment, else 0
+     */
+    detriment: number;
+    /**
+     * Fall
+     *
+     * -4 if the planet is in its fall, else 0
+     */
+    fall: number;
+    /**
+     * Peregrine
+     *
+     * True when the planet has none of the five dignities (domicile, exaltation, triplicity, term, face) — Lilly's peregrine, scored -5. A planet in detriment or fall with no dignity is also peregrine.
+     */
+    peregrine: boolean;
+    /**
+     * Total
+     *
+     * Sum of all points above plus -5 when peregrine. Dignities add up (Mercury in Virgo: 5 + 4 = 9 before term/face), as do debilities (Mercury in Pisces: -5 - 4). Range -14 to +11.
+     */
+    total: number;
+    /**
+     * Applicable
+     *
+     * False for Uranus, Neptune and Pluto: Lilly's scheme covers only the seven classical planets, so every score is 0 and peregrine is false.
+     */
+    applicable: boolean;
+    /**
+     * System
+     *
+     * Scoring system: William Lilly, Christian Astrology (1647) — table of essential dignities p.104, weights pp.101–103, debilities p.115. Mutual reception and the lunar nodes are not scored.
+     */
+    system?: 'lilly';
+};
+
+/**
  * WesternHemisphere
  */
 export type WesternHemisphere = {
     /**
      * Eastern
      *
-     * Planet count in houses 7–12
+     * Planet count in houses 10, 11, 12, 1, 2, 3 (the Ascendant side of the MC–IC meridian)
      */
     eastern: number;
     /**
      * Western
      *
-     * Planet count in houses 1–6
+     * Planet count in houses 4–9 (the Descendant side of the MC–IC meridian)
      */
     western: number;
     /**
@@ -13619,6 +14327,12 @@ export type WesternNatalResponse = {
      */
     ayanamsa_used?: string;
     /**
+     * Sect
+     *
+     * Chart sect: 'day' when the Sun is above the horizon, else 'night'. Computed from the Sun's true altitude at the birth place and time (geometric horizon, Sun's centre, no refraction), so it is the same for every house system and stays right above the polar circles (midnight Sun = day). Selects Lilly's triplicity rulers in essential_dignities. Depends on the birth time: with no time supplied it reflects the default 06:00.
+     */
+    sect?: 'day' | 'night' | null;
+    /**
      * Birth Time Provided
      *
      * Whether a precise birth time was provided. False when birth time was not supplied or treated as unknown — calculations using this field will have lagna-dependent accuracy limits.
@@ -13671,13 +14385,13 @@ export type WesternPlanetPosition = {
     /**
      * Dignity
      *
-     * Essential dignity: domicile | exaltation | detriment | fall | peregrine
+     * Primary sign-level essential dignity: domicile | exaltation | detriment | fall | peregrine. 'peregrine' here means no sign-level dignity; triplicity, term and face are not assessed.
      */
     dignity: string;
     /**
      * Dignity Score
      *
-     * Essential dignity weight: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0
+     * Weight of the primary sign-level dignity only: domicile=5, exaltation=4, detriment=-5, fall=-4, peregrine=0. Triplicity, term and face are not scored, and the weights are not summed (e.g. Mercury in Virgo scores 5 for domicile, not 5+4). Full traditional scoring is in essential_dignities (natal and return charts).
      */
     dignity_score: number;
     /**
@@ -13692,6 +14406,10 @@ export type WesternPlanetPosition = {
      * True for outer planet (Uranus/Neptune/Pluto) exaltation/fall — no established consensus.
      */
     dignity_disputed: boolean;
+    /**
+     * Traditional essential dignity scoring after William Lilly: domicile +5, exaltation +4, triplicity +3 (by the chart's sect), term +2, face +1, detriment -5, fall -4, peregrine -5, summed in total. Additive to dignity/dignity_score, which are unchanged.
+     */
+    essential_dignities?: WesternEssentialDignities | null;
 };
 
 /**
@@ -14017,9 +14735,21 @@ export type YoginiPeriod = {
     /**
      * Sub
      *
-     * Sub-periods (Antar Dasha). Present only when levels=2.
+     * Sub-periods (Antar Dasha), present only when levels=2. Each lasts MD years × AD Yogini years / 36, starting from the MD's own Yogini. Under the first Mahadasha they are the remaining tail of the full Mahadasha, which began before birth.
      */
     sub?: Array<unknown> | null;
+    /**
+     * Dasha Start Date
+     *
+     * Only on the first Mahadasha row: the date (DD/MM/YYYY, UTC) the full Mahadasha began, before birth. The row itself starts at birth and lasts the balance.
+     */
+    dasha_start_date?: string | null;
+    /**
+     * Balance Years
+     *
+     * Only on the first Mahadasha row: the balance of that Mahadasha remaining at birth, in years of 365.25636 days.
+     */
+    balance_years?: number | null;
 };
 
 /**
@@ -14128,14 +14858,20 @@ export type ZodiacCompatibilityResponse = {
     modality2: string;
     /**
      * Element Affinity
+     *
+     * harmonious | neutral | challenging. From an Asterwise heuristic score: same element 80, fire–air and earth–water 85, other pairs 40–50 (harmonious ≥ 78, neutral ≥ 55).
      */
     element_affinity: string;
     /**
      * Modality Affinity
+     *
+     * harmonious | neutral | challenging. From an Asterwise heuristic score (cardinal–mutable 75, fixed–mutable 70, mutable–mutable 65, cardinal–cardinal and fixed–fixed 55, cardinal–fixed 50; harmonious ≥ 78, neutral ≥ 55).
      */
     modality_affinity: string;
     /**
      * Overall Score
+     *
+     * Mean of the element and modality heuristic scores (0–100)
      */
     overall_score: number;
     /**
@@ -14641,7 +15377,7 @@ export type WesternMoonPhaseData = {
         /**
          * Date
          *
-         * Date in YYYY-MM-DD format. Defaults to today.
+         * Date in YYYY-MM-DD format, years 1-3000. Defaults to today (UTC).
          */
         date?: string | null;
     };
@@ -14705,13 +15441,13 @@ export type WesternMoonCalendarData = {
         /**
          * Year
          *
-         * Year (e.g. 2026). Defaults to current year.
+         * Year (e.g. 2026), 1-3000. Defaults to the current year (UTC).
          */
         year?: number | null;
         /**
          * Month
          *
-         * Month number 1-12. Defaults to current month.
+         * Month number 1-12. Defaults to the current month (UTC).
          */
         month?: number | null;
     };
@@ -18165,9 +18901,15 @@ export type MobileNumberData = {
         /**
          * Number
          *
-         * Mobile number (digits only or with country code)
+         * Mobile number (digits only or with country code; the country code is not counted)
          */
         number: string;
+        /**
+         * Country
+         *
+         * Optional ISO 3166 alpha-2 country the number is dialled in (e.g. 'IN', 'US', 'AU'). The number is parsed in that country first, so a country code or trunk 0 written in front is dropped and that country's international prefix is understood ('14155552671' with 'US' → 4155552671; '0011 61 412 345 678' with 'AU' → 412345678). An unknown code is a 422 `validation_error` with issue `unknown_country` on field `country`.
+         */
+        country?: string | null;
     };
     url: '/v1/numerology/mobile-number';
 };
@@ -18802,7 +19544,20 @@ export type PersonalCyclesResponse = PersonalCyclesResponses[keyof PersonalCycle
 export type AngelTodayData = {
     body?: never;
     path?: never;
-    query?: never;
+    query?: {
+        /**
+         * Date
+         *
+         * Date in YYYY-MM-DD format to compute the number for. Overrides timezone.
+         */
+        date?: string | null;
+        /**
+         * Timezone
+         *
+         * IANA time zone (or ±HH:MM) whose current date is "today", e.g. Asia/Kolkata. Default: UTC.
+         */
+        timezone?: string | null;
+    };
     url: '/v1/numerology/angel/today';
 };
 
@@ -19698,7 +20453,7 @@ export type TarotCardOfTheDayData = {
         /**
          * Date
          *
-         * Date in YYYY-MM-DD format. Defaults to today.
+         * Date in YYYY-MM-DD format. Defaults to today (UTC, or in `timezone`). Overrides timezone.
          */
         date?: string | null;
         /**
@@ -19707,6 +20462,12 @@ export type TarotCardOfTheDayData = {
          * If true, the card may appear reversed (also deterministic by date).
          */
         allow_reversed?: boolean;
+        /**
+         * Timezone
+         *
+         * IANA time zone (or ±HH:MM) whose current date is "today", e.g. Asia/Kolkata. Default: UTC.
+         */
+        timezone?: string | null;
     };
     url: '/v1/tarot/card-of-the-day';
 };

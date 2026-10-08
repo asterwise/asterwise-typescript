@@ -55,7 +55,8 @@ export const atmakaraka = <ThrowOnError extends boolean = false>(options: Option
  * Points in trinal houses are equalised. Per-planet objects keyed by sign name.
  *
  * - **bhinna_after_ekadhipatya** — BAV after both Trikona and Ekadhipatya Shodana
- * (lordship reduction). The most refined per-planet table, keyed by sign name.
+ * (lordship reduction, BPHS Ch.70; a sign counts as occupied only when one of the
+ * seven grahas is in it). The most refined per-planet table, keyed by sign name.
  *
  * - **sarva** — Sarva Ashtakavarga (SAV): the raw sum across all 7 planets.
  * Object keyed by sign name; 28+ bindus in a sign is considered strong.
@@ -63,8 +64,9 @@ export const atmakaraka = <ThrowOnError extends boolean = false>(options: Option
  * - **sarva_reduced** — SAV computed from the fully reduced planet tables.
  * More accurate for transit timing. Keyed by sign name.
  *
- * - **after_trikona** / **after_ekadhipatya** — SAV-level reductions for
- * backward compatibility, keyed by sign name.
+ * - **after_trikona** / **after_ekadhipatya** — legacy: the reductions applied to the
+ * summed SAV, kept for backward compatibility. Not classical values (Shodhana is
+ * applied per planet); prefer **sarva_reduced**.
  *
  * **How to use bindus for transit timing:**
  * When a planet transits a house in its own Bhinna chart, the number of bindus
@@ -94,12 +96,27 @@ export const ashtakavarga = <ThrowOnError extends boolean = false>(options: Opti
  * **What is Ashtottari Dasha?**
  * Ashtottari Dasha is a 108-year dasha cycle using 8 planets (excluding Ketu).
  * It is considered applicable only for specific charts where Rahu occupies a
- * Kendra (houses 1, 4, 7, 10) or Trikona (houses 1, 5, 9) from the Lagna.
+ * Kendra (1, 4, 7, 10) or Trikona (1, 5, 9) counted from the sign of the Lagna
+ * lord, but not the Lagna itself (BPHS Ch.46 v.17). For a Scorpio or Aquarius
+ * Lagna the stronger co-lord is used, as in JHora.
  *
  * **Applicability check:**
  * This endpoint first checks whether Ashtottari applies to the given chart.
- * If Rahu is not in a Kendra or Trikona house, the response will contain
- * `applicable: false` and a reason string instead of dasha periods.
+ * If the condition above is not met, the response will contain
+ * `applicable: false` and a reason string instead of dasha periods. The
+ * paksha/day-night condition is not evaluated.
+ *
+ * **Starting planet and balance:**
+ * Counting from Ardra, the nakshatras belong to the lords in groups of 4, 3, 4,
+ * 3, 4, 3, 4, 3 (Sun, Moon, Mars, Mercury, Saturn — with Abhijit — Jupiter,
+ * Rahu, Venus). The balance at birth is the lord's years times the share of its
+ * whole nakshatra group still ahead of the Moon (JHora's method). The first
+ * period starts at birth; its sub-periods are the tail of the full period, and
+ * it carries `dasha_start_date` and `balance_years`.
+ *
+ * **Timeline length:** mahadashas follow in order and continue into the next
+ * 108-year cycle until the timeline reaches at least age 120 (usually 10 or 11
+ * mahadashas). Before 2026-10-08 only the first 8 were returned.
  *
  * **The 8 planets and their durations:**
  * - Sun — 6 years
@@ -114,10 +131,11 @@ export const ashtakavarga = <ThrowOnError extends boolean = false>(options: Opti
  * **Levels:**
  * - `levels: 1` — returns Maha Dasha periods only
  * - `levels: 2` — returns Maha Dasha with Antar Dasha sub-periods (default)
+ * - `levels: 3`–`5` — adds Pratyantar, Sookshma and Prana (same rule at every level)
  *
  * **Date format:** All dates are returned in DD/MM/YYYY format.
  *
- * **Ayanamsa:** Default is Lahiri.
+ * **Ayanamsa:** Default is Lahiri; the request's `ayanamsa` is applied.
  */
 export const ashtottariDasha = <ThrowOnError extends boolean = false>(options: Options<AshtottariDashaData, ThrowOnError>): RequestResult<AshtottariDashaResponses, AshtottariDashaErrors, ThrowOnError> => (options.client ?? client).post<AshtottariDashaResponses, AshtottariDashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -186,7 +204,7 @@ export const natalChart = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Western Natal Chart — Tropical
  *
- * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, essential dignities, all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
+ * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, sign-level dignity (dignity, dignity_score) and full traditional essential dignities after William Lilly (essential_dignities: domicile, exaltation, triplicity by the chart's day/night sect, term, face, detriment, fall, peregrine, total), all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
  */
 export const westernNatalChart = <ThrowOnError extends boolean = false>(options: Options<WesternNatalChartData, ThrowOnError>): RequestResult<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError> => (options.client ?? client).post<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -201,7 +219,7 @@ export const westernNatalChart = <ThrowOnError extends boolean = false>(options:
 /**
  * Western Moon Phase
  *
- * Calculate the lunar phase for any date using the tropical zodiac. Returns phase name (New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter, Waning Crescent), phase angle, illumination percentage, moon age in days, and next major phase estimate. Defaults to today if no date given.
+ * Calculate the lunar phase for any date using the tropical zodiac, computed at 18:00 UTC on that date. Returns the phase name in Dane Rudhyar's eight 45-degree phases (New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter, Waning Crescent; each begins at its angle), phase angle, illumination percentage, moon age since the previous exact New Moon, the exact instant of the next principal phase, and principal_phase when a New Moon, First Quarter, Full Moon or Last Quarter falls on the UTC date. Defaults to today (UTC) if no date given.
  */
 export const westernMoonPhase = <ThrowOnError extends boolean = false>(options?: Options<WesternMoonPhaseData, ThrowOnError>): RequestResult<WesternMoonPhaseResponses, WesternMoonPhaseErrors, ThrowOnError> => (options?.client ?? client).get<WesternMoonPhaseResponses, WesternMoonPhaseErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -212,7 +230,7 @@ export const westernMoonPhase = <ThrowOnError extends boolean = false>(options?:
 /**
  * Western Moon Phase Calendar
  *
- * Returns lunar phase data for every day in a given month. Useful for building moon phase calendars, identifying full/new moons, and auspicious timing tools. Defaults to current month if no year/month given.
+ * Returns lunar phase data for every day in a given month, each day computed at 18:00 UTC (same fields as the moon phase endpoint). The days of the month's New Moons, First Quarters, Full Moons and Last Quarters carry principal_phase and its exact instant (principal_phase_at, UTC): use those, not the 45-degree phase_name bands, to mark full and new moon dates. Defaults to current month (UTC) if no year/month given.
  */
 export const westernMoonCalendar = <ThrowOnError extends boolean = false>(options?: Options<WesternMoonCalendarData, ThrowOnError>): RequestResult<WesternMoonCalendarResponses, WesternMoonCalendarErrors, ThrowOnError> => (options?.client ?? client).get<WesternMoonCalendarResponses, WesternMoonCalendarErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -328,7 +346,7 @@ export const westernCompatibility = <ThrowOnError extends boolean = false>(optio
 /**
  * Western Zodiac Sign Compatibility
  *
- * Sign-to-sign compatibility without birth data. Based on element and modality affinity. Pass sign names as query parameters: ?sign1=Aries&sign2=Leo
+ * Sign-to-sign compatibility without birth data. Based on element and modality affinity (Asterwise heuristic scores). Pass sign names as query parameters: ?sign1=Aries&sign2=Leo. Only the twelve English tropical sign names are accepted (case-insensitive); anything else returns 422.
  */
 export const westernCompatibilityZodiac = <ThrowOnError extends boolean = false>(options: Options<WesternCompatibilityZodiacData, ThrowOnError>): RequestResult<WesternCompatibilityZodiacResponses, WesternCompatibilityZodiacErrors, ThrowOnError> => (options.client ?? client).get<WesternCompatibilityZodiacResponses, WesternCompatibilityZodiacErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -384,7 +402,7 @@ export const westernPlanetaryReturn = <ThrowOnError extends boolean = false>(opt
 /**
  * Western Secondary Progressions
  *
- * Secondary progressed chart using the day-for-a-year method. Each day after birth symbolises one year of life (1 ephemeris day = 1 tropical year = 365.2421904 days). Returns all 10 progressed planet positions, progressed Ascendant and MC (Solar Arc MC method), and the solar arc. Defaults to today if no target_date provided.
+ * Secondary progressed chart using the day-for-a-year method. Each day after birth symbolises one year of life (1 ephemeris day = 1 tropical year = 365.2421904 days). Returns all 10 progressed planet positions, the solar arc, and the progressed angles: MC = natal MC + solar arc in longitude, Ascendant derived from that MC (its RAMC) at the birth latitude. Defaults to today if no target_date provided.
  */
 export const westernProgressionsSecondary = <ThrowOnError extends boolean = false>(options: Options<WesternProgressionsSecondaryData, ThrowOnError>): RequestResult<WesternProgressionsSecondaryResponses, WesternProgressionsSecondaryErrors, ThrowOnError> => (options.client ?? client).post<WesternProgressionsSecondaryResponses, WesternProgressionsSecondaryErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -511,7 +529,7 @@ export const panchangaTamil = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Hindu festival and vrat calendar
  *
- * Hindu festivals, vrats, sankrantis, eclipses and periods for a year at a location. Each lunar festival is fixed by its lunar month (amanta, with Adhik months detected from new moons and sankrantis), its tithi, and the part of the day in which the tithi must prevail (sunrise, forenoon, Madhyahna, Aparahna, Pradosh, Nishita, moonrise), with the classical tie-breaks when a tithi spans two days, Bhadra rules for Holika Dahan and Raksha Bandhan, and the Smarta Ekadashi rule. Categories: festival (about 50 named festivals), vrat (every Ekadashi, Pradosh, Sankashti Chaturthi, Masik Shivaratri, Purnima and Amavasya), sankranti (12 solar ingresses), eclipse (with local visibility and contact times), period (Adhik Maas, Chaturmas, Pitru Paksha, Navratri, Holashtak, Kharmas). By default only the named festivals are returned; pass `categories` for the rest. Lahiri ayanamsa.
+ * Hindu festivals, vrats, sankrantis, eclipses and periods for a year at a location. Each lunar festival is fixed by its lunar month (amanta, with Adhik months detected from new moons and sankrantis), its tithi, and the part of the day in which the tithi must prevail (sunrise, forenoon, Madhyahna, Aparahna, Pradosh, Nishita, moonrise), with the classical tie-breaks when a tithi spans two days, Bhadra rules for Holika Dahan and Raksha Bandhan, and the Smarta Ekadashi rule. Categories: festival (about 50 named festivals), vrat (every Ekadashi, Pradosh, Sankashti Chaturthi, Masik Shivaratri, Purnima, the Purnima vrat (fast) day and Amavasya), sankranti (12 solar ingresses), eclipse (with local visibility and contact times), period (Adhik Maas, Chaturmas, Pitru Paksha, Navratri, Holashtak, Kharmas). By default only the named festivals are returned; pass `categories` for the rest. Lahiri ayanamsa.
  */
 export const panchangaFestivals = <ThrowOnError extends boolean = false>(options: Options<PanchangaFestivalsData, ThrowOnError>): RequestResult<PanchangaFestivalsResponses, PanchangaFestivalsErrors, ThrowOnError> => (options.client ?? client).get<PanchangaFestivalsResponses, PanchangaFestivalsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -678,7 +696,7 @@ export const muhurta = <ThrowOnError extends boolean = false>(options: Options<M
 /**
  * Vimshottari Dasha
  *
- * Calculate the complete Vimshottari Dasha timeline for a birth chart. Returns Mahadasha, Antardasha, Pratyantar, Sookshma, and Prana periods up to 5 levels deep, with start and end dates for each. The starting planet is determined by the Moon's nakshatra at birth (Janma Nakshatra). Interpretation text accompanies the currently active Mahadasha and Antardasha.
+ * Calculate the complete Vimshottari Dasha timeline for a birth chart. Returns Mahadasha, Antardasha, Pratyantar, Sookshma, and Prana periods up to 5 levels deep, with start and end dates for each. The starting planet is determined by the Moon's nakshatra at birth (Janma Nakshatra). The first Mahadasha row starts at birth and lasts the balance; its sub-periods are the remaining tail of the full Mahadasha, which began before birth, so the period running at birth is usually not the Mahadasha lord's own. That row also gives dasha_start_date and balance_years. Dates are DD/MM/YYYY. Interpretation text accompanies the currently active Mahadasha and Antardasha.
  */
 export const dasha = <ThrowOnError extends boolean = false>(options: Options<DashaData, ThrowOnError>): RequestResult<DashaResponses, DashaErrors, ThrowOnError> => (options.client ?? client).post<DashaResponses, DashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -693,7 +711,7 @@ export const dasha = <ThrowOnError extends boolean = false>(options: Options<Das
 /**
  * Dasha-Transit Correlation
  *
- * Correlates active Vimshottari Dasha lords (maha, antar, pratyantar) with current planetary transits. Returns conjunction and aspect correlations scored by strength, and highlights periods of significance. Request JSON follows BirthInput plus optional `target_date`, `target_time`, `target_timezone` for the analysis moment: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Correlates active Vimshottari Dasha lords (maha, antar, pratyantar) with current planetary transits. Returns conjunction and aspect correlations scored by strength, and highlights periods of significance. Aspects are Vedic graha drishti cast by the transiting planet (BPHS Ch.26): every planet aspects its 7th sign, Jupiter also its 5th and 9th, Saturn its 3rd and 10th, Mars its 4th and 8th. Each correlation gives `aspect_house` (the natal dasha lord's sign counted from the transiting planet, 1 = same sign) and `drishti` ('7th', '3rd', ...; absent for a conjunction). `aspect_type` is conjunction, opposition, trine (Jupiter 5th/9th), square (Saturn 10th, Mars 4th) or special (Saturn 3rd, Mars 8th). Request JSON follows BirthInput plus optional `target_date`, `target_time`, `target_timezone` for the analysis moment: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const dashaTransits = <ThrowOnError extends boolean = false>(options: Options<DashaTransitsData, ThrowOnError>): RequestResult<DashaTransitsResponses, DashaTransitsErrors, ThrowOnError> => (options.client ?? client).post<DashaTransitsResponses, DashaTransitsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -708,7 +726,7 @@ export const dashaTransits = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Jaimini Char Dasha
  *
- * Computes Jaimini Char Dasha — a sign-based dasha system from the Jaimini school of astrology. Returns mahadasha and antardasha periods starting from the ascendant (Lagna), with the current active mahadasha and antardasha highlighted. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Computes Jaimini Char Dasha — a sign-based dasha system from the Jaimini school of astrology. Returns mahadasha and antardasha periods starting from the ascendant (Lagna), with the current active mahadasha and antardasha highlighted. Method: K.N. Rao, as in his own dated case notes. The sequence runs forward when the 9th sign from the Lagna is savya (Aries, Taurus, Gemini, Libra, Scorpio, Sagittarius) and backward otherwise; period years count to the sign lord (savya forward, apasavya backward) minus one, 12 for the lord in its own rashi, with no year added or taken off for an exalted or debilitated lord (JHora's K.N. Rao option adds/subtracts one). Scorpio and Aquarius count to the co-lord outside the sign, or with both outside to the one with more planets, then the one further advanced. With `cycles` 2 or 3, every cycle repeats the first cycle's years. Antardashas are 12 equal parts (each as many months as the mahadasha has years); K.N. Rao: they run forward or backward by the 9th sign from the mahadasha sign (the same rule the Lagna uses), starting from the next sign, and the mahadasha sign's own antardasha comes last. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const charDasha = <ThrowOnError extends boolean = false>(options: Options<CharDashaData, ThrowOnError>): RequestResult<CharDashaResponses, CharDashaErrors, ThrowOnError> => (options.client ?? client).post<CharDashaResponses, CharDashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -783,7 +801,7 @@ export const matchmakingThirumanaPorutham = <ThrowOnError extends boolean = fals
 /**
  * Calculate dosha report
  *
- * Detect all major Vedic doshas in a natal chart — Mangal Dosha, Kaal Sarp Dosha, Gandmool, Grahan, Guru Chandal, Kemdrum, Shrapit, and Pitru Dosha. Present doshas include cancellation analysis, classical interpretation, keywords, and traditional remedies.
+ * Detect all major Vedic doshas in a natal chart — Mangal Dosha, Kaal Sarp Dosha, Gandmool, Grahan, Guru Chandal, Kemdrum, Shrapit, and Pitru Dosha. Present doshas include cancellation analysis, classical interpretation, keywords, and traditional remedies. Aspects are full Parashari graha drishti counted from the aspecting planet's sign (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu 7); house lords are whole sign from the lagna. A Jupiter or Venus aspect or conjunction cancels Mangal Dosha only when that planet is strong — not debilitated and not combust; one that does not count is listed in mangal_dosha.details.benefic_aspects_not_counted.
  */
 export const doshas = <ThrowOnError extends boolean = false>(options: Options<DoshasData, ThrowOnError>): RequestResult<DoshasResponses, DoshasErrors, ThrowOnError> => (options.client ?? client).post<DoshasResponses, DoshasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -798,7 +816,7 @@ export const doshas = <ThrowOnError extends boolean = false>(options: Options<Do
 /**
  * Gochar — Transit Analysis
  *
- * Computes planetary transits against a natal chart using classical Vedic rules. Returns house positions from Moon and Lagna, Vedha obstruction checks, Ashtakavarga Bhinna scores, Sade Sati and Chandra Ashtama flags, and classical transit interpretations for all 9 planets. Request JSON follows BirthInput plus optional transit fields `target_date`, `target_time`, `target_timezone`: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Computes planetary transits against a natal chart using classical Vedic rules. Returns house positions from Moon and Lagna, Vedha obstruction checks, raw Bhinna Ashtakavarga bindus for each transit sign (5+ makes a transit favourable, 3 or fewer unfavourable, whatever the house), Sade Sati and Chandra Ashtama flags, and classical transit interpretations for all 9 planets. Request JSON follows BirthInput plus optional transit fields `target_date`, `target_time`, `target_timezone`: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const gochar = <ThrowOnError extends boolean = false>(options: Options<GocharData, ThrowOnError>): RequestResult<GocharResponses, GocharErrors, ThrowOnError> => (options.client ?? client).post<GocharResponses, GocharErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -813,7 +831,7 @@ export const gochar = <ThrowOnError extends boolean = false>(options: Options<Go
 /**
  * Calculate yoga combinations
  *
- * Detect all classical Vedic yogas in a natal chart — Pancha Mahapurusha Yogas, Raja Yogas, Gajakesari, Neecha Bhanga Raja Yoga, Budhaditya, Chandra Mangala, and more. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
+ * Detect all classical Vedic yogas in a natal chart — Pancha Mahapurusha Yogas, Raja Yogas, Gajakesari, Neecha Bhanga Raja Yoga, Budhaditya, Chandra Mangala, Viparita Raja, Amala, and more. House lords are taken by whole sign from the lagna (so they are found at polar latitudes too) and aspects are full Parashari graha drishti only. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
  */
 export const yogas = <ThrowOnError extends boolean = false>(options: Options<YogasData, ThrowOnError>): RequestResult<YogasResponses, YogasErrors, ThrowOnError> => (options.client ?? client).post<YogasResponses, YogasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -929,7 +947,7 @@ export const personalYearPost = <ThrowOnError extends boolean = false>(options: 
 /**
  * Business Name Numerology
  *
- * Scores a business name using Pythagorean expression number. Returns single digit, theme, harmony score (1-10), and recommended uses.
+ * Scores a business name using its Pythagorean Expression number, worked part by part like /v1/numerology/expression: each word is reduced on its own (11, 22, 33 kept), then the words are added and reduced. Returns single digit, theme, harmony score (1-10), and recommended uses. A name with no letters (e.g. '123') is rejected with 422 `validation_error`.
  */
 export const businessName = <ThrowOnError extends boolean = false>(options: Options<BusinessNameData, ThrowOnError>): RequestResult<BusinessNameResponses, BusinessNameErrors, ThrowOnError> => (options.client ?? client).get<BusinessNameResponses, BusinessNameErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -983,7 +1001,7 @@ export const luckyNumbersPost = <ThrowOnError extends boolean = false>(options: 
 /**
  * Get number meaning by context
  *
- * Returns interpretation details for a specific number within a numerology context. Query `context` defaults to `general` (same meanings as life path). Returns meaning text and optional thematic guidance fields.
+ * Returns interpretation details for a specific number within a numerology context. Query `context` defaults to `general` (same meanings as life path). Allowed numbers: 1-9, 11, 22 and 33 for general, life_path, expression, soul_urge and personality; 1-9 for birth_day (a master Birth Day 11 or 22 in a profile uses the 2 or 4 text) and personal_year. Any other number answers 422 `validation_error` with the allowed values in `details`. Returns meaning text and optional thematic guidance fields.
  */
 export const numberMeaning = <ThrowOnError extends boolean = false>(options: Options<NumberMeaningData, ThrowOnError>): RequestResult<NumberMeaningResponses, NumberMeaningErrors, ThrowOnError> => (options.client ?? client).get<NumberMeaningResponses, NumberMeaningErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -994,7 +1012,7 @@ export const numberMeaning = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Name Correction Analysis
  *
- * Analyses a full name using Pythagorean numerology and suggests spelling variants that are more harmonious with the life path number. Returns current name scores and up to 8 alternatives ranked by harmony.
+ * Analyses a full name using Pythagorean numerology and suggests spelling variants that are more harmonious with the life path number. Expression, Soul Urge and Personality are worked part by part, the same way as /v1/numerology/expression, /soul-urge and /personality. karmic_debt (and is_master) refer to the Expression number; expression_karmic_debt, soul_urge_karmic_debt and personality_karmic_debt give each number's karmic debt (13, 14, 16 or 19 anywhere in its reduction). Returns current name scores and up to 8 alternatives ranked by harmony.
  */
 export const nameCorrection = <ThrowOnError extends boolean = false>(options: Options<NameCorrectionData, ThrowOnError>): RequestResult<NameCorrectionResponses, NameCorrectionErrors, ThrowOnError> => (options.client ?? client).post<NameCorrectionResponses, NameCorrectionErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1024,7 +1042,7 @@ export const chaldean = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Lo Shu Grid
  *
- * Builds a Lo Shu 3x3 numerology grid from a birth date. Returns the grid with digit counts, present/missing/repeated numbers, plane analysis (thought/will/action), and per-number trait interpretation.
+ * Builds a Lo Shu 3x3 numerology grid from a birth date. Returns the grid with digit counts, present/missing/repeated numbers, plane analysis over the eight lines of the square (rows mental/emotional/practical, columns thought/will/action, two diagonals), and per-number trait interpretation. In `number_analysis`, `plane` is the legacy v1 grouping (1-3 mental, 4-6 physical, 7-9 spiritual) and `lo_shu_plane` is the number's row of the square (mental 4-9-2, emotional 3-5-7, practical 8-1-6).
  */
 export const loShu = <ThrowOnError extends boolean = false>(options: Options<LoShuData, ThrowOnError>): RequestResult<LoShuResponses, LoShuErrors, ThrowOnError> => (options.client ?? client).post<LoShuResponses, LoShuErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1052,7 +1070,7 @@ export const mobileNumber = <ThrowOnError extends boolean = false>(options: Opti
 /**
  * Mobile Number Numerology
  *
- * Analyses a mobile/phone number numerologically. Body: `number`. Sums all digits to a single number and returns theme, harmony score, and recommended uses.
+ * Analyses a mobile/phone number numerologically. Body: `number`, optional `country` (ISO 3166 alpha-2). Sums the digits of the national number, country code left out (libphonenumber): with `country` the number is read as dialled there first, international prefix included; a valid '+' or '00' number drops its country code; a '+' number that is not valid sums every digit after the '+', and a '00' number that is not valid is summed as written; with no prefix and no `country`, only India's code is removed (a 12-digit number starting 91) and any other number is summed as written, since the country cannot be known. Reduces to a single number and returns theme, harmony score, recommended uses, `digits_used`, `country_code` when one was left out, and `master_number` when the total passes through 11, 22 or 33. A number with no digits, or only zeros, is rejected with 422 `validation_error`, and so is an unknown `country` (issue `unknown_country`, field `country`).
  */
 export const mobileNumberPost = <ThrowOnError extends boolean = false>(options: Options<MobileNumberPostData, ThrowOnError>): RequestResult<MobileNumberPostResponses, MobileNumberPostErrors, ThrowOnError> => (options.client ?? client).post<MobileNumberPostResponses, MobileNumberPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1080,7 +1098,7 @@ export const vehicleNumber = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Vehicle Number Numerology
  *
- * Analyses a vehicle registration number numerologically. Body: `number`. Extracts digits, sums to single number, returns theme and harmony score.
+ * Analyses a vehicle registration number numerologically. Body: `number`. Extracts digits, sums to single number, returns theme and harmony score. `is_master` / `master_number` report a total that passes through 11, 22 or 33. A plate with no digits, or only zeros, is rejected with 422 `validation_error`.
  */
 export const vehicleNumberPost = <ThrowOnError extends boolean = false>(options: Options<VehicleNumberPostData, ThrowOnError>): RequestResult<VehicleNumberPostResponses, VehicleNumberPostErrors, ThrowOnError> => (options.client ?? client).post<VehicleNumberPostResponses, VehicleNumberPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1095,7 +1113,7 @@ export const vehicleNumberPost = <ThrowOnError extends boolean = false>(options:
 /**
  * Expression (Destiny) Number
  *
- * Calculates the Expression (Destiny) number from the full name. Uses all letters with Pythagorean values, reducing each name part separately before summing (Goodwin method). Preserves master numbers 11, 22, 33.
+ * Calculates the Expression (Destiny) number from the full name. Uses all letters with Pythagorean values, reducing each name part separately before summing (Decoz method). Preserves master numbers 11, 22, 33. karmic_debt_number is 13, 14, 16 or 19 when it appears anywhere in the reduction of the total (e.g. 58 → 13 → 4).
  */
 export const expressionNumber = <ThrowOnError extends boolean = false>(options: Options<ExpressionNumberData, ThrowOnError>): RequestResult<ExpressionNumberResponses, ExpressionNumberErrors, ThrowOnError> => (options.client ?? client).post<ExpressionNumberResponses, ExpressionNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1110,7 +1128,7 @@ export const expressionNumber = <ThrowOnError extends boolean = false>(options: 
 /**
  * Soul Urge (Heart's Desire) Number
  *
- * Calculates the Soul Urge number from vowels (A, E, I, O, U) in the full name. Reduces each name part separately. Y is treated as a consonant in this implementation.
+ * Calculates the Soul Urge number from vowels (A, E, I, O, U) in the full name. Reduces each name part separately (11, 22, 33 kept). Y is treated as a consonant in this implementation. karmic_debt_number is 13, 14, 16 or 19 when it appears anywhere in the reduction of the total.
  */
 export const soulUrgeNumber = <ThrowOnError extends boolean = false>(options: Options<SoulUrgeNumberData, ThrowOnError>): RequestResult<SoulUrgeNumberResponses, SoulUrgeNumberErrors, ThrowOnError> => (options.client ?? client).post<SoulUrgeNumberResponses, SoulUrgeNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1125,7 +1143,7 @@ export const soulUrgeNumber = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Personality Number
  *
- * Calculates the Personality number from consonants in the full name. Reduces each name part separately. Represents the outer personality visible to others.
+ * Calculates the Personality number from consonants in the full name. Reduces each name part separately (11, 22, 33 kept). Represents the outer personality visible to others. karmic_debt_number is 13, 14, 16 or 19 when it appears anywhere in the reduction of the total.
  */
 export const personalityNumber = <ThrowOnError extends boolean = false>(options: Options<PersonalityNumberData, ThrowOnError>): RequestResult<PersonalityNumberResponses, PersonalityNumberErrors, ThrowOnError> => (options.client ?? client).post<PersonalityNumberResponses, PersonalityNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1200,7 +1218,7 @@ export const personalCycles = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Today's angel number
  *
- * Compute today's angel number from the current date. The date's digits are summed and reduced to a single digit (1-9), then the triple sequence of that digit is returned (e.g. digit 3 → angel number 333). The same number is returned for all callers on the same date.
+ * Compute today's angel number from the current date. The date's digits are summed and reduced to a single digit (1-9), then the triple sequence of that digit is returned (e.g. digit 3 → angel number 333). The same number is returned for all callers on the same date. "Today" is the current date in UTC unless you pass `timezone` (the caller's IANA zone, e.g. Asia/Kolkata) or an explicit `date`.
  */
 export const angelToday = <ThrowOnError extends boolean = false>(options?: Options<AngelTodayData, ThrowOnError>): RequestResult<AngelTodayResponses, AngelTodayErrors, ThrowOnError> => (options?.client ?? client).get<AngelTodayResponses, AngelTodayErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1248,7 +1266,7 @@ export const angelPersonal = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Complete crystal database
  *
- * Returns all 50 crystals in the database sorted alphabetically. Each entry includes chakra associations, elemental correspondences, Vedic and Western planetary assignments, healing properties, origins, affirmations, and safety cautions. Vedic correspondences are strictly separated: 'navaratna' (classical primary gem), 'uparatna' (classical substitute), or 'none_classical' (no Vedic text assigns this stone).
+ * Returns all 54 crystals in the database sorted alphabetically. Each entry includes chakra associations, elemental correspondences, Vedic and Western planetary assignments, healing properties, origins, affirmations, and safety cautions. Vedic correspondences are strictly separated: 'navaratna' (classical primary gem), 'uparatna' (substitute gem; the description says when a substitute is modern rather than classical), or 'none_classical' (no Vedic gem use).
  */
 export const crystalsList = <ThrowOnError extends boolean = false>(options?: Options<CrystalsListData, ThrowOnError>): RequestResult<CrystalsListResponses, CrystalsListErrors, ThrowOnError> => (options?.client ?? client).get<CrystalsListResponses, CrystalsListErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1285,7 +1303,7 @@ export const crystalsRecommend = <ThrowOnError extends boolean = false>(options:
 /**
  * Crystal recommendations from Vedic natal chart
  *
- * Recommend crystals based on gemstone house lordship rules. Computes the natal chart and identifies the planets that lord Trikona houses (1, 5, 9). Lagna lord = Life Stone (+5), Yogakaraka = supreme benefic (+5), 9th lord = Fortune Stone (+4), 5th lord = Lucky Stone (+3). Where a planet lords both a Trikona and a Dusthana (6, 8, 12), the Trikona lordship still prevails — the planet is still recommended. Planets not lording any Trikona house are contraindicated. Only crystals with classical Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
+ * Recommend crystals from the natal chart's functional benefics, using the same rule as POST /v1/astro/gemstones (BPHS Ch.34 lordship, whole-sign from the lagna). Recommended: the lagna lord (always auspicious) = Life Stone (+5), the Yogakaraka = supreme benefic (+5), the 9th lord = Fortune Stone (+4), the 5th lord = Lucky Stone (+3). A 5th/9th lord that also owns a Dusthana (6, 8, 12) is still recommended, with that Dusthana named in warnings[]. Contraindicated (natal_context.contraindicated_lords, never returned): Dusthana lords that own no Trikona, and debilitated or combust planets. Kendra-only and 2nd/3rd/11th lords are neither recommended nor contraindicated. Only crystals with Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
  */
 export const crystalsRecommendNatal = <ThrowOnError extends boolean = false>(options: Options<CrystalsRecommendNatalData, ThrowOnError>): RequestResult<CrystalsRecommendNatalResponses, CrystalsRecommendNatalErrors, ThrowOnError> => (options.client ?? client).post<CrystalsRecommendNatalResponses, CrystalsRecommendNatalErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1300,7 +1318,7 @@ export const crystalsRecommendNatal = <ThrowOnError extends boolean = false>(opt
 /**
  * Single crystal lookup
  *
- * Lookup a specific crystal by slug or name (case-insensitive). Examples: 'amethyst', 'blue-sapphire', 'rose-quartz', 'Tiger's Eye'.
+ * Lookup a specific crystal by slug, name, or common alias (case-insensitive). Examples: 'amethyst', 'blue-sapphire', 'rose-quartz', 'Tiger's Eye'. Gem names used by POST /v1/astro/gemstones resolve too: 'Hessonite', "Cat's Eye", 'Tiger Eye', 'Honey-colored Zircon', 'Diamond'.
  */
 export const crystal = <ThrowOnError extends boolean = false>(options: Options<CrystalData, ThrowOnError>): RequestResult<CrystalResponses, CrystalErrors, ThrowOnError> => (options.client ?? client).get<CrystalResponses, CrystalErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1377,7 +1395,7 @@ export const tarotSuit = <ThrowOnError extends boolean = false>(options: Options
 /**
  * Card of the Day
  *
- * Returns a deterministic daily tarot card. The same card is returned for all requests on the same date — seeded by SHA-256 hash of the date string. Optionally provide a date (YYYY-MM-DD) to get the card for any day. Defaults to today.
+ * Returns a deterministic daily tarot card. The same card is returned for all requests on the same date — seeded by SHA-256 hash of the date string. Optionally provide a date (YYYY-MM-DD) to get the card for any day. "Today" is the current date in UTC unless you pass `timezone` (the caller's IANA zone, e.g. Asia/Kolkata) or an explicit `date`.
  */
 export const tarotCardOfTheDay = <ThrowOnError extends boolean = false>(options?: Options<TarotCardOfTheDayData, ThrowOnError>): RequestResult<TarotCardOfTheDayResponses, TarotCardOfTheDayErrors, ThrowOnError> => (options?.client ?? client).get<TarotCardOfTheDayResponses, TarotCardOfTheDayErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1448,7 +1466,7 @@ export const tarotYesNo = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Personalised Remedies
  *
- * Prescribes personalised Vedic remedies based on planetary dignity in the natal chart. Prioritises debilitated planets, planets in enemy signs, and dusthana lords (6th/8th/12th house rulers). Returns mantras, gemstones, colours, fasting days, and daily actions. Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`. Plus `top_n` (1–9) to cap how many planets receive remedy rows.
+ * Prescribes personalised Vedic remedies based on planetary dignity in the natal chart. Prioritises debilitated planets, planets in enemy signs, dusthana lords (6th/8th/12th house rulers), planets placed in those houses, and combust planets; is_dusthana_lord, in_dusthana_house and is_combust say which. Returns mantras, gemstones, colours, fasting days, and daily actions. Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`. Plus `top_n` (1–9) to cap how many planets receive remedy rows.
  */
 export const remedies = <ThrowOnError extends boolean = false>(options: Options<RemediesData, ThrowOnError>): RequestResult<RemediesResponses, RemediesErrors, ThrowOnError> => (options.client ?? client).post<RemediesResponses, RemediesErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1463,7 +1481,7 @@ export const remedies = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Gemstone Recommendations
  *
- * Recommends gemstones based on the natal chart. Primary gemstone strengthens the Lagna lord. Secondary gemstone supports the Atmakaraka (soul planet). Returns contraindicated gemstones (debilitated, combust, dusthana lords, dual lagna/8th). Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Recommends gemstones based on the natal chart. Primary gemstone strengthens the Lagna lord (always a functional benefic). Further slots: Yogakaraka, 5th lord, 9th lord, and Atmakaraka (also returned as `secondary`). Returns contraindicated gemstones: dusthana (6/8/12) lords that own no trikona, debilitated planets, and combust planets — the same rule as POST /v1/crystals/recommend/natal. A slot whose planet is contraindicated carries `contraindicated: true` and a `caution`; it is never a silent recommendation. Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const gemstones = <ThrowOnError extends boolean = false>(options: Options<GemstonesData, ThrowOnError>): RequestResult<GemstonesResponses, GemstonesErrors, ThrowOnError> => (options.client ?? client).post<GemstonesResponses, GemstonesErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1493,7 +1511,7 @@ export const ishtaDevata = <ThrowOnError extends boolean = false>(options: Optio
 /**
  * KP Natal Chart
  *
- * Computes the KP (Krishnamurti Paddhati) natal chart using Krishnamurti ayanamsa and Placidus house system. Returns planet positions with nakshatra lord and sub-lord, and all 12 house cusps with sub-lords. Request JSON follows BirthInput: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, optional `ayanamsa`.
+ * Computes the KP (Krishnamurti Paddhati) natal chart using Krishnamurti ayanamsa and Placidus house system. Returns planet positions with nakshatra lord and sub-lord, and all 12 house cusps with sub-lords. Planet `house` is the KP (cusp-to-cusp) house: a planet is in house h from cusp h up to, not including, cusp h+1 of the sidereal Placidus cusps, and a planet exactly on a cusp is in the house that cusp starts (no orb before a cusp). `rasi_house` is the whole-sign house from the lagna sign. Inside the polar circles, where Placidus cusps do not exist, the request fails with 422 `validation_error` instead of returning another house system; its `details` item has `type` and `issue` `no_quadrant_houses_at_this_latitude` and `input_format_ok: true` (the input is valid; the sky has no Placidus cusps there). Request JSON follows BirthInput: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`. `ayanamsa` is accepted but ignored: KP always uses the Krishnamurti ayanamsa.
  */
 export const kpChart = <ThrowOnError extends boolean = false>(options: Options<KpChartData, ThrowOnError>): RequestResult<KpChartResponses, KpChartErrors, ThrowOnError> => (options.client ?? client).post<KpChartResponses, KpChartErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1508,7 +1526,7 @@ export const kpChart = <ThrowOnError extends boolean = false>(options: Options<K
 /**
  * KP House Significators
  *
- * Computes KP house significators for all 12 houses. For each house returns: occupants, sign lord, planets in nakshatra of occupants (level 3), and planets in nakshatra of the sign lord (level 4). Request JSON follows BirthInput: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, optional `ayanamsa`.
+ * Computes KP house significators for all 12 houses. For each house returns: occupants (cusp-to-cusp), the sign lord of the cusp, planets in the nakshatra of an occupant, and planets in the nakshatra of the sign lord. Krishnamurti ranks them strongest first as: planets in the star of occupants, occupants, planets in the star of the sign lord, the sign lord; `strength_order` lists them in that order. `all_significators` keeps its original order (occupants, sign lord, star of occupants, star of sign lord) and is not a ranking. Planet `house` is the KP (cusp-to-cusp) house: a planet is in house h from cusp h up to, not including, cusp h+1 of the sidereal Placidus cusps, and a planet exactly on a cusp is in the house that cusp starts (no orb before a cusp). `rasi_house` is the whole-sign house from the lagna sign. Inside the polar circles, where Placidus cusps do not exist, the request fails with 422 `validation_error` instead of returning another house system; its `details` item has `type` and `issue` `no_quadrant_houses_at_this_latitude` and `input_format_ok: true` (the input is valid; the sky has no Placidus cusps there). Request JSON follows BirthInput: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`. `ayanamsa` is accepted but ignored: KP always uses the Krishnamurti ayanamsa.
  */
 export const kpSignificators = <ThrowOnError extends boolean = false>(options: Options<KpSignificatorsData, ThrowOnError>): RequestResult<KpSignificatorsResponses, KpSignificatorsErrors, ThrowOnError> => (options.client ?? client).post<KpSignificatorsResponses, KpSignificatorsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1523,7 +1541,7 @@ export const kpSignificators = <ThrowOnError extends boolean = false>(options: O
 /**
  * KP Ruling Planets
  *
- * Computes KP Ruling Planets at a given moment (no natal birth chart). Request body: `latitude`, `longitude`, optional `target_date`, `target_time`, `target_timezone`. Returns day lord, Moon sign/nakshatra/sub lords, ascendant sign/nakshatra/sub lords, and the combined list of ruling planets in priority order.
+ * Computes KP Ruling Planets at a given moment (no natal birth chart). Request body: `latitude`, `longitude`, optional `target_date`, `target_time`, `target_timezone`. KP takes ruling planets at the moment of judgment, so with no `target_date` and no `target_time` the current instant is used. `target_time` alone means that time today; `target_date` alone means 12:00 on that date. Local date and time are read in `target_timezone`, which defaults to the time zone at the coordinates. `target_utc` and `target_timezone` in the response show the instant and zone used. A date not in the calendar (e.g. 2026-02-30) is rejected with 422 saying it does not exist; dates outside 1800-01-01 to 2099-12-31 are rejected with 422 too. A local time skipped by a daylight-saving change is read with the offset before the change (moved forward by the gap), a repeated time as its first occurrence; `local_time_status` says which applied. Works at every latitude, including inside the polar circles: only the ascendant is used, which needs no house cusps (the day lord still needs a sunrise). Returns day lord, Moon sign/nakshatra/sub lords, ascendant sign/nakshatra/sub lords, and the combined list of ruling planets in priority order.
  */
 export const kpRulingPlanets = <ThrowOnError extends boolean = false>(options: Options<KpRulingPlanetsData, ThrowOnError>): RequestResult<KpRulingPlanetsResponses, KpRulingPlanetsErrors, ThrowOnError> => (options.client ?? client).post<KpRulingPlanetsResponses, KpRulingPlanetsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1568,7 +1586,7 @@ export const lalKitabRemedies = <ThrowOnError extends boolean = false>(options: 
 /**
  * Prashna (Horary Chart)
  *
- * Computes a Prashna (Horary) chart for the exact moment a question is asked. Returns lagna, Moon analysis, house lord condition, occupants of the relevant house, and a classical verdict (favourable / unfavourable / mixed) with confidence level. Question category determines which house is analysed.
+ * Computes a Prashna (Horary) chart for the exact moment a question is asked. Returns lagna, Moon analysis, house lord condition, occupants of the relevant house, and a classical verdict (favourable / unfavourable / mixed) with confidence level. Question category determines which house is analysed; that house and its lord are taken by whole sign from the lagna, like the planets' houses.
  */
 export const prashna = <ThrowOnError extends boolean = false>(options: Options<PrashnaData, ThrowOnError>): RequestResult<PrashnaResponses, PrashnaErrors, ThrowOnError> => (options.client ?? client).post<PrashnaResponses, PrashnaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1616,7 +1634,7 @@ export const pujaSuggestions = <ThrowOnError extends boolean = false>(options?: 
 /**
  * Rudraksha Recommendations
  *
- * Returns Rudraksha bead recommendations per planet. Each planet maps to a specific mukhi (face count) with presiding deity, exact beej mantra, recommended metal, wearing day, and classical notes including the important distinction that mukhi assignments are attributed to deities in tradition — planetary correspondence is traditional astrological synthesis. Pass ?planet=Jupiter for a single planet. Omit ?planet to get all nine planets.
+ * Returns Rudraksha bead recommendations per planet. Each planet maps to a specific mukhi (face count) with presiding deity, exact beej mantra, recommended metal, wearing day, how the bead is worn (strung at the neck or wrist, not on a finger), and classical notes including the important distinction that mukhi assignments are attributed to deities in tradition — planetary correspondence is traditional astrological synthesis. Pass ?planet=Jupiter for a single planet. Omit ?planet to get all nine planets.
  */
 export const rudraksha = <ThrowOnError extends boolean = false>(options?: Options<RudrakshaData, ThrowOnError>): RequestResult<RudrakshaResponses, RudrakshaErrors, ThrowOnError> => (options?.client ?? client).get<RudrakshaResponses, RudrakshaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1627,7 +1645,7 @@ export const rudraksha = <ThrowOnError extends boolean = false>(options?: Option
 /**
  * Ayanamsha Values
  *
- * Returns ayanamsha values for all four supported systems (Lahiri, Raman, KP, Tropical) for a given date. Each system returns the value in decimal degrees and DMS (degrees/minutes/seconds) format. Pass ?date=YYYY-MM-DD for a specific date. Omit ?date to get today's values. Lahiri is the Indian government standard and default for Jyotish.
+ * Returns ayanamsha values for all four supported systems (Lahiri, Raman, KP, Tropical) for a given date. Each system returns the value in decimal degrees and DMS (degrees/minutes/seconds) format. Pass ?date=YYYY-MM-DD for a specific date. Omit ?date to get today's values (today's UTC date). Lahiri is the Indian government standard and default for Jyotish.
  */
 export const ayanamsha = <ThrowOnError extends boolean = false>(options?: Options<AyanamshaData, ThrowOnError>): RequestResult<AyanamshaResponses, AyanamshaErrors, ThrowOnError> => (options?.client ?? client).get<AyanamshaResponses, AyanamshaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1638,7 +1656,7 @@ export const ayanamsha = <ThrowOnError extends boolean = false>(options?: Option
 /**
  * Biorhythm Cycles
  *
- * Computes physical (23-day), emotional (28-day), and intellectual (33-day) biorhythm cycles for a birth date. Returns cycle values (-1.0 to +1.0), percentage, phase label (High/Rising/Falling/Low), and critical day flags. Critical days occur when a cycle crosses zero — these represent instability and vulnerability to poor judgment. Supports single-day and multi-day (up to 90 days) range requests. Formula: sin(2π × t / cycle_length) where t = days since birth. Source: Wilhelm Fliess (1897) physical cycle; Hermann Swoboda (1900) emotional cycle; Alfred Teltscher (1926) intellectual cycle.
+ * Computes physical (23-day), emotional (28-day), and intellectual (33-day) biorhythm cycles for a birth date. Returns cycle values (-1.0 to +1.0), percentage, phase label (High above +0.5, Low below -0.5, otherwise Rising or Falling by the curve's direction), trend, and critical day flags. Critical days occur when a cycle crosses zero — these represent instability and vulnerability to poor judgment. Supports single-day and multi-day (up to 90 days) range requests. Formula: sin(2π × t / cycle_length) where t = days since birth. Source: Wilhelm Fliess (1897) physical cycle; Hermann Swoboda (1900) emotional cycle; Alfred Teltscher (1926) intellectual cycle.
  */
 export const westernBiorhythm = <ThrowOnError extends boolean = false>(options: Options<WesternBiorhythmData, ThrowOnError>): RequestResult<WesternBiorhythmResponses, WesternBiorhythmErrors, ThrowOnError> => (options.client ?? client).post<WesternBiorhythmResponses, WesternBiorhythmErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1668,7 +1686,7 @@ export const nakshatraPrediction = <ThrowOnError extends boolean = false>(option
 /**
  * Pitru Dosha (Pitru Shapa)
  *
- * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations that indicate Pitru Dosha presence. Returns presence flag, severity (mild/moderate/severe), which of the 5 classical combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
+ * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations that indicate Pitru Dosha presence. Returns presence flag, severity (mild/moderate/severe), which of the 5 classical combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. The 9th, 5th and lagna lords are taken by whole sign from the lagna; aspects are full Parashari graha drishti (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu and Ketu 7). This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
  */
 export const pitraDosha = <ThrowOnError extends boolean = false>(options: Options<PitraDoshaData, ThrowOnError>): RequestResult<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError> => (options.client ?? client).post<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1703,7 +1721,8 @@ export const ghatChakra = <ThrowOnError extends boolean = false>(options: Option
  * Returns up to `limit` matches (default 5, at most 10). When a query is ambiguous
  * (e.g. 'Fatehabad' exists in multiple states), multiple results
  * are returned so the developer can present a disambiguation UI
- * or use the first result.
+ * or use the first result. Repeat matches for one place (same city, state
+ * and country within 5 km) are listed once.
  *
  * Examples: ?q=Mumbai, ?q=Rome Italy, ?q=New York USA, ?q=London UK
  *
@@ -1733,7 +1752,7 @@ export const timezone = <ThrowOnError extends boolean = false>(options?: Options
 /**
  * Sade Sati periods
  *
- * Calculate all Sade Sati periods for a natal chart. Returns rising, peak, and setting phases for each period, current active status, intensity score (0-100), intensity label, and next upcoming period. Optionally check status for a specific date using check_date. Sade Sati is Saturn's 7.5-year transit over natal Moon sign and adjacent signs. Small Panoti (Dhaiya) covers Saturn in the 4th or 8th sign from natal Moon (~2.5 years each). Returns all past, current, and future Sade Sati cycles with phase descriptions.
+ * Calculate all Sade Sati periods for a natal chart. Returns rising, peak, and setting phases for each period (first entry, final exit and every stay of Saturn in the sign, so retrograde re-entries are shown), current active status and phase from Saturn's sign on the check date, intensity score (0-100 scale, 40-90 while active), intensity label, and next upcoming period. Optionally check status for a specific date using check_date. Sade Sati is Saturn's 7.5-year transit over natal Moon sign and adjacent signs. Small Panoti (Dhaiya) covers Saturn in the 4th or 8th sign from natal Moon (~2.5 years each). Returns all past, current, and future Sade Sati cycles with phase descriptions.
  */
 export const sadeSati = <ThrowOnError extends boolean = false>(options: Options<SadeSatiData, ThrowOnError>): RequestResult<SadeSatiResponses, SadeSatiErrors, ThrowOnError> => (options.client ?? client).post<SadeSatiResponses, SadeSatiErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1785,6 +1804,14 @@ export const transits = <ThrowOnError extends boolean = false>(options: Options<
  * by a planet. The total cycle is 36 years. It is considered highly accurate
  * for timing events in the near term and is widely used alongside Vimshottari.
  *
+ * **Timeline:** the opening Yogini runs from birth for its balance, then three
+ * full 36-year cycles follow (past age 108). The first row carries
+ * `dasha_start_date` (when the full period began, before birth) and
+ * `balance_years`; its antardashas are the tail of the full period.
+ *
+ * **Antardashas:** each lasts MD years × AD Yogini years / 36, starting from
+ * the Mahadasha's own Yogini (the published proportional rule).
+ *
  * **The 8 Yoginis and their durations:**
  * - Mangala (Moon) — 1 year
  * - Pingala (Sun) — 2 years
@@ -1803,7 +1830,7 @@ export const transits = <ThrowOnError extends boolean = false>(options: Options<
  *
  * **Date format:** All dates are returned in DD/MM/YYYY format.
  *
- * **Ayanamsa:** Default is Lahiri.
+ * **Ayanamsa:** Default is Lahiri; the request's `ayanamsa` is applied.
  */
 export const yoginiDasha = <ThrowOnError extends boolean = false>(options: Options<YoginiDashaData, ThrowOnError>): RequestResult<YoginiDashaResponses, YoginiDashaErrors, ThrowOnError> => (options.client ?? client).post<YoginiDashaResponses, YoginiDashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1818,7 +1845,7 @@ export const yoginiDasha = <ThrowOnError extends boolean = false>(options: Optio
 /**
  * Varshaphal — Solar Return Chart
  *
- * Computes the Varshaphal (annual horoscope) for a given year. Finds the exact moment when the Sun returns to its natal longitude, computes all planet positions at that moment, and returns Muntha (progressed ascendant) and Varsha Lord (year lord). Request JSON follows BirthInput plus `target_year`: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Computes the Varshaphal (annual horoscope) for a given year. Finds the exact moment when the Sun returns to its natal longitude (the return nearest the birthday in target_year; in UT it can fall a day either side, or on 31 December for a 1 January birthday), computes all planet positions at that moment, and returns Muntha (natal lagna sign + completed years, target_year minus birth year), the Varsha Pati (Tajika year lord, elected from the five Pancha Adhikaris) and Tajika Ithasala/Musaripha between the seven grahas. year_lord / vara_lord is the weekday lord at the return, not the Varsha Pati. Request JSON follows BirthInput plus `target_year`: `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const varshaphal = <ThrowOnError extends boolean = false>(options: Options<VarshaphalData, ThrowOnError>): RequestResult<VarshaphalResponses, VarshaphalErrors, ThrowOnError> => (options.client ?? client).post<VarshaphalResponses, VarshaphalErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1833,7 +1860,7 @@ export const varshaphal = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Varshaphal — Tajika Saham Points
  *
- * Computes all 10 Tajika Saham (sensitive points) for a Varshaphal chart. Sahams are the Tajika equivalent of Arabic Parts — mathematically derived points that focus on specific life themes for the year. Formula: A - B + Ascendant (conditional +30° per Tajika Saham rules). Day and night formulas differ — the operands swap based on whether the solar return occurs during daytime or nighttime. 10 Sahams returned: Punya (Fortune), Vidya (Education), Yashas (Fame), Mitra (Friends), Mahatmya (Status), Asha (Desires), Karmakarya (Career), Vyapara (Business), Vivaha (Marriage), Santapa (Sorrow/Stress). Yashas and Mahatmya use Punya Saham as an operand — computed first.
+ * Computes all 10 Tajika Saham (sensitive points) for a Varshaphal chart. Sahams are the Tajika equivalent of Arabic Parts — mathematically derived points that focus on specific life themes for the year. Formula: A - B + C, plus 30° when C is not on the arc from B forward to A (Tajika Neelakanthi). C is the Varsha ascendant except for Mitra (Venus) and Santapa (the 6th house, ascendant + 150°). For a night return A and B swap, except Vyapara. Day formulas: Punya Moon-Sun, Vidya Sun-Moon, Yashas Jupiter-Punya, Mitra Jupiter-Punya+Venus, Mahatmya Punya-Mars, Asha Saturn-Mars, Karmakarya Mars-Mercury, Vyapara Mars-Saturn, Vivaha Venus-Saturn, Santapa Saturn-Moon+6th house. Yashas, Mitra and Mahatmya use Punya Saham as an operand — computed first.
  */
 export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: Options<VarshaphalSahamData, ThrowOnError>): RequestResult<VarshaphalSahamResponses, VarshaphalSahamErrors, ThrowOnError> => (options.client ?? client).post<VarshaphalSahamResponses, VarshaphalSahamErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1848,7 +1875,7 @@ export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: O
 /**
  * Varshaphal — Harsha Bala
  *
- * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house placement), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (gender-appropriate house hemisphere), Dina-Ratri (day/night return alignment). Computed per Tajika rules.
+ * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house: Sun 9th, Moon 3rd, Mars 6th, Mercury 1st, Jupiter 11th, Venus 5th, Saturn 12th), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (masculine Sun, Mars, Jupiter in houses 4-6 or 10-12; feminine Moon, Mercury, Venus, Saturn in houses 1-3 or 7-9), Dina-Ratri (masculine planets in a day return, feminine in a night return). Houses are whole signs from the Varsha lagna, as Jagannatha Hora counts them.
  */
 export const varshaphalHarshaBala = <ThrowOnError extends boolean = false>(options: Options<VarshaphalHarshaBalaData, ThrowOnError>): RequestResult<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError> => (options.client ?? client).post<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

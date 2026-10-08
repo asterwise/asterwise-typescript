@@ -1,5 +1,80 @@
 # CHANGELOG
 
+## 0.10.0 — 2026-10-08
+
+Generated from the API as deployed on 2026-10-08, after a full accuracy pass
+of the calculation engines against classical texts and reference software.
+Requests are unchanged apart from the new optional inputs below; most
+changes are new response fields and corrected values.
+
+### Added
+
+- Western natal and solar return charts: `WesternPlanetPosition.essential_dignities`
+  (William Lilly's full scoring: domicile, exaltation, triplicity, term, face,
+  detriment, fall, peregrine and a total) and `WesternNatalResponse.sect`
+  (`day` or `night`).
+- Dashas: `dasha_start_date` and `balance_years` on the first Vimshottari,
+  Yogini and Ashtottari period.
+- KP: `KpChartResponse.house_basis` and per-planet `rasi_house`;
+  `KpHouseSignificators.strength_order` (strongest first);
+  `KpRulingPlanetsResponse.target_timezone` and `local_time_status`.
+- Pitra dosha: `combinations_detail` (`PitruCombination`: name, description,
+  factors, weight).
+- Gochar: `ashtakavarga_score_reduced` and `bindu_override`.
+- Varshaphal: `vara_lord` (the weekday lord, which `year_lord` has always
+  returned).
+- Sade Sati: `segments` and `is_interrupted` on each phase, period and small
+  panoti, so retrograde re-entries show up (`SadeSatiPeriod`,
+  `SadeSatiPhase`, `SaturnStay`).
+- Moon phase: `next_phase_at`, `computed_at`, `principal_phase`,
+  `principal_phase_at` (exact phase instants).
+- Transits: `datetime_utc` on ingress and station events.
+- Festivals: `tithi_at_moonrise` for moonrise rules such as Karva Chauth.
+- Biorhythm: `trend` (rising, falling or turning).
+- Western composite, progressed and solar arc planets: `dignity_disputed`;
+  composite aspects add `planet_a` / `planet_b` (`CompositeAspectSchema`).
+- Numerology: mobile and vehicle numbers return `master_number`, `digits_used`
+  and `country_code`; `MobileNumberRequest.country` and a `country` query on
+  `mobileNumber` (optional ISO country the number is dialled in); name
+  correction returns `expression_karmic_debt`, `soul_urge_karmic_debt` and
+  `personality_karmic_debt`; Lo Shu numbers add `lo_shu_plane`.
+- Rudraksha: `how_to_wear`.
+- Optional `timezone` for tarot card of the day, and `date` / `timezone`
+  for angel number of the day.
+
+### Changed
+
+- Named types replace open records in four places: `KpChartResponse.planets`
+  (`KpPlanet`), `KpSignificatorsResponse.significators`
+  (`KpHouseSignificators`), `SadeSatiResponse.all_periods` (`SadeSatiPeriod`)
+  and `CompositeResponse.aspects` (`CompositeAspectSchema`, a superset of the
+  old `SynastryAspectSchema` fields). Casts that treated these as
+  `Record<string, unknown>` may need removing.
+- `GemstoneResponse.secondary` is optional.
+
+### Values now match the classical sources
+
+- Dashas: Vimshottari sub-periods at birth, Yogini over three full cycles,
+  Ashtottari nakshatra groups and applicability, Char Dasha by K.N. Rao's
+  own rules.
+- KP: planet houses are cusp to cusp; ruling planets default to the current
+  moment in the place's own time zone.
+- Divisional charts and strength: D30 and D60 tables, Vimshopaka and
+  Shadbala (checked against B.V. Raman's worked example).
+- Yogas, doshas and gochar: full graha drishti, whole-sign house lords,
+  vedha pairs; Mangal dosha is cancelled only by a Jupiter or Venus that is
+  not debilitated or combust.
+- Varshaphal: the solar return nearest the birthday, Muntha, Tri-Rashi lord,
+  Ithasala, Sahams and Harsha Bala.
+- Festivals, moon phases and Sade Sati dates; gems and crystals follow one
+  functional benefic rule (54 crystals).
+- Western: hemisphere counts, applying aspects, progressed Ascendant and
+  sign compatibility scores.
+- Numerology: names are reduced part by part with karmic debt found
+  anywhere in the reduction; Y is always a consonant; mobile numbers leave
+  the country code out; Lo Shu planes follow the Lo Shu square; lucky
+  numbers are 1-9 plus your core numbers.
+
 ## 0.9.1 — 2026-10-08
 
 ### Changed
