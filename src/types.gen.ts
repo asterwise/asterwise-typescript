@@ -7715,13 +7715,13 @@ export type LalKitabRemedyItem = {
     /**
      * Action
      *
-     * The remedy, paraphrased from the cited book page.
+     * The remedy, in short.
      */
     action: string;
     /**
      * Page
      *
-     * Page in Goswami & Vashisth, Lal Kitab (based on the 1952 edition), Sagar Publications.
+     * Deprecated: no longer sent.
      */
     page?: number | null;
     /**
