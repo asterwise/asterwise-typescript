@@ -50,7 +50,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 |--------|------------|
 | Vedic astrology | 40 |
 | Matchmaking | 5 |
-| Western astrology | 17 |
+| Western astrology | 21 |
 | Horoscope | 8 |
 | Numerology | 24 |
 | KP + Lal Kitab | 5 |
@@ -68,7 +68,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 - **HMAC-signed responses** for auditability
 - **Panchanga as printed panchangs show it**: every tithi, nakshatra, yoga and karana of the day with start and end times, the festival and vrat calendar, and muhurta search with exact ISO times
 - **Typed responses** for every operation, generated from the OpenAPI document
-- **MCP server** with **104 tools** for Claude and Cursor integration
+- **MCP server** with **108 tools** for Claude and Cursor integration
 
 ## Examples
 
