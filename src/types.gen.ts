@@ -404,6 +404,28 @@ export type ApiResponseCrystalRecommendResponse = {
 };
 
 /**
+ * ApiResponse[CrystalsByPlanetResponse]
+ */
+export type ApiResponseCrystalsByPlanetResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: CrystalsByPlanetResponse;
+};
+
+/**
  * ApiResponse[DailyTransitResponse]
  */
 export type ApiResponseDailyTransitResponse = {
@@ -621,6 +643,28 @@ export type ApiResponseDreamSymbol = {
      * The endpoint response payload
      */
     data: DreamSymbol;
+};
+
+/**
+ * ApiResponse[EclipsesResponse]
+ */
+export type ApiResponseEclipsesResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: EclipsesResponse;
 };
 
 /**
@@ -1460,6 +1504,28 @@ export type ApiResponsePitruDoshaResponse = {
 };
 
 /**
+ * ApiResponse[PlanetaryHoursResponse]
+ */
+export type ApiResponsePlanetaryHoursResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: PlanetaryHoursResponse;
+};
+
+/**
  * ApiResponse[PoruthamResponse]
  */
 export type ApiResponsePoruthamResponse = {
@@ -1501,6 +1567,28 @@ export type ApiResponsePrashnaResponse = {
      * The endpoint response payload
      */
     data: PrashnaResponse;
+};
+
+/**
+ * ApiResponse[ProfectionsResponse]
+ */
+export type ApiResponseProfectionsResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: ProfectionsResponse;
 };
 
 /**
@@ -1971,6 +2059,28 @@ export type ApiResponseVarshaphalResponse = {
      * The endpoint response payload
      */
     data: VarshaphalResponse;
+};
+
+/**
+ * ApiResponse[VoidOfCourseResponse]
+ */
+export type ApiResponseVoidOfCourseResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: VoidOfCourseResponse;
 };
 
 /**
@@ -3796,7 +3906,7 @@ export type CompatibilityPersonInput = {
     /**
      * Name
      *
-     * Name of the person in compatibility calculation
+     * Name of the person. Required, but it does not change the score: only the birth date does.
      */
     name: string;
     /**
@@ -4192,6 +4302,26 @@ export type CrystalRecommendResponse = {
 };
 
 /**
+ * CrystalsByPlanetResponse
+ *
+ * GET /v1/crystals/by-planet/{planet}: one planet's gems, not the catalogue.
+ */
+export type CrystalsByPlanetResponse = {
+    /**
+     * Total
+     *
+     * Number of crystals assigned to the planet (the length of crystals).
+     */
+    total: number;
+    /**
+     * Crystals
+     *
+     * Crystals whose Vedic planet is the requested planet: Navaratna (primary gem) first, then Uparatna (substitutes), each group sorted alphabetically by name.
+     */
+    crystals: Array<CrystalEntry>;
+};
+
+/**
  * DailyScore
  */
 export type DailyScore = {
@@ -4229,6 +4359,18 @@ export type DailyTransitResponse = {
      * Total Aspects
      */
     total_aspects: number;
+    /**
+     * House System
+     *
+     * House system used for natal_house on each transiting planet.
+     */
+    house_system?: string;
+    /**
+     * Birth Time Provided
+     *
+     * True when a birth time was supplied. False when it was not: natal_house is then null for every transiting planet, and natal positions were computed for 06:00 local time.
+     */
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -5518,6 +5660,76 @@ export type DreamSymbolListResponse = {
 };
 
 /**
+ * EclipseEventSchema
+ */
+export type EclipseEventSchema = {
+    /**
+     * Kind
+     */
+    kind: 'solar' | 'lunar';
+    /**
+     * Type
+     *
+     * Solar: total, annular, hybrid or partial. Lunar: total, partial or penumbral.
+     */
+    type: string;
+    /**
+     * Max Utc
+     *
+     * Moment of greatest eclipse, UTC.
+     */
+    max_utc: string;
+    /**
+     * Begin Utc
+     *
+     * Start of the eclipse (partial phase; penumbral phase for penumbral lunar eclipses), UTC.
+     */
+    begin_utc?: string | null;
+    /**
+     * End Utc
+     *
+     * End of the eclipse, UTC.
+     */
+    end_utc?: string | null;
+    /**
+     * Sun Longitude
+     *
+     * Tropical longitude of the Sun at maximum.
+     */
+    sun_longitude: number;
+    /**
+     * Moon Longitude
+     *
+     * Tropical longitude of the Moon at maximum.
+     */
+    moon_longitude: number;
+    /**
+     * Eclipse Longitude
+     *
+     * The eclipse degree: Sun for a solar eclipse, Moon for a lunar one.
+     */
+    eclipse_longitude: number;
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Natal Contacts
+     *
+     * Natal points within 3° of the eclipse degree (empty without birth data).
+     */
+    natal_contacts?: Array<EclipseNatalContact>;
+};
+
+/**
  * EclipseLocal
  */
 export type EclipseLocal = {
@@ -5545,6 +5757,102 @@ export type EclipseLocal = {
      * Moonrise, for a lunar eclipse that is in progress at moonrise.
      */
     moonrise?: string | null;
+};
+
+/**
+ * EclipseNatalContact
+ */
+export type EclipseNatalContact = {
+    /**
+     * Natal Point
+     *
+     * Natal planet, Ascendant or MC.
+     */
+    natal_point: string;
+    /**
+     * Natal Longitude
+     */
+    natal_longitude: number;
+    /**
+     * Aspect
+     *
+     * How the eclipse degree meets the natal point: same degree (conjunction) or opposite (opposition).
+     */
+    aspect: 'conjunction' | 'opposition';
+    /**
+     * Orb
+     *
+     * Distance from exact, in degrees (0–3).
+     */
+    orb: number;
+};
+
+/**
+ * EclipsesRequest
+ */
+export type EclipsesRequest = {
+    /**
+     * From Date
+     *
+     * First day of the range (YYYY-MM-DD, UTC).
+     */
+    from_date: string;
+    /**
+     * To Date
+     *
+     * Last day of the range (YYYY-MM-DD, UTC, inclusive). At most 10 years after from_date.
+     */
+    to_date: string;
+    /**
+     * Optional birth data. When given, each eclipse lists natal planets and angles within 3° of the eclipse degree.
+     */
+    birth?: BirthInput | null;
+    /**
+     * House System
+     *
+     * House system used to compute the natal Ascendant and MC.
+     */
+    house_system?: 'placidus' | 'koch' | 'equal' | 'whole_sign';
+};
+
+/**
+ * EclipsesResponse
+ */
+export type EclipsesResponse = {
+    /**
+     * From Date
+     */
+    from_date: string;
+    /**
+     * To Date
+     */
+    to_date: string;
+    /**
+     * Orb Degrees
+     *
+     * Orb used for natal contacts.
+     */
+    orb_degrees: number;
+    /**
+     * Birth Data Provided
+     */
+    birth_data_provided: boolean;
+    /**
+     * Birth Time Provided
+     *
+     * False when no birth time: Ascendant and MC are not checked and the natal Moon is approximate.
+     */
+    birth_time_provided: boolean;
+    /**
+     * Angles Checked
+     *
+     * True when the natal Ascendant and MC were included in the contact check.
+     */
+    angles_checked: boolean;
+    /**
+     * Eclipses
+     */
+    eclipses: Array<EclipseEventSchema>;
 };
 
 /**
@@ -5922,7 +6230,7 @@ export type GemstoneResponse = {
     /**
      * Secondary
      *
-     * Same object as atmakaraka_gem (kept for compatibility).
+     * The first usable second gem: the yogakaraka, 9th lord, 5th lord or Atmakaraka gem, in that order, skipping the lagna lord's and any contraindicated one. role names the slot it came from. Null when none is usable.
      */
     secondary?: {
         [key: string]: unknown;
@@ -6456,17 +6764,47 @@ export type GocharTransitEntry = {
      */
     ashtakavarga_score_reduced?: number | null;
     /**
+     * Favorable Reason
+     *
+     * Which rule decided is_favorable_from_moon, in words: the house from the Moon, or the bindu count overriding it.
+     */
+    favorable_reason?: string | null;
+    /**
      * Interpretation
+     *
+     * Reading that agrees with is_favorable_from_moon. Normally the classical text for this house from the Moon; when the bindus reverse the house rule it is favorable_reason, and the house text is in house_rule_interpretation.
      */
     interpretation: string;
     /**
      * Themes
+     *
+     * Theme tags for the house from the Moon. Empty when the bindus reverse the house rule; the house tags are then only in house_rule_themes.
      */
     themes: Array<string>;
     /**
      * Quality
+     *
+     * Final verdict, 'favorable' or 'unfavorable'. Always matches is_favorable_from_moon, bindu override included.
      */
     quality: string;
+    /**
+     * House Rule Quality
+     *
+     * Classical quality of this house from the Moon alone, before the bindu override.
+     */
+    house_rule_quality?: string | null;
+    /**
+     * House Rule Interpretation
+     *
+     * Classical text for this house from the Moon alone.
+     */
+    house_rule_interpretation?: string | null;
+    /**
+     * House Rule Themes
+     *
+     * Theme tags for this house from the Moon alone.
+     */
+    house_rule_themes?: Array<string>;
 };
 
 /**
@@ -6923,6 +7261,18 @@ export type IngressEvent = {
      */
     to_sign: number;
     /**
+     * From Sign Name
+     *
+     * Name of the sign the planet is leaving, e.g. Pisces
+     */
+    from_sign_name?: string | null;
+    /**
+     * To Sign Name
+     *
+     * Name of the sign the planet is entering, e.g. Aries
+     */
+    to_sign_name?: string | null;
+    /**
      * Jd
      *
      * Julian Day number of the ingress moment
@@ -6952,6 +7302,18 @@ export type IngressEvent = {
      * True when the planet is retrograde (speed < 0) at the ingress moment.
      */
     retrograde_ingress: boolean;
+    /**
+     * Zodiac
+     *
+     * Zodiac the signs are measured in: sidereal or tropical.
+     */
+    zodiac?: 'sidereal' | 'tropical' | null;
+    /**
+     * Ayanamsa
+     *
+     * Ayanamsa used: lahiri, raman, kp, or tropical (none).
+     */
+    ayanamsa?: string | null;
 };
 
 /**
@@ -7722,6 +8084,8 @@ export type LalKitabRemedyItem = {
      * Page
      *
      * Deprecated: no longer sent.
+     *
+     * @deprecated
      */
     page?: number | null;
     /**
@@ -7918,6 +8282,8 @@ export type LoShuNumberEntry = {
      * Plane
      *
      * Legacy grouping of the numbers, unchanged since v1: 'mental' for 1-3, 'physical' for 4-6, 'spiritual' for 7-9. It is not a line of the Lo Shu square; `lo_shu_plane` gives the row of the square.
+     *
+     * @deprecated
      */
     plane: string;
     /**
@@ -8362,6 +8728,18 @@ export type MonthlyTransitResponse = {
      * Peak Aspects
      */
     peak_aspects: Array<TransitAspectSchema>;
+    /**
+     * House System
+     *
+     * House system used for natal_house on each transiting planet.
+     */
+    house_system?: string;
+    /**
+     * Birth Time Provided
+     *
+     * True when a birth time was supplied. False when it was not: natal_house is then null for every transiting planet.
+     */
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -10947,6 +11325,164 @@ export type PlanetPosition = {
 };
 
 /**
+ * PlanetaryHour
+ */
+export type PlanetaryHour = {
+    /**
+     * Hour
+     *
+     * 1–12 are day hours (sunrise to sunset), 13–24 night hours.
+     */
+    hour: number;
+    /**
+     * Period
+     */
+    period: 'day' | 'night';
+    /**
+     * Planet
+     *
+     * Planet ruling this hour.
+     */
+    planet: string;
+    /**
+     * Start Local
+     *
+     * Start, local time with UTC offset (ISO 8601).
+     */
+    start_local: string;
+    /**
+     * End Local
+     *
+     * End, local time with UTC offset (ISO 8601).
+     */
+    end_local: string;
+    /**
+     * Start Utc
+     *
+     * Start in UTC (ISO 8601 with Z).
+     */
+    start_utc: string;
+    /**
+     * End Utc
+     *
+     * End in UTC (ISO 8601 with Z).
+     */
+    end_utc: string;
+    /**
+     * Length Minutes
+     */
+    length_minutes: number;
+    /**
+     * Is Current
+     *
+     * True if the current moment falls in this hour.
+     */
+    is_current: boolean;
+};
+
+/**
+ * PlanetaryHoursRequest
+ *
+ * Date plus place (location, or latitude/longitude/timezone).
+ */
+export type PlanetaryHoursRequest = {
+    /**
+     * Date
+     *
+     * Date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Location
+     *
+     * City name. Example: 'Mumbai'
+     */
+    location?: string | null;
+    /**
+     * Latitude
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone string
+     */
+    timezone?: string | null;
+};
+
+/**
+ * PlanetaryHoursResponse
+ */
+export type PlanetaryHoursResponse = {
+    /**
+     * Date
+     */
+    date: string;
+    /**
+     * Weekday
+     *
+     * Weekday of the date, e.g. Sunday.
+     */
+    weekday: string;
+    /**
+     * Day Ruler
+     *
+     * Planet of the weekday; it rules the first hour after sunrise.
+     */
+    day_ruler: string;
+    /**
+     * Convention
+     *
+     * unequal_seasonal: day and night each split into 12 equal parts from real sunrise and sunset.
+     */
+    convention: string;
+    /**
+     * Sunrise Local
+     */
+    sunrise_local: string;
+    /**
+     * Sunset Local
+     */
+    sunset_local: string;
+    /**
+     * Next Sunrise Local
+     */
+    next_sunrise_local: string;
+    /**
+     * Sunrise Utc
+     */
+    sunrise_utc: string;
+    /**
+     * Sunset Utc
+     */
+    sunset_utc: string;
+    /**
+     * Next Sunrise Utc
+     */
+    next_sunrise_utc: string;
+    /**
+     * Day Hour Minutes
+     *
+     * Length of one day hour in minutes.
+     */
+    day_hour_minutes: number;
+    /**
+     * Night Hour Minutes
+     *
+     * Length of one night hour in minutes.
+     */
+    night_hour_minutes: number;
+    /**
+     * Hours
+     */
+    hours: Array<PlanetaryHour>;
+};
+
+/**
  * PlanetaryReturnRequest
  */
 export type PlanetaryReturnRequest = {
@@ -11342,6 +11878,206 @@ export type PrashnaVerdict = {
      * Score
      */
     score: number;
+};
+
+/**
+ * ProfectedSignPlanetSchema
+ */
+export type ProfectedSignPlanetSchema = {
+    /**
+     * Planet
+     */
+    planet: string;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+};
+
+/**
+ * ProfectionYearSchema
+ */
+export type ProfectionYearSchema = {
+    /**
+     * Age
+     */
+    age: number;
+    /**
+     * Year Start
+     *
+     * Birthday that starts this profection year.
+     */
+    year_start: string;
+    /**
+     * Year End
+     *
+     * Next birthday (exclusive).
+     */
+    year_end: string;
+    /**
+     * Profected House
+     *
+     * Whole-sign house activated this year, counted from the Ascendant.
+     */
+    profected_house: number;
+    /**
+     * Profected Sign
+     */
+    profected_sign: string;
+    /**
+     * Profected Sign Index
+     */
+    profected_sign_index: number;
+    /**
+     * Year Lord
+     *
+     * Traditional ruler of the profected sign (lord of the year).
+     */
+    year_lord: string;
+};
+
+/**
+ * ProfectionsRequest
+ */
+export type ProfectionsRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. Required: profections count from the Ascendant sign, which needs the birth time.
+     */
+    time: string;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Sidereal ayanamsa mode used in calculations
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * House System
+     *
+     * House system for the natal house reported under year_lord_natal. Profections themselves always use whole signs.
+     */
+    house_system?: 'placidus' | 'koch' | 'equal' | 'whole_sign';
+    /**
+     * Target Date
+     *
+     * Date to profect to (YYYY-MM-DD). Defaults to today (UTC).
+     */
+    target_date?: string | null;
+};
+
+/**
+ * ProfectionsResponse
+ */
+export type ProfectionsResponse = {
+    /**
+     * Target Date
+     */
+    target_date: string;
+    /**
+     * Age
+     *
+     * Completed years of life on target_date.
+     */
+    age: number;
+    /**
+     * Year Start
+     */
+    year_start: string;
+    /**
+     * Year End
+     */
+    year_end: string;
+    /**
+     * Ascendant Sign
+     */
+    ascendant_sign: string;
+    /**
+     * Ascendant Sign Index
+     */
+    ascendant_sign_index: number;
+    /**
+     * Profected House
+     */
+    profected_house: number;
+    /**
+     * Profected Sign
+     */
+    profected_sign: string;
+    /**
+     * Profected Sign Index
+     */
+    profected_sign_index: number;
+    /**
+     * Year Lord
+     *
+     * Lord of the year: traditional ruler of the profected sign (Ptolemy, Tetrabiblos I.17).
+     */
+    year_lord: string;
+    /**
+     * Where the year lord sits in the birth chart.
+     */
+    year_lord_natal?: YearLordNatalSchema | null;
+    /**
+     * Natal Planets In Profected Sign
+     */
+    natal_planets_in_profected_sign: Array<ProfectedSignPlanetSchema>;
+    /**
+     * Upcoming Years
+     *
+     * This year and the next eleven.
+     */
+    upcoming_years: Array<ProfectionYearSchema>;
+    /**
+     * House System Note
+     */
+    house_system_note: string;
 };
 
 /**
@@ -12606,9 +13342,33 @@ export type StationEvent = {
     /**
      * Longitude
      *
-     * Sidereal longitude of the planet at the moment of station
+     * Longitude of the planet at the moment of station, in the requested zodiac (sidereal by default; tropical when ayanamsa is tropical).
      */
     longitude: number;
+    /**
+     * Sign
+     *
+     * Zero-based sign index at the station, 0 for Aries through 11 for Pisces
+     */
+    sign?: number | null;
+    /**
+     * Sign Name
+     *
+     * Name of the sign at the station, e.g. Gemini
+     */
+    sign_name?: string | null;
+    /**
+     * Zodiac
+     *
+     * Zodiac the longitude is measured in: sidereal or tropical.
+     */
+    zodiac?: 'sidereal' | 'tropical' | null;
+    /**
+     * Ayanamsa
+     *
+     * Ayanamsa used: lahiri, raman, kp, or tropical (none).
+     */
+    ayanamsa?: string | null;
 };
 
 /**
@@ -13209,6 +13969,18 @@ export type TransitAspectSchema = {
      * True if the transiting planet's instantaneous motion is closing the orb to the (fixed) natal planet. False if separating or exact.
      */
     is_applying: boolean;
+    /**
+     * Exact At
+     *
+     * When this aspect is exact: the UTC moment the transiting planet reaches the exact aspect degree (ISO 8601 with Z, to the second). Searched 30 days either side of the snapshot day. Applying aspects give the next exact moment, separating aspects the last one. Null when no exact moment falls within the 30-day search window.
+     */
+    exact_at?: string | null;
+    /**
+     * Days To Exact
+     *
+     * Days from the snapshot (noon UTC on the transit day) to exact_at. Positive means the aspect is still to become exact, negative means it already was. Null when exact_at is null.
+     */
+    days_to_exact?: number | null;
 };
 
 /**
@@ -13314,6 +14086,12 @@ export type TransitPlanetRowSchema = {
      * Aspects To Natal
      */
     aspects_to_natal: Array<TransitAspectSchema>;
+    /**
+     * Natal House
+     *
+     * Natal house (1–12) this transiting planet is passing through, using the birth chart's house cusps in the requested house_system. Null when the birth time is unknown (birth_time_provided is false), because natal houses need a birth time.
+     */
+    natal_house?: number | null;
 };
 
 /**
@@ -13332,6 +14110,12 @@ export type TransitsRequest = {
      * End of the date range to scan, in YYYY-MM-DD format. Maximum range is 3 years (1095 days) from from_date.
      */
     to_date: string;
+    /**
+     * Ayanamsa
+     *
+     * Zodiac for the sign changes. lahiri (default), raman and kp are sidereal ayanamsas (Vedic). tropical is the Western zodiac with no ayanamsa, so ingresses become Western sign changes (Sun into Aries at the March equinox, Moon sign changes every ~2.5 days). Station moments do not depend on this; only their reported longitude does.
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
 
 /**
@@ -13339,9 +14123,21 @@ export type TransitsRequest = {
  */
 export type TransitsResponse = {
     /**
+     * Zodiac
+     *
+     * Zodiac used for every event: sidereal (Vedic, default) or tropical (Western).
+     */
+    zodiac?: 'sidereal' | 'tropical';
+    /**
+     * Ayanamsa
+     *
+     * Ayanamsa used: lahiri (default), raman, kp, or tropical (no ayanamsa).
+     */
+    ayanamsa?: string;
+    /**
      * Ingresses
      *
-     * All sign ingress events in the requested date range. Includes all 9 Vedic planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu.
+     * All sign ingress events in the requested date range, Moon sign changes included. Covers all 9 Vedic planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu (Rahu/Ketu are the mean nodes).
      */
     ingresses: Array<IngressEvent>;
     /**
@@ -13724,6 +14520,128 @@ export type VehicleNumberRequest = {
 };
 
 /**
+ * VoidOfCourseLastAspect
+ */
+export type VoidOfCourseLastAspect = {
+    /**
+     * Planet
+     *
+     * Planet of the Moon's last exact aspect in the sign.
+     */
+    planet: string;
+    /**
+     * Aspect
+     *
+     * Aspect type: conjunction, sextile, square, trine or opposition.
+     */
+    aspect: string;
+    /**
+     * Exact At
+     *
+     * UTC moment that aspect was exact (ISO 8601 with Z).
+     */
+    exact_at: string;
+};
+
+/**
+ * VoidOfCoursePeriod
+ */
+export type VoidOfCoursePeriod = {
+    /**
+     * Start Utc
+     *
+     * When the void-of-course period starts (last exact aspect), UTC.
+     */
+    start_utc: string;
+    /**
+     * End Utc
+     *
+     * When it ends: the Moon enters the next sign, UTC.
+     */
+    end_utc: string;
+    /**
+     * Duration Hours
+     *
+     * Length of the void period in hours.
+     */
+    duration_hours: number;
+    /**
+     * Moon Sign
+     *
+     * Sign the Moon is in while void.
+     */
+    moon_sign: string;
+    /**
+     * Moon Sign Index
+     */
+    moon_sign_index: number;
+    /**
+     * Next Sign
+     *
+     * Sign the Moon enters at end_utc.
+     */
+    next_sign: string;
+    /**
+     * Next Sign Index
+     */
+    next_sign_index: number;
+    /**
+     * The Moon's last exact aspect before leaving the sign. Null when the Moon made no exact aspect in that sign.
+     */
+    last_aspect?: VoidOfCourseLastAspect | null;
+    /**
+     * Whole Sign Void
+     *
+     * True when the Moon made no exact aspect at all while in the sign, so it was void for the whole passage.
+     */
+    whole_sign_void: boolean;
+};
+
+/**
+ * VoidOfCourseRequest
+ */
+export type VoidOfCourseRequest = {
+    /**
+     * From Date
+     *
+     * First day of the range (YYYY-MM-DD, UTC).
+     */
+    from_date: string;
+    /**
+     * To Date
+     *
+     * Last day of the range (YYYY-MM-DD, UTC, inclusive). At most 92 days after from_date.
+     */
+    to_date: string;
+};
+
+/**
+ * VoidOfCourseResponse
+ */
+export type VoidOfCourseResponse = {
+    /**
+     * From Date
+     */
+    from_date: string;
+    /**
+     * To Date
+     */
+    to_date: string;
+    /**
+     * Definition
+     *
+     * Plain-English statement of the rule used.
+     */
+    definition: string;
+    /**
+     * Periods
+     *
+     * Void-of-course periods that overlap the range, in time order.
+     */
+    periods: Array<VoidOfCoursePeriod>;
+};
+
+/**
  * WeeklyTransitResponse
  */
 export type WeeklyTransitResponse = {
@@ -13743,6 +14661,18 @@ export type WeeklyTransitResponse = {
      * Peak Aspects
      */
     peak_aspects: Array<TransitAspectSchema>;
+    /**
+     * House System
+     *
+     * House system used for natal_house on each transiting planet.
+     */
+    house_system?: string;
+    /**
+     * Birth Time Provided
+     *
+     * True when a birth time was supplied. False when it was not: natal_house is then null for every transiting planet.
+     */
+    birth_time_provided?: boolean;
 };
 
 /**
@@ -14471,11 +15401,55 @@ export type WesternTransitRequest = {
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
     /**
+     * House System
+     *
+     * House system for the natal houses that transiting planets are placed in (natal_house on each transit planet). Same choices as the natal chart; Placidus is the default.
+     */
+    house_system?: 'placidus' | 'koch' | 'equal' | 'whole_sign';
+    /**
      * Start Date
      *
      * Transit reference date (YYYY-MM-DD): snapshot day for daily transits; window start for weekly (7 days) and monthly (30 days). Defaults to today.
      */
     start_date?: string | null;
+};
+
+/**
+ * YearLordNatalSchema
+ */
+export type YearLordNatalSchema = {
+    /**
+     * Sign
+     */
+    sign: string;
+    /**
+     * Sign Index
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     */
+    degree_in_sign: number;
+    /**
+     * Whole Sign House
+     *
+     * Natal whole-sign house of the year lord, counted from the Ascendant sign.
+     */
+    whole_sign_house: number;
+    /**
+     * House
+     *
+     * Natal house of the year lord in the requested house_system.
+     */
+    house: number;
+    /**
+     * Is Retrograde
+     */
+    is_retrograde: boolean;
+    /**
+     * Dignity
+     */
+    dignity: string;
 };
 
 /**
@@ -15731,6 +16705,234 @@ export type WesternTransitsMonthlyResponses = {
 };
 
 export type WesternTransitsMonthlyResponse = WesternTransitsMonthlyResponses[keyof WesternTransitsMonthlyResponses];
+
+export type WesternEclipsesData = {
+    body: EclipsesRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/eclipses';
+};
+
+export type WesternEclipsesErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternEclipsesError = WesternEclipsesErrors[keyof WesternEclipsesErrors];
+
+export type WesternEclipsesResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseEclipsesResponse;
+};
+
+export type WesternEclipsesResponse = WesternEclipsesResponses[keyof WesternEclipsesResponses];
+
+export type WesternProfectionsData = {
+    body: ProfectionsRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/profections';
+};
+
+export type WesternProfectionsErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternProfectionsError = WesternProfectionsErrors[keyof WesternProfectionsErrors];
+
+export type WesternProfectionsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseProfectionsResponse;
+};
+
+export type WesternProfectionsResponse = WesternProfectionsResponses[keyof WesternProfectionsResponses];
+
+export type WesternPlanetaryHoursData = {
+    body: PlanetaryHoursRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/planetary-hours';
+};
+
+export type WesternPlanetaryHoursErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternPlanetaryHoursError = WesternPlanetaryHoursErrors[keyof WesternPlanetaryHoursErrors];
+
+export type WesternPlanetaryHoursResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponsePlanetaryHoursResponse;
+};
+
+export type WesternPlanetaryHoursResponse = WesternPlanetaryHoursResponses[keyof WesternPlanetaryHoursResponses];
+
+export type WesternVoidOfCourseData = {
+    body: VoidOfCourseRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/moon/void-of-course';
+};
+
+export type WesternVoidOfCourseErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternVoidOfCourseError = WesternVoidOfCourseErrors[keyof WesternVoidOfCourseErrors];
+
+export type WesternVoidOfCourseResponses = {
+    /**
+     * Successful Response
+     */
+    200: ApiResponseVoidOfCourseResponse;
+};
+
+export type WesternVoidOfCourseResponse = WesternVoidOfCourseResponses[keyof WesternVoidOfCourseResponses];
 
 export type WesternSynastryData = {
     body: TwoPersonRequest;
@@ -19901,10 +21103,10 @@ export type CrystalsByPlanetResponses = {
     /**
      * Successful Response
      */
-    200: ApiResponseCrystalListResponse;
+    200: ApiResponseCrystalsByPlanetResponse;
 };
 
-export type CrystalsByPlanetResponse = CrystalsByPlanetResponses[keyof CrystalsByPlanetResponses];
+export type CrystalsByPlanetResponse2 = CrystalsByPlanetResponses[keyof CrystalsByPlanetResponses];
 
 export type CrystalsRecommendData = {
     body: CrystalRecommendRequest;

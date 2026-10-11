@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client/index.js';
-import type { AngelListData, AngelListErrors, AngelListResponses, AngelNumberData, AngelNumberErrors, AngelNumberResponses, AngelPersonalData, AngelPersonalErrors, AngelPersonalResponses, AngelTodayData, AngelTodayErrors, AngelTodayResponses, AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, AyanamshaData, AyanamshaErrors, AyanamshaResponses, BalanceNumberData, BalanceNumberErrors, BalanceNumberResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, CrystalData, CrystalErrors, CrystalResponses, CrystalsByPlanetData, CrystalsByPlanetErrors, CrystalsByPlanetResponses, CrystalsListData, CrystalsListErrors, CrystalsListResponses, CrystalsRecommendData, CrystalsRecommendErrors, CrystalsRecommendNatalData, CrystalsRecommendNatalErrors, CrystalsRecommendNatalResponses, CrystalsRecommendResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, DreamSymbolData, DreamSymbolErrors, DreamSymbolResponses, DreamSymbolsData, DreamSymbolsErrors, DreamSymbolsResponses, ExpressionNumberData, ExpressionNumberErrors, ExpressionNumberResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GhatChakraData, GhatChakraErrors, GhatChakraResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KarmicLessonsData, KarmicLessonsErrors, KarmicLessonsResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathPostData, LifePathPostErrors, LifePathPostResponses, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersPostData, LuckyNumbersPostErrors, LuckyNumbersPostResponses, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MaturityNumberData, MaturityNumberErrors, MaturityNumberResponses, MobileNumberData, MobileNumberErrors, MobileNumberPostData, MobileNumberPostErrors, MobileNumberPostResponses, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraPredictionData, NakshatraPredictionErrors, NakshatraPredictionResponses, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaFestivalsData, PanchangaFestivalsErrors, PanchangaFestivalsResponses, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PanchangaTamilData, PanchangaTamilErrors, PanchangaTamilResponses, PersonalCyclesData, PersonalCyclesErrors, PersonalCyclesResponses, PersonalityNumberData, PersonalityNumberErrors, PersonalityNumberResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PitraDoshaData, PitraDoshaErrors, PitraDoshaResponses, PlanetNatureData, PlanetNatureErrors, PlanetNatureResponses, PrashnaData, PrashnaErrors, PrashnaResponses, PujaSuggestionsData, PujaSuggestionsErrors, PujaSuggestionsResponses, RemediesData, RemediesErrors, RemediesResponses, RudrakshaData, RudrakshaErrors, RudrakshaResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, SoulUrgeNumberData, SoulUrgeNumberErrors, SoulUrgeNumberResponses, StrengthData, StrengthErrors, StrengthResponses, TarotCardData, TarotCardErrors, TarotCardOfTheDayData, TarotCardOfTheDayErrors, TarotCardOfTheDayResponses, TarotCardResponses, TarotCardsData, TarotCardsErrors, TarotCardsResponses, TarotCelticCrossData, TarotCelticCrossErrors, TarotCelticCrossResponses, TarotDrawData, TarotDrawErrors, TarotDrawResponses, TarotMajorArcanaData, TarotMajorArcanaErrors, TarotMajorArcanaResponses, TarotSuitData, TarotSuitErrors, TarotSuitResponses, TarotThreeCardData, TarotThreeCardErrors, TarotThreeCardResponses, TarotYesNoData, TarotYesNoErrors, TarotYesNoResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalHarshaBalaData, VarshaphalHarshaBalaErrors, VarshaphalHarshaBalaResponses, VarshaphalResponses, VarshaphalSahamData, VarshaphalSahamErrors, VarshaphalSahamResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberPostData, VehicleNumberPostErrors, VehicleNumberPostResponses, VehicleNumberResponses, WesternAspectsData, WesternAspectsErrors, WesternAspectsResponses, WesternBiorhythmData, WesternBiorhythmErrors, WesternBiorhythmResponses, WesternCompatibilityData, WesternCompatibilityErrors, WesternCompatibilityResponses, WesternCompatibilityZodiacData, WesternCompatibilityZodiacErrors, WesternCompatibilityZodiacResponses, WesternCompositeData, WesternCompositeErrors, WesternCompositeResponses, WesternHoroscopeDailyData, WesternHoroscopeDailyErrors, WesternHoroscopeDailyResponses, WesternHoroscopeMonthlyData, WesternHoroscopeMonthlyErrors, WesternHoroscopeMonthlyResponses, WesternHoroscopeWeeklyData, WesternHoroscopeWeeklyErrors, WesternHoroscopeWeeklyResponses, WesternHoroscopeYearlyData, WesternHoroscopeYearlyErrors, WesternHoroscopeYearlyResponses, WesternLunarReturnData, WesternLunarReturnErrors, WesternLunarReturnResponses, WesternMoonCalendarData, WesternMoonCalendarErrors, WesternMoonCalendarResponses, WesternMoonPhaseData, WesternMoonPhaseErrors, WesternMoonPhaseResponses, WesternNatalChartData, WesternNatalChartErrors, WesternNatalChartResponses, WesternPlanetaryReturnData, WesternPlanetaryReturnErrors, WesternPlanetaryReturnResponses, WesternProgressionsSecondaryData, WesternProgressionsSecondaryErrors, WesternProgressionsSecondaryResponses, WesternProgressionsSolarArcData, WesternProgressionsSolarArcErrors, WesternProgressionsSolarArcResponses, WesternSolarReturnData, WesternSolarReturnErrors, WesternSolarReturnResponses, WesternSynastryData, WesternSynastryErrors, WesternSynastryResponses, WesternTransitsDailyData, WesternTransitsDailyErrors, WesternTransitsDailyResponses, WesternTransitsMonthlyData, WesternTransitsMonthlyErrors, WesternTransitsMonthlyResponses, WesternTransitsWeeklyData, WesternTransitsWeeklyErrors, WesternTransitsWeeklyResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen.js';
+import type { AngelListData, AngelListErrors, AngelListResponses, AngelNumberData, AngelNumberErrors, AngelNumberResponses, AngelPersonalData, AngelPersonalErrors, AngelPersonalResponses, AngelTodayData, AngelTodayErrors, AngelTodayResponses, AshtakavargaData, AshtakavargaErrors, AshtakavargaResponses, AshtottariDashaData, AshtottariDashaErrors, AshtottariDashaResponses, AtmakarakaData, AtmakarakaErrors, AtmakarakaResponses, AyanamshaData, AyanamshaErrors, AyanamshaResponses, BalanceNumberData, BalanceNumberErrors, BalanceNumberResponses, BusinessNameData, BusinessNameErrors, BusinessNamePostData, BusinessNamePostErrors, BusinessNamePostResponses, BusinessNameResponses, ChaldeanData, ChaldeanErrors, ChaldeanResponses, CharDashaData, CharDashaErrors, CharDashaResponses, ChartSvgData, ChartSvgErrors, ChartSvgResponses, CrystalData, CrystalErrors, CrystalResponses, CrystalsByPlanetData, CrystalsByPlanetErrors, CrystalsByPlanetResponses, CrystalsListData, CrystalsListErrors, CrystalsListResponses, CrystalsRecommendData, CrystalsRecommendErrors, CrystalsRecommendNatalData, CrystalsRecommendNatalErrors, CrystalsRecommendNatalResponses, CrystalsRecommendResponses, DashaData, DashaErrors, DashaResponses, DashaTransitsData, DashaTransitsErrors, DashaTransitsResponses, DivisionalChartsData, DivisionalChartsErrors, DivisionalChartsResponses, DoshasData, DoshasErrors, DoshasResponses, DreamSymbolData, DreamSymbolErrors, DreamSymbolResponses, DreamSymbolsData, DreamSymbolsErrors, DreamSymbolsResponses, ExpressionNumberData, ExpressionNumberErrors, ExpressionNumberResponses, GemstonesData, GemstonesErrors, GemstonesResponses, GeocodeData, GeocodeErrors, GeocodeResponses, GhatChakraData, GhatChakraErrors, GhatChakraResponses, GocharData, GocharErrors, GocharResponses, HoroscopeDailyData, HoroscopeDailyErrors, HoroscopeDailyResponses, HoroscopeMonthlyData, HoroscopeMonthlyErrors, HoroscopeMonthlyResponses, HoroscopeWeeklyData, HoroscopeWeeklyErrors, HoroscopeWeeklyResponses, HoroscopeYearlyData, HoroscopeYearlyErrors, HoroscopeYearlyResponses, IshtaDevataData, IshtaDevataErrors, IshtaDevataResponses, KarmicLessonsData, KarmicLessonsErrors, KarmicLessonsResponses, KpChartData, KpChartErrors, KpChartResponses, KpRulingPlanetsData, KpRulingPlanetsErrors, KpRulingPlanetsResponses, KpSignificatorsData, KpSignificatorsErrors, KpSignificatorsResponses, LalKitabChartData, LalKitabChartErrors, LalKitabChartResponses, LalKitabRemediesData, LalKitabRemediesErrors, LalKitabRemediesResponses, LifePathData, LifePathErrors, LifePathPostData, LifePathPostErrors, LifePathPostResponses, LifePathResponses, LoShuData, LoShuErrors, LoShuResponses, LuckyNumbersData, LuckyNumbersErrors, LuckyNumbersPostData, LuckyNumbersPostErrors, LuckyNumbersPostResponses, LuckyNumbersResponses, MatchmakingDashakootData, MatchmakingDashakootErrors, MatchmakingDashakootResponses, MatchmakingData, MatchmakingErrors, MatchmakingPapasamyamData, MatchmakingPapasamyamErrors, MatchmakingPapasamyamResponses, MatchmakingPoruthamData, MatchmakingPoruthamErrors, MatchmakingPoruthamResponses, MatchmakingResponses, MatchmakingThirumanaPoruthamData, MatchmakingThirumanaPoruthamErrors, MatchmakingThirumanaPoruthamResponses, MaturityNumberData, MaturityNumberErrors, MaturityNumberResponses, MobileNumberData, MobileNumberErrors, MobileNumberPostData, MobileNumberPostErrors, MobileNumberPostResponses, MobileNumberResponses, MuhurtaData, MuhurtaErrors, MuhurtaResponses, NakshatraData2, NakshatraErrors, NakshatraPredictionData, NakshatraPredictionErrors, NakshatraPredictionResponses, NakshatraResponses, NameCorrectionData, NameCorrectionErrors, NameCorrectionResponses, NatalChartData, NatalChartErrors, NatalChartResponses, NumberMeaningData, NumberMeaningErrors, NumberMeaningResponses, NumerologyCompatibilityData, NumerologyCompatibilityErrors, NumerologyCompatibilityResponses, NumerologyProfileData, NumerologyProfileErrors, NumerologyProfileResponses, PanchangaCalendarData, PanchangaCalendarErrors, PanchangaCalendarPostData, PanchangaCalendarPostErrors, PanchangaCalendarPostResponses, PanchangaCalendarResponses, PanchangaChoghadiyaData, PanchangaChoghadiyaErrors, PanchangaChoghadiyaResponses, PanchangaData, PanchangaErrors, PanchangaFestivalsData, PanchangaFestivalsErrors, PanchangaFestivalsResponses, PanchangaHoraData, PanchangaHoraErrors, PanchangaHoraResponses, PanchangaRahuKaalData, PanchangaRahuKaalErrors, PanchangaRahuKaalResponses, PanchangaResponses, PanchangaTamilData, PanchangaTamilErrors, PanchangaTamilResponses, PersonalCyclesData, PersonalCyclesErrors, PersonalCyclesResponses, PersonalityNumberData, PersonalityNumberErrors, PersonalityNumberResponses, PersonalYearData, PersonalYearErrors, PersonalYearPostData, PersonalYearPostErrors, PersonalYearPostResponses, PersonalYearResponses, PitraDoshaData, PitraDoshaErrors, PitraDoshaResponses, PlanetNatureData, PlanetNatureErrors, PlanetNatureResponses, PrashnaData, PrashnaErrors, PrashnaResponses, PujaSuggestionsData, PujaSuggestionsErrors, PujaSuggestionsResponses, RemediesData, RemediesErrors, RemediesResponses, RudrakshaData, RudrakshaErrors, RudrakshaResponses, SadeSatiData, SadeSatiErrors, SadeSatiResponses, SoulUrgeNumberData, SoulUrgeNumberErrors, SoulUrgeNumberResponses, StrengthData, StrengthErrors, StrengthResponses, TarotCardData, TarotCardErrors, TarotCardOfTheDayData, TarotCardOfTheDayErrors, TarotCardOfTheDayResponses, TarotCardResponses, TarotCardsData, TarotCardsErrors, TarotCardsResponses, TarotCelticCrossData, TarotCelticCrossErrors, TarotCelticCrossResponses, TarotDrawData, TarotDrawErrors, TarotDrawResponses, TarotMajorArcanaData, TarotMajorArcanaErrors, TarotMajorArcanaResponses, TarotSuitData, TarotSuitErrors, TarotSuitResponses, TarotThreeCardData, TarotThreeCardErrors, TarotThreeCardResponses, TarotYesNoData, TarotYesNoErrors, TarotYesNoResponses, TimezoneData, TimezoneErrors, TimezoneResponses, TransitsData, TransitsErrors, TransitsResponses, VarshaphalData, VarshaphalErrors, VarshaphalHarshaBalaData, VarshaphalHarshaBalaErrors, VarshaphalHarshaBalaResponses, VarshaphalResponses, VarshaphalSahamData, VarshaphalSahamErrors, VarshaphalSahamResponses, VehicleNumberData, VehicleNumberErrors, VehicleNumberPostData, VehicleNumberPostErrors, VehicleNumberPostResponses, VehicleNumberResponses, WesternAspectsData, WesternAspectsErrors, WesternAspectsResponses, WesternBiorhythmData, WesternBiorhythmErrors, WesternBiorhythmResponses, WesternCompatibilityData, WesternCompatibilityErrors, WesternCompatibilityResponses, WesternCompatibilityZodiacData, WesternCompatibilityZodiacErrors, WesternCompatibilityZodiacResponses, WesternCompositeData, WesternCompositeErrors, WesternCompositeResponses, WesternEclipsesData, WesternEclipsesErrors, WesternEclipsesResponses, WesternHoroscopeDailyData, WesternHoroscopeDailyErrors, WesternHoroscopeDailyResponses, WesternHoroscopeMonthlyData, WesternHoroscopeMonthlyErrors, WesternHoroscopeMonthlyResponses, WesternHoroscopeWeeklyData, WesternHoroscopeWeeklyErrors, WesternHoroscopeWeeklyResponses, WesternHoroscopeYearlyData, WesternHoroscopeYearlyErrors, WesternHoroscopeYearlyResponses, WesternLunarReturnData, WesternLunarReturnErrors, WesternLunarReturnResponses, WesternMoonCalendarData, WesternMoonCalendarErrors, WesternMoonCalendarResponses, WesternMoonPhaseData, WesternMoonPhaseErrors, WesternMoonPhaseResponses, WesternNatalChartData, WesternNatalChartErrors, WesternNatalChartResponses, WesternPlanetaryHoursData, WesternPlanetaryHoursErrors, WesternPlanetaryHoursResponses, WesternPlanetaryReturnData, WesternPlanetaryReturnErrors, WesternPlanetaryReturnResponses, WesternProfectionsData, WesternProfectionsErrors, WesternProfectionsResponses, WesternProgressionsSecondaryData, WesternProgressionsSecondaryErrors, WesternProgressionsSecondaryResponses, WesternProgressionsSolarArcData, WesternProgressionsSolarArcErrors, WesternProgressionsSolarArcResponses, WesternSolarReturnData, WesternSolarReturnErrors, WesternSolarReturnResponses, WesternSynastryData, WesternSynastryErrors, WesternSynastryResponses, WesternTransitsDailyData, WesternTransitsDailyErrors, WesternTransitsDailyResponses, WesternTransitsMonthlyData, WesternTransitsMonthlyErrors, WesternTransitsMonthlyResponses, WesternTransitsWeeklyData, WesternTransitsWeeklyErrors, WesternTransitsWeeklyResponses, WesternVoidOfCourseData, WesternVoidOfCourseErrors, WesternVoidOfCourseResponses, YogasData, YogasErrors, YogasResponses, YoginiDashaData, YoginiDashaErrors, YoginiDashaResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -21,7 +21,7 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 /**
  * Jaimini Charakarakas
  *
- * Computes all 8 Jaimini Charakarakas from the natal chart: Atmakaraka, Amatyakaraka, Bhratrikaraka, Matrikaraka, Pitrikaraka, Putrakaraka, Gnatikaraka, and Darakaraka. The planet with the highest degree in its sign becomes the Atmakaraka. Request JSON follows BirthInput: `name` (optional, default Chart), `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, optional `ayanamsa` (lahiri|raman|kp|tropical).
+ * Computes all 8 Jaimini Charakarakas from the natal chart, from Atmakaraka to Darakaraka. The eight are Atmakaraka, Amatyakaraka, Bhratrikaraka, Matrikaraka, Pitrikaraka, Putrakaraka, Gnatikaraka, and Darakaraka. The planet with the highest degree in its sign becomes the Atmakaraka. Request JSON follows BirthInput: `name` (optional, default Chart), `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, optional `ayanamsa` (lahiri|raman|kp|tropical).
  */
 export const atmakaraka = <ThrowOnError extends boolean = false>(options: Options<AtmakarakaData, ThrowOnError>): RequestResult<AtmakarakaResponses, AtmakarakaErrors, ThrowOnError> => (options.client ?? client).post<AtmakarakaResponses, AtmakarakaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -256,7 +256,7 @@ export const westernAspects = <ThrowOnError extends boolean = false>(options: Op
 /**
  * Western Daily Transits
  *
- * Current sky positions vs natal chart. Returns all 10 planets with tropical longitudes and active aspects to natal positions using standard modern Western transit orbs: major 3°, sextile 2°, minor 1°. Defaults to today if no date given.
+ * Transits for one day against the natal chart: all 10 planets with tropical longitudes and their active aspects to natal positions. Orbs are the standard modern Western transit orbs: major 3°, sextile 2°, minor 1°. Each aspect carries exact_at, the UTC moment it is exact (searched 30 days either side; null if outside that window). Each transiting planet carries natal_house, the natal house it is passing through (house_system as requested; null without a birth time). Defaults to today (UTC) if no date is given.
  */
 export const westernTransitsDaily = <ThrowOnError extends boolean = false>(options: Options<WesternTransitsDailyData, ThrowOnError>): RequestResult<WesternTransitsDailyResponses, WesternTransitsDailyErrors, ThrowOnError> => (options.client ?? client).post<WesternTransitsDailyResponses, WesternTransitsDailyErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -291,6 +291,66 @@ export const westernTransitsWeekly = <ThrowOnError extends boolean = false>(opti
 export const westernTransitsMonthly = <ThrowOnError extends boolean = false>(options: Options<WesternTransitsMonthlyData, ThrowOnError>): RequestResult<WesternTransitsMonthlyResponses, WesternTransitsMonthlyErrors, ThrowOnError> => (options.client ?? client).post<WesternTransitsMonthlyResponses, WesternTransitsMonthlyErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/v1/western/transits/monthly',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Eclipses
+ *
+ * Solar and lunar eclipses in a date range, past or future, up to 10 years. Each gives the type, time of greatest eclipse, start and end (UTC) and the eclipse degree in the tropical zodiac (Swiss Ephemeris). Add birth data to get, for each eclipse, the natal planets and angles within 3° of the eclipse degree by conjunction or opposition. Without a birth time the Ascendant and MC are skipped and the natal Moon is approximate.
+ */
+export const westernEclipses = <ThrowOnError extends boolean = false>(options: Options<WesternEclipsesData, ThrowOnError>): RequestResult<WesternEclipsesResponses, WesternEclipsesErrors, ThrowOnError> => (options.client ?? client).post<WesternEclipsesResponses, WesternEclipsesErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/eclipses',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Annual profections
+ *
+ * Annual profections for a birth chart and a date: the whole-sign house activated this year, its sign, and the lord of the year (the sign's traditional ruler). Rule: the Ascendant sign is the 1st house at birth and the activated sign moves forward one sign every birthday, so at age N the profected house is (N mod 12) + 1. A birth time is required because the count starts from the Ascendant; without one the request is rejected with a clear message. Includes where the year lord sits natally and the next twelve profection years.
+ */
+export const westernProfections = <ThrowOnError extends boolean = false>(options: Options<WesternProfectionsData, ThrowOnError>): RequestResult<WesternProfectionsResponses, WesternProfectionsErrors, ThrowOnError> => (options.client ?? client).post<WesternProfectionsResponses, WesternProfectionsErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/profections',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Planetary hours
+ *
+ * The 24 planetary hours for a date and place, with the planet ruling each hour. Sunrise to sunset and sunset to the next sunrise are each split into 12 equal parts, so hours are longer by day in summer and shorter in winter. The first hour after sunrise belongs to the planet of the weekday (Sunday Sun, Monday Moon, Tuesday Mars, Wednesday Mercury, Thursday Jupiter, Friday Venus, Saturday Saturn); the rest follow the Chaldean order Saturn, Jupiter, Mars, Sun, Venus, Mercury, Moon. Same calculation as /v1/astro/panchanga/hora, with Western naming and both local and UTC times.
+ */
+export const westernPlanetaryHours = <ThrowOnError extends boolean = false>(options: Options<WesternPlanetaryHoursData, ThrowOnError>): RequestResult<WesternPlanetaryHoursResponses, WesternPlanetaryHoursErrors, ThrowOnError> => (options.client ?? client).post<WesternPlanetaryHoursResponses, WesternPlanetaryHoursErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/planetary-hours',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
+});
+
+/**
+ * Void-of-course Moon
+ *
+ * Void-of-course Moon periods in a date range (UTC). Rule used: the traditional one — the Moon is void from its last exact Ptolemaic aspect (conjunction, sextile, square, trine, opposition) to the Sun, Mercury, Venus, Mars, Jupiter or Saturn until it enters the next sign (William Lilly, Christian Astrology, 1647, p. 112). Outer planets are not counted. Each period gives start and end in UTC, the last aspect, the sign the Moon is in and the sign it enters next. Range limit 92 days.
+ */
+export const westernVoidOfCourse = <ThrowOnError extends boolean = false>(options: Options<WesternVoidOfCourseData, ThrowOnError>): RequestResult<WesternVoidOfCourseResponses, WesternVoidOfCourseErrors, ThrowOnError> => (options.client ?? client).post<WesternVoidOfCourseResponses, WesternVoidOfCourseErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/v1/western/moon/void-of-course',
     ...options,
     headers: {
         'Content-Type': 'application/json',
@@ -357,7 +417,7 @@ export const westernCompatibilityZodiac = <ThrowOnError extends boolean = false>
 /**
  * Western Solar Return
  *
- * Solar return chart for a given year. Finds the exact moment the Sun returns to its natal tropical longitude and builds a complete Western natal chart for that moment at the birth location. Provide the year as an integer (e.g. 2026).
+ * Western solar return chart for a given year, cast for the exact moment the Sun returns to its natal tropical longitude. The chart is a complete Western natal chart for that moment at the birth location. Provide the year as an integer (e.g. 2026).
  */
 export const westernSolarReturn = <ThrowOnError extends boolean = false>(options: Options<WesternSolarReturnData, ThrowOnError>): RequestResult<WesternSolarReturnResponses, WesternSolarReturnErrors, ThrowOnError> => (options.client ?? client).post<WesternSolarReturnResponses, WesternSolarReturnErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -372,7 +432,7 @@ export const westernSolarReturn = <ThrowOnError extends boolean = false>(options
 /**
  * Western Lunar Return
  *
- * Next lunar return chart after a given date. Finds the next moment the Moon returns to its natal tropical longitude (~every 27.3 days) and builds a complete Western natal chart for that moment at the birth location.
+ * Western lunar return chart: the next moment after a given date that the Moon returns to its natal tropical longitude (about every 27.3 days). The chart is a complete Western natal chart for that moment at the birth location.
  */
 export const westernLunarReturn = <ThrowOnError extends boolean = false>(options: Options<WesternLunarReturnData, ThrowOnError>): RequestResult<WesternLunarReturnResponses, WesternLunarReturnErrors, ThrowOnError> => (options.client ?? client).post<WesternLunarReturnResponses, WesternLunarReturnErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -462,7 +522,7 @@ export const panchangaChoghadiya = <ThrowOnError extends boolean = false>(option
 /**
  * Planetary hours (Hora)
  *
- * Calculate all 24 Hora (planetary hours) for a given date and location using unequal seasonal division: 12 equal parts from sunrise to sunset and 12 from sunset to next sunrise. The first hora after sunrise is ruled by the sunrise-boundary Vedic vara lord; subsequent horas follow the Chaldean sequence. Response includes a convention field naming the division used.
+ * Calculates all 24 Hora (planetary hours) for a date and location, using unequal seasonal hours. Sunrise to sunset and sunset to next sunrise are each split into 12 equal parts. The first hora after sunrise is ruled by the sunrise-boundary Vedic vara lord; subsequent horas follow the Chaldean sequence. Response includes a convention field naming the division used.
  */
 export const panchangaHora = <ThrowOnError extends boolean = false>(options: Options<PanchangaHoraData, ThrowOnError>): RequestResult<PanchangaHoraResponses, PanchangaHoraErrors, ThrowOnError> => (options.client ?? client).post<PanchangaHoraResponses, PanchangaHoraErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -492,7 +552,7 @@ export const panchangaRahuKaal = <ThrowOnError extends boolean = false>(options:
 /**
  * Monthly Panchanga calendar
  *
- * Panchanga for every day of a month at a location. Each day keeps the sunrise tithi, vara, nakshatra, yoga, karana and Rahu Kaal, and adds sunrise, sunset, moonrise, moonset, paksha, the lunar month (amanta and purnimanta, with Adhik months), Bhadra windows, and every tithi, nakshatra, yoga and karana active between that sunrise and the next with ISO start and end times. A kshaya tithi (one no sunrise touches) appears on the day it runs, flagged is_kshaya; a tithi that holds two sunrises is flagged is_vriddhi on both days.
+ * Panchanga for every day of a month at a location, one entry per day. Each day keeps the sunrise tithi, vara, nakshatra, yoga, karana and Rahu Kaal, and adds sunrise, sunset, moonrise, moonset, paksha, the lunar month (amanta and purnimanta, with Adhik months), Bhadra windows, and every tithi, nakshatra, yoga and karana active between that sunrise and the next with ISO start and end times. A kshaya tithi (one no sunrise touches) appears on the day it runs, flagged is_kshaya; a tithi that holds two sunrises is flagged is_vriddhi on both days.
  */
 export const panchangaCalendar = <ThrowOnError extends boolean = false>(options: Options<PanchangaCalendarData, ThrowOnError>): RequestResult<PanchangaCalendarResponses, PanchangaCalendarErrors, ThrowOnError> => (options.client ?? client).get<PanchangaCalendarResponses, PanchangaCalendarErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -503,7 +563,7 @@ export const panchangaCalendar = <ThrowOnError extends boolean = false>(options:
 /**
  * Monthly Panchanga calendar (JSON body)
  *
- * Same data as GET /v1/astro/panchanga/calendar. Minimum required JSON fields: `year` (1900–2100), `month` (1–12), `lat`, `lon`. Optional `timezone` defaults to Asia/Kolkata.
+ * Panchanga for every day of a month, the same data as GET /v1/astro/panchanga/calendar sent as a JSON body. Minimum required JSON fields: `year` (1900–2100), `month` (1–12), `lat`, `lon`. Optional `timezone` defaults to Asia/Kolkata.
  */
 export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(options: Options<PanchangaCalendarPostData, ThrowOnError>): RequestResult<PanchangaCalendarPostResponses, PanchangaCalendarPostErrors, ThrowOnError> => (options.client ?? client).post<PanchangaCalendarPostResponses, PanchangaCalendarPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -518,7 +578,7 @@ export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(opti
 /**
  * Tamil Panchanga
  *
- * Tamil-specific Panchanga for a date and location. Returns the Tamil inauspicious periods Rahu Kalam, Yamagandam and Kuligai (emagandam is the Tamil spelling of Yamagandam and repeats the same period), Nalla Neram (daytime windows free of those periods), and the Tamil solar month name derived from the Sun's sidereal position at sunrise.
+ * Tamil Panchanga for a date and location: Rahu Kalam, Yamagandam, Kuligai, Nalla Neram and the Tamil solar month. Rahu Kalam, Yamagandam and Kuligai are the Tamil inauspicious periods (emagandam is the Tamil spelling of Yamagandam and repeats the same period), Nalla Neram (daytime windows free of those periods), and the Tamil solar month name derived from the Sun's sidereal position at sunrise.
  */
 export const panchangaTamil = <ThrowOnError extends boolean = false>(options: Options<PanchangaTamilData, ThrowOnError>): RequestResult<PanchangaTamilResponses, PanchangaTamilErrors, ThrowOnError> => (options.client ?? client).get<PanchangaTamilResponses, PanchangaTamilErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -756,7 +816,7 @@ export const matchmakingDashakoot = <ThrowOnError extends boolean = false>(optio
 /**
  * Papasamyam — Malefic Planet Compatibility
  *
- * Computes Papasamyam between two natal charts. Scores each person based on Sun, Mars, Saturn, Rahu, Ketu in houses 1, 2, 4, 7, 8, 12 from Lagna, Moon, and Venus (#105). Compatible if score difference ≤ 11. person1 = groom, person2 = bride.
+ * Computes Papasamyam, the malefic-planet compatibility check, between two natal charts. Scores each person based on Sun, Mars, Saturn, Rahu, Ketu in houses 1, 2, 4, 7, 8, 12 from Lagna, Moon, and Venus (#105). Compatible if score difference ≤ 11. person1 = groom, person2 = bride.
  */
 export const matchmakingPapasamyam = <ThrowOnError extends boolean = false>(options: Options<MatchmakingPapasamyamData, ThrowOnError>): RequestResult<MatchmakingPapasamyamResponses, MatchmakingPapasamyamErrors, ThrowOnError> => (options.client ?? client).post<MatchmakingPapasamyamResponses, MatchmakingPapasamyamErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -784,9 +844,9 @@ export const matchmakingPorutham = <ThrowOnError extends boolean = false>(option
 });
 
 /**
- * Tamil Thirumana Porutham — 12-Porutham Compatibility
+ * Thirumana Porutham (12 Poruthams)
  *
- * Computes all 10 Tamil Thirumana Poruthams with Tamil naming convention. Includes Rajju severity classification (Siro=most severe to Pada=least severe). Rajju and Vedha are absolute vetoes. person1 = groom, person2 = bride.
+ * Computes the 12 Tamil Thirumana Poruthams: the 10 standard Poruthams plus Nadi and Varna, with Tamil names. Includes Rajju severity classification (Siro=most severe to Pada=least severe). Rajju and Vedha are absolute vetoes. person1 = groom, person2 = bride.
  */
 export const matchmakingThirumanaPorutham = <ThrowOnError extends boolean = false>(options: Options<MatchmakingThirumanaPoruthamData, ThrowOnError>): RequestResult<MatchmakingThirumanaPoruthamResponses, MatchmakingThirumanaPoruthamErrors, ThrowOnError> => (options.client ?? client).post<MatchmakingThirumanaPoruthamResponses, MatchmakingThirumanaPoruthamErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -831,7 +891,7 @@ export const gochar = <ThrowOnError extends boolean = false>(options: Options<Go
 /**
  * Calculate yoga combinations
  *
- * Detect all classical Vedic yogas in a natal chart — Pancha Mahapurusha Yogas, Raja Yogas, Gajakesari, Neecha Bhanga Raja Yoga, Budhaditya, Chandra Mangala, Viparita Raja, Amala, and more. House lords are taken by whole sign from the lagna (so they are found at polar latitudes too) and aspects are full Parashari graha drishti only. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
+ * Detects classical Vedic yogas in a natal chart, such as Pancha Mahapurusha, Raja, Gajakesari and Neecha Bhanga Raja Yoga. Others include Budhaditya, Chandra Mangala, Viparita Raja, Amala, and more. House lords are taken by whole sign from the lagna (so they are found at polar latitudes too) and aspects are full Parashari graha drishti only. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
  */
 export const yogas = <ThrowOnError extends boolean = false>(options: Options<YogasData, ThrowOnError>): RequestResult<YogasResponses, YogasErrors, ThrowOnError> => (options.client ?? client).post<YogasResponses, YogasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -876,7 +936,7 @@ export const numerologyProfile = <ThrowOnError extends boolean = false>(options:
 /**
  * Calculate numerology compatibility
  *
- * Computes compatibility between two people from their numerology signatures. Each person uses `name` and `date` (BirthInput-aligned). Returns score, level, and explanatory strengths/challenges.
+ * Scores the numerology compatibility of two people from their Life Path numbers, which come from each person's birth `date`. Each person also sends `name` (required), which does not change the score. Returns score, level, and explanatory strengths/challenges.
  */
 export const numerologyCompatibility = <ThrowOnError extends boolean = false>(options: Options<NumerologyCompatibilityData, ThrowOnError>): RequestResult<NumerologyCompatibilityResponses, NumerologyCompatibilityErrors, ThrowOnError> => (options.client ?? client).post<NumerologyCompatibilityResponses, NumerologyCompatibilityErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -947,7 +1007,7 @@ export const personalYearPost = <ThrowOnError extends boolean = false>(options: 
 /**
  * Business Name Numerology
  *
- * Scores a business name using its Pythagorean Expression number, worked part by part like /v1/numerology/expression: each word is reduced on its own (11, 22, 33 kept), then the words are added and reduced. Returns single digit, theme, harmony score (1-10), and recommended uses. A name with no letters (e.g. '123') is rejected with 422 `validation_error`.
+ * Scores a business name by its Pythagorean Expression number, with theme, harmony score (1-10) and recommended uses. The number is worked part by part like /v1/numerology/expression: each word is reduced on its own (11, 22, 33 kept), then the words are added and reduced. A name with no letters (e.g. '123') is rejected with 422 `validation_error`.
  */
 export const businessName = <ThrowOnError extends boolean = false>(options: Options<BusinessNameData, ThrowOnError>): RequestResult<BusinessNameResponses, BusinessNameErrors, ThrowOnError> => (options.client ?? client).get<BusinessNameResponses, BusinessNameErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1240,7 +1300,7 @@ export const angelList = <ThrowOnError extends boolean = false>(options?: Option
 /**
  * Angel number meaning
  *
- * Look up the meaning of a specific angel number. Supported numbers: 000, 111–999 (single repeating digit), 1010, 1111, 1122, 1212, 1234, 2222–9999 (double repeating digit), 911. Pass the number as a string path parameter, e.g. /v1/numerology/angel/444.
+ * Look up the meaning of a specific angel number such as 111, 444 or 1234. Supported numbers: 000, 111–999 (single repeating digit), 1010, 1111, 1122, 1212, 1234, 2222–9999 (double repeating digit), 911. Pass the number as a string path parameter, e.g. /v1/numerology/angel/444.
  */
 export const angelNumber = <ThrowOnError extends boolean = false>(options: Options<AngelNumberData, ThrowOnError>): RequestResult<AngelNumberResponses, AngelNumberErrors, ThrowOnError> => (options.client ?? client).get<AngelNumberResponses, AngelNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1277,7 +1337,7 @@ export const crystalsList = <ThrowOnError extends boolean = false>(options?: Opt
 /**
  * Crystals by Vedic planet
  *
- * Returns all crystals associated with a specific Vedic planet. Planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu. Results are sorted with primary Navaratna gems first, then Uparatna substitutes. Only Navaratna and Uparatna Vedic assignments are included — crystals without classical Vedic gemstone support are not returned here.
+ * Returns all crystals associated with a specific Vedic planet. Planets: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu. Results are sorted with primary Navaratna gems first, then Uparatna substitutes, each group alphabetically. Only Navaratna and Uparatna Vedic assignments are included — crystals without classical Vedic gemstone support are not returned here.
  */
 export const crystalsByPlanet = <ThrowOnError extends boolean = false>(options: Options<CrystalsByPlanetData, ThrowOnError>): RequestResult<CrystalsByPlanetResponses, CrystalsByPlanetErrors, ThrowOnError> => (options.client ?? client).get<CrystalsByPlanetResponses, CrystalsByPlanetErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1301,7 +1361,7 @@ export const crystalsRecommend = <ThrowOnError extends boolean = false>(options:
 });
 
 /**
- * Crystal recommendations from Vedic natal chart
+ * Natal Chart Crystal Recommendations
  *
  * Recommend crystals from the natal chart's functional benefics, using the same rule as POST /v1/astro/gemstones (BPHS Ch.34 lordship, whole-sign from the lagna). Recommended: the lagna lord (always auspicious) = Life Stone (+5), the Yogakaraka = supreme benefic (+5), the 9th lord = Fortune Stone (+4), the 5th lord = Lucky Stone (+3). A 5th/9th lord that also owns a Dusthana (6, 8, 12) is still recommended, with that Dusthana named in warnings[]. Contraindicated (natal_context.contraindicated_lords, never returned): Dusthana lords that own no Trikona, and debilitated or combust planets. Kendra-only and 2nd/3rd/11th lords are neither recommended nor contraindicated. Only crystals with Vedic assignments (Navaratna or Uparatna) are returned. Dangerous gem combinations are flagged in warnings[].
  */
@@ -1421,7 +1481,7 @@ export const tarotDraw = <ThrowOnError extends boolean = false>(options: Options
 /**
  * Three-Card Spread
  *
- * Past / Present / Future spread. Draws 3 unique cards and assigns them to positions: past (what led here), present (current situation), future (where this leads). Each position includes the card data, its orientation, the position meaning, and the active interpretation for that orientation.
+ * Past / Present / Future tarot spread: draws 3 unique cards, one for each position. The positions are past (what led here), present (current situation), future (where this leads). Each position includes the card data, its orientation, the position meaning, and the active interpretation for that orientation.
  */
 export const tarotThreeCard = <ThrowOnError extends boolean = false>(options: Options<TarotThreeCardData, ThrowOnError>): RequestResult<TarotThreeCardResponses, TarotThreeCardErrors, ThrowOnError> => (options.client ?? client).post<TarotThreeCardResponses, TarotThreeCardErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1481,7 +1541,7 @@ export const remedies = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Gemstone Recommendations
  *
- * Recommends gemstones based on the natal chart. Primary gemstone strengthens the Lagna lord (always a functional benefic). Further slots: Yogakaraka, 5th lord, 9th lord, and Atmakaraka (also returned as `secondary`). Returns contraindicated gemstones: dusthana (6/8/12) lords that own no trikona, debilitated planets, and combust planets — the same rule as POST /v1/crystals/recommend/natal. A slot whose planet is contraindicated carries `contraindicated: true` and a `caution`; it is never a silent recommendation. Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Recommends gemstones based on the natal chart. Primary gemstone strengthens the Lagna lord (always a functional benefic). Further slots: Yogakaraka, 5th lord, 9th lord, and Atmakaraka. `secondary` is the first of those that is not the lagna lord's and not contraindicated. Returns contraindicated gemstones: dusthana (6/8/12) lords that own no trikona, debilitated planets, and combust planets — the same rule as POST /v1/crystals/recommend/natal. A slot whose planet is contraindicated carries `contraindicated: true` and a `caution`; it is never a silent recommendation. Request JSON follows BirthInput: `name`, `date`, `time`, `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const gemstones = <ThrowOnError extends boolean = false>(options: Options<GemstonesData, ThrowOnError>): RequestResult<GemstonesResponses, GemstonesErrors, ThrowOnError> => (options.client ?? client).post<GemstonesResponses, GemstonesErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1601,7 +1661,7 @@ export const prashna = <ThrowOnError extends boolean = false>(options: Options<P
 /**
  * Nakshatra Profile
  *
- * Returns the complete classical profile for a given nakshatra: deity, ruling planet, gana, nature, body part, profession, life themes, strengths, challenges, favorable/unfavorable activities, and body map. Accepts nakshatra name in any case with spaces or underscores.
+ * Returns the complete classical profile of one nakshatra, from deity and ruling planet to favourable activities and body map. The profile covers deity, ruling planet, gana, nature, body part, profession, life themes, strengths, challenges, favorable/unfavorable activities, and body map. The name is matched ignoring case, spaces, hyphens and common romanisation differences (e.g. 'uttarashadha' finds Uttara Ashadha, 'Aswini' finds Ashwini); an unknown name returns 404 with the 27 valid names.
  */
 export const nakshatra = <ThrowOnError extends boolean = false>(options: Options<NakshatraData2, ThrowOnError>): RequestResult<NakshatraResponses, NakshatraErrors, ThrowOnError> => (options.client ?? client).get<NakshatraResponses, NakshatraErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1714,7 +1774,7 @@ export const ghatChakra = <ThrowOnError extends boolean = false>(options: Option
 });
 
 /**
- * Resolve a city or place name to latitude, longitude, and timezone
+ * Geocode a Place to Coordinates and Timezone
  *
  * Resolve a city or place name to coordinates and timezone.
  *
@@ -1736,9 +1796,9 @@ export const geocode = <ThrowOnError extends boolean = false>(options: Options<G
 });
 
 /**
- * Return the IANA timezone for a given coordinate pair
+ * IANA Timezone for Coordinates
  *
- * Get IANA timezone for a coordinate pair.
+ * Returns the IANA timezone (e.g. Asia/Kolkata) for a latitude and longitude pair.
  * Fully offline — no external API call.
  * Accepts ?latitude=&longitude= and/or ?lat=&lon= (any pair that supplies both coordinates).
  * Examples: ?latitude=19.055&longitude=72.869 (Mumbai), ?lat=19.055&lon=72.869
@@ -1782,7 +1842,7 @@ export const strength = <ThrowOnError extends boolean = false>(options: Options<
 /**
  * Planetary transits — Gochar
  *
- * Scans a date range for planetary sign ingresses and retrograde/direct station events. Returns grouped transit events for supported planets. Also known as Gochar.
+ * Scans a date range for planetary sign ingresses (Moon included) and retrograde/direct station events, each with its exact UTC time. Lahiri sidereal by default; set ayanamsa to 'tropical' for Western (tropical) sign changes, or 'raman' / 'kp' for those ayanamsas. Also known as Gochar.
  */
 export const transits = <ThrowOnError extends boolean = false>(options: Options<TransitsData, ThrowOnError>): RequestResult<TransitsResponses, TransitsErrors, ThrowOnError> => (options.client ?? client).post<TransitsResponses, TransitsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

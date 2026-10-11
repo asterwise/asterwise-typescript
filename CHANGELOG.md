@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 0.11.0 — 2026-10-11
+
+Generated from the API as deployed on 2026-10-11. Four new Western endpoints
+and three additive upgrades; nothing removed or renamed.
+
+### Added
+
+- `western_void_of_course` — void-of-course Moon periods in a date range
+  (traditional rule: last exact Ptolemaic aspect to Sun–Saturn before the
+  Moon leaves its sign, Lilly 1647).
+- `western_planetary_hours` — the 24 planetary hours for a date and place
+  with local and UTC times.
+- `western_profections` — annual profections: profected whole-sign house,
+  sign and lord of the year, plus the next twelve years. Birth time required.
+- `western_eclipses` — solar and lunar eclipses in a range (up to 10 years)
+  with natal planets and angles within 3° of the eclipse degree.
+- Western transits (daily/weekly/monthly): `exact_at` and `days_to_exact` on
+  every transit aspect; `natal_house` on every transiting planet; request
+  `house_system`; response `house_system` and `birth_time_provided`.
+- `/v1/astro/transits`: request `ayanamsa` (`lahiri` default, `raman`, `kp`,
+  `tropical`); response `zodiac` and `ayanamsa`; sign names and zodiac on
+  every ingress and station event.
+- Gochar (`/v1/astro/gochar`): `favorable_reason` on each transit row;
+  `quality`, `interpretation` and `themes` now always agree with
+  `is_favorable_from_moon` (bindu override included) and carry descriptions.
+
+### Changed
+
+- Compatibility person `name` description: required, but only the birth
+  date changes the score.
+
 ## 0.10.0 — 2026-10-08
 
 Generated from the API as deployed on 2026-10-08, after a full accuracy pass
