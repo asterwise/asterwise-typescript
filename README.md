@@ -7,7 +7,7 @@
 [![npm version](https://img.shields.io/npm/v/asterwise)](https://www.npmjs.com/package/asterwise)
 [![Node](https://img.shields.io/node/v/asterwise)](https://www.npmjs.com/package/asterwise)
 
-The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 121 endpoints, generated from the API's OpenAPI document so the types match what the server sends. Every position is [checked against NASA JPL Horizons](https://asterwise.com/accuracy/), median 0.050 arcseconds over 80 positions from 1950 to 2050. Compared row by row with seven other astrology APIs, every claim sourced, at [asterwise.com/compare](https://asterwise.com/compare/).
+The official TypeScript library for **[Asterwise](https://asterwise.com)** — Vedic + Western astrology, numerology, tarot, crystals, and dreams. 131 endpoints, generated from the API's OpenAPI document so the types match what the server sends. Every position is [checked against NASA JPL Horizons](https://asterwise.com/accuracy/), median 0.050 arcseconds over 80 positions from 1950 to 2050. Compared row by row with seven other astrology APIs, every claim sourced, at [asterwise.com/compare](https://asterwise.com/compare/).
 
 [Documentation](https://docs.asterwise.com) · [API Reference](https://docs.asterwise.com) · [Pricing](https://asterwise.com/pricing/) · [MCP server](https://asterwise.com/mcp/) · [Postman collection](https://documenter.getpostman.com/view/58005543/2sBYAvwr1u)
 
@@ -58,7 +58,7 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 | Crystals & dreams | 7 |
 | Utilities | 2 |
 
-*126 typed SDK methods across 13 API classes covering **121 REST endpoints** (5 endpoints keep a deprecated GET method next to the POST one).*
+*143 typed SDK methods across 13 API classes covering **131 REST endpoints** (5 endpoints keep a deprecated GET method next to the POST one; 7 place-and-date endpoints have a cacheable GET twin).*
 
 ## What makes Asterwise different
 

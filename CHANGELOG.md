@@ -1,5 +1,42 @@
 # CHANGELOG
 
+## 0.12.0 — 2026-10-12
+
+Generated from the API as deployed on 2026-10-12. Ten new endpoints and
+additive upgrades across the Vedic and Western tracks; nothing removed or
+renamed. GET twins of the place-and-date endpoints are included as
+`*_get` methods.
+
+### Added
+
+- `tarabala` — Tarabala and Chandrabala over 1 to 31 days with the Moon's
+  star and sign change times.
+- `vedic_daily_factors` / `western_daily_factors` — every classical factor
+  for a person on a day in one shape: raw value and range, frame, verdict
+  by its own rule, rule source, signification ids, time. No weighting.
+- `vedic_events` / `western_events` — one timeline for 1 to 31 days:
+  ingresses, stations, Moon changes, natal contacts, eclipses, dasha or
+  profection changes, each with its exact time.
+- `western_horary` — the chart of a question moment with Lilly's rules named.
+- `western_day` — planetary hours, void-of-course Moon and Moon sign changes
+  for one calendar day at a place.
+- `vedic_significations` / `western_significations` — BPHS and Lilly house
+  and planet significations with stable ids.
+- `reference_charts` — published test charts with PyJHora and Swiss
+  Ephemeris reference values.
+- `panchanga_get`, `panchanga_hora_get`, `panchanga_rahu_kaal_get`,
+  `panchanga_choghadiya_get`, `western_planetary_hours_get`,
+  `western_void_of_course_get`, `western_day_get` — cacheable GET twins.
+- Panchanga windows (hora, rahu kaal, choghadiya, Tamil, panchanga timings):
+  `*_at` (ISO local with date and offset) and `*_utc` beside every HH:MM
+  field; 'status` = `no_sunrise` at polar latitudes instead of an error;
+  panchanga `day=civil` adds `civil_day`; timings include `horas` and a
+  `nature` tag per window.
+- `birth_time_provided` on every personal response; natal and gochar carry
+  `tropical_sign` labels; Western transits take 'snapshot_time` and
+  'snapshot_timezone` and report 'snapshot_utc`.
+- Every response carries the `X-Calc-Version` header (engine build).
+
 ## 0.11.0 — 2026-10-11
 
 Generated from the API as deployed on 2026-10-11. Four new Western endpoints
