@@ -46,19 +46,19 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 
 ## What you can build
 
-| Domain | Operations |
+| Domain | Endpoints |
 |--------|------------|
-| Vedic astrology | 40 |
+| Vedic astrology | 44 |
 | Matchmaking | 5 |
-| Western astrology | 21 |
+| Western astrology | 26 |
 | Horoscope | 8 |
-| Numerology | 24 |
+| Numerology | 23 |
 | KP + Lal Kitab | 5 |
 | Tarot | 9 |
 | Crystals & dreams | 7 |
 | Utilities | 2 |
 
-*143 typed SDK methods across 13 API classes covering **129 REST endpoints** (5 endpoints keep a deprecated GET method next to the POST one; 9 endpoints also answer on GET with the same fields as query parameters).*
+*143 typed SDK functions covering **129 REST endpoints** (5 endpoints keep a deprecated GET method next to the POST one; 9 endpoints also answer on GET with the same fields as query parameters).*
 
 ## What makes Asterwise different
 

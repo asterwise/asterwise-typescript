@@ -327,7 +327,7 @@ export const westernHorary = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Vedic events over a date range
  *
- * One timeline of everything that happens to a chart over 1 to 31 days, each event with its exact time. Sidereal sign ingresses with the new sign's house from the natal Moon, stations, Moon nakshatra changes with Tarabala, Moon sign changes with Chandrabala, exact degree conjunctions with natal planets, eclipses with their contacts, and Vimshottari dasha changes (to the day). Each event carries the verdict its own rule gives, or null. No weighting.
+ * One timeline of everything that happens to a chart over 1 to 31 days, each event with its exact time. Sidereal sign ingresses with the new sign's house from the natal Moon, stations, Moon nakshatra changes with Tarabala, Moon sign changes with Chandrabala, exact degree conjunctions with natal planets, eclipses with their contacts, Purnima and Amavasya (the exact full and new Moon, with the tithi's start and end), and Vimshottari dasha changes (to the day). Each event carries the verdict its own rule gives, or null. No weighting.
  */
 export const vedicEvents = <ThrowOnError extends boolean = false>(options: Options<VedicEventsData, ThrowOnError>): RequestResult<VedicEventsResponses, VedicEventsErrors, ThrowOnError> => (options.client ?? client).post<VedicEventsResponses, VedicEventsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -765,9 +765,9 @@ export const panchangaRahuKaal = <ThrowOnError extends boolean = false>(options:
 });
 
 /**
- * Monthly Panchanga calendar
+ * Monthly Panchanga calendar (GET)
  *
- * Panchanga for every day of a month at a location, one entry per day. Each day keeps the sunrise tithi, vara, nakshatra, yoga, karana and Rahu Kaal, and adds sunrise, sunset, moonrise, moonset, paksha, the lunar month (amanta and purnimanta, with Adhik months), Bhadra windows, and every tithi, nakshatra, yoga and karana active between that sunrise and the next with ISO start and end times. A kshaya tithi (one no sunrise touches) appears on the day it runs, flagged is_kshaya; a tithi that holds two sunrises is flagged is_vriddhi on both days.
+ * Same answer as POST /v1/astro/panchanga/calendar, with the same fields as query parameters (`latitude` and `longitude` for `lat` and `lon`).
  */
 export const panchangaCalendar = <ThrowOnError extends boolean = false>(options: Options<PanchangaCalendarData, ThrowOnError>): RequestResult<PanchangaCalendarResponses, PanchangaCalendarErrors, ThrowOnError> => (options.client ?? client).get<PanchangaCalendarResponses, PanchangaCalendarErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -776,9 +776,9 @@ export const panchangaCalendar = <ThrowOnError extends boolean = false>(options:
 });
 
 /**
- * Monthly Panchanga calendar (JSON body)
+ * Monthly Panchanga calendar
  *
- * Panchanga for every day of a month, the same data as GET /v1/astro/panchanga/calendar sent as a JSON body. Minimum required JSON fields: `year` (1900–2100), `month` (1–12), `lat`, `lon`. Optional `timezone` defaults to Asia/Kolkata.
+ * Panchanga for every day of a month at a location, one entry per day. Each day keeps the sunrise tithi, vara, nakshatra, yoga, karana and Rahu Kaal, and adds sunrise, sunset, moonrise, moonset, paksha, the lunar month (amanta and purnimanta, with Adhik months), Bhadra windows, and every tithi, nakshatra, yoga and karana active between that sunrise and the next with ISO start and end times. A kshaya tithi (one no sunrise touches) appears on the day it runs, flagged is_kshaya; a tithi that holds two sunrises is flagged is_vriddhi on both days. Give `year` (1900-2100), `month` (1-12) and either `location` (a city name) or `lat` and `lon` (also accepted as `latitude` and `longitude`); `timezone` defaults to Asia/Kolkata.
  */
 export const panchangaCalendarPost = <ThrowOnError extends boolean = false>(options: Options<PanchangaCalendarPostData, ThrowOnError>): RequestResult<PanchangaCalendarPostResponses, PanchangaCalendarPostErrors, ThrowOnError> => (options.client ?? client).post<PanchangaCalendarPostResponses, PanchangaCalendarPostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1016,7 +1016,7 @@ export const charDasha = <ThrowOnError extends boolean = false>(options: Options
 /**
  * Dashakoot — 10-Koota Compatibility
  *
- * Computes all 10 kootas for two persons: the standard 8 Ashtakoot kootas plus Mahendra and Stree Deergha. Returns total score out of 38, per-koota breakdown, dosha analysis (Nadi, Bhakoot, Rajju, Vedha), and compatibility level.
+ * Scores the South Indian Dashakoot match out of 10: ten poruthams, each 1 when it agrees and 0 when it does not. The poruthams are Dina, Gana, Mahendra, Stree Deergha, Yoni, Rasi, Rasi Adhipati, Vashya, Rajju and Vedha. Returns the per-porutham breakdown, the percentage, a compatibility level (Excellent 8+, Good 6+, Average 5+, otherwise Poor), and Nadi, Bhakoot, Rajju and Vedha dosha flags. Nadi and Bhakoot are reported but not scored.
  */
 export const matchmakingDashakoot = <ThrowOnError extends boolean = false>(options: Options<MatchmakingDashakootData, ThrowOnError>): RequestResult<MatchmakingDashakootResponses, MatchmakingDashakootErrors, ThrowOnError> => (options.client ?? client).post<MatchmakingDashakootResponses, MatchmakingDashakootErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1220,9 +1220,9 @@ export const personalYearPost = <ThrowOnError extends boolean = false>(options: 
 });
 
 /**
- * Business Name Numerology
+ * Business Name Numerology (GET)
  *
- * Scores a business name by its Pythagorean Expression number, with theme, harmony score (1-10) and recommended uses. The number is worked part by part like /v1/numerology/expression: each word is reduced on its own (11, 22, 33 kept), then the words are added and reduced. A name with no letters (e.g. '123') is rejected with 422 `validation_error`.
+ * Same answer as POST /v1/numerology/business-name, with `name` as a query parameter.
  */
 export const businessName = <ThrowOnError extends boolean = false>(options: Options<BusinessNameData, ThrowOnError>): RequestResult<BusinessNameResponses, BusinessNameErrors, ThrowOnError> => (options.client ?? client).get<BusinessNameResponses, BusinessNameErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1231,9 +1231,9 @@ export const businessName = <ThrowOnError extends boolean = false>(options: Opti
 });
 
 /**
- * Business Name Numerology (JSON body)
+ * Business Name Numerology
  *
- * Same analysis as GET /v1/numerology/business-name for clients that send a JSON body (e.g. MCP): `{ "name": "..." }`.
+ * Scores a business name by its Pythagorean Expression number, with theme, harmony score (1-10) and recommended uses. The number is worked part by part like /v1/numerology/expression: each word is reduced on its own (11, 22, 33 kept), then the words are added and reduced. A name with no letters (e.g. '123') is rejected with 422 `validation_error`.
  */
 export const businessNamePost = <ThrowOnError extends boolean = false>(options: Options<BusinessNamePostData, ThrowOnError>): RequestResult<BusinessNamePostResponses, BusinessNamePostErrors, ThrowOnError> => (options.client ?? client).post<BusinessNamePostResponses, BusinessNamePostErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

@@ -28,3 +28,7 @@ jobs:
       - name: Verify the packed artifact compiles under strict + nodenext
         if: matrix.node-version == '22'
         run: npm run verify:nodenext
+
+      - name: README and package description match the live API counts
+        if: matrix.node-version == '22'
+        run: python3 scripts/check_readme_counts.py

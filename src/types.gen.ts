@@ -7936,7 +7936,7 @@ export type HoroscopeData = {
     /**
      * Period Key
      *
-     * Period identifier (date, week, month, or year key)
+     * The period this horoscope covers, on the India Standard Time calendar: YYYY-MM-DD (daily), YYYY-Www, the ISO week of that week's Monday (weekly), YYYY-MM (monthly) or YYYY (yearly).
      */
     period_key: string;
     /**
@@ -9330,7 +9330,7 @@ export type LunarReturnRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -9525,6 +9525,8 @@ export type MatchmakingResponse = {
 export type MaturityNumberRequest = {
     /**
      * Name
+     *
+     * Full name, used for the Expression number.
      */
     name: string;
     /**
@@ -9921,10 +9923,14 @@ export type MuhurtaParticipant = {
     birth_time?: string | null;
     /**
      * Birth Latitude
+     *
+     * Birthplace latitude in decimal degrees, north positive.
      */
     birth_latitude?: number | null;
     /**
      * Birth Longitude
+     *
+     * Birthplace longitude in decimal degrees, east positive.
      */
     birth_longitude?: number | null;
     /**
@@ -9983,6 +9989,8 @@ export type MuhurtaRequest = {
     timezone?: string | null;
     /**
      * Ayanamsa
+     *
+     * Ayanamsa system: lahiri (default), raman, kp, or tropical for a zero offset, as on every other chart endpoint
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
     /**
@@ -11265,7 +11273,7 @@ export type NumerologyProfileResponse = {
     /**
      * Lucky Numbers
      *
-     * Lucky numbers, no repeats: first the Life Path, Expression, Soul Urge, Personality and Birth Day (these may be master numbers 11, 22, 33), then digits 1-9 from the birth date in ascending order, topped up with unused digits 1-9 (at most 9 are guaranteed)
+     * Six lucky numbers, no repeats: first the Life Path, Expression, Soul Urge, Personality and Birth Day (these may be master numbers 11, 22, 33), then digits 1-9 from the birth date in ascending order, topped up with unused digits 1-9 (at most 9 are guaranteed)
      */
     lucky_numbers?: Array<number>;
     /**
@@ -11312,20 +11320,34 @@ export type NumerologyRequest = {
 export type PanchangaCalendarPostBody = {
     /**
      * Year
+     *
+     * Year, 1900-2100.
      */
     year: number;
     /**
      * Month
+     *
+     * Month, 1-12.
      */
     month: number;
     /**
-     * Lat
+     * Location
+     *
+     * City name, used when lat and lon are not given.
      */
-    lat: number;
+    location?: string | null;
+    /**
+     * Lat
+     *
+     * Latitude in decimal degrees, north positive. Also accepted as latitude.
+     */
+    lat?: number | null;
     /**
      * Lon
+     *
+     * Longitude in decimal degrees, east positive. Also accepted as longitude.
      */
-    lon: number;
+    lon?: number | null;
     /**
      * Timezone
      *
@@ -11334,6 +11356,8 @@ export type PanchangaCalendarPostBody = {
     timezone?: string;
     /**
      * Ayanamsa
+     *
+     * Ayanamsa system: lahiri (default), raman, kp, or tropical for a zero offset, as on every other chart endpoint
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
@@ -11394,10 +11418,14 @@ export type PanchangaExtRequest = {
     location?: string | null;
     /**
      * Latitude
+     *
+     * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
      */
     latitude?: number | null;
     /**
      * Longitude
+     *
+     * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
      */
     longitude?: number | null;
     /**
@@ -12503,10 +12531,14 @@ export type PlanetaryHoursRequest = {
     location?: string | null;
     /**
      * Latitude
+     *
+     * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
      */
     latitude?: number | null;
     /**
      * Longitude
+     *
+     * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
      */
     longitude?: number | null;
     /**
@@ -12624,7 +12656,7 @@ export type PlanetaryReturnRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -13292,7 +13324,7 @@ export type ProgressionRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -14743,7 +14775,7 @@ export type SolarReturnRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -16004,7 +16036,13 @@ export type TransitsResponse = {
  * TwoPersonRequest
  */
 export type TwoPersonRequest = {
+    /**
+     * Birth data of the first person.
+     */
     person1: BirthInput;
+    /**
+     * Birth data of the second person.
+     */
     person2: BirthInput;
 };
 
@@ -16441,6 +16479,8 @@ export type VedicDailyFactorsRequest = {
     target_latitude?: number | null;
     /**
      * Target Longitude
+     *
+     * Longitude of that place, east positive. Defaults to the birthplace.
      */
     target_longitude?: number | null;
 };
@@ -16581,6 +16621,8 @@ export type VedicEventsRequest = {
     target_latitude?: number | null;
     /**
      * Target Longitude
+     *
+     * Longitude of that place, east positive. Defaults to the birthplace.
      */
     target_longitude?: number | null;
 };
@@ -16902,7 +16944,7 @@ export type WesternDailyFactorsRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -16961,6 +17003,8 @@ export type WesternDailyFactorsRequest = {
     target_latitude?: number | null;
     /**
      * Target Longitude
+     *
+     * Longitude of that place, east positive. Defaults to the birthplace.
      */
     target_longitude?: number | null;
 };
@@ -17081,10 +17125,14 @@ export type WesternDayRequest = {
     location?: string | null;
     /**
      * Latitude
+     *
+     * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
      */
     latitude?: number | null;
     /**
      * Longitude
+     *
+     * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
      */
     longitude?: number | null;
     /**
@@ -17328,7 +17376,7 @@ export type WesternEventsRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -17423,10 +17471,14 @@ export type WesternHoraryRequest = {
     location?: string | null;
     /**
      * Latitude
+     *
+     * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
      */
     latitude?: number | null;
     /**
      * Longitude
+     *
+     * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
      */
     longitude?: number | null;
     /**
@@ -17671,7 +17723,7 @@ export type WesternHoroscopeData = {
     /**
      * Period Key
      *
-     * Period identifier (date, week, month, or year key)
+     * The period this horoscope covers, on the India Standard Time calendar: YYYY-MM-DD (daily), YYYY-Www, the ISO week of that week's Monday (weekly), YYYY-MM (monthly) or YYYY (yearly).
      */
     period_key: string;
     /**
@@ -17785,7 +17837,7 @@ export type WesternNatalRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -17983,7 +18035,7 @@ export type WesternTransitRequest = {
     /**
      * Time
      *
-     * Birth time in HH:MM 24-hour format. If omitted, sunrise chart is used as fallback.
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
      */
     time?: string | null;
     /**
@@ -19883,10 +19935,14 @@ export type WesternDayGetData = {
         location?: string | null;
         /**
          * Latitude
+         *
+         * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
          */
         latitude?: number | null;
         /**
          * Longitude
+         *
+         * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
          */
         longitude?: number | null;
         /**
@@ -20569,10 +20625,14 @@ export type WesternCompatibilityZodiacData = {
     query: {
         /**
          * Sign1
+         *
+         * First sign: an English tropical sign name such as Aries (case-insensitive).
          */
         sign1: string;
         /**
          * Sign2
+         *
+         * Second sign: an English tropical sign name such as Leo (case-insensitive).
          */
         sign2: string;
     };
@@ -20956,6 +21016,8 @@ export type PanchangaGetData = {
         time?: string | null;
         /**
          * Ayanamsa
+         *
+         * Ayanamsa system: lahiri (default), raman, kp, or tropical for a zero offset, as on every other chart endpoint
          */
         ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
         /**
@@ -21534,10 +21596,14 @@ export type PanchangaCalendarData = {
         location?: string | null;
         /**
          * Latitude
+         *
+         * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
          */
         latitude?: number | null;
         /**
          * Longitude
+         *
+         * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
          */
         longitude?: number | null;
         /**
@@ -21548,6 +21614,8 @@ export type PanchangaCalendarData = {
         timezone?: string | null;
         /**
          * Ayanamsa
+         *
+         * Ayanamsa system: lahiri (default), raman, kp, or tropical for a zero offset, as on every other chart endpoint
          */
         ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
     };
@@ -21679,10 +21747,14 @@ export type PanchangaTamilData = {
         location?: string | null;
         /**
          * Latitude
+         *
+         * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
          */
         latitude?: number | null;
         /**
          * Longitude
+         *
+         * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
          */
         longitude?: number | null;
         /**
@@ -21763,10 +21835,14 @@ export type PanchangaFestivalsData = {
         location?: string | null;
         /**
          * Latitude
+         *
+         * Latitude in decimal degrees, north positive. Use with longitude and timezone instead of location.
          */
         latitude?: number | null;
         /**
          * Longitude
+         *
+         * Longitude in decimal degrees, east positive. Use with latitude and timezone instead of location.
          */
         longitude?: number | null;
         /**
@@ -26359,6 +26435,8 @@ export type PlanetNatureData = {
     query?: {
         /**
          * Planet
+         *
+         * One of Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu (case-sensitive). Omit for all nine.
          */
         planet?: string | null;
     };
@@ -26421,6 +26499,8 @@ export type PujaSuggestionsData = {
     query?: {
         /**
          * Planet
+         *
+         * One of Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu (case-sensitive). Omit for all nine.
          */
         planet?: string | null;
     };
@@ -26483,6 +26563,8 @@ export type RudrakshaData = {
     query?: {
         /**
          * Planet
+         *
+         * One of Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu (case-sensitive). Omit for all nine.
          */
         planet?: string | null;
     };
@@ -26545,6 +26627,8 @@ export type AyanamshaData = {
     query?: {
         /**
          * Date
+         *
+         * Date, YYYY-MM-DD. Omit for today's UTC date.
          */
         date?: string | null;
     };

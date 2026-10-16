@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.12.1 — 2026-10-16
+
+Generated from the API as deployed on 2026-10-16. No method added, removed
+or renamed.
+
+### Changed
+
+- `panchangaCalendarPost` accepts `location` (a city name) as the GET form already
+  did; `lat` and `lon` are optional when `location` is given.
+- Every request field and query parameter now has a description in the
+  type comments (42 had none).
+- The two GET forms of the monthly panchanga calendar and business-name
+  numerology are GET twins of their POST forms, like the place-and-date
+  GETs: same answer, same fields. The API therefore counts 129 endpoints,
+  not 131; every method is still here.
+- README: the "What you can build" table counts endpoints and adds up to
+  129; package description says 129 endpoints.
+
 ## 0.12.0 — 2026-10-12
 
 Generated from the API as deployed on 2026-10-12. Ten new endpoints and
