@@ -5904,7 +5904,7 @@ export type DivisionalResponse = {
     /**
      * D30
      *
-     * Trimshamsha — misfortunes and evils. Unequal portions per BPHS: odd signs Mars 5° → Aries, Saturn 5° → Aquarius, Jupiter 8° → Sagittarius, Mercury 7° → Gemini, Venus 5° → Libra; even signs reversed into the lords' even signs (Taurus, Virgo, Pisces, Capricorn, Scorpio). Every body is placed, Sun and Moon included, as in Jagannatha Hora.
+     * Trimshamsha — misfortunes and evils. Unequal portions per BPHS: odd signs Mars 5° → Aries, Saturn 5° → Aquarius, Jupiter 8° → Sagittarius, Mercury 7° → Gemini, Venus 5° → Libra; even signs reversed into the lords' even signs (Taurus, Virgo, Pisces, Capricorn, Scorpio). Every body is placed, Sun and Moon included.
      */
     D30: {
         [key: string]: unknown;
@@ -5928,7 +5928,7 @@ export type DivisionalResponse = {
     /**
      * D60
      *
-     * Shashtyamsha — all matters, most subtle divisional chart. 60 parts of 0°30', counted from the planet's own sign (BPHS; Jagannatha Hora default).
+     * Shashtyamsha — all matters, most subtle divisional chart. 60 parts of 0°30', counted from the planet's own sign (BPHS).
      */
     D60: {
         [key: string]: unknown;
@@ -12792,7 +12792,7 @@ export type PrashnaHouseAnalysis = {
     /**
      * Lord
      *
-     * Lord of the quesited house by whole sign (lord of its sign), as BPHS and Jagannatha Hora read lordship.
+     * Lord of the quesited house by whole sign (lord of its sign), as BPHS reads lordship.
      */
     lord: string;
     /**
@@ -14990,12 +14990,12 @@ export type StrengthRequest = {
  * (per-planet sixteen-varga score and threshold), ``divisional_charts``, ``ashtakavarga``, ``karakas``,
  * ``birth_time_provided``, and optional ``graha_yuddha``.
  *
- * Shadbala follows B.V. Raman's worked example and Jagannatha Hora: the Sun's and the Moon's
+ * Shadbala follows B.V. Raman's worked example: the Sun's and the Moon's
  * ``cheshta_bala`` is 0, because BPHS's Cheshta Bala for them (the Sun's Ayana, the Moon's
  * Paksha) is counted in Kala Bala, where the Sun's ``ayana`` and the Moon's ``paksha`` are
  * doubled (0–120). ``ayana`` uses the kranti (declination) of the planet's ecliptic longitude,
  * true obliquity of date, latitude ignored, so it stays within 0–60 (0–120 for the doubled Sun).
- * ``paksha`` takes each planet's nature in the chart (BPHS Ch.3, as in Jagannatha Hora): the Moon
+ * ``paksha`` takes each planet's nature in the chart (BPHS Ch.3): the Moon
  * is benefic in Shukla paksha and malefic in Krishna paksha (so a waning Moon is strongest near
  * Amavasya), Mercury follows his companions, Jupiter and Venus are benefic, the rest malefic.
  *

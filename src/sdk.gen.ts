@@ -98,7 +98,7 @@ export const ashtakavarga = <ThrowOnError extends boolean = false>(options: Opti
  * It is considered applicable only for specific charts where Rahu occupies a
  * Kendra (1, 4, 7, 10) or Trikona (1, 5, 9) counted from the sign of the Lagna
  * lord, but not the Lagna itself (BPHS Ch.46 v.17). For a Scorpio or Aquarius
- * Lagna the stronger co-lord is used, as in JHora.
+ * Lagna the stronger co-lord is used.
  *
  * **Applicability check:**
  * This endpoint first checks whether Ashtottari applies to the given chart.
@@ -110,7 +110,7 @@ export const ashtakavarga = <ThrowOnError extends boolean = false>(options: Opti
  * Counting from Ardra, the nakshatras belong to the lords in groups of 4, 3, 4,
  * 3, 4, 3, 4, 3 (Sun, Moon, Mars, Mercury, Saturn — with Abhijit — Jupiter,
  * Rahu, Venus). The balance at birth is the lord's years times the share of its
- * whole nakshatra group still ahead of the Moon (JHora's method). The first
+ * whole nakshatra group still ahead of the Moon. The first
  * period starts at birth; its sub-periods are the tail of the full period, and
  * it carries `dasha_start_date` and `balance_years`.
  *
@@ -301,7 +301,7 @@ export const westernTransitsMonthly = <ThrowOnError extends boolean = false>(opt
 /**
  * Published reference charts
  *
- * Test charts with reference values from an independent source, so anyone can check the maths. The 25 edge cases of the verification harness (clock changes, southern hemisphere, polar night and day, the date line, 45-minute zones, historical offsets, leap day, the range limits) and a sample of random charts, each with the sidereal longitudes, signs, nakshatras and ascendant from PyJHora (a port of Jagannatha Hora), plus a Moon-on-a-nakshatra-boundary case from a direct Swiss Ephemeris call and an unknown-birth-time behaviour case. Send each input to /v1/astro/natal and compare.
+ * Test charts with reference values from an independent source, so anyone can check the maths. The 25 edge cases of the verification harness (clock changes, southern hemisphere, polar night and day, the date line, 45-minute zones, historical offsets, leap day, the range limits) and a sample of random charts, each with the sidereal longitudes, signs, nakshatras and ascendant from an independent reference implementation, plus a Moon-on-a-nakshatra-boundary case from a direct Swiss Ephemeris call and an unknown-birth-time behaviour case. Send each input to /v1/astro/natal and compare.
  */
 export const referenceCharts = <ThrowOnError extends boolean = false>(options?: Options<ReferenceChartsData, ThrowOnError>): RequestResult<ReferenceChartsResponses, ReferenceChartsErrors, ThrowOnError> => (options?.client ?? client).get<ReferenceChartsResponses, ReferenceChartsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1001,7 +1001,7 @@ export const dashaTransits = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Jaimini Char Dasha
  *
- * Computes Jaimini Char Dasha — a sign-based dasha system from the Jaimini school of astrology. Returns mahadasha and antardasha periods starting from the ascendant (Lagna), with the current active mahadasha and antardasha highlighted. Method: K.N. Rao, as in his own dated case notes. The sequence runs forward when the 9th sign from the Lagna is savya (Aries, Taurus, Gemini, Libra, Scorpio, Sagittarius) and backward otherwise; period years count to the sign lord (savya forward, apasavya backward) minus one, 12 for the lord in its own rashi, with no year added or taken off for an exalted or debilitated lord (JHora's K.N. Rao option adds/subtracts one). Scorpio and Aquarius count to the co-lord outside the sign, or with both outside to the one with more planets, then the one further advanced. With `cycles` 2 or 3, every cycle repeats the first cycle's years. Antardashas are 12 equal parts (each as many months as the mahadasha has years); K.N. Rao: they run forward or backward by the 9th sign from the mahadasha sign (the same rule the Lagna uses), starting from the next sign, and the mahadasha sign's own antardasha comes last. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
+ * Computes Jaimini Char Dasha — a sign-based dasha system from the Jaimini school of astrology. Returns mahadasha and antardasha periods starting from the ascendant (Lagna), with the current active mahadasha and antardasha highlighted. Method: K.N. Rao, as in his own dated case notes. The sequence runs forward when the 9th sign from the Lagna is savya (Aries, Taurus, Gemini, Libra, Scorpio, Sagittarius) and backward otherwise; period years count to the sign lord (savya forward, apasavya backward) minus one, 12 for the lord in its own rashi, with no year added or taken off for an exalted or debilitated lord (some software adds or subtracts one). Scorpio and Aquarius count to the co-lord outside the sign, or with both outside to the one with more planets, then the one further advanced. With `cycles` 2 or 3, every cycle repeats the first cycle's years. Antardashas are 12 equal parts (each as many months as the mahadasha has years); K.N. Rao: they run forward or backward by the 9th sign from the mahadasha sign (the same rule the Lagna uses), starting from the next sign, and the mahadasha sign's own antardasha comes last. Request JSON follows BirthInput plus `cycles` (1–3): `name`, `date` (YYYY-MM-DD), `time` (HH:MM, required), either `location` or `latitude`/`longitude`/`timezone`, `ayanamsa`.
  */
 export const charDasha = <ThrowOnError extends boolean = false>(options: Options<CharDashaData, ThrowOnError>): RequestResult<CharDashaResponses, CharDashaErrors, ThrowOnError> => (options.client ?? client).post<CharDashaResponses, CharDashaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -2150,7 +2150,7 @@ export const varshaphalSaham = <ThrowOnError extends boolean = false>(options: O
 /**
  * Varshaphal — Harsha Bala
  *
- * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house: Sun 9th, Moon 3rd, Mars 6th, Mercury 1st, Jupiter 11th, Venus 5th, Saturn 12th), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (masculine Sun, Mars, Jupiter in houses 4-6 or 10-12; feminine Moon, Mercury, Venus, Saturn in houses 1-3 or 7-9), Dina-Ratri (masculine planets in a day return, feminine in a night return). Houses are whole signs from the Varsha lagna, as Jagannatha Hora counts them.
+ * Computes Harsha Bala (positional happiness score) for all 7 classical planets in the Varshaphal chart. Maximum = 20 per planet (4 components × 5 points). Harsha Bala measures whether a planet is positionally comfortable in the annual chart — distinct from Pancha Vargeeya Bala which measures mathematical strength. A planet with high Pancha Vargeeya Bala but zero Harsha Bala has the capacity to deliver results but will do so through stress and frustration. Components: Sthana (happy house: Sun 9th, Moon 3rd, Mars 6th, Mercury 1st, Jupiter 11th, Venus 5th, Saturn 12th), Swakshetra/Uccha (own or exaltation sign), Pum-Stri (masculine Sun, Mars, Jupiter in houses 4-6 or 10-12; feminine Moon, Mercury, Venus, Saturn in houses 1-3 or 7-9), Dina-Ratri (masculine planets in a day return, feminine in a night return). Houses are whole signs from the Varsha lagna.
  */
 export const varshaphalHarshaBala = <ThrowOnError extends boolean = false>(options: Options<VarshaphalHarshaBalaData, ThrowOnError>): RequestResult<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError> => (options.client ?? client).post<VarshaphalHarshaBalaResponses, VarshaphalHarshaBalaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],

@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.12.2 — 2026-10-26
+
+Description text only, matching the API as deployed on 2026-10-26. No method,
+model or field changed.
+
+### Changed
+
+- Endpoint and model descriptions name no third-party reference software: the
+  reference charts come from an independent reference implementation, and the
+  matchmaking verdict is described as following the published Ashtakoota bands.
+
 ## 0.12.1 — 2026-10-16
 
 Generated from the API as deployed on 2026-10-16. No method added, removed
@@ -40,8 +51,8 @@ renamed. GET twins of the place-and-date endpoints are included as
   for one calendar day at a place.
 - `vedic_significations` / `western_significations` — BPHS and Lilly house
   and planet significations with stable ids.
-- `reference_charts` — published test charts with PyJHora and Swiss
-  Ephemeris reference values.
+- `reference_charts` — published test charts with independent reference
+  values.
 - `panchanga_get`, `panchanga_hora_get`, `panchanga_rahu_kaal_get`,
   `panchanga_choghadiya_get`, `western_planetary_hours_get`,
   `western_void_of_course_get`, `western_day_get` — cacheable GET twins.
