@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 0.13.0 — unreleased
+
+Generated from the API with the chart-drawing and Western-points release
+(not deployed yet). Nothing removed: every method and model from 0.12.2 is
+still here.
+
+### Added
+
+- Chart pictures: `chartSvg` takes `vargas` (any of D1, D2, D3, D4, D7, D9,
+  D10, D12, D16, D20, D24, D27, D30, D40, D45, D60) and `styles` (north,
+  south, east) and returns those divisional charts in `vargas`
+  (`VargaChartSvgs`). New drawing options: `show_degrees`, `theme` (light/dark),
+  `colors` (`ChartColors`, hex), `transparent` and `show_details`.
+- Western points: `westernNatalChart` returns `points` (`WesternPoint`): mean and
+  true North and South Node, mean Lilith (Black Moon) and Chiron. Solar,
+  lunar and planetary returns include them in their chart too.
+- Fields the API already sends, now typed: `vela` on Choghadiya periods,
+  `needs_birth_time` on dosha and yoga results, `imbalance` on Papa Samyam,
+  `verse` on Pitru Dosha combinations and `minimum_poruthams_met` on Porutham.
+
+### Changed
+
+- Western synastry, composite and compatibility requests type each person as
+  `WesternBirthInput`. It has the same fields as `BirthInput`; the
+  description says the tropical zodiac is always used. Existing TypeScript code
+  compiles unchanged.
+- The classic chart pictures have a refreshed look: left-aligned title,
+  Cancer shown as "Cn", new ↑/↓ marks for exalted and debilitated grahas,
+  and a slightly taller image. Positions are unchanged.
+- Endpoint and field descriptions updated to match the API.
+
 ## 0.12.2 — 2026-10-26
 
 Description text only, matching the API as deployed on 2026-10-26. No method,

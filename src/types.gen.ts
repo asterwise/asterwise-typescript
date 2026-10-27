@@ -1174,6 +1174,28 @@ export type ApiResponseMuhurtaResponse = {
 };
 
 /**
+ * ApiResponse[MyUsageResponse]
+ */
+export type ApiResponseMyUsageResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: MyUsageResponse;
+};
+
+/**
  * ApiResponse[NakshatraPredictionResponse]
  */
 export type ApiResponseNakshatraPredictionResponse = {
@@ -3947,6 +3969,72 @@ export type CharMahadasha = {
 };
 
 /**
+ * ChartColors
+ */
+export type ChartColors = {
+    /**
+     * Background
+     *
+     * Chart background, e.g. #FFFFFF
+     */
+    background?: string | null;
+    /**
+     * Line
+     *
+     * Frame and house lines
+     */
+    line?: string | null;
+    /**
+     * Text
+     *
+     * Planet labels and title
+     */
+    text?: string | null;
+    /**
+     * Muted
+     *
+     * Sign labels, house numbers, legend
+     */
+    muted?: string | null;
+    /**
+     * Lagna Highlight
+     *
+     * Fill of the Lagna house
+     */
+    lagna_highlight?: string | null;
+    /**
+     * Retro
+     *
+     * R (Vakri) mark
+     */
+    retro?: string | null;
+    /**
+     * Combust
+     *
+     * C (Asta) mark
+     */
+    combust?: string | null;
+    /**
+     * Vargottama
+     *
+     * V (Vargottama) mark
+     */
+    vargottama?: string | null;
+    /**
+     * Exalted
+     *
+     * ↑ (exalted) mark
+     */
+    exalted?: string | null;
+    /**
+     * Debilitated
+     *
+     * ↓ (debilitated) mark
+     */
+    debilitated?: string | null;
+};
+
+/**
  * ChartRequest
  */
 export type ChartRequest = {
@@ -4004,6 +4092,46 @@ export type ChartRequest = {
      * Sidereal ayanamsa mode used in calculations
      */
     ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * Vargas
+     *
+     * Divisional charts to draw, any of the 16 (D1 to D60). Returned in `vargas`. Leave out for the classic response (D1 and D9 only).
+     */
+    vargas?: Array<'D1' | 'D2' | 'D3' | 'D4' | 'D7' | 'D9' | 'D10' | 'D12' | 'D16' | 'D20' | 'D24' | 'D27' | 'D30' | 'D40' | 'D45' | 'D60'> | null;
+    /**
+     * Styles
+     *
+     * Chart styles for `vargas`: north (diamond), south (fixed-sign grid), east (Bengali, fixed signs with Aries at the top middle). Applies to `vargas` only: the classic lagna_*navamsa_* fields are always north and south.
+     */
+    styles?: Array<'north' | 'south' | 'east'>;
+    /**
+     * Show Degrees
+     *
+     * Show each graha's degree and minutes in its sign (and the Lagna degree).
+     */
+    show_degrees?: boolean;
+    /**
+     * Theme
+     *
+     * Colour preset.
+     */
+    theme?: 'light' | 'dark';
+    /**
+     * Override any colour of the chosen theme (hex #RRGGBB).
+     */
+    colors?: ChartColors | null;
+    /**
+     * Transparent
+     *
+     * No background fill, so the chart sits on your own page colour.
+     */
+    transparent?: boolean;
+    /**
+     * Show Details
+     *
+     * Print the name (when sent), birth date, time and place under the title; cut to 80 characters.
+     */
+    show_details?: boolean;
 };
 
 /**
@@ -4040,6 +4168,14 @@ export type ChartResponse = {
      * South Indian Navamsa (D9) chart SVG string
      */
     navamsa_south: string;
+    /**
+     * Vargas
+     *
+     * Requested divisional charts, keyed D1..D60, each with the requested styles. Planets sit in their varga sign; houses count from the varga lagna; degrees are varga degrees. Present only when `vargas` was sent.
+     */
+    vargas?: {
+        [key: string]: VargaChartSvgs;
+    } | null;
     /**
      * Legend
      *
@@ -4124,6 +4260,12 @@ export type ChoghadiyaPeriod = {
      * True if this period is currently active.
      */
     is_current: boolean;
+    /**
+     * Vela
+     *
+     * Barred ardha-prahara labels on this slot: 'Vaar Vela' (day and night), 'Kaal Vela' (day, Saturn's eighth) or 'Kaal Ratri' (night, Saturn's eighth). Avoid auspicious work in these. Empty when none.
+     */
+    vela?: Array<string>;
 };
 
 /**
@@ -4245,8 +4387,8 @@ export type CivilDay = {
 /**
  * ClassicalSource
  *
- * A classical text the yoga's definition and results are drawn from. Only the text and, where
- * unambiguous, the section topic are given; chapter and verse numbers differ between editions.
+ * A classical text the yoga's definition and results are drawn from. Only the text and the
+ * section topic are given; chapter and verse numbers differ between editions.
  */
 export type ClassicalSource = {
     /**
@@ -4258,7 +4400,7 @@ export type ClassicalSource = {
     /**
      * Section
      *
-     * Section of the text, when unambiguous
+     * Section of the text (topic, not an edition-dependent chapter number)
      */
     section?: string | null;
 };
@@ -4710,13 +4852,13 @@ export type DailyFactor = {
     /**
      * Id
      *
-     * Stable factor id, e.g. gochar.saturn, tarabala.12, natal_contact.saturn.moon.
+     * Stable factor id, e.g. gochar.saturn or natal_contact.saturn.moon (Vedic), aspect.sun.sextile.moon (Western).
      */
     id: string;
     /**
      * Group
      *
-     * gochar, sade_sati, chandra_ashtama, tarabala, chandrabala, dasha, dasha_transit, natal_contact, panchanga, moon_phase.
+     * Vedic: gochar, sade_sati, chandra_ashtama, tarabala, chandrabala, dasha, dasha_transit, natal_contact, panchanga, moon_phase. Western: aspect, transit, moon_phase, void_of_course, planetary_hour, profection.
      */
     group: string;
     /**
@@ -6051,6 +6193,12 @@ export type DoshaResult = {
     details?: {
         [key: string]: unknown;
     };
+    /**
+     * Needs Birth Time
+     *
+     * True when the birth time is unknown and this result depends on the Lagna (houses or lordship from the Ascendant), so it may change with the real birth time.
+     */
+    needs_birth_time?: boolean | null;
     /**
      * Interpretation Summary
      *
@@ -9452,7 +9600,7 @@ export type MatchmakingResponse = {
     /**
      * Compatibility Level
      *
-     * Textual compatibility band derived from score
+     * Verdict on the published Ashtakoota bands: Excellent, Very Good, Ordinary or Not Recommended. Nadi 0 is never recommended; Bhakoot 0 is never Excellent.
      */
     compatibility_level: string;
     /**
@@ -10284,6 +10432,50 @@ export type MuhurtaWindow = {
      * Chandrabala
      */
     chandrabala?: Array<MuhurtaChandra> | null;
+};
+
+/**
+ * MyUsageResponse
+ */
+export type MyUsageResponse = {
+    /**
+     * Calls Used
+     */
+    calls_used: number;
+    /**
+     * Calls Limit
+     */
+    calls_limit: number;
+    /**
+     * Calls Remaining
+     */
+    calls_remaining: number;
+    /**
+     * Percent Used
+     */
+    percent_used: number;
+    /**
+     * Tier
+     */
+    tier: string;
+    /**
+     * Burst Limit
+     *
+     * Calls a minute the plan allows (counted per account in UTC clock minutes).
+     */
+    burst_limit: number;
+    /**
+     * Reset Date
+     */
+    reset_date: string;
+    /**
+     * Period Start
+     */
+    period_start: string;
+    /**
+     * Period End
+     */
+    period_end: string;
 };
 
 /**
@@ -11684,7 +11876,15 @@ export type PapasamyamResponse = {
      */
     compatibility_level: string;
     /**
+     * Imbalance
+     *
+     * Balanced, Groom heavier or Bride heavier. Bride heavier is never compatible.
+     */
+    imbalance?: string | null;
+    /**
      * Threshold
+     *
+     * How far the bride's score may exceed the groom's (0: not at all).
      */
     threshold: number;
 };
@@ -11996,9 +12196,15 @@ export type PitruCombination = {
     /**
      * Combination
      *
-     * Name, e.g. 'Purvajanma Shapa Combination 2' (BPHS Ch.83).
+     * Name, e.g. 'Pitru Shapa (BPHS 83.24)'.
      */
     combination: string;
+    /**
+     * Verse
+     *
+     * The BPHS verse, e.g. 'BPHS 83.24'.
+     */
+    verse?: string | null;
     /**
      * Description
      *
@@ -12014,7 +12220,7 @@ export type PitruCombination = {
     /**
      * Weight
      *
-     * Severity weight this combination adds (2 or 3).
+     * Always 1: each BPHS 83 combination counts once (BPHS gives no weighting).
      */
     weight: number;
 };
@@ -12123,8 +12329,16 @@ export type PitruDoshaResponse = {
     ninth_lord_analysis: PitruNinthLordAnalysis;
     /**
      * All Factors
+     *
+     * Chart factors of the formed verse combinations only.
      */
     all_factors: Array<string>;
+    /**
+     * Indicators
+     *
+     * General Sun and 9th-lord conditions (debilitated, in house 6/8/12, joined or aspected by a malefic). Context only: they are not a BPHS 83 combination and never make the dosha present.
+     */
+    indicators?: Array<string>;
     /**
      * Cancellations
      */
@@ -12141,6 +12355,10 @@ export type PitruDoshaResponse = {
      * Remedies
      */
     remedies: Array<string>;
+    /**
+     * Source
+     */
+    source?: string | null;
 };
 
 /**
@@ -12763,6 +12981,12 @@ export type PoruthamResponse = {
      * Hard Veto
      */
     hard_veto: boolean;
+    /**
+     * Minimum Poruthams Met
+     *
+     * True when Rajju, Dinam, Ganam, Rasi and Yoni all pass (the minimum Tamil porutham set).
+     */
+    minimum_poruthams_met?: boolean | null;
     /**
      * Breakdown
      */
@@ -13546,7 +13770,7 @@ export type RangeEvent = {
     /**
      * Time Precision
      *
-     * second, or day for events known only to the day (dasha changes, profection years).
+     * second, or day for events known only to the day (Vedic dasha changes, Western profection years).
      */
     time_precision: string;
     /**
@@ -16039,11 +16263,11 @@ export type TwoPersonRequest = {
     /**
      * Birth data of the first person.
      */
-    person1: BirthInput;
+    person1: WesternBirthInput;
     /**
      * Birth data of the second person.
      */
-    person2: BirthInput;
+    person2: WesternBirthInput;
 };
 
 /**
@@ -16128,6 +16352,30 @@ export type VaraData = {
      * End Time
      */
     end_time?: string | null;
+};
+
+/**
+ * VargaChartSVGs
+ */
+export type VargaChartSvgs = {
+    /**
+     * North
+     *
+     * North Indian style SVG
+     */
+    north?: string | null;
+    /**
+     * South
+     *
+     * South Indian style SVG
+     */
+    south?: string | null;
+    /**
+     * East
+     *
+     * East Indian style SVG
+     */
+    east?: string | null;
 };
 
 /**
@@ -16917,6 +17165,68 @@ export type WesternAspectsResponse = {
      * Number of aspects found
      */
     aspect_count: number;
+};
+
+/**
+ * WesternBirthInput
+ *
+ * Birth input for Western endpoints: the tropical zodiac is always used.
+ */
+export type WesternBirthInput = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Ignored on Western endpoints: positions are always tropical (no ayanamsa). Accepted so one birth object can be sent to Vedic and Western endpoints alike.
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
 };
 
 /**
@@ -17904,6 +18214,12 @@ export type WesternNatalResponse = {
      */
     planets: Array<WesternPlanetPosition>;
     /**
+     * Points
+     *
+     * Lunar nodes (mean and true; each South Node is its North Node + 180°), mean Black Moon Lilith (the Moon's mean apogee) and Chiron, with sign and house. Kept apart from `planets`: they are not in `aspects` or the element, modality and hemisphere counts. Chiron is omitted for moments before 1800-01-01 01:20 UT, where its ephemeris file starts.
+     */
+    points?: Array<WesternPoint>;
+    /**
      * Houses
      */
     houses: Array<WesternHouseCusp>;
@@ -18008,6 +18324,66 @@ export type WesternPlanetPosition = {
      * Traditional essential dignity scoring after William Lilly: domicile +5, exaltation +4, triplicity +3 (by the chart's sect), term +2, face +1, detriment -5, fall -4, peregrine -5, summed in total. Additive to dignity/dignity_score, which are unchanged.
      */
     essential_dignities?: WesternEssentialDignities | null;
+};
+
+/**
+ * WesternPoint
+ */
+export type WesternPoint = {
+    /**
+     * Id
+     *
+     * Stable point id
+     */
+    id: 'north_node_mean' | 'south_node_mean' | 'north_node_true' | 'south_node_true' | 'lilith_mean' | 'chiron';
+    /**
+     * Name
+     *
+     * Display name
+     */
+    name: string;
+    /**
+     * Longitude
+     *
+     * Tropical ecliptic longitude 0–360°
+     */
+    longitude: number;
+    /**
+     * Sign
+     *
+     * Zodiac sign name
+     */
+    sign: string;
+    /**
+     * Sign Index
+     *
+     * Sign index 0=Aries … 11=Pisces
+     */
+    sign_index: number;
+    /**
+     * Degree In Sign
+     *
+     * Degrees within sign 0–29.999
+     */
+    degree_in_sign: number;
+    /**
+     * House
+     *
+     * House number (Placidus or chosen system)
+     */
+    house: number;
+    /**
+     * Is Retrograde
+     *
+     * True when the point moves backwards. The mean nodes are always retrograde.
+     */
+    is_retrograde: boolean;
+    /**
+     * Speed
+     *
+     * Daily motion in degrees per day (negative = retrograde)
+     */
+    speed: number;
 };
 
 /**
@@ -18331,6 +18707,12 @@ export type YogaResult = {
      * Classical texts this yoga is drawn from (empty when the yoga comes from general tradition rather than a named text)
      */
     classical_sources?: Array<ClassicalSource>;
+    /**
+     * Needs Birth Time
+     *
+     * True when this yoga depends on the lagna (houses or house lordship counted from the ascendant) and no birth time was given, so the result may change with the real birth time. Yogas read only from the Moon or from signs are never marked.
+     */
+    needs_birth_time?: boolean;
 };
 
 /**

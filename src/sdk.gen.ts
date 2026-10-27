@@ -59,10 +59,12 @@ export const atmakaraka = <ThrowOnError extends boolean = false>(options: Option
  * seven grahas is in it). The most refined per-planet table, keyed by sign name.
  *
  * - **sarva** — Sarva Ashtakavarga (SAV): the raw sum across all 7 planets.
- * Object keyed by sign name; 28+ bindus in a sign is considered strong.
+ * Object keyed by sign name. The 12 signs share 337 bindus, about 28 each, so a
+ * sign with more than 28 is above average.
  *
- * - **sarva_reduced** — SAV computed from the fully reduced planet tables.
- * More accurate for transit timing. Keyed by sign name.
+ * - **sarva_reduced** — SAV computed from the fully reduced planet tables, the
+ * input to Shodhya Pinda. Transit grading uses the raw tables, not these.
+ * Keyed by sign name.
  *
  * - **after_trikona** / **after_ekadhipatya** — legacy: the reductions applied to the
  * summed SAV, kept for backward compatibility. Not classical values (Shodhana is
@@ -71,8 +73,8 @@ export const atmakaraka = <ThrowOnError extends boolean = false>(options: Option
  * **How to use bindus for transit timing:**
  * When a planet transits a house in its own Bhinna chart, the number of bindus
  * in that house indicates how favourable the transit will be. 8 bindus is maximum,
- * 0 is minimum. In the SAV, 30+ bindus in a house indicates strong positive results
- * during transits through that house.
+ * 0 is minimum. In the SAV, a sign with more than 28 bindus (the average) is
+ * favourable for transits, and the more bindus, the better.
  *
  * **Ayanamsa:** All positions are sidereal. Default is Lahiri.
  *
@@ -150,7 +152,7 @@ export const ashtottariDasha = <ThrowOnError extends boolean = false>(options: O
 /**
  * Generate Kundali chart SVG
  *
- * Generate Vedic astrological chart SVGs. Returns North Indian and South Indian style charts for both Lagna (D1) and Navamsa (D9), as SVG strings. Each planet shows abbreviation, degree°minutes', and superscripts for Vakri (ᴿ), Asta (ᶜ), and Vargottama (ᵛ). Returns North Indian (Uttar Bharatiya) and South Indian (Dakshina Bharatiya) Kundali charts as inline SVG. Also returns Navamsa (D9) chart. The response contains SVG strings for each chart style. To render them:
+ * Generate Vedic astrological chart SVGs. Returns North Indian and South Indian style charts for both Lagna (D1) and Navamsa (D9), as SVG strings. Each planet shows abbreviation, degree°minutes', and its marks. Returns North Indian (Uttar Bharatiya) and South Indian (Dakshina Bharatiya) Kundali charts as inline SVG. Also returns Navamsa (D9) chart. Send `vargas` (any of D1, D2, D3, D4, D7, D9, D10, D12, D16, D20, D24, D27, D30, D40, D45, D60) and `styles` (north, south, east) to also get those divisional charts in `vargas`. Marks: R (Vakri) and ↑/↓ (exalted/debilitated in that chart's sign, BPHS Ch. 3) on every drawing; C (Asta) and V (Vargottama) on D1 and D9 only. Options: show_degrees, theme (light/dark), colors, transparent, show_details (name, date, time, place). The response contains SVG strings for each chart style. To render them:
  *
  * 1. In browser: create an HTML file,
  * paste the SVG string directly
@@ -204,7 +206,7 @@ export const natalChart = <ThrowOnError extends boolean = false>(options: Option
 /**
  * Western Natal Chart — Tropical
  *
- * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) with tropical longitudes, Placidus (or chosen) house placements, sign-level dignity (dignity, dignity_score) and full traditional essential dignities after William Lilly (essential_dignities: domicile, exaltation, triplicity by the chart's day/night sect, term, face, detriment, fall, peregrine, total), all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
+ * Calculate a complete Western natal chart using the tropical zodiac and Swiss Ephemeris. Returns 10 planet positions (Sun through Pluto) plus the lunar nodes (mean and true), mean Black Moon Lilith and Chiron in `points`, with tropical longitudes, Placidus (or chosen) house placements, sign-level dignity (dignity, dignity_score) and full traditional essential dignities after William Lilly (essential_dignities: domicile, exaltation, triplicity by the chart's day/night sect, term, face, detriment, fall, peregrine, total), all active aspects using standard modern Western orbs, and element/modality/hemisphere statistics. House system options: placidus (default), koch, equal, whole_sign.
  */
 export const westernNatalChart = <ThrowOnError extends boolean = false>(options: Options<WesternNatalChartData, ThrowOnError>): RequestResult<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError> => (options.client ?? client).post<WesternNatalChartResponses, WesternNatalChartErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1076,7 +1078,7 @@ export const matchmakingThirumanaPorutham = <ThrowOnError extends boolean = fals
 /**
  * Calculate dosha report
  *
- * Detect all major Vedic doshas in a natal chart — Mangal Dosha, Kaal Sarp Dosha, Gandmool, Grahan, Guru Chandal, Kemdrum, Shrapit, and Pitru Dosha. Present doshas include cancellation analysis, classical interpretation, keywords, and traditional remedies. Aspects are full Parashari graha drishti counted from the aspecting planet's sign (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu 7); house lords are whole sign from the lagna. A Jupiter or Venus aspect or conjunction cancels Mangal Dosha only when that planet is strong — not debilitated and not combust; one that does not count is listed in mangal_dosha.details.benefic_aspects_not_counted.
+ * Detect the Vedic doshas in a natal chart, with cancellations. Covered: Mangal, Kaal Sarp (with its named type), Kala Amrita, Gandmool, Grahan, Guru Chandal, Kemadruma, Shrapit, Shani, Paap Kartari, Pitru and Gulika. A conjunction is the same sign; no degree orb decides a dosha. Aspects are full Parashari graha drishti counted from the aspecting planet's sign (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu 7); house lords are whole sign from the lagna. Mangal Dosha is checked from the Lagna, Moon and Venus: `present` is after cancellation, `details.present_by_placement` is Mars's placement alone, and `details.cancellations` lists only real cancellations. Kemadruma follows BPHS 37.11 (`details.formed`, then cancellations). Pitru Dosha is present only when a BPHS 83.20–83.30 father's-curse combination forms; general Sun / 9th-lord conditions are listed as `details.indicators`. Gulika follows BPHS 3.66–67 for day and night births. With an unknown birth time, buckets that depend on the Lagna carry `needs_birth_time: true`.
  */
 export const doshas = <ThrowOnError extends boolean = false>(options: Options<DoshasData, ThrowOnError>): RequestResult<DoshasResponses, DoshasErrors, ThrowOnError> => (options.client ?? client).post<DoshasResponses, DoshasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1106,7 +1108,7 @@ export const gochar = <ThrowOnError extends boolean = false>(options: Options<Go
 /**
  * Calculate yoga combinations
  *
- * Detects classical Vedic yogas in a natal chart, such as Pancha Mahapurusha, Raja, Gajakesari and Neecha Bhanga Raja Yoga. Others include Budhaditya, Chandra Mangala, Viparita Raja, Amala, and more. House lords are taken by whole sign from the lagna (so they are found at polar latitudes too) and aspects are full Parashari graha drishti only. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords.
+ * Detects classical Vedic yogas in a natal chart, such as Pancha Mahapurusha, Raja, Gajakesari and Neecha Bhanga Raja Yoga. Others include Budhaditya, Chandra Mangala, Viparita Raja, Amala, and more. House lords are taken by whole sign from the lagna (so they are found at polar latitudes too) and aspects are full Parashari graha drishti only. Each detected yoga returns formation conditions, the classical texts it is drawn from, a modern summary, and keywords. When no birth time is given, yogas that depend on the lagna are marked needs_birth_time.
  */
 export const yogas = <ThrowOnError extends boolean = false>(options: Options<YogasData, ThrowOnError>): RequestResult<YogasResponses, YogasErrors, ThrowOnError> => (options.client ?? client).post<YogasResponses, YogasErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1433,7 +1435,7 @@ export const personalityNumber = <ThrowOnError extends boolean = false>(options:
 /**
  * Maturity (Realization) Number
  *
- * Calculates the Maturity number from Life Path + Expression. Represents the underlying wish or desire that surfaces around age 30-35. Requires both name and birth date.
+ * Calculates the Maturity number from Life Path + Expression. Represents the underlying wish or desire that surfaces from around age 35. Requires both name and birth date.
  */
 export const maturityNumber = <ThrowOnError extends boolean = false>(options: Options<MaturityNumberData, ThrowOnError>): RequestResult<MaturityNumberResponses, MaturityNumberErrors, ThrowOnError> => (options.client ?? client).post<MaturityNumberResponses, MaturityNumberErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1846,7 +1848,7 @@ export const lalKitabChart = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Lal Kitab Remedies
  *
- * Lal Kitab remedies for the planets that need them. Following the 1952 Lal Kitab, a planet is listed when its effect is doubtful (it is not in its own house, pakka ghar, or exaltation or debilitation house, or it is a companion planet) and its placement is generally malefic (an enemy's house). Planets that are malefic but have a fixed effect are listed separately as not remediable. Also returns remedies for any indicated debts (rin).
+ * Lal Kitab remedies for the planets that need them. Following the 1952 Lal Kitab, a planet is listed when its effect is doubtful (it is not in its own house, pakka ghar, or exaltation or debilitation house, or it is a companion planet) and its placement is generally malefic (an enemy's house, or its debilitation house when it is a companion planet). Planets that are malefic but have a fixed effect are listed separately as not remediable. Also returns remedies for any indicated debts (rin).
  */
 export const lalKitabRemedies = <ThrowOnError extends boolean = false>(options: Options<LalKitabRemediesData, ThrowOnError>): RequestResult<LalKitabRemediesResponses, LalKitabRemediesErrors, ThrowOnError> => (options.client ?? client).post<LalKitabRemediesResponses, LalKitabRemediesErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -1961,7 +1963,7 @@ export const nakshatraPrediction = <ThrowOnError extends boolean = false>(option
 /**
  * Pitru Dosha (Pitru Shapa)
  *
- * Detects and analyses Pitru Dosha (Pitru Shapa — Ancestral Curse) from the natal chart using all five classical combinations that indicate Pitru Dosha presence. Returns presence flag, severity (mild/moderate/severe), which of the 5 classical combinations are triggered, Sun and 9th lord analysis, afflicting planets, cancellation conditions (Jupiter protective), classical symptoms, and classical remedies. Primary classical symptom: denial of progeny or difficulties with children. The 9th, 5th and lagna lords are taken by whole sign from the lagna; aspects are full Parashari graha drishti (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu and Ketu 7). This is a standalone endpoint providing deeper analysis than the pitru_dosha field in /v1/astro/doshas.
+ * Detects Pitru Dosha (Pitru Shapa, the father's curse) from the eleven combinations of BPHS 83.20–83.30, each read literally. `present` is true only when at least one combination forms; `combinations_detail` names the verse and the chart factors. Conjunction is the same sign; aspects are full Parashari graha drishti (Mars 4/7/8, Jupiter 5/7/9, Saturn 3/7/10, Rahu 7); malefics are the chart's natural malefics (Sun, Mars, Saturn, Rahu, Ketu, a waning Moon, a Mercury joined by a malefic). House lords are whole sign from the lagna. General Sun and 9th-lord conditions are listed as `indicators` and never make the dosha present. BPHS gives no grading, so `severity` is null and `combinations_count` says how many combinations formed. Remedies are those of BPHS 83.31–83.32. The same rule fills the pitru_dosha bucket of /v1/astro/dosha.
  */
 export const pitraDosha = <ThrowOnError extends boolean = false>(options: Options<PitraDoshaData, ThrowOnError>): RequestResult<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError> => (options.client ?? client).post<PitraDoshaResponses, PitraDoshaErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
