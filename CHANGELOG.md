@@ -2,8 +2,8 @@
 
 ## 0.13.0 — unreleased
 
-Generated from the API with the chart-drawing and Western-points release
-(not deployed yet). Nothing removed: every method and model from 0.12.2 is
+Generated from the API as deployed on 2026-10-28 (chart drawings and
+Western points). Nothing removed: every method and model from 0.12.2 is
 still here.
 
 ### Added
@@ -16,6 +16,9 @@ still here.
 - Western points: `westernNatalChart` returns `points` (`WesternPoint`): mean and
   true North and South Node, mean Lilith (Black Moon) and Chiron. Solar,
   lunar and planetary returns include them in their chart too.
+- Daily factors (Vedic and Western) take `target_time` (HH:MM, 12:00 by
+  default): the moment of the day the sky is read. Panchanga calendar days
+  include `moon_rashi`, the Moon's sign spans for the day.
 - Fields the API already sends, now typed: `vela` on Choghadiya periods,
   `needs_birth_time` on dosha and yoga results, `imbalance` on Papa Samyam,
   `verse` on Pitru Dosha combinations and `minimum_poruthams_met` on Porutham.

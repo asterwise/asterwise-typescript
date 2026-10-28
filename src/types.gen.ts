@@ -3475,6 +3475,12 @@ export type CalendarDay = {
      * Bhadra (Vishti karana) windows during the day.
      */
     bhadra?: Array<BhadraWindow> | null;
+    /**
+     * Moon Rashi
+     *
+     * Every sidereal sign the Moon is in between this sunrise and the next, with start and end times.
+     */
+    moon_rashi?: Array<SignSpan> | null;
 };
 
 /**
@@ -16714,6 +16720,12 @@ export type VedicDailyFactorsRequest = {
      */
     target_date?: string | null;
     /**
+     * Target Time
+     *
+     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it.
+     */
+    target_time?: string | null;
+    /**
      * Target Timezone
      *
      * IANA timezone of the day. Defaults to the birth timezone.
@@ -16752,7 +16764,7 @@ export type VedicDailyFactorsResponse = {
     /**
      * Instant Utc
      *
-     * The moment used for the day's transit snapshot: local noon.
+     * The moment the day's sky is read: target_time (12:00 by default) on target_date in target_timezone, in UTC.
      */
     instant_utc: string;
     /**
@@ -17300,6 +17312,12 @@ export type WesternDailyFactorsRequest = {
      */
     target_date?: string | null;
     /**
+     * Target Time
+     *
+     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it.
+     */
+    target_time?: string | null;
+    /**
      * Target Timezone
      *
      * IANA timezone of the day. Defaults to the birth timezone.
@@ -17338,7 +17356,7 @@ export type WesternDailyFactorsResponse = {
     /**
      * Instant Utc
      *
-     * The moment used for the day's transit snapshot: local noon.
+     * The moment the day's sky is read: target_time (12:00 by default) on target_date in target_timezone, in UTC.
      */
     instant_utc: string;
     /**

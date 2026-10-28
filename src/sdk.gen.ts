@@ -359,7 +359,7 @@ export const westernEvents = <ThrowOnError extends boolean = false>(options: Opt
 /**
  * Western daily factors
  *
- * Every Western factor for one person on one day, in one shape, with no weighting. Each factor carries its raw value and range, its frame, the verdict Lilly's rules give, the rule's source, the significations it touches and the time it holds. Covers every transit-to-natal aspect with its exact time, each transiting planet's sign, dignity and natal house, the Moon's phase, sign changes and void-of-course periods, the planetary hours, and the lord of the year from annual profections. Uranus, Neptune and Pluto carry no verdict because the classical texts give none.
+ * Every Western factor for one person on one day, in one shape, with no weighting. Each factor carries its raw value and range, its frame, the verdict Lilly's rules give, the rule's source, the significations it touches and the time it holds. Covers every transit-to-natal aspect with its exact time, each transiting planet's sign, dignity and natal house, the Moon's phase, sign changes and void-of-course periods, the planetary hours, and the lord of the year from annual profections. Transits are read at target_time (local 12:00 by default) on the day. Uranus, Neptune and Pluto carry no verdict because the classical texts give none.
  */
 export const westernDailyFactors = <ThrowOnError extends boolean = false>(options: Options<WesternDailyFactorsData, ThrowOnError>): RequestResult<WesternDailyFactorsResponses, WesternDailyFactorsErrors, ThrowOnError> => (options.client ?? client).post<WesternDailyFactorsResponses, WesternDailyFactorsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
@@ -374,7 +374,7 @@ export const westernDailyFactors = <ThrowOnError extends boolean = false>(option
 /**
  * Vedic daily factors
  *
- * Every classical factor for one person on one day, in one shape, with no weighting. Each factor carries its raw value and range, its frame, the verdict its own rule gives, the rule's source, the significations it touches and the time it holds. Covers the nine gochar transits with bindus and vedha, Sade Sati, Chandra Ashtama, Tarabala and Chandrabala with the Moon's change times, the active Vimshottari dasha lords and the transits aspecting them, same-sign contacts to natal planets with the exact degree crossing, the day's tithi, yoga, karana and vara, and the Moon's phase. No weighting and no score: the caller decides what matters.
+ * Every classical factor for one person on one day, in one shape, with no weighting. Each factor carries its raw value and range, its frame, the verdict its own rule gives, the rule's source, the significations it touches and the time it holds. Covers the nine gochar transits with bindus and vedha, Sade Sati, Chandra Ashtama, Tarabala and Chandrabala with the Moon's change times, the active Vimshottari dasha lords and the transits aspecting them, same-sign contacts to natal planets with the exact degree crossing, the day's tithi, yoga, karana and vara, and the Moon's phase. Transits are read at target_time (local 12:00 by default) on the day. No weighting and no score: the caller decides what matters.
  */
 export const vedicDailyFactors = <ThrowOnError extends boolean = false>(options: Options<VedicDailyFactorsData, ThrowOnError>): RequestResult<VedicDailyFactorsResponses, VedicDailyFactorsErrors, ThrowOnError> => (options.client ?? client).post<VedicDailyFactorsResponses, VedicDailyFactorsErrors, ThrowOnError>({
     security: [{ scheme: 'bearer', type: 'http' }],
