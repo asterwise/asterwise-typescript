@@ -60,6 +60,8 @@ Get a free API key at [asterwise.com](https://asterwise.com).
 
 *143 typed SDK functions covering **129 REST endpoints** (5 endpoints keep a deprecated GET method next to the POST one; 9 endpoints also answer on GET with the same fields as query parameters).*
 
+*Plus `getMyUsage` for your account's usage ([Check your usage](#check-your-usage)); it reads your account, so it is not counted as an endpoint.*
+
 ## What makes Asterwise different
 
 - **Classical interpretation text** alongside the calculations on chart endpoints (natal chart, dasha, yogas, doshas)
@@ -106,6 +108,17 @@ const spread = await tarotThreeCard({
 });
 ```
 
+## Check your usage
+
+```typescript
+import { getMyUsage } from 'asterwise';
+
+const usage = await getMyUsage({ client });
+console.log(usage.data?.data.calls_used, usage.data?.data.reset_date);
+```
+
+This call is not billed and does not use your plan's limits.
+
 ## Requirements
 
 Node.js 18+. An API key from [asterwise.com](https://asterwise.com).
@@ -122,7 +135,7 @@ Regenerate from `https://api.asterwise.com/openapi-sdk.json`:
 npm run generate
 ```
 
-The `scripts/post-generate.mjs` hook re-exports `createClient` and `createConfig` from the package root after each generation.
+The `scripts/post-generate.mjs` hook re-exports `createClient` and `createConfig` from the package root after each generation, and restores the hand-written `src/usage.ts` (`getMyUsage`; the SDK spec leaves out the `/v1/keys/` routes).
 
 **Releasing:** `npm run generate` → bump `version` in `package.json` → `npm install` (syncs the lockfile) → update `CHANGELOG.md` → `npm test` and `npm run verify:nodenext` → commit → push a `typescript-v<version>` tag. The publish workflow checks the tag against `package.json`, runs the tests and the nodenext check, builds and publishes with provenance.
 

@@ -148,7 +148,45 @@ function runErrorCodesGenerator() {
 console.log("Post-generate hook starting...");
 let changes = 0;
 
+// ============================================================
+// Patch 3 — hand-written getMyUsage (src/usage.ts)
+// ============================================================
+//
+// The SDK spec leaves out the /v1/keys/ account routes, so the generator
+// never makes GET /v1/keys/me/usage. src/usage.ts is hand-written, but
+// openapi-ts empties src/ before writing, so restore the committed copy
+// from git, then re-export it from the regenerated index.
+
+const USAGE_MARKER = "/* Hand-written: GET /v1/keys/me/usage (src/usage.ts) */";
+const USAGE_BLOCK = `
+${USAGE_MARKER}
+export { getMyUsage } from './usage.js';
+export type { GetMyUsageData, GetMyUsageErrors, GetMyUsageResponses } from './usage.js';
+`;
+
+const USAGE_TS = resolve(REPO_ROOT, "src/usage.ts");
+
+function applyUsagePatch() {
+  if (!existsSync(USAGE_TS)) {
+    const restored = spawnSync("git", ["checkout", "--", "src/usage.ts"], { cwd: REPO_ROOT, stdio: "inherit" });
+    if (restored.status !== 0 || !existsSync(USAGE_TS)) {
+      console.error("  ✗ src/usage.ts is missing and could not be restored from git");
+      process.exit(1);
+    }
+    console.log("  ✓ src/usage.ts restored from git");
+  }
+  const original = readFileSync(INDEX_TS, "utf8");
+  if (original.includes(USAGE_MARKER)) {
+    console.log("  ✓ usage patch already present");
+    return false;
+  }
+  writeFileSync(INDEX_TS, original.trimEnd() + "\n" + USAGE_BLOCK);
+  console.log("  ✓ usage patch applied to src/index.ts");
+  return true;
+}
+
 if (applyF43Patch()) changes++;
+if (applyUsagePatch()) changes++;
 if (runErrorCodesGenerator()) changes++;
 
 if (changes === 0) {

@@ -6,3 +6,7 @@ export type { AngelListData, AngelListError, AngelListErrors, AngelListResponse,
 /* F-43: client re-exports */
 export { createClient, createConfig } from './client';
 export type { Client, Config, CreateClientConfig } from './client';
+
+/* Hand-written: GET /v1/keys/me/usage (src/usage.ts) */
+export { getMyUsage } from './usage.js';
+export type { GetMyUsageData, GetMyUsageErrors, GetMyUsageResponses } from './usage.js';

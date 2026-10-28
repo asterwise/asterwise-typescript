@@ -3478,7 +3478,7 @@ export type CalendarDay = {
     /**
      * Moon Rashi
      *
-     * Every sidereal sign the Moon is in between this sunrise and the next, with start and end times.
+     * Every sign the Moon is in between this sunrise and the next, with start and end times: sidereal for the request's ayanamsa, tropical when ayanamsa is tropical.
      */
     moon_rashi?: Array<SignSpan> | null;
 };
@@ -6668,7 +6668,7 @@ export type FactorTime = {
     /**
      * Kind
      *
-     * state: holds for the whole day; span: start to end; instant: one moment.
+     * state: the value read at at_utc (the instant_utc moment), which can change later in the day; a state with no at_utc holds for the whole day. span: start to end. instant: one moment.
      */
     kind: 'state' | 'span' | 'instant';
     /**
@@ -16722,7 +16722,7 @@ export type VedicDailyFactorsRequest = {
     /**
      * Target Time
      *
-     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it.
+     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it. On a clock-change day, a time the clock skips is read one hour later and a time that happens twice is read at its first occurrence. The panchanga factors describe the Hindu day that starts at target_date's sunrise; a target_time before sunrise still reads the planets at that moment.
      */
     target_time?: string | null;
     /**
@@ -17314,7 +17314,7 @@ export type WesternDailyFactorsRequest = {
     /**
      * Target Time
      *
-     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it.
+     * Local clock time HH:MM (24-hour) in target_timezone at which the day's sky is read. Defaults to 12:00. Pass the user's own time so the Moon is where the user sees it. On a clock-change day, a time the clock skips is read one hour later and a time that happens twice is read at its first occurrence.
      */
     target_time?: string | null;
     /**

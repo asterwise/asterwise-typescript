@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.13.0 — unreleased
+## 0.13.0 — 2026-10-28
 
 Generated from the API as deployed on 2026-10-28 (chart drawings and
 Western points). Nothing removed: every method and model from 0.12.2 is
@@ -19,9 +19,14 @@ still here.
 - Daily factors (Vedic and Western) take `target_time` (HH:MM, 12:00 by
   default): the moment of the day the sky is read. Panchanga calendar days
   include `moon_rashi`, the Moon's sign spans for the day.
+- `getMyUsage({ client })` (the usage is in `data.data`): this month's calls used, monthly limit, per-minute limit and
+  reset date for your account (`GET /v1/keys/me/usage`). Not billed; 60 calls
+  a minute per key. Written by hand, since the generated spec leaves out the
+  account routes.
 - Fields the API already sends, now typed: `vela` on Choghadiya periods,
   `needs_birth_time` on dosha and yoga results, `imbalance` on Papa Samyam,
-  `verse` on Pitru Dosha combinations and `minimum_poruthams_met` on Porutham.
+  `verse` on Pitru Dosha combinations, `indicators` and `source` on Pitru
+  Dosha, and `minimum_poruthams_met` on Porutham.
 
 ### Changed
 
@@ -32,6 +37,11 @@ still here.
 - The classic chart pictures have a refreshed look: left-aligned title,
   Cancer shown as "Cn", new ↑/↓ marks for exalted and debilitated grahas,
   and a slightly taller image. Positions are unchanged.
+- Daily factors: `instant_utc` is the `target_time` moment (still local noon
+  when `target_time` is left out).
+- Daily factors: a `state` row's `at_utc` is the moment its value was read;
+  the value can change later that day.
+- Pitru Dosha: each combination's `weight` is 1 (each one counts once).
 - Endpoint and field descriptions updated to match the API.
 
 ## 0.12.2 — 2026-10-26
