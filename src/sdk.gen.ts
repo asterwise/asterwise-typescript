@@ -152,7 +152,7 @@ export const ashtottariDasha = <ThrowOnError extends boolean = false>(options: O
 /**
  * Generate Kundali chart SVG
  *
- * Generate Vedic astrological chart SVGs. Returns North Indian and South Indian style charts for both Lagna (D1) and Navamsa (D9), as SVG strings. Each planet shows abbreviation, degree°minutes', and its marks. Returns North Indian (Uttar Bharatiya) and South Indian (Dakshina Bharatiya) Kundali charts as inline SVG. Also returns Navamsa (D9) chart. Send `vargas` (any of D1, D2, D3, D4, D7, D9, D10, D12, D16, D20, D24, D27, D30, D40, D45, D60) and `styles` (north, south, east) to also get those divisional charts in `vargas`. Marks: R (Vakri) and ↑/↓ (exalted/debilitated in that chart's sign, BPHS Ch. 3) on every drawing; C (Asta) and V (Vargottama) on D1 and D9 only. Options: show_degrees, theme (light/dark), colors, transparent, show_details (name, date, time, place). The response contains SVG strings for each chart style. To render them:
+ * Generate Vedic astrological chart SVGs. Always returns North Indian and South Indian charts for Lagna (D1) and Navamsa (D9), as SVG strings. Each planet shows abbreviation, degree°minutes', and its marks. Send `vargas` (any of D1, D2, D3, D4, D7, D9, D10, D12, D16, D20, D24, D27, D30, D40, D45, D60) and `styles` (north, south, east) to also get those divisional charts in `vargas`. Marks: R (Vakri) and ↑/↓ (exalted/debilitated in that chart's sign, BPHS Ch. 3) on every drawing; C (Asta) and V (Vargottama) on D1 and D9 only. Options: show_degrees, theme (light/dark), colors, transparent, show_details (name, date, time, place). The response contains SVG strings for each chart style. To render them:
  *
  * 1. In browser: create an HTML file,
  * paste the SVG string directly
@@ -175,7 +175,9 @@ export const ashtottariDasha = <ThrowOnError extends boolean = false>(options: O
  * North Indian style
  * - navamsa_south: D9 Navamsa chart
  * South Indian style
+ * - vargas: the divisional charts you asked for, in each style you asked for
  * - legend: R=Vakri(Retrograde)
+ * ↑=Exalted ↓=Debilitated
  * C=Asta(Combust) V=Vargottama
  */
 export const chartSvg = <ThrowOnError extends boolean = false>(options: Options<ChartSvgData, ThrowOnError>): RequestResult<ChartSvgResponses, ChartSvgErrors, ThrowOnError> => (options.client ?? client).post<ChartSvgResponses, ChartSvgErrors, ThrowOnError>({
