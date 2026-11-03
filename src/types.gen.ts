@@ -3999,7 +3999,7 @@ export type ChartColors = {
     /**
      * Muted
      *
-     * Sign labels, house numbers, legend
+     * Sign labels, sign and house numbers, legend
      */
     muted?: string | null;
     /**

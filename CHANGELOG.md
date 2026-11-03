@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.13.2 — 2026-11-03
+
+Generated from the API as deployed on 2026-11-03. No methods or models
+changed.
+
+### Changed
+
+- `chartSvg` help text matches the API: North Indian charts number each house
+  with its sign (Mesha = 1), South Indian charts show house numbers counted
+  from the Lagna, and East Indian charts show sign names only.
+- The API now spells Scorpio "Vrishchika" in every Vedic answer, including
+  ashtakavarga sign keys. If your code matches the older "Vrischika",
+  update it; the API still accepts both spellings as input.
+
 ## 0.13.1 — 2026-10-29
 
 Generated from the API as deployed on 2026-10-29. No methods or models
