@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.15.0 — 2026-11-04
+
+Generated from the API as deployed on 2026-11-04.
+
+### Added
+
+- `westernChart()`: `POST /v1/western/chart` draws a Western (tropical)
+  natal chart wheel and returns it as an SVG string (`data.svg`). It shows
+  the signs, house cusps and the AC/DC and MC/IC axes, the 10 planets, the
+  lunar nodes, Chiron and Black Moon Lilith, and aspect lines, with the same
+  positions, cusps and aspects as `westernNatalChart()`. Options: `theme` (light
+  or dark), `colors`, `transparent`, `glyphs` (symbols or letters),
+  `show_degrees`, `show_aspects`, `minor_aspects`, `show_points`, `node`
+  (true or mean), `show_details`. Without a birth time the wheel has no
+  houses.
+- New types `WesternChartRequest`, `WesternChartColors`,
+  `WesternChartResponse`.
+
 ## 0.14.0 — 2026-11-04
 
 Generated from the API as deployed on 2026-11-04.

@@ -2260,6 +2260,28 @@ export type ApiResponseWesternAspectsResponse = {
 };
 
 /**
+ * ApiResponse[WesternChartResponse]
+ */
+export type ApiResponseWesternChartResponse = {
+    /**
+     * Success
+     *
+     * True if the request succeeded
+     */
+    success?: boolean;
+    /**
+     * Message
+     *
+     * Human-readable status message
+     */
+    message?: string;
+    /**
+     * The endpoint response payload
+     */
+    data: WesternChartResponse;
+};
+
+/**
  * ApiResponse[WesternDailyFactorsResponse]
  */
 export type ApiResponseWesternDailyFactorsResponse = {
@@ -17254,6 +17276,232 @@ export type WesternBirthInput = {
 };
 
 /**
+ * WesternChartColors
+ */
+export type WesternChartColors = {
+    /**
+     * Background
+     *
+     * Background
+     */
+    background?: string | null;
+    /**
+     * Line
+     *
+     * Rings and house lines
+     */
+    line?: string | null;
+    /**
+     * Text
+     *
+     * Glyphs and title
+     */
+    text?: string | null;
+    /**
+     * Muted
+     *
+     * Degrees, house numbers, ticks
+     */
+    muted?: string | null;
+    /**
+     * Harmonious
+     *
+     * Trine and sextile lines
+     */
+    harmonious?: string | null;
+    /**
+     * Challenging
+     *
+     * Square and opposition lines
+     */
+    challenging?: string | null;
+    /**
+     * Minor
+     *
+     * Minor aspect lines
+     */
+    minor?: string | null;
+    /**
+     * Fire
+     *
+     * Fire sign fill
+     */
+    fire?: string | null;
+    /**
+     * Earth
+     *
+     * Earth sign fill
+     */
+    earth?: string | null;
+    /**
+     * Air
+     *
+     * Air sign fill
+     */
+    air?: string | null;
+    /**
+     * Water
+     *
+     * Water sign fill
+     */
+    water?: string | null;
+};
+
+/**
+ * WesternChartRequest
+ */
+export type WesternChartRequest = {
+    /**
+     * Location
+     *
+     * City name to resolve to lat/lon/tz automatically. Example: 'Mumbai' or 'New Delhi, India'. If provided, latitude, longitude and timezone are not required.
+     */
+    location?: string | null;
+    /**
+     * Name
+     *
+     * Person name associated with the birth record
+     */
+    name?: string;
+    /**
+     * Date
+     *
+     * Birth date in YYYY-MM-DD format
+     */
+    date: string;
+    /**
+     * Time
+     *
+     * Birth time in HH:MM 24-hour format. If omitted, the chart is cast for 06:00 local time (not a sunrise chart) and birth_time_provided is false: houses, the Ascendant, the sect and the Moon's exact degree are then approximate.
+     */
+    time?: string | null;
+    /**
+     * Latitude
+     *
+     * Latitude. Required if location not provided.
+     */
+    latitude?: number | null;
+    /**
+     * Longitude
+     *
+     * Longitude. Required if location not provided.
+     */
+    longitude?: number | null;
+    /**
+     * Timezone
+     *
+     * IANA timezone. Required if location not provided (unless utc_offset is given). For dates before the zone adopted a standard time, the birthplace's local mean time (longitude / 15 hours) is used.
+     */
+    timezone?: string | null;
+    /**
+     * Utc Offset
+     *
+     * Optional explicit UTC offset of the birth time, as ±HH:MM or ±HH:MM:SS (e.g. '+04:51:31' for Bombay mean time). Overrides the offset `timezone` would give. Use it when the birth record states the offset, or for historical local times the IANA database cannot represent.
+     */
+    utc_offset?: string | null;
+    /**
+     * Ayanamsa
+     *
+     * Ignored on Western endpoints: positions are always tropical (no ayanamsa). Accepted so one birth object can be sent to Vedic and Western endpoints alike.
+     */
+    ayanamsa?: 'lahiri' | 'raman' | 'kp' | 'tropical';
+    /**
+     * House System
+     *
+     * House system for Western natal chart. Placidus is the modern default. Koch is the second most popular. Equal and Whole Sign are sign-based systems.
+     */
+    house_system?: 'placidus' | 'koch' | 'equal' | 'whole_sign';
+    /**
+     * Node
+     *
+     * Which lunar nodes to draw: true (osculating) or mean.
+     */
+    node?: 'true' | 'mean';
+    /**
+     * Show Points
+     *
+     * Draw the lunar nodes, Chiron and Black Moon Lilith (mean).
+     */
+    show_points?: boolean;
+    /**
+     * Show Aspects
+     *
+     * Draw aspect lines in the centre.
+     */
+    show_aspects?: boolean;
+    /**
+     * Minor Aspects
+     *
+     * Also draw semisextile, semisquare, sesquiquadrate and quincunx lines (dashed).
+     */
+    minor_aspects?: boolean;
+    /**
+     * Glyphs
+     *
+     * symbols (☉ ♈ …) or letters (Su, Ar …) for fonts without astrological symbols.
+     */
+    glyphs?: 'symbols' | 'letters';
+    /**
+     * Show Degrees
+     *
+     * Degree and minute under each glyph.
+     */
+    show_degrees?: boolean;
+    /**
+     * Theme
+     *
+     * Colour preset.
+     */
+    theme?: 'light' | 'dark';
+    /**
+     * Override any colour of the chosen theme (hex #RRGGBB).
+     */
+    colors?: WesternChartColors | null;
+    /**
+     * Transparent
+     *
+     * No background or sign fills.
+     */
+    transparent?: boolean;
+    /**
+     * Show Details
+     *
+     * Print the name (when sent), birth date, time and place under the title.
+     */
+    show_details?: boolean;
+};
+
+/**
+ * WesternChartResponse
+ */
+export type WesternChartResponse = {
+    /**
+     * Svg
+     *
+     * The natal wheel as an SVG string
+     */
+    svg: string;
+    /**
+     * House System
+     *
+     * House system of the cusps drawn. Placidus above 66.5° latitude is drawn (and named) as Porphyry. Omitted when no birth time was sent.
+     */
+    house_system?: string | null;
+    /**
+     * Node
+     *
+     * Lunar nodes drawn: true or mean
+     */
+    node: string;
+    /**
+     * Birth Time Provided
+     *
+     * False when no birth time was sent: the wheel then has no houses or angles and puts 0° Aries at the left.
+     */
+    birth_time_provided: boolean;
+};
+
+/**
  * WesternDailyFactorsRequest
  */
 export type WesternDailyFactorsRequest = {
@@ -19453,6 +19701,63 @@ export type WesternNatalChartResponses = {
 };
 
 export type WesternNatalChartResponse = WesternNatalChartResponses[keyof WesternNatalChartResponses];
+
+export type WesternChartData = {
+    body: WesternChartRequest;
+    path?: never;
+    query?: never;
+    url: '/v1/western/chart';
+};
+
+export type WesternChartErrors = {
+    /**
+     * Authentication failed
+     */
+    401: ErrorResponse;
+    /**
+     * Authorization failed
+     */
+    403: ErrorResponse;
+    /**
+     * Resource not found
+     */
+    404: ErrorResponse;
+    /**
+     * Payload too large
+     */
+    413: ErrorResponse;
+    /**
+     * Validation error
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded
+     */
+    429: ErrorResponse;
+    /**
+     * Internal error
+     */
+    500: ErrorResponse;
+    /**
+     * Upstream provider error
+     */
+    502: ErrorResponse;
+    /**
+     * Service unavailable
+     */
+    503: ErrorResponse;
+};
+
+export type WesternChartError = WesternChartErrors[keyof WesternChartErrors];
+
+export type WesternChartResponses = {
+    /**
+     * Western natal wheel SVG
+     */
+    200: ApiResponseWesternChartResponse;
+};
+
+export type WesternChartResponse2 = WesternChartResponses[keyof WesternChartResponses];
 
 export type WesternMoonPhaseData = {
     body?: never;
