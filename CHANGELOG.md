@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.14.0 — 2026-11-04
+
+Generated from the API as deployed on 2026-11-04.
+
+### Added
+
+- `DashaRequest` takes optional `from_date` and `to_date` (YYYY-MM-DD, UTC).
+  The dasha answer then holds only the periods running in that range, at
+  every level, so a five-level timeline for one year is about 110 KB instead
+  of over 20 MB. `interpretation` still describes today's periods.
+- With both dates set no more than 10 years apart, a `levels` 4 or 5 request
+  counts as 1 call toward the per-minute limit instead of 3 or 10.
+
 ## 0.13.2 — 2026-11-03
 
 Generated from the API as deployed on 2026-11-03. No methods or models

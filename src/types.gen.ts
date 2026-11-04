@@ -5138,6 +5138,18 @@ export type DashaRequest = {
      * Depth of dasha hierarchy to compute (1 to 5)
      */
     levels?: number;
+    /**
+     * From Date
+     *
+     * Return only periods still running on or after this day (YYYY-MM-DD, UTC), at every level. Leave out to start at birth.
+     */
+    from_date?: string | null;
+    /**
+     * To Date
+     *
+     * Return only periods that have started by the end of this day (YYYY-MM-DD, UTC, inclusive), at every level. Leave out for the whole timeline.
+     */
+    to_date?: string | null;
 };
 
 /**
